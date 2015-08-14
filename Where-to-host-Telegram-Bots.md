@@ -2,6 +2,8 @@
 * [Amazon Web Services](https://aws.amazon.com/)
 * [Google App Engine](https://cloud.google.com/appengine) 
     * **[How to create a Bot on Google App Engine](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot)** by [sooyhwang](https://github.com/sooyhwang)
+* [Heroku](https://www.heroku.com/)
+* [OpenShift](https://www.openshift.com/)
 
 ### VPS
 * [DigitalOcean](https://www.digitalocean.com/)
