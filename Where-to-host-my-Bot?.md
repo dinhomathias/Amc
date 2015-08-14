@@ -1,6 +1,7 @@
 ### Cloud
 * [Amazon Web Services](https://aws.amazon.com/)
-* [Google App Engine](https://cloud.google.com/appengine)
+* [Google App Engine](https://cloud.google.com/appengine) 
+    * **[How to create a Bot on Google App Engine](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot)** by [sooyhwang](https://github.com/sooyhwang)
 
 ### VPS
 * [DigitalOcean](https://www.digitalocean.com/)
@@ -9,6 +10,7 @@
 
 ### Web IDEs
 * [Codenvy](https://codenvy.com/)
+    * **[How to create a Bot on Codenvy](https://github.com/p92camcj/Tutorial-telegram-bot)** by [p92camcj](https://github.com/p92camcj/Tutorial-telegram-bot)
 * [Koding](https://koding.com/)
 * [Nitrous Pro](https://www.nitrous.io/)
 
