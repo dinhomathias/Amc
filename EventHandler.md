@@ -108,13 +108,28 @@ class MessageHandler:
        # handle the messages
        pass
 
+class ErrorHander:
+    def onError(bot, error):
+       # handle the error here
+       pass
+
 def main():
     eh = BotEventHandler(<token>)
 
+    # on different commands
     eh.onCommand("start", StartCommandHandler())
-    eh.onCommand("help", StartCommandHandler())
-    eh.onMessage(MessageHandler())
+    eh.onCommand("help", HelpCommandHandler())
+
+    # on unknown command
     eh.onUnknownCommand(UnknownCommandHandler())
+
+    # on noncommand i.e message
+    eh.onMessage(MessageHandler())
+
+    # on noncommand i.e message
+    eh.onMessage(MessageHandler())
+
+   eh.onError(ErrorHandler())
  
     eh.start()
 
