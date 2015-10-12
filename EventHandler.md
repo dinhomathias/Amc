@@ -93,17 +93,17 @@ class StartCommandHandler:
        # handle the start command
        pass
 
-class HelpCommandHandler
+class HelpCommandHandler:
     def onUpdate(bot, update):
        # handle the help command
        pass
 
-class UnknownCommandHandler
+class UnknownCommandHandler:
     def onUpdate(bot, update):
        # handle the unknown command
        pass
 
-class MessageHandler
+class MessageHandler:
     def onUpdate(bot, update):
        # handle the messages
        pass
