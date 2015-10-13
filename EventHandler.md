@@ -68,9 +68,9 @@ class Broadcaster:
         msg = update.message.text
         if msg.startswith("/"):
             command = msg.split("/")[0]
-            broadcastCommand(command, update)
+            self.broadcastCommand(command, update)
         else:
-            broadcastMessage(update)
+            self.broadcastMessage(update)
 
     def broadcastCommand(self, command, update):
         if command in self.commandListeners:
