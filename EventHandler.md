@@ -126,9 +126,6 @@ def main():
     # on noncommand i.e message
     eh.onMessage(MessageHandler())
 
-    # on noncommand i.e message
-    eh.onMessage(MessageHandler())
-
     # on error
     eh.onError(ErrorHandler())
  
