@@ -58,10 +58,10 @@ class Broadcaster:
         self.commandListener[command] = listener
 
     def self.onUnknownCommand(self, listener):
-        self.unknownCommandListener .append(listener)
+        self.unknownCommandListener.append(listener)
 
     def self.onError(self, listener):
-        self.unknownCommandListener .append(listener)
+        self.unknownCommandListener.append(listener)
 
     # Broadcasting for all listeners 
     def process(self, update):
