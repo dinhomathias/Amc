@@ -6,6 +6,14 @@ python-telegram-bot is very good library. user has to take care of keeping the a
 ### Solution
 If the Bot object it self is act as event handler where it provides facility to register callbacks for commands and messages
 
+### Threaded approach
+###### Not yet implemented!
+We could pass a [synchronized Queue](https://docs.python.org/2/library/queue.html) to the BotEventHandler class and, from there, pass that same queue to the Broadcaster. 
+
+Then, start both the Broadcaster as well as the BotEventHandler as seperate [Threads](https://docs.python.org/2/library/threading.html#threading.Thread) (maybe extend thread? not sure right now). 
+
+Now, we have a main-thread that could be used to respond to cli-commands. Those commands could be handled by special listeners/broadcasters/handlers.
+
 #### BotEventHandler class
 
 ```python
