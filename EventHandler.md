@@ -8,7 +8,7 @@ If the Bot object it self is act as event handler where it provides facility to 
 
 ### Threaded approach
 ###### Not yet implemented!
-We could pass one or several [synchronized Queue(s)](https://docs.python.org/2/library/queue.html) (one for each listener) to the BotEventHandler class and, from there, pass that same queue(s) to the Broadcaster. The BotEventListener would deliver the updates into the queue(s) in the `start`-loop. The Broadcaster continuously queries the queue for new updates in the `process`-Method and calls the Handlers in it's own thread. 
+We could pass one or several [synchronized Queue(s)](https://docs.python.org/2/library/queue.html) (one for each listener) to the BotEventHandler class and, from there, pass that same queue(s) to the Broadcaster. The BotEventHandler would deliver the updates into the queue(s) in the `start`-loop. The Broadcaster continuously queries the queue for new updates in the `process`-Method and calls the Handlers in it's own thread. 
 
 Start both the Broadcaster as well as the BotEventHandler as seperate [Threads](https://docs.python.org/2/library/threading.html#threading.Thread) (maybe extend thread? not sure right now). 
 
