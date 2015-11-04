@@ -7,14 +7,21 @@ python-telegram-bot is very good library. user has to take care of keeping the a
 If the Bot object it self is act as event handler where it provides facility to register callbacks for commands and messages
 
 ### Threaded approach
-In `BotEventListener.__init__`, we create a [synchronized Queue](https://docs.python.org/2/library/queue.html) (`updateQueue`) and pass that queue to the `Broadcaster`. `BotEventHandler` deliver the updates into the queue in the `__start`-Method. The Broadcaster continuously queries the queue for new updates in the `process`-Method and calls the Handlers in it's own thread. Both Threads are started in `BotEventHandler.start`, which also returns the `updateQueue`, which is used by the main thread to insert CLI commands. 
+In `BotEventListener.__init__`, we create a [synchronized Queue](https://docs.python.org/2/library/queue.html) (`update_queue`) and pass that queue to the `Broadcaster`. `BotEventHandler` deliver the updates into the queue in the `__start`-Method. The Broadcaster continuously queries the queue for new updates in its own `start`-Method and calls the Handlers in it's own thread. Both Threads are started in `BotEventHandler.start`, which also returns the `update_queue`, that then can be used by the main thread to insert CLI commands (in this example). 
 
 #### BotEventHandler class
 
 ```python
+#!/usr/bin/env python
+
+"""
+This module contains the class BotEventHandler, which tries to make creating 
+Telegram Bots intuitive!
+"""
+
 import sys
 from threading import Thread
-from telegram import (Bot, TelegramError, TelegramObject, NullHandler)
+from telegram import (Bot, TelegramError, TelegramObject)
 from broadcaster import Broadcaster
 import time
 
@@ -24,118 +31,524 @@ if sys.version_info.major is 2:
 elif sys.version_info.major is 3:
     from queue import Queue
 
-class BotEventHandler:
-    def __init__(self, token):
-        self.bot = Bot(token)
-        self.updateQueue = Queue()  # Create update queue to pass to Broadcaster
-        self.lastUpdateId = 0
-        self.broadcaster = Broadcaster(self.bot, self.updateQueue)  # Pass queue
+class BotEventHandler(TelegramObject):
+    """
+    This class provides a backend to telegram.Bot to the programmer, so they can
+    focus on coding the bot. I also runs in a seperate thread, so the user can
+    interact with the bot, for example on the command line. It supports Handlers
+    for different
+    
+    Attributes:
+    
+    Args:
+        token (str): The bots token given by the @BotFather
+        **kwargs: Arbitrary keyword arguments.
 
-    def start(self, pollintv=1.0):
-        """ Starts the Threads """
-        self.broadcasterThread = Thread(target=self.broadcaster.process, name="broadcaster")
-        self.eventHandlerThread = Thread(target=self.__start, name="eventhandler", args=(pollintv,))
+    Keyword Args:
+        base_url (Optional[str]):
+    """
+    
+    def __init__(self, token, base_url=None):
+        self.bot = Bot(token, base_url)
+        self.update_queue = Queue()
+        self.last_update_id = 0
+        self.broadcaster = Broadcaster(self.bot, self.update_queue)
+
+    # Add Handlers
+    def addMessageHandler(self, handler):
+        """
+        Registers a message handler in the Broadcaster.
         
-        self.broadcasterThread.daemon = True
-        self.eventHandlerThread.daemon = True
+        Args:
+            handler (obj): An object that implements the onUpdate(Bot, Update) 
+                method.
+        """
         
-        self.broadcasterThread.start()
-        self.eventHandlerThread.start()
-        return self.updateQueue  # Return the update queue so the main thread can insert updates
+        self.broadcaster.addMessageHandler(handler)
 
-    def __start(self, pollintv):
-        """ Thread target of thread eventhandler """
-        while(True):
-            updates = self.bot.getUpdates(self.lastUpdateId);
-            for update in updates:
-                self.updateQueue.put(update)  # Put update into queue instead of calling the process method directly
-                self.lastUpdateId = update.update_id + 1
-                time.sleep(pollintv)
-
-    def stop(self):
-        pass
-
-    # Listener Registration
-    def onMessage(self, listener):
-        self.broadcaster.onMessage(listener)
-
-    def onCommand(self, command, listener):
-        self.broadcaster.onCommand(command, listener)
+    def addCommandHandler(self, command, handler):
+        """
+        Registers a command handler in the Broadcaster.
         
-    def onCLICommand(self, command, listener):
-        self.broadcaster.onCLICommand(command, listener)
+        Args:
+            command (str): The command keyword that this handler should be 
+                listening to. 
+            handler (any): An object that implements the onUpdate(Bot, Update) 
+                method.
+        """
+        
+        self.broadcaster.addCommandHandler(command, handler)
 
-    def onUnknownCommand(self, listener):
-        self.broadcaster.onUnknownCommand(listener)
+    def addTextCommandHandler(self, command, handler):
+        """
+        Registers a command handler in the Broadcaster.
+        
+        Args:
+            command (str): The text-command keyword that this handler should be 
+                listening to. 
+            handler (any): An object that implements the 
+            onUpdate(Bot, str) method.
+        """
+        
+        self.broadcaster.addTextCommandHandler(command, handler)
 
-    def onError(self, listener):
-        self.broadcaster.onError(listener)
+    def addUnknownCommandHandler(self, handler):
+        """
+        Registers a command handler in the Broadcaster, that will receive all
+        commands that don't have an associated handler.
+        
+        Args:
+            handler (any): An object that implements the onUpdate(Bot, Update) 
+                method.
+        """
+        
+        self.broadcaster.addUnknownCommandHandler(handler)
+
+    def addUnknownTextCommandHandler(self, handler):
+        """
+        Registers a text-command handler in the Broadcaster, that will receive 
+        all commands that have no associated handler.
+        
+        Args:
+            handler (any): An object that implements the 
+                onUpdate(Bot, str) method.
+        """
+        
+        self.broadcaster.addUnknownTextCommandHandler(handler)
+        
+    def addErrorHandler(self, handler):
+        """
+        Registers an error handler in the Broadcaster.
+        
+        Args:
+            handler (any): An object that implements the 
+            onError(Bot, TelegramError) method.
+        """
+        
+        self.broadcaster.addErrorHandler(handler)
+
+    # Remove Handlers
+    def removeMessageHandler(self, handler):
+        """
+        De-Registers a message handler in the Broadcaster.
+
+        Args:
+            handler (obj):
+        """
+
+        self.broadcaster.removeMessageHandler(handler)
+
+    def removeCommandHandler(self, command, handler):
+        """
+        De-Registers a command handler in the Broadcaster.
+
+        Args:
+            command (str): The command that the handler is listening to.
+
+            handler (any): An object that implements the onUpdate(Bot, Update)
+                method.
+        """
+
+        self.broadcaster.removeCommandHandler(command, handler)
+
+    def removeTextCommandHandler(self, command, handler):
+        """
+        De-Registers a command handler in the Broadcaster.
+
+        Args:
+            command (str): The text-command that the handler is listening to.
+            handler (any):
+        """
+
+        self.broadcaster.removeTextCommandHandler(command, handler)
+
+    def removeUnknownCommandHandler(self, handler):
+        """
+        De-Registers a command handler in the Broadcaster.
+
+        Args:
+            handler (any):
+        """
+
+        self.broadcaster.removeUnknownCommandHandler(handler)
+
+    def removeUnknownTextCommandHandler(self, handler):
+        """
+        De-Registers a text-command handler in the Broadcaster.
+
+        Args:
+            handler (any):
+        """
+
+        self.broadcaster.removeUnknownTextCommandHandler(handler)
+
+    def removeErrorHandler(self, handler):
+        """
+        De-Registers an error handler in the Broadcaster.
+
+        Args:
+            handler (any):
+        """
+
+        self.broadcaster.removeErrorHandler(handler)
+
+    def start(self, poll_interval=1.0):
+        """
+        Starts polling updates from Telegram. 
+        
+        Args:
+            **kwargs: Arbitrary keyword arguments.
+
+        Keyword Args:
+            poll_interval (Optional[float]): Time to wait between polling 
+                updates from Telegram in seconds. Default is 1.0
+        """
+
+        # Create Thread objects
+        broadcaster_thread = Thread(target=self.broadcaster.start,
+                                    name="broadcaster")
+        event_handler_thread = Thread(target=self.__start, name="eventhandler",
+                                      args=(poll_interval,))
+
+        # Set threads as daemons so they'll stop if the main thread stops
+        broadcaster_thread.daemon = True
+        event_handler_thread.daemon = True
+        
+        # Start threads
+        broadcaster_thread.start()
+        event_handler_thread.start()
+        
+        # Return the update queue so the main thread can insert updates
+        return self.update_queue
+
+    def __start(self, poll_interval):
+        """
+        Thread target of thread 'eventhandler'. Runs in background, pulls
+        updates from Telegram and inserts them in the update queue of the
+        Broadcaster.
+        """
+
+        while True:
+            try:
+                updates = self.bot.getUpdates(self.last_update_id)
+                for update in updates:
+                    self.update_queue.put(update)
+                    self.last_update_id = update.update_id + 1
+                    time.sleep(poll_interval)
+            except TelegramError as te:
+                # Put the error into the update queue and let the Broadcaster
+                # broadcast it
+                self.update_queue.put(te)
+                time.sleep(poll_interval)
 
 ````
 #### Broadcaster class
 ```python
-from telegram import (Bot, TelegramError, TelegramObject, NullHandler)
+from telegram import (TelegramError, TelegramObject, Update)
 
-class Broadcaster:
-    def __init__(self, bot, updateQueue):
+class Broadcaster(TelegramObject):
+    def __init__(self, bot, update_queue):
         self.bot = bot
-        self.updateQueue = updateQueue  # Get update queue from BotEventHandler
-        self.messageListeners = []
-        self.commandListeners = {}
-        self.CLICommandListeners = {}
-        self.unknownCommandListeners = []
-        self.errorListeners = []
+        self.update_queue = update_queue
+        self.message_handlers = []
+        self.command_handlers = {}
+        self.text_command_handlers = {}
+        self.type_handlers = {}
+        self.unknown_command_handlers = []
+        self.unknown_text_command_handlers = []
+        self.error_handlers = []
 
-    # Listener Registration
-    def onMessage(self, listener):
-        self.messageListeners.append(listener)
-
-    def onCommand(self, command, listener):
-        self.commandListeners[command] = listener
+    # Add Handlers
+    def addMessageHandler(self, handler):
+        """
+        Registers a message handler in the Broadcaster.
         
-    def onCLICommand(self, command, listener):
-        self.CLICommandListeners[command] = listener
+        Args:
+            handler (any): An object that implements the onUpdate(Bot, Update) 
+                method.
+        """
+        
+        self.message_handlers.append(handler)
 
-    def onUnknownCommand(self, listener):
-        self.unknownCommandListeners.append(listener)
-
-    def onError(self, listener):
-        self.errorListeners.append(listener)
-
-    # Broadcasting for all listeners 
-    def process(self):
-        """ Thread target of thread broadcaster """
-        while True:
-            update = self.updateQueue.get()  # Pop update from update queue. Blocks if no updates are available.
+    def addCommandHandler(self, command, handler):
+        """
+        Registers a command handler in the Broadcaster.
+        
+        Args:
+            command (str): The command keyword that this handler should be 
+                listening to. 
+            handler (any): An object that implements the onUpdate(Bot, Update) 
+                method.
+        """
+        
+        if command not in self.command_handlers:
+            self.command_handlers[command] = []
             
-            if type(update) is str:  # This is a CLI update
-                command = update.split(" ")[0][1:]
-                self.broadcastCLICommand(command, ' '.join(update.split(" ")[1:]))
-            elif update.message.text.startswith("/"):  # This is a regular update
-                command = update.message.text.split(" ")[0][1:]
-                self.broadcastCommand(command, update)
-            else:
-                self.broadcastMessage(update)
+        self.command_handlers[command].append(handler)
+        
+    def addTextCommandHandler(self, command, handler):
+        """
+        Registers a text-command handler in the Broadcaster.
+        
+        Args:
+            command (str): The command keyword that this handler should be 
+                listening to. 
+            handler (any): An object that implements the onUpdate(Bot, str) 
+                method.
+        """
+        
+        if command not in self.text_command_handlers:
+            self.text_command_handlers[command] = []
 
-    def broadcastCommand(self, command, update):
-        if command in self.commandListeners:
-            listener = self.commandListeners[command]
-            listener.onUpdate(self.bot, update)
+        self.text_command_handlers[command].append(handler)
+
+    def addUnknownCommandHandler(self, handler):
+        """
+        Registers a command handler in the Broadcaster, that will receive all
+        commands that have no associated handler.
+        
+        Args:
+            handler (any): An object that implements the onUpdate(Bot, Update) 
+                method.
+        """
+        
+        self.unknown_command_handlers.append(handler)
+        
+    def addUnknownTextCommandHandler(self, handler):
+        """
+        Registers a text-command handler in the Broadcaster, that will receive 
+        all commands that have no associated handler.
+        
+        Args:
+            handler (any): An object that implements the 
+                onUpdate(Bot, str) method.
+        """
+        
+        self.unknown_text_command_handlers.append(handler)
+
+    def addErrorHandler(self, handler):
+        """
+        Registers an error handler in the Broadcaster.
+        
+        Args:
+            handler (any): An object that implements the 
+                onError(Bot, TelegramError) method.
+        """
+        
+        self.error_handlers.append(handler)
+
+    def addTypeHandler(self, the_type, handler):
+        """
+        Registers a type handler in the Broadcaster. This allows you to send
+        any type of object into the update queue.
+        
+        Args:
+            the_type (type): The type this handler should listen to
+            handler (any): An object that implements the onError(Bot, type) 
+                method.
+        """
+
+        if the_type not in self.type_handlers:
+            self.type_handlers[the_type] = []
+        
+        self.type_handlers[the_type].append(handler)
+
+    # Remove Handlers
+    def removeMessageHandler(self, handler):
+        """
+        De-registers a message handler.
+        
+        Args:
+            handler (any):
+        """
+
+        if handler in self.message_handlers:
+            self.message_handlers.remove(handler)
+        
+    def removeCommandHandler(self, command, handler):
+        """
+        De-registers a command handler.
+        
+        Args:
+            command (str): The command
+            handler (any):
+        """
+
+        if command in self.command_handlers \
+                and handler in self.command_handlers[command]:
+            self.command_handlers[command].remove(handler)
+
+    def removeTextCommandHandler(self, command, handler):
+        """
+        De-registers a text-command handler.
+
+        Args:
+            command (str): The command
+            handler (any):
+        """
+
+        if command in self.text_command_handlers \
+                and handler in self.text_command_handlers[command]:
+            self.text_command_handlers[command].remove(handler)
+
+    def removeUnknownCommandHandler(self, handler):
+        """
+        De-registers an unknown-command handler.
+
+        Args:
+            handler (any):
+        """
+        if handler in self.unknown_command_handlers:
+            self.unknown_command_handlers.remove(handler)
+
+    def removeUnknownTextCommandHandler(self, handler):
+        """
+        De-registers an unknown-command handler.
+
+        Args:
+            handler (any):
+        """
+        if handler in self.unknown_text_command_handlers:
+            self.unknown_text_command_handlers.remove(handler)
+
+    def removeErrorHandler(self, handler):
+        """
+        De-registers an error handler.
+
+        Args:
+            handler (any):
+        """
+        if handler in self.error_handlers:
+            self.error_handlers.remove(handler)
+
+    def removeTypeHandler(self, the_type, handler):
+        """
+        De-registers a type handler. 
+        
+        Args:
+            handler (any):
+        """
+        if the_type in self.type_handlers \
+                and handler in self.type_handlers[the_type]:
+            self.type_handlers[the_type].remove(handler)
+        
+    def start(self):
+        """
+        Thread target of thread 'broadcaster'. Runs in background and processes
+        the update queue.
+        """
+        
+        while True:
+            try:
+                # Pop update from update queue.
+                # Blocks if no updates are available.
+                update = self.update_queue.get()
+                
+                # text update
+                if type(update) is str:
+                    self.broadcastTextCommand(update)
+                
+                # An error happened while polling
+                elif type(update) is TelegramError:
+                    self.broadcastError(update)
+                
+                # Telegram update (command)
+                elif type(update) is Update \
+                        and update.message.text.startswith('/'):
+                    self.broadcastCommand(update)
+                
+                # Telegram update (message)
+                elif type(update) is Update:
+                    self.broadcastMessage(update)
+                
+                # Custom type handlers
+                elif type(update) in self.type_handlers:
+                    self.broadcastType(update)
+                    
+                # Update not recognized
+                else:
+                    self.broadcastError(TelegramError(
+                        "Received update of unknown type %s" % type(update)))
+            
+            # Broadcast any errors
+            except TelegramError as te:
+                self.broadcastError(te)
+
+    def broadcastCommand(self, update):
+        """
+        Broadcasts an update that contains a command. 
+        
+        Args:
+            command (str): The command keyword
+            update (TelegramUpdate): The Telegram update that contains the
+                command
+        """
+        
+        command = update.message.text.split(' ')[0][1:].split('@')[0]
+        
+        if command in self.command_handlers:
+            for handler in self.command_handlers[command]:
+                handler.onUpdate(self.bot, update)
         else:
-           for listener in self.unknownCommandListeners:
-               listener.onUpdate(self.bot, update)
+            for handler in self.unknown_command_handlers:
+                handler.onUpdate(self.bot, update)
     
-    def broadcastCLICommand(self, command, update):
-        if command in self.CLICommandListeners:
-            listener = self.CLICommandListeners[command]
-            listener.onUpdate(self.bot, update)
+    def broadcastTextCommand(self, update):
+        """
+        Broadcasts a text-update that contains a command. 
+        
+        Args:
+            update (str): The text input
+        """
+        
+        command = update.split(' ')[0]
+        
+        if command in self.text_command_handlers:
+            for handler in self.text_command_handlers[command]:
+                handler.onUpdate(self.bot, update)
         else:
-           print("Unknown command")
-
+            for handler in self.unknown_text_command_handlers:
+                handler.onUpdate(self.bot, update)
+    
+    def broadcastType(self, update):
+        """
+        Broadcasts a text-update that contains a command. 
+        
+        Args:
+            update (str): The text input
+        """
+        
+        t = type(update)
+        
+        if t in self.type_handlers:
+            for handler in self.type_handlers[t]:
+                handler.onUpdate(self.bot, update)
+        else:
+            self.broadcastError(TelegramError(
+                "Received update of unknown type %s" % type(update)))
+    
     def broadcastMessage(self, update):
-        for listener in self.messageListeners:
-            listener.onUpdate(self.bot, update)
+        """
+        Broadcasts an update that contains a regular message. 
+        
+        Args:
+            update (TelegramUpdate): The Telegram update that contains the
+                message.
+        """
+        
+        for handler in self.message_handlers:
+            handler.onUpdate(self.bot, update)
 
+    def broadcastError(self, error):
+        """
+        Broadcasts an update that contains a regular message.
+
+        Args:
+            error (TelegramError): The Telegram error that was raised.
+        """
+
+        for handler in self.error_handlers:
+            handler.onError(self.bot, error)
 ```
 
 ### How to use
@@ -143,77 +556,86 @@ class Broadcaster:
 ```python
 import sys
 from boteventhandler import BotEventHandler
-from telegram import Update, Message
 
 global last_chat_id
 last_chat_id = 0
 
+def removeCommand(text):
+    return ' '.join(text.split(' ')[1:])
+
 class StartCommandHandler:
     def onUpdate(self, bot, update):
-        # handle the start command
-        pass
+        bot.sendMessage(update.message.chat_id, text='Hi!')
 
 class HelpCommandHandler:
     def onUpdate(self, bot, update):
-        # handle the help command
-        pass
+        bot.sendMessage(update.message.chat_id, text='Help!')
 
 class UnknownCommandHandler:
     def onUpdate(self, bot, update):
-        # handle the unknown command
-        pass
+        bot.sendMessage(update.message.chat_id,
+                        text='Sorry, I do not understand!')
 
 class MessageHandler:
     def onUpdate(self, bot, update):
         global last_chat_id
         last_chat_id = update.message.chat_id
+        print(update.message.text)
         bot.sendMessage(update.message.chat_id, text=update.message.text)
 
 class ErrorHandler:
     def onError(self, bot, error):
-        # handle the error here
-        pass
+        print(str(error))
 
 class CLIReplyCommandHandler:
     """ Demo command """
-    def onUpdate(self, bot, args):
+    def onUpdate(self, bot, update):
         if last_chat_id is not 0:
-            bot.sendMessage(chat_id=last_chat_id, text=args)
+            bot.sendMessage(chat_id=last_chat_id, text=removeCommand(update))
+
+class UnknownCLICommandHandler:
+    """ Demo command """
+    def onUpdate(self, bot, update):
+        print("I did not understand %s" % update)
 
 def main():
     eh = BotEventHandler("TOKEN")
 
     # on different commands
-    eh.onCommand("start", StartCommandHandler())
-    eh.onCommand("help", HelpCommandHandler())
+    eh.addCommandHandler("start", StartCommandHandler())
+    eh.addCommandHandler("help", HelpCommandHandler())
     
     # on CLI commands
-    eh.onCLICommand("reply", CLIReplyCommandHandler())  # Register cli handler
+    eh.addTextCommandHandler("reply", CLIReplyCommandHandler())
 
-    # on unknown command
-    eh.onUnknownCommand(UnknownCommandHandler())
+    # on unknown commands
+    eh.addUnknownCommandHandler(UnknownCommandHandler())
+
+    # on unknown CLI commands
+    eh.addUnknownTextCommandHandler(UnknownCLICommandHandler())
 
     # on noncommand i.e message
-    eh.onMessage(MessageHandler())
+    eh.addMessageHandler(MessageHandler())
 
     # on error
-    eh.onError(ErrorHandler())
+    eh.addErrorHandler(ErrorHandler())
 
-    # Start the threads and store the update Queue, so we can insert updates ourselves
-    updateQueue = eh.start()
+    # Start the threads and store the update Queue,
+    # so we can insert updates ourselves
+    update_queue = eh.start()
     
     # Start CLI-Loop
     while True:
         if sys.version_info.major is 2:
-            text = raw_input("Input: ")
+            text = raw_input()
         elif sys.version_info.major is 3:
-            text = input("Input: ")
-            
-        updateQueue.put(text)  # Put command into queue
+            text = input()
+        
+        if len(text) > 0:
+            update_queue.put(text)  # Put command into queue
 
 if __name__ == '__main__':
     main()
-
 ```
 
 
