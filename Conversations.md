@@ -1,5 +1,3 @@
-##Conversation
-
 python-telegram-bot provides bot interaction with telegram. While having this beautiful library, It will be good if we have a conversation also integrated in to library.
 
 or written a external library people can use it along with python-telegram-bot.
