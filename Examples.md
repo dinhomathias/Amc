@@ -3,6 +3,7 @@ A non-exhaustive list of open source bots built on `python-telegram-bot` in the 
 # Updater
 Bots built using the `telegram.ext.Updater` class.
 
+* [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) allows you to play the popular card game UNO via inline queries
 * [Welcome Bot](https://github.com/jh0ker/welcomebot) greets everyone who joins a group chat 
 
 # API
