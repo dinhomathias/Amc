@@ -4,14 +4,14 @@
 
 The `Dispatcher` class has now a cleaner interface and more precise Message filtering. Instead of many methods with long names like `Dispatcher.addTelegramMessageHandler(handler)`, we now only have two of those methods:
 
-> #### addHandler(handler, group=0)
+> #### `addHandler(handler, group=0)`
 > Register a handler. A handler must be an instance of a subclass of `telegram.ext.Handler`. All handlers are organized in groups, the default group is `int(0)`, but any object can identify a group. Every update will be tested against each handler in each group from first-added to last-added. If the update has been handled in one group, it will not be tested against other handlers in that group. That means an update can only be handled 0 or 1 times per group, but multiple times across all groups.
 
 > ##### Parameters:
 > `handler (Handler)` – A Handler instance  
 > `group (optional[object])` – The group identifier. Default is 0
 
-> #### addErrorHandler(callback)   
+> #### `addErrorHandler(callback)`
 
 > This method remains unchanged.
 
