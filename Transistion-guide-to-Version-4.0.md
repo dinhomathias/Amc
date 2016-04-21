@@ -44,4 +44,14 @@ Here you can see the optional argument `groupdict` passed to the handler callbac
 * Instead of `addTelegramInlineHandler` there are now `InlineHandler`, `ChosenInlineResultHandler` and `CallbackQueryHandler`
 * There is no replacement for `addUnknownTelegramCommandHandler`. Instead, it is recommended to use `RegexHandler(r'/.*', ...) and add it as the last handler
 * The `UpdateQueue` class and `context` parameters have been removed
+
 ## Bot API 2.0
+
+Please read the documentation of the [Telegram Bot API](https://core.telegram.org/bots/api#recent-changes) to learn about all the new things in version 2 of the bot API. This section covers only those changes that are not backwards compatible and not listed in the **Recent Changes** list.
+
+* `new_chat_participant` and `left_chat_participant` of the `Message` class are now `new_chat_member` and `left_chat_member`
+* The following parameters on `InlineResult` and `InlineQueryResult` objects are removed in favor of `InlineMessageContent`:
+ - message_text
+ - parse_mode
+ - disable_web_page_preview
+* In `InlineQueryResultPhoto` the parameter `mime_type` as been removed. JPEG is now required.
