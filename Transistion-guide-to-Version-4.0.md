@@ -55,3 +55,7 @@ Please read the documentation of the [Telegram Bot API](https://core.telegram.or
  - parse_mode
  - disable_web_page_preview
 * In `InlineQueryResultPhoto` the parameter `mime_type` as been removed. JPEG is now required.
+
+## The `telegram.ext` module
+
+The classes `Updater`, `Dispatcher` and `JobQueue` that were previously available for import directly `from telegram` are now located in `telegram.ext`.
