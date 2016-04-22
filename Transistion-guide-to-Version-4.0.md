@@ -42,7 +42,7 @@ Here you can see the optional argument `groupdict` passed to the handler callbac
 ### Other changes
 * You can easily implement your own handlers. Just subclass `telegram.ext.handler` and take a look at the implementation of the provided handlers.
 * Instead of `addTelegramInlineHandler` there are now `InlineHandler`, `ChosenInlineResultHandler` and `CallbackQueryHandler`
-* There is no replacement for `addUnknownTelegramCommandHandler`. Instead, it is recommended to use `RegexHandler(r'/.*', ...) and add it as the last handler
+* There is no replacement for `addUnknownTelegramCommandHandler`. Instead, it is recommended to use `RegexHandler(r'/.*', ...)` and add it as the last handler
 * The `UpdateQueue` class and `context` parameters have been removed
 
 ## Bot API 2.0
