@@ -54,7 +54,8 @@ Please read the documentation of the [Telegram Bot API](https://core.telegram.or
  - message_text
  - parse_mode
  - disable_web_page_preview
-* In `InlineQueryResultPhoto` the parameter `mime_type` as been removed. JPEG is now required.
+* In `InlineQueryResultPhoto` the parameter `mime_type` has been removed. JPEG is now required.
+* `ReplyKeyboardMarkup` now takes a list of a list of `KeyboardButton` instead of strings.
 
 ## The `telegram.ext` module
 
