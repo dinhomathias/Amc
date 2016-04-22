@@ -1,5 +1,5 @@
 # What's new?
-
+All changes can also be reviewed in our [official documentation](http://pythonhosted.org/python-telegram-bot/py-modindex.html)!
 ## Dispatcher
 
 The `Dispatcher` class has now a cleaner interface and more precise Message filtering. Instead of many methods with long names like `Dispatcher.addTelegramMessageHandler(handler)`, we now only have two of those methods:
