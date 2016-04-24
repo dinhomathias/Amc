@@ -44,6 +44,7 @@ Here you can see the optional argument `groupdict` passed to the handler callbac
 * Instead of `addTelegramInlineHandler` there are now `InlineHandler`, `ChosenInlineResultHandler` and `CallbackQueryHandler`
 * There is no replacement for `addUnknownTelegramCommandHandler`. Instead, it is recommended to use `RegexHandler(r'/.*', ...)` and add it as the last handler
 * The `UpdateQueue` class and `context` parameters have been removed
+* `Dispatcher.start_webhook` now always calls `Bot.setWebhook`. Make sure you pass `webhook_url` if the default does not work for you
 
 ## Bot API 2.0
 
