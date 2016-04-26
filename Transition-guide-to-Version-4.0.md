@@ -18,12 +18,12 @@ The `Dispatcher` class has now a cleaner interface and more precise Message filt
 So, the `addHandler` method is accepting an object of a subclass of `telegram.ext.Handler`. Let's see how that looks in real life:
 
 ```python
-from telegram.ext import MessageHandler, filters
+from telegram.ext import MessageHandler, Filters
 
 def text_callback(bot, update):
   print("New text message: " + update.message.text)
 
-dispatcher.addHandler(MessageHandler([filters.TEXT], text_callback))
+dispatcher.addHandler(MessageHandler([Filters.text], text_callback))
 ```
 
 As you can see here, the `MessageHandler` class is one of the included `Handler` subclasses. All that was possible before is still possible, but now more organized and more explicit. Lets take a quick look at another handler class, the `RegexHandler`:
