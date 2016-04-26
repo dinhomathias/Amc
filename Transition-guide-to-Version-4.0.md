@@ -2,7 +2,7 @@
 All changes can also be reviewed in our [official documentation](http://pythonhosted.org/python-telegram-bot/py-modindex.html)!
 ## Dispatcher
 
-For using coming for an RC release predating 26th of April, 2016, please note the subtle changes in "filters" syntax (upper/lower case).
+For users coming from RC release predating 26th of April, 2016, please note the subtle changes in "filters" syntax (upper/lower case).
 
 The `Dispatcher` class has now a cleaner interface and more precise Message filtering. Instead of many methods with long names like `Dispatcher.addTelegramMessageHandler(handler)`, we now only have two of those methods:
 
