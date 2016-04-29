@@ -60,6 +60,7 @@ Please read the documentation of the [Telegram Bot API](https://core.telegram.or
  - disable_web_page_preview
 * In `InlineQueryResultPhoto` the parameter `mime_type` has been removed. JPEG is now required.
 * `ReplyKeyboardMarkup` now takes a list of a list of `KeyboardButton` instead of strings.
+ - From v4.0.2 you can use `str` again
 
 ## The `telegram.ext` module
 
