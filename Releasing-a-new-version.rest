@@ -1,0 +1,71 @@
+Releasing a new version
+=======================
+
+This project adheres to the `Semantic Versioning`_ specification by Tom Preston-Werner.
+
+
+Requirements
+------------
+
+Packages::
+
+$ pip install wheel twine
+
+
+Process
+-------
+
+* Bump version in:
+
+  * setup.py
+  * telegram/__init__.py
+  * docs/source/conf.py
+
+* Log changes to:
+
+  * CHANGES.rst
+
+* Run tests::
+  
+  $ make test
+  
+* Build source distribution::
+
+  $ python setup.py sdist bdist_wheel
+  
+* Register new version::
+
+  $ python setup.py register
+  
+* Upload to PyPI (-s to sign the package with your GnuPG key)::
+ 
+  $ twine upload -s dist/python*
+  
+* Commit the version bump and add tag::
+
+  $ git commit -A -m 'Bump version to v<VERSION>'
+
+* Create a `new release`_:
+
+  * Tag version: v<VERSION>
+  * Release title: v<VERSION>
+  * Description: <logs from CHANGES.rst>
+
+* `Close milestones`_ for this version.
+
+* Test in a clean virtualenv that ``pip install python-telegram-bot`` works with the new version.
+
+
+Public Announcements
+--------------------
+
+Please use the following channels/groups to announce a new version release:
+
+* `@pythontelegrambotgroup`_
+* `@pythontelegrambotchannel`_
+
+.. _`Semantic Versioning`: http://semver.org/
+.. _`New release`: https://github.com/python-telegram-bot/python-telegram-bot/releases/new
+.. _`Close milestones`: https://github.com/python-telegram-bot/python-telegram-bot/milestones
+.. _`@pythontelegrambotgroup`: https://telegram.me/pythontelegrambotgroup
+.. _`@pythontelegrambotchannel`: https://telegram.me/pythontelegrambotchannel
