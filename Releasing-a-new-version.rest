@@ -15,11 +15,9 @@ $ pip install wheel twine
 Process
 -------
 
-* Bump version in:
+* Bump version:
 
-  * setup.py
   * telegram/__init__.py
-  * docs/source/conf.py
 
 * Log changes to:
 
