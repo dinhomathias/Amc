@@ -118,7 +118,7 @@ Some confused users might try to send commands to the bot that it doesn't unders
 
 ```python
 >>> def unknown(bot, update):
-...   bot.sendMessage(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
+...     bot.sendMessage(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
 ...
 >>> unknown_handler = MessageHandler([Filters.command], unknown)
 >>> dispatcher.add_handler(unknown_handler)
