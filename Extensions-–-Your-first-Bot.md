@@ -135,8 +135,8 @@ If you're done playing around, stop the bot with this:
 **Note:** As you have read earlier, the `Updater` runs in a seperate thread. That is very nice for this tutorial, but if you are writing a script, you probably want to stop the Bot by pressing Ctrl+C or sending a signal to the Bot process. To do that, use `updater.idle()`. It blocks execution until one of those two things occur, then calls `updater.stop()` and then continues execution of the script.
 
 #### What to read next?
-Learn about the library exceptions and best practices in [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling)
+Learn about the library exceptions and best practices in [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling).
 
 You want *moar features*? Check out [Extensions – JobQueue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)!
 
-Check out more examples in the [examples folder](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples)!
+Or: Get inspired by our example Bots in the [examples folder](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
