@@ -6,7 +6,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
 #### Fetch updates (pure API)
 To fetch messages sent to your Bot, you can use the [getUpdates](https://core.telegram.org/bots/api#getupdates) API method.
 
-_Note: _ You don't have to use `getUpdates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [here]().
+**Note:** You don't have to use `getUpdates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [here]().
 
 ```python
 >>> updates = bot.getUpdates()
@@ -29,7 +29,7 @@ To reply messages you'll always need the `chat_id`:
 #### General code snippets
 These snippets apply to both ways of fetching updates. If you're using `telegram.ext`, you can get the `chat_id` in your handler callback with `update.message.chat_id`.
 
-_Note: _ In general, you can send messages to users by passing their user id as the `chat_id`. 
+**Note:** In general, you can send messages to users by passing their user id as the `chat_id`. 
 If the bot has a chat with the user, it will send the message to that chat.
 
 
