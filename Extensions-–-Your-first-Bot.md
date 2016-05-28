@@ -1,5 +1,5 @@
 ## Introduction
-The `telegram.ext` submodule is built on top of the pure API implementation. It provides an easy-to-use interface and takes the hard work off the programmer, so you [don't have to repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+The `telegram.ext` submodule is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer, so you [don't have to repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 
 It consists of several classes, but the two most important ones are `telegram.ext.Updater` and `telegram.ext.Dispatcher`.
 
