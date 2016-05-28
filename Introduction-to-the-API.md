@@ -27,4 +27,4 @@ To check if your credentials are correct, call the [getMe](https://core.telegram
 #### What to read next?
 If you want to continue learning about the API, read [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets).
 
-To get real and start building your first bot using the `telegram.ext` classes, read [Extensions - Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions---Your-first-Bot)
+To get real and start building your first bot using the `telegram.ext` classes, read [Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)
