@@ -114,6 +114,6 @@ To download a file (you will need its `file_id`):
 There are many more API methods, to read the full API documentation visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://pythonhosted.org/python-telegram-bot/telegram.bot.html)
 
 #### What to read next?
-If you haven't read the [Extensions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions) page yet, you might want to do it now.
+If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
 
 There will be a FAQ page coming soon, as well.
