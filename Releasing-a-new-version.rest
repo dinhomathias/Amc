@@ -9,6 +9,7 @@ Requirements
 
 Packages::
 
+$ pip install -r requirements-dev.txt -r docs/requirements-docs.txt
 $ pip install wheel twine
 
 
@@ -48,6 +49,14 @@ Process
   * Tag version: v<VERSION>
   * Release title: v<VERSION>
   * Description: <logs from CHANGES.rst>
+
+* Build documentation::
+
+  $ python setup.py build_sphinx
+
+* Upload documentation (`Upload failed (503): backend read error` may happen but not really an issue)::
+
+  $ python setup.py upload_sphinx
 
 * `Close milestones`_ for this version.
 
