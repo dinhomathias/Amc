@@ -2,11 +2,15 @@
 
 ### Note: This page is a draft for the not-yet-released v5.0 of this library. See [#307](https://github.com/python-telegram-bot/python-telegram-bot/pull/307)
 
-
 ---
 
+## Introduction
+The extension class `telegram.ext.JobQueue` allows you to perform tasks with a delay or even periodically, at a set interval. Among many other things, you can use it to send regular updates to your subscribers.
 
-The `JobQueue` allows you to perform tasks with a delay or even periodically. The `Updater` will create one for you:
+## Usage
+The `JobQueue` class is tightly integrated with other `telegram.ext` classes. Similar to `Updater` and `Dispatcher`, it runs asynchronously in a separate thread.
+
+To use the `JobQueue`, you don't have to do much. When you instantiate the `Updater`, it will create a `JobQueue` for you:
 
 ```python
 >>> from telegram.ext import Updater
@@ -14,9 +18,13 @@ The `JobQueue` allows you to perform tasks with a delay or even periodically. Th
 >>> j = u.job_queue
 ```
 
-The job queue uses the `Job` class for tasks. We define a callback function, instantiate a `Job` and add it to the queue.
+This job queue is also linked to the dispatcher, which is discussed later in this article. Just know that unless you have a good reason to do so, you should not instantiate `JobQueue` yourself.
 
-Usually, when the first job is added to the queue, it will start automatically. We can prevent this by setting `prevent_autostart=True`:
+Tasks in the job queue is encapsulated by the `Job` class. It takes a callback function as a parameter, which will be executed when the time comes. This callback function always takes the two parameters `bot` and `job`. Similar to handler callbacks used by the `Dispatcher`, `bot` is the `telegram.Bot` instance from your `Updater`. `job` is the `Job` instance of that task (more on that later).
+
+By default, the updater creates a job queue, but not starts it. Only when you add the first job to the queue, it will be started. To add jobs to the job queue, use the `JobQueue.put` method. You can pass `prevent_autostart=True` to this method to prevent the queue from starting automatically. 
+
+Add your first job to the queue by defining a callback function and instantiating a `Job`. For this tutorial, you can replace `'@examplechannel'` with a channel where your bot is an admin, or by your user id (use [@userinfobot](https://telegram.me/userinfobot) to find out your user id):
 
 ```python
 >>> from telegram.ext import Job
@@ -27,7 +35,9 @@ Usually, when the first job is added to the queue, it will start automatically. 
 >>> j.put(job_minute, prevent_autostart=True)
 ```
 
-You can also have a job that will be executed only once:
+The `callback_minute` function will be executed every `60.0` seconds, the first time being immediately after the `JobQueue` will be started (because of `next_t=0`). 
+
+You can also add a job that will be executed only once, with a delay:
 
 ```python
 >>> def callback_30(bot, job):
@@ -36,9 +46,9 @@ You can also have a job that will be executed only once:
 >>> j.put(Job(callback_30, 30.0, repeat=False))
 ```
 
-Now, because we didn't prevent the auto start this time, the queue will start working. It runs in a separate thread, so it is non-blocking.
+Because you didn't prevent the auto-start of the job queue this time, it will start processing its jobs. You should receive the message from `callback_minute` now, and in thirty seconds you should receive the message from `callback_30`. 
 
-Jobs can be temporarily disabled or completely removed from the `JobQueue`:
+If you are tired of receiving a message every minute, you can temporarily disable a job or even completely remove it from the queue:
 
 ```python
 >>> job_minute.enabled = False  # Temporarily disable this job
@@ -60,13 +70,38 @@ A job can also change its own behavior, as it is passed to the callback function
 >>> j.put(Job(callback_increasing, 1.0))
 ```
 
-When we stop the Updater, the related queue will be stopped as well:
+This job will send a first message after one second, a second message after two _more_ seconds, a third message after _three more_ seconds, and so on. After the ten messages, the job will terminate itself.
+
+You might want to add jobs in response to certain user input, and there is a convenient way to do that. All `Handler` classes can pass the job queue into their callback functions, if you need them to. To do that, simply set `pass_job_queue=True` when instantiating the Handler. Another feature you can use here is the `context` keyword argument of `Job`. Let's see how it looks in code:
+
+```python
+>>> from telegram.ext import CommandHandler
+>>> def callback_alarm(bot, job):
+...     bot.sendMessage(chat_id=job.context, text='BEEP')
+...
+>>> def callback_timer(bot, update, job_queue):
+...     bot.sendMessage(chat_id=update.message.chat_id,
+...                     text='Setting a timer for 1 minute!')
+...     
+...     job_alarm = Job(callback_alarm,
+...                     60.0,
+...                     repeat=False,
+...                     context=update.message.chat_id)
+...     job_queue.put(job_alarm)
+...
+>>> timer_handler = CommandHandler('timer', callback_timer, pass_job_queue=True)
+>>> u.dispatcher.add_handler(timer_handler)
+```
+
+By placing the `chat_id` in the `Job` object, the callback function knows where it should send the message.
+
+All good things come to an end, so when you stop the Updater, the related job queue will be stopped as well:
 
 ```python
 >>> u.stop()
 ```
 
-We can also stop the job queue by itself:
+Of course, you can instead also stop the job queue by itself:
 
 ```python
 >>> j.stop()
