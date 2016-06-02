@@ -20,7 +20,7 @@ To fetch images sent to your Bot:
 >>> print([u.message.photo for u in updates if u.message.photo])
 ```
 
-To reply messages you'll always need the `chat_id`:
+To reply to messages you'll always need the `chat_id`:
 
 ```python
 >>> chat_id = bot.getUpdates()[-1].message.chat_id
@@ -55,7 +55,7 @@ To post a text message with HTML formatting:
 ...                 parse_mode=telegram.ParseMode.HTML)
 ```
 
-To post an Emoji (special thanks to [Tim Whitlock](http://apps.timwhitlock.info/emoji/tables/unicode)):
+To post Emoji (special thanks to [Tim Whitlock](http://apps.timwhitlock.info/emoji/tables/unicode)):
 
 ```python
 >>> bot.sendMessage(chat_id=chat_id, text=telegram.Emoji.PILE_OF_POO)
@@ -81,7 +81,7 @@ If you do that, the file will be downloaded and directly streamed into the respo
 >>> bot.sendPhoto(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
 ```
 
-To tell the user that something is happening on bot's side:
+To tell the user that something is happening on the bot's side:
 
 ```python
 >>> bot.sendChatAction(chat_id=chat_id, action=telegram.ChatAction.TYPING)
