@@ -4,7 +4,7 @@ To simplify error handling, any `TelegramError` that is raised in one of your ha
 
 Example: You're trying to send a message, but the user blocked the bot. An `Unauthorized` exception, a subclass of `TelegramError`, will be raised and delivered to your error handler, so you can delete it from your conversation list, if you keep one.
 
-**Note** The error handler might be only your last resort - of course you can also handle Exceptions as they occur. Only those exceptions that are not caught are forwarded to the error handler.
+**Note** The error handler might be only your last resort - of course you can also handle Exceptions as they occur. Only uncaught exceptions are forwarded to the error handler.
 
 
 Here is an example code that uses all current subclasses of `TelegramError`:
