@@ -7,7 +7,7 @@ The `Updater` class continuously fetches new updates from telegram and forwards 
 If you create an `Updater` object, it will create a `Dispatcher` for you and link them together with a `Queue`. 
 You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined.
 
-Every handler is an instance of any subclass of the `telegram.ext.Handler` class. The library provides handler classes for almost all your needs, but if you need something very specific, you can also subclass `Handler` yourself.
+Every handler is an instance of any subclass of the `telegram.ext.Handler` class. The library provides handler classes for almost all use cases, but if you need something very specific, you can also subclass `Handler` yourself.
 
 To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#botfather)). You should really read the introduction first, though.
 
@@ -55,7 +55,7 @@ And that's all you need. To start the bot, run:
 
 Give it a try! Start a chat with your bot and issue the `/start` command - if all went right, it will reply.
 
-But the Bot not doing anything yet, besides answering to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo to all text messages:
+But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo to all text messages:
 
 ```python
 >>> def echo(bot, update):
@@ -67,7 +67,7 @@ But the Bot not doing anything yet, besides answering to the `/start` command. L
 ```
 **Related docs:** [telegram.ext.MessageHandler](http://pythonhosted.org/python-telegram-bot/telegram.ext.messagehandler.html)
 
-From now on, your bot should reply to all regular text messages that don't start with a command with a message that has the same content.
+From now on, your bot should echo all non-command messages it receives.
 
 **Note:** As soon as you add new handlers to `dispatcher`, they are in effect.
 
@@ -86,7 +86,7 @@ Let's add some actual functionality to your bot. We want to implement a `/caps` 
 
 **Note:** Take a look at the `pass_args=True` in the `CommandHandler` initiation. This is required to let the handler know that you want it to pass the list of command arguments to the callback. All handler classes have keyword arguments like this. Some are the same among all handlers, some are specific to the handler class. If you use a new type of handler for the first time, look it up in the docs and see if one of them is useful to you.
 
-Another cool thing in the Telegram Bot API is the [inline mode](https://core.telegram.org/bots/inline). If you want to implement inline functionality for your bot, please first talk to [@BotFather](https://telegram.me/botfather) and enable inline mode using `/setinline`. It sometimes takes a while until your Bot registers as an inline bot on your client. You might be able to speed up the process by restarting your Telegram App (or sometimes, you just have to wait for a while).
+Another cool feature of the Telegram Bot API is the [inline mode](https://core.telegram.org/bots/inline). If you want to implement inline functionality for your bot, please first talk to [@BotFather](https://telegram.me/botfather) and enable inline mode using `/setinline`. It sometimes takes a while until your Bot registers as an inline bot on your client. You might be able to speed up the process by restarting your Telegram App (or sometimes, you just have to wait for a while).
 
 As your bot is obviously a very loud one, let's continue with this theme for inline. You probably know the process by now, but there are a number of new types used here, so pay some attention:
 
@@ -112,7 +112,7 @@ As your bot is obviously a very loud one, let's continue with this theme for inl
 ```
 **Related docs:** [telegram.ext.InlineQueryHandler](http://pythonhosted.org/python-telegram-bot/telegram.ext.inlinequeryhandler.html), [answerInlineQuery](https://core.telegram.org/bots/api#answerinlinequery)
 
-Not bad - Your Bot can now yell on command (ha!) and via inline. 
+Not bad! Your Bot can now yell on command (ha!) and via inline mode. 
 
 Some confused users might try to send commands to the bot that it doesn't understand, so you can use a `MessageHandler` with a `command` filter to reply to all commands that were not recognized by the previous handlers. 
 
@@ -126,7 +126,7 @@ Some confused users might try to send commands to the bot that it doesn't unders
 
 **Note:** This handler *must* be added last. If you added it sooner, it would be triggered before the `CommandHandlers` had a chance to look at the update. Once an update is handled, all further handlers are ignored. To circumvent this, you can pass the keyword argument `group (int)` to `add_handler` with a value other than 0.
 
-If you're done playing around, stop the bot with this:
+If you're done playing around, stop the bot with:
 
 ```python
 >>> updater.stop()
