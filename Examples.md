@@ -12,7 +12,7 @@ Bots using the raw API.
 * [BismillahBot](https://github.com/rahiel/BismillahBot) shows the Noble Qur'an in English, Audio and Arabic.
 * [DevOps Reaction Bot](https://github.com/leandrotoledo/gae-devops-reaction-telegram-bot) sends latest or random posts from [DevOps Reaction](http://devopsreactions.tumblr.com/). Running on `Google App Engine <https://cloud.google.com/appengine>`_ (billing has to be enabled for ful Socket API support).
 * [Simple-Echo-Telegram-Bot](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot>) simple Python Telegram bot that echoes your input with Flask microframework, setWebhook method, and Google App Engine (optional).
-* [Telegram-send](https://github.com/rahiel/telegram-send) is a command-line interface to send messages or files with a bot.
+* [Telegram-send](https://github.com/rahiel/telegram-send) is a command-line interface to send messages or files to an account or channel.
 * [TwitterForwarderBot](https://github.com/franciscod/telegram-twitter-forwarder-bot) forwards you tweets from people that you have subscribed to.
 
 ---
