@@ -2,7 +2,7 @@ The API is exposed via the `telegram.Bot` class. The methods have names as descr
 
 To generate an Access Token, you have to talk to [BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 
-For full details see the [Bots: An introduction for developers](https://core.telegram.org/bots).
+For full details see [Bots: An introduction for developers](https://core.telegram.org/bots).
 
 #### Hello, Telegram!
 
