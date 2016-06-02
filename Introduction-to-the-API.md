@@ -4,9 +4,9 @@ To generate an Access Token, you have to talk to [BotFather](https://telegram.me
 
 For full details see the [Bots: An introduction for developers](https://core.telegram.org/bots).
 
-#### The first API call
+#### Hello, Telegram!
 
-To get a feeling for the API and how to speak to it with `python-telegram-bot`, please open a Python command line and follow the next few steps.
+To get a feeling for the API and how to use it with `python-telegram-bot`, please open a Python command line and follow the next few steps.
 
 First, create an instance of the `telegram.Bot`. `'TOKEN'` should be replaced by the API token you received from `@BotFather`:
 
