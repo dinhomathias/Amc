@@ -137,6 +137,6 @@ If you're done playing around, stop the bot with:
 #### What to read next?
 Learn about the library exceptions and best practices in [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling).
 
-You want *more features*? Check out [Extensions – JobQueue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)!
+You want *moar features*? Check out [Extensions – JobQueue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)!
 
 Or: Get inspired by our example Bots in the [examples folder](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
