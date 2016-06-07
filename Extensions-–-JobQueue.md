@@ -13,7 +13,7 @@ The `Updater` will create a job queue for you:
 >>> j = u.job_queue
 ```
 
-The job queue uses functions for tasks, so we define one and add it to the queue. Usually, when the first job is added to the queue, it wil start automatically. We can prevent this by setting ``prevent_autostart=True``:
+The job queue uses functions for tasks, so we define one and add it to the queue. Usually, when the first job is added to the queue, it will start automatically. We can prevent this by setting ``prevent_autostart=True``:
 
 ```python
 >>> def job1(bot):
