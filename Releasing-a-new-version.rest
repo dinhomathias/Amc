@@ -42,7 +42,8 @@ Process
   
 * Commit the version bump and add tag::
 
-  $ git commit -A -m 'Bump version to v<VERSION>'
+  $ git commit -a -m 'Bump version to v<VERSION>'
+  $ git push
 
 * Create a `new release`_:
 
