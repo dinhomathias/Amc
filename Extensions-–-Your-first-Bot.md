@@ -93,7 +93,7 @@ As your bot is obviously a very loud one, let's continue with this theme for inl
 ```python
 >>> from telegram import InlineQueryResultArticle, InputTextMessageContent
 >>> def inline_caps(bot, update):
-...     query = bot.update.inline_query.query
+...     query = update.inline_query.query
 ...     if not query:
 ...         return
 ...     results = list()
