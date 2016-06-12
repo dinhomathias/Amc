@@ -191,7 +191,7 @@ def grandchild():
 
 @run_async
 def child():
-  foo()
+  grandchild()
 
 @run_async
 def parent():
