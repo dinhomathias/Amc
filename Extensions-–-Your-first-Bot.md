@@ -29,6 +29,16 @@ For quicker access to the `Dispatcher` used by your `Updater`, you can introduce
 >>> dispatcher = updater.dispatcher
 ```
 
+This is a good time to set up the `logging` module, so you will know when (and why) things don't work as expected:
+
+```python
+>>> import logging
+>>> logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+...                     level=logging.INFO)
+```
+
+**Note:** Read the article on [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling) if you want to learn more.
+
 Now, you can define a function that should process a specific type of update:
 
 ```python
