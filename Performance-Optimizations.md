@@ -171,6 +171,8 @@ def transaction(bot, update):
 
 **Note:** It's likely that `bank.read_account` and `bank.write_account` require some I/O operations to interact with the banks database. You see that it's not always possible to write code asynchronously, at least with this simplified method. Read about [Transactions](https://en.wikipedia.org/wiki/Database_transaction) to learn how databases solve this in "real life".
 
+By separating the strictly sequential code from the asynchronous code, we made sure that no race conditions can occur. The `transaction` function won't be executed concurrently anymore, but we still managed to gain some substantial performance boost over completely sequential code, because the logging and user notification is now run in parallel.
+
 At this point, let me say: **Congratulations!** :tada: and thank you for reading :grin: If you got this far without giving up, please consider a CompSci-related major at university, if you have that opportunity. If I left you with a question or two, post a message in our [Telegram Group](https://telegram.me/pythontelegrambotgroup) and mention @jh0ker. If you found this easy to grasp and/or are eager to learn more about all that threading stuff, consider reading the [documentation of the threading module](https://docs.python.org/3/library/threading.html) or learn about [asyncio](https://docs.python.org/3/library/asyncio.html), a modern and arguably better approach to asynchronous I/O that does not use multi-threading.
 
 As you may have learned after all this, writing good, thread-safe code is no exact science. A few last helpful guidelines for threaded code:
