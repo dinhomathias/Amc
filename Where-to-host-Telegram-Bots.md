@@ -9,6 +9,7 @@
 * [DigitalOcean](https://www.digitalocean.com/)
 * [Linode](https://www.linode.com/)
 * [RamNode](https://www.ramnode.com/)
+* [Scaleway](https://www.scaleway.com/)
 
 ### Low budget
 * [i-83](https://i-83.net/)
