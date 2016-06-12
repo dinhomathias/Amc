@@ -95,13 +95,18 @@ In the end, *Account A* is at *+100CU* and *Account B* is at *+10CU*. Of course,
 
 To be fair, you probably don't write software for banks (if you do, you should already know about this), but this kind of bug can occur in any piece of code that shares *state* across threads. While in this case, the shared state is the `bank` object, it can take many forms. A database, a `dict`, a `list` or any other kind of object that is modified by more than one thread. Depending on the situation, race conditions are more or less likely to occur, and the damage they do is bigger or smaller, but as a rule of thumb, they're bad.
 
-There are many ways to fix race conditions in a multi-threaded environment, but I won't explain any of them here. Mostly, because it probably isn't worth it for you, partly because it's cumbersome and I feel lazy. Instead, as promised in the first paragraph, I'll show you how to avoid them completely. That's not always as easy as it is in this case, but that's because the set of tools we're working with is very limited (`@run_async` is the only thread-thingy we're using) and our goals are not very ambitious (we only want to speed up our I/O).
+There are many ways to fix race conditions in a multi-threaded environment, but I won't explain any of them here. Mostly because it probably isn't worth the work; partly because it's cumbersome and I feel lazy. Instead, as promised in the first paragraph, I'll show you how to avoid them completely. That's not always as easy as it is in this case, but we're lucky:
 
-First, identify those parts of the code that **must** run sequentially (the opposite of *in parallel*, so not asynchronously). Usually, that is code that fits **at least one** of these criteria:
+1. Our set of tools is very limited - `@run_async` is the only thread-related tool we're using
+2. Our goals are not very ambitious - we only want to speed up our I/O
+
+There are two relatively simple steps you have to follow. First, identify those parts of the code that **must** run sequentially (the opposite of *in parallel* or *asynchronously*). Usually, that is code that fits **at least one** of these criteria:
 
 1. *Modifies* shared state
-2. *Reads* shared state and *rely on it* being correct
+2. *Reads* shared state and *relies on* it being correct
 3. *Modifies* local state (eg. a variable used later in the same function)
+
+Make sure you have a good idea what *shared state* means. Don't hesitate to do a quick google search on it. 
 
 I went through our bank example line by line and noted which of the criteria it matches, here's the result:
 
@@ -130,7 +135,7 @@ def transaction(bot, update):
   bank.log(FINISHED_TRANSACTION, amount, source_id, target_id)  # None
 ```
 
-**Note:** One could argue that `bank.log` modifies shared state. However, logging libraries are usually thread-safe and it's unlikely that the log has a critical functional role. It's not being read from in this function, and I assume it's not being read from anywhere else in the code, so this is an exception to the rule. Also, for the sake of the example, it'd be boring if only `bot.sendMessage` would be OK to run in parallel. However, we will keep this in mind for the next step.
+**Note:** One could argue that `bank.log` modifies shared state. However, logging libraries are usually implemented thread-safe and it's unlikely that the log has a critical functional role. It's not being read from in this function, and I assume it's not being read from anywhere else in the code, so maybe consider this an exception to the rule. Also, for the sake of this example, it'd be boring if only `bot.sendMessage` would be safe to run in parallel. However, we will keep this in mind for the next step.
 
 As you can see, there's a pretty obvious pattern here: `bot.sendMessage` and `bank.log` are not matching any criteria we have set for strictly sequential code. That means we can run this code asynchronously without risk. Therefore, the second step is to extract that code to separate functions and mark them with `@run_async`. Since our async code parts are all very similar, they can be replaced by a single function. We could have done that before, but then this moment would've been less cool. 
 
@@ -164,9 +169,11 @@ def transaction(bot, update):
 
 **Note:** The `run_async` decorator can be placed on any function, not only handler callbacks. You can and should use this to your advantage.
 
-At this point, let me say: **Congratulations!** :tada: and thank you for reading :) If you got this far without giving up, please consider a CompSci-related major at university, if you can. If I left you with a question or two, post a message in our [Telegram Group](https://telegram.me/pythontelegrambotgroup) and mention @jh0ker. If you found this easy to grasp and/or are eager to learn more about all that threading stuff, consider [reading this](https://docs.python.org/3/library/threading.html) or learn about [asyncio](https://docs.python.org/3/library/asyncio.html), the modern and arguably better approach to asynchronous IO that's not using threads. 
+**Note:** It's likely that `bank.read_account` and `bank.write_account` require some I/O operations to interact with the banks database. You see that it's not always possible to write code asynchronously, at least with this simplified method. Read about [Transactions](https://en.wikipedia.org/wiki/Database_transaction) to learn how databases solve this in "real life".
 
-As you may have learned, writing good, thread-safe code is no exact science. A few helpful guidelines for threaded code: 
+At this point, let me say: **Congratulations!** :tada: and thank you for reading :grin: If you got this far without giving up, please consider a CompSci-related major at university, if you have that opportunity. If I left you with a question or two, post a message in our [Telegram Group](https://telegram.me/pythontelegrambotgroup) and mention @jh0ker. If you found this easy to grasp and/or are eager to learn more about all that threading stuff, consider reading the [documentation of the threading module](https://docs.python.org/3/library/threading.html) or learn about [asyncio](https://docs.python.org/3/library/asyncio.html), a modern and arguably better approach to asynchronous I/O that does not use multi-threading.
+
+As you may have learned after all this, writing good, thread-safe code is no exact science. A few last helpful guidelines for threaded code:
 
 - Avoid using shared state whenever possible
 - Write self-contained ([pure](https://en.wikipedia.org/wiki/Pure_function)) functions
