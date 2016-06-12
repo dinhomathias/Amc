@@ -5,12 +5,15 @@
 1. [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot)
 2. [Job Queue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)
 
-## Other resources
+## Code resources
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
 2. [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling)
-3. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
-4. [Frequently Asked Questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
-5. [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
+3. [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations)
+4. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
+
+## Other resources
+1. [Frequently Asked Questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
+2. [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
 
 ## Transition Guides
 - [Version 4](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-4.0)
