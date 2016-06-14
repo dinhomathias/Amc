@@ -211,10 +211,53 @@ def parent():
 If you limited the maximum amount of threads to 2 and call the `parent` function, you start a thread. This thread calls the `child` function and starts another thread, so the amount of concurrent threads is 2. It now tries to call the `child` function a second time, but has to wait until the just started `child` thread ended. The `child` thread tries to call `grandchild`, but it has to wait until the `parent` thread ended. Now both threads are waiting for each other and blocking all other code that tries to run an asynchronous function. The calling thread (usually the Dispatcher) is effectively dead, hence the term *deadlock*.
 
 ### Server location
-All that multi-threading will only get you *so far*. Another potential bottleneck is the time your server (the computer that runs your bot script) needs to contact the Telegram server. 
+All that multi-threading will only get you *so far*. Another potential bottleneck is the time your server (the computer that runs your bot script) needs to contact the Telegram server. As of *June 2016*, there is only one server location for the Bot API, which is in the Netherlands. 
 
-As of *June 2016*, there is only one server location for the Bot API, which is in the Netherlands. You can test your connection by running `ping api.telegram.org` on the command line of your server. A good connection should have a stable ping of 50ms or less. A server in Central Europe (France, Germany) can easily archive under 15ms, a server in the Netherlands reportedly archived 2ms ping. Servers in the US, Southeast Asia or China are not recommended to host Telegram bots.
+#### Test your connection
 
-**Note:** When choosing a server for the sole purpose of hosting a Telegram bot, this is the only relevant timing. Even if you are the only user of the bot, there is no advantage in choosing a server close to *you.* 
+##### Using the ping utility
+You can test your connection by running `ping api.telegram.org` on the command line of your server. A good connection should have a stable ping of 50ms or less. A server in Central Europe (France, Germany) can easily archive under 15ms, a server in the Netherlands reportedly archived 2ms ping. Servers in the US, Southeast Asia or China are not recommended to host Telegram bots.
+
+##### Using the cURL utility
+While the `ping` utility is helpful and the information is valuable, it's a rather primitive way to test your connection. In reality, there are many factors that influence the response times of your bot. For a more detailed test that actually connects to the Telegram servers via HTTPS, you can use cURL. The following is taken from [this blog post](https://josephscott.org/archives/2011/10/timing-details-with-curl/).
+
+###### Step 1
+On the server you want to test, create a file called `curl-format.txt` and paste this:
+
+```
+\n
+            time_namelookup:  %{time_namelookup}\n
+               time_connect:  %{time_connect}\n
+            time_appconnect:  %{time_appconnect}\n
+           time_pretransfer:  %{time_pretransfer}\n
+              time_redirect:  %{time_redirect}\n
+         time_starttransfer:  %{time_starttransfer}\n
+                            ----------\n
+                 time_total:  %{time_total}\n
+\n
+```
+
+###### Step 2
+Make a request to the Telegram API. In the following command, replace `<token>` with your API token and `<chat_id>` with your User ID (you can get your User ID from [@userinfobot](https://telegram.me/userinfobot)) and run it on your command line:
+
+- Linux: `curl -w "@curl-format.txt" -o /dev/null -s "https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>&text=Test"`
+- Windows: `curl -w "@curl-format.txt" -o NUL -s "https://api.telegram.org/bot<token>/sendMessage?chat_id=<chat_id>&text=Test"`
+
+The result should look similar to this:
+
+```
+    time_namelookup:  0,004
+       time_connect:  0,041
+    time_appconnect:  0,119
+   time_pretransfer:  0,119
+      time_redirect:  0,000
+ time_starttransfer:  0,156
+                    ----------
+         time_total:  0,156
+```
+
+**TODO:** Interpreting and improving these numbers.
+
+**Note:** When choosing a server for the sole purpose of hosting a Telegram bot, these (ping and cURL) are the only relevant timings. Even if you are the only user of the bot, there is no advantage in choosing a server close to *you.* 
 
 If you need some suggestions on where to host your bot, read [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots).
