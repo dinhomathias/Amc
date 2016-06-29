@@ -4,7 +4,7 @@ Before you start, you need a working bot of your own creation. **Do not follow t
 ## Getting started
 
 ### Requesting an account
-To host a bot with [baum](baum.xyz), you have to write their Telegram Bot at [@bothostingbot](https://telegram.me/bothostingbot) and follow a few instructions. Carefully read the rules and requirements. If you don't meet those, don't proceed. It is a free service run by volunteers, so please be respectful.
+To host a bot with [baum](http://baum.xyz), you have to write their Telegram Bot at [@bothostingbot](https://telegram.me/bothostingbot) and follow a few instructions. Carefully read the rules and requirements. If you don't meet those, don't proceed. It is a free service run by volunteers, so please be respectful.
 
 The bot will ask you to explain how you will use the service. Someone will read your request and (hopefully) approve it by hand, so give your best! This will take some time. Once you received your server information, you can proceed.
 
@@ -28,9 +28,9 @@ ssh <user>@<ip>
 Confirm that you want to trust the host and enter the password if you are asked to do so.
 
 #### Windows
-Install [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and open it. 
+Install [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) and start it. 
 
-In the field *Host Name (or IP address)* enter the IP address of your server. As the connection type, select *SSH* and the Port should be *22*. You can save these settings my entering a name in the field below *Saved Sessions* and clicking *Save*. Then, click *Open* and enter your username and password, when asked.
+In the field *Host Name (or IP address)* enter the IP address of your server. As the connection type, select *SSH* and set *Port* to *22*. You can save these settings my entering a name in the field below *Saved Sessions* and clicking *Save*. Then, click *Open* and enter your username and password when asked to do so.
 
 ### Setup
 First, install the Python package manager `pip` (replace `python-pip` with `python3-pip` if you want to use Python 3).
@@ -82,7 +82,12 @@ To re-attach to the *screen* after you logged back in:
 screen -r mybot
 ```
 
+## Donations
+The baum.xyz-service runs on donations and volunteer work. If you found it useful and have some leftover money on your bank account, consider [a donation](http://baum.xyz/donate/) to help keeping the service free and available. Hosting servers is expensive.
+
 ## What to read next?
-There will be an article on setting up a webhook for your bot - when it's done, it will be linked here.
+If you plan on hosting multiple bots on your server, it's recommended to use `virtualenv`. It allows you to install and upgrade python modules via `pip` for one project, without worrying how it affects other projects on the server. Read [this external article](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for more information.
+
+There will also be an article on setting up a webhook for your bot - when it's done, it will be linked here.
 
 You might also read the article on [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations) if you didn't read it yet. Note that baum.xyz hosts their servers in Germany with a good connection to the Bot API servers, so you can safely ignore the second part of that article about choosing a server location.
