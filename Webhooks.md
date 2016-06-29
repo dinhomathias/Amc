@@ -6,11 +6,11 @@ Our examples usually start the bot using `Updater.start_polling`. This method us
 ## Polling vs. Webhook
 The general difference between polling and a webhook is: 
 
-- Polling (via `getUpdates`) periodically connects to Telegram servers to check for new updates
+- Polling (via `getUpdates`) periodically connects to Telegram's servers to check for new updates
 - A Webhook is a URL you transmit to Telegram once. Whenever a new update for your bot arrives, Telegram sends that update to the specified URL.
 
 ## Requirements
-There's a number of things you need to retrieve updates via webhook.
+There's a number of things you need to retrieve updates via a webhook.
 
 ### A public IP address or domain
 Usually this means you have to run your bot on a server, either a dedicated server or a VPS. Read [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots) to find a list of options. 
@@ -18,7 +18,7 @@ Usually this means you have to run your bot on a server, either a dedicated serv
 Make sure you can connect to your server from the **public internet**, either by IP or domain name. If `ping` works, you're good to go.
 
 ### A SSL certificate
-All communications with the Telegram Servers must be encrypted with HTTPS using SSL. When using polling, this is taken care of by the Telegram Servers, but if you want to receive updates via Webhook, you have to take care of it. Telegram will not send you any updates if you don't.
+All communication with the Telegram servers must be encrypted with HTTPS using SSL. With polling, this is taken care of by the Telegram Servers, but if you want to receive updates via a Webhook, you have to take care of it. Telegram will not send you any updates if you don't.
 
 There are two ways to do this: 
 
@@ -27,7 +27,7 @@ There are two ways to do this:
 
 If you don't already have a verified certificate, use a self-signed one. It's easier and there is no disadvantage to it.
 
-#### Creating a self-signed certificate using openssl
+#### Creating a self-signed certificate using OpenSSL
 To create a self-signed SSL certificate using `openssl`, run the following command:
 ```
 openssl req -newkey rsa:2048 -sha256 -nodes -keyout private.key -x509 -days 3650 -out cert.pem
@@ -36,7 +36,7 @@ openssl req -newkey rsa:2048 -sha256 -nodes -keyout private.key -x509 -days 3650
 The `openssl` utility will ask you a few details. **Make sure you enter the correct FQDN!** If your server has a domain, enter the full domain name here (eg. `sub.example.com`). If your server only has an IP address, enter that instead. If you enter an invalid FQDN (Fully Qualified Domain Name), you won't receive any updates from Telegram but also won't see any errors!
 
 ## Choosing a server model
-There actually is a third requirement: A HTTP server to listen for webhook connections. At this point, there are several things to consider, depending on your needs. 
+There actually is a third requirement: a HTTP server to listen for webhook connections. At this point, there are several things to consider, depending on your needs. 
 
 ### The integrated webhook server
 The `python-telegram-bot` library ships a custom HTTP server, based on the CPython `BaseHTTPServer.HTTPServer` implementation, that is tightly integrated in the `telegram.ext` module and can be started using `Updater.start_webhook`. This webserver also takes care of decrypting the HTTPS traffic. It is probably the easiest way to set up a webhook.
