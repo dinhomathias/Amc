@@ -64,7 +64,21 @@ In this model, a single server application listening on the public IP, the *reve
 Depending on the reverse proxy application you (or your hosting provider) is using, the implementation will look a bit different. In the following, there are a few possible setups listed.
 
 #### Heroku
-**TODO**
+On Heroku the reverse proxy is set up for you and an environment is created. From this environment you will have to extract the port the bot is supposed to listen on. Heroku manages the SSL on the proxy side, so you don't have provide the certificate yourself.
+
+```python
+import os
+
+TOKEN = "TOKEN"
+PORT = int(os.environ.get('PORT', '5000')
+updater = Updater(TOKEN)
+updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN)
+updater.bot.set_webhook("https://<appname>.herokuapp.com/" + TOKEN)
+updater.idle()
+```
+
 
 #### Using nginx with one domain/port for all bots
 This is similar to the Heroku approach, just that you set up the reverse proxy yourself. All bots set their `webhook_url` to the same domain and port, but with a different `url_path`. The integrated server should usually be started on the `localhost` or `127.0.0.1` address, the port can be any port you choose.
