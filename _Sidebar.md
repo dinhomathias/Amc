@@ -9,7 +9,8 @@
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
 2. [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling)
 3. [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations)
-4. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
+4. [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks)
+5. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
 
 ## Other resources
 1. [Frequently Asked Questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
