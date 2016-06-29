@@ -88,6 +88,6 @@ The baum.xyz-service runs on donations and volunteer work. If you found it usefu
 ## What to read next?
 If you plan on hosting multiple bots on your server, it's recommended to use `virtualenv`. It allows you to install and upgrade python modules via `pip` for one project, without worrying how it affects other projects on the server. Read [this external article](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for more information.
 
-There will also be an article on setting up a webhook for your bot - when it's done, it will be linked here.
+Learn about how to use a webhook for your bot in [this article](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks).
 
 You might also read the article on [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations) if you didn't read it yet. Note that baum.xyz hosts their servers in Germany with a good connection to the Bot API servers, so you can safely ignore the second part of that article about choosing a server location.
