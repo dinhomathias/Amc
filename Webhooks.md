@@ -55,22 +55,61 @@ updater.start_webhook(listen='0.0.0.0',
 ```
 
 ### Reverse proxy + integrated webhook server
-To solve this problem, you can use a reverse proxy like *nginx* or *haproxy*. For this to work, **you need a domain** for your server. 
+To solve this problem, you can use a reverse proxy like *nginx* or *haproxy*.
 
-In this model, each bot is assigned their own *subdomain*. If your server has the domain *example.com*, you could have the subdomains *bot1.example.com*, *bot2.example.com* etc. The reverse proxy performs the *SSL termination* (meaning it decrypts the HTTPS connection), identifies the correct bot and forwards the decrypted traffic to an *integrated webserver* running on an arbitrary port. This port does not have to be one of the four ports mentioned earlier. It also means that the integrated webserver does not have to decrypt the incoming traffic anymore.
+In this model, a single server application listening on the public IP, the *reverse proxy*, accepts all webhook requests and forwards them to the correct instance of locally running *integrated webhook servers.* It also performs the *SSL termination*, meaning it decrypts the HTTPS connection, so the webhook servers receive the already decrypted traffic. These servers can run on *any* port, not just the four ports allowed by Telegram, because Telegram only connects to the reverse proxy directly. 
 
-Use the code below (or similar) to start the integrated webhook server. The server can be started on the `localhost` or `127.0.0.1` address, the port can be any port you choose. **Note:** In this server model, you have to call `setWebhook` yourself.
+**Note:** In this server model, you have to call `setWebhook` yourself.
 
+Depending on the reverse proxy application you (or your hosting provider) is using, the implementation will look a bit different. In the following, there are a few possible setups listed.
+
+#### Heroku
+**TODO**
+
+#### Using nginx with one domain/port for all bots
+This is similar to the Heroku approach, just that you set up the reverse proxy yourself. All bots set their `webhook_url` to the same domain and port, but with a different `url_path`. The integrated server should usually be started on the `localhost` or `127.0.0.1` address, the port can be any port you choose.
+
+Example code to start the bot:
+```python
+updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN')
+updater.bot.setWebhook(url='https://example.com/TOKEN',
+                       certificate=open('cert.pem', 'rb'))
+```
+
+Example configuration for `nginx` (reduced to important parts) with two bots configured:
+```
+server {
+    listen              443 ssl;
+    server_name         example.com;
+    ssl_certificate     cert.pem;
+    ssl_certificate_key private.key;
+}
+
+location /TOKEN1 {
+    proxy_pass http://127.0.0.1:5000;
+}
+
+location /TOKEN2 {
+    proxy_pass http://127.0.0.1:5001;
+}
+```
+
+#### Using haproxy with one subdomain per bot
+In this approach, each bot is assigned their own *subdomain*. If your server has the domain *example.com*, you could have the subdomains *bot1.example.com*, *bot2.example.com* etc. You will need one certificate for each bot, with the FQDN set for their respective subdomain. The reverse proxy in this example is `haproxy`. The integrated server should usually be started on the `localhost` or `127.0.0.1` address, the port can be any port you choose.
+
+**Note:** For this to work, you need a domain for your server.
+
+Example code to start the bot:
 ```python
 updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN')
 updater.bot.setWebhook(url='https://bot1.example.com/TOKEN',
                        certificate=open('cert_bot1.pem', 'rb'))
 ```
 
-Example configuration (reduced to important parts) for `haproxy` with two bots configured. Again, the FQDN of both certificates must match the value in `ssl_fc_sni`:
+Example configuration for `haproxy` (reduced to important parts) with two bots configured. Again: The FQDN of both certificates must match the value in `ssl_fc_sni`. Also, the `.pem` files are the `private.key` file and `cert.pem` files concatenated:
 ```
 frontend  public-https
-    bind        0.0.0.0:443 ssl crt /[...]/cert_bot1.pem crt /[...]/cert_bot2.pem
+    bind        0.0.0.0:443 ssl crt cert_key_bot1.pem crt cert_key_bot2.pem
     option      httpclose
 
     use_backend bot1 if  { ssl_fc_sni bot1.example.com }
