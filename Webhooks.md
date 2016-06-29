@@ -70,12 +70,12 @@ On Heroku the reverse proxy is set up for you and an environment is created. Fro
 import os
 
 TOKEN = "TOKEN"
-PORT = int(os.environ.get('PORT', '5000')
+PORT = int(os.environ.get('PORT', '5000'))
 updater = Updater(TOKEN)
 updater.start_webhook(listen="0.0.0.0",
                       port=PORT,
                       url_path=TOKEN)
-updater.bot.set_webhook("https://<appname>.herokuapp.com/" + TOKEN)
+updater.bot.setWebhook("https://<appname>.herokuapp.com/" + TOKEN)
 updater.idle()
 ```
 
@@ -87,8 +87,8 @@ This is similar to the Heroku approach, just that you set up the reverse proxy y
 
 Example code to start the bot:
 ```python
-updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN')
-updater.bot.setWebhook(url='https://example.com/TOKEN',
+updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN1')
+updater.bot.setWebhook(url='https://example.com/TOKEN1',
                        certificate=open('cert.pem', 'rb'))
 ```
 
