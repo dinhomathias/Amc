@@ -261,3 +261,6 @@ The result should look similar to this:
 **Note:** When choosing a server for the sole purpose of hosting a Telegram bot, these (ping and cURL) are the only relevant timings. Even if you are the only user of the bot, there is no advantage in choosing a server close to *you.* 
 
 If you need some suggestions on where to host your bot, read [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots).
+
+## What to read next?
+Learn [how to use webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks) to get every last bit of performance from your bot.
