@@ -1,6 +1,8 @@
 ## Introduction
 Before you start, you need a working bot of your own creation. **Do not follow this tutorial just for testing one of our examples.** You can test bots on your own computer, there is no need for a hosting service to do that. 
 
+**Note:** The topics **First Login** through **Start your bot** are probably the same for all Ubuntu based servers.
+
 ## Getting started
 
 ### Requesting an account
