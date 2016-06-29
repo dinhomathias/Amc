@@ -64,7 +64,7 @@ Use the code below (or similar) to start the integrated webhook server. The serv
 ```python
 updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN')
 updater.bot.setWebhook(url='https://bot1.example.com/TOKEN',
-                       certificate=open('cert.pem', 'rb'))
+                       certificate=open('cert_bot1.pem', 'rb'))
 ```
 
 Example configuration (reduced to important parts) for `haproxy` with two bots configured. Again, the FQDN of both certificates must match the value in `ssl_fc_sni`:
