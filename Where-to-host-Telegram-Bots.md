@@ -16,7 +16,7 @@
 * [VirtWire](https://my.virtwire.com/cart.php)
 
 ### Free
-* [baum](https://baum.xyz)
+* [baum](https://baum.xyz) - [Tutorial](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Hosting-a-bot-at-baum.xyz)
 
 ### Web IDEs
 * [Codenvy](https://codenvy.com/)
