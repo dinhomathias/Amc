@@ -69,6 +69,8 @@ Depending on the reverse proxy application you (or your hosting provider) is usi
 #### Using nginx with one domain/port for all bots
 This is similar to the Heroku approach, just that you set up the reverse proxy yourself. All bots set their `webhook_url` to the same domain and port, but with a different `url_path`. The integrated server should usually be started on the `localhost` or `127.0.0.1` address, the port can be any port you choose.
 
+**Note:** `example.com` could be replaced by an IP address, if you have no domain associated to your server.
+
 Example code to start the bot:
 ```python
 updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN')
