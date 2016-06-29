@@ -189,7 +189,7 @@ The maximum of concurrent threads is limited. This limit is 4 by default. To inc
 updater = Updater(TOKEN, workers=32)
 ```
 
-If an asynchronous function is called from anywhere, including the Dispatcher, and the limit of concurrent threads is reached, the calling thread will block until one of the threads is done and a slot is free. **Note:** In version 5.0 and later, the calling thread will not block.
+If an asynchronous function is called from anywhere, including the Dispatcher, and the limit of concurrent threads is reached, the calling thread will block until one of the threads is done and a slot is free. **Note:** In version 4.3 and later, the calling thread will not block. The following is here for historic reasons.
 
 This can lead to a so-called [deadlock](https://en.wikipedia.org/wiki/Deadlock), especially with nested function calls:
 
