@@ -64,7 +64,8 @@ In this model, a single server application listening on the public IP, the *reve
 Depending on the reverse proxy application you (or your hosting provider) is using, the implementation will look a bit different. In the following, there are a few possible setups listed.
 
 #### Heroku
-On Heroku the reverse proxy is set up for you and an environment is created. From this environment you will have to extract the port the bot is supposed to listen on. Heroku manages the SSL on the proxy side, so you don't have provide the certificate yourself.
+On Heroku using webhook can be beneficial on the free-plan because it will automatically manage the downtime required.
+The reverse proxy is set up for you and an environment is created. From this environment you will have to extract the port the bot is supposed to listen on. Heroku manages the SSL on the proxy side, so you don't have provide the certificate yourself.
 
 ```python
 import os
