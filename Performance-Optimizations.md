@@ -75,7 +75,7 @@ I skipped some of the implementation details, so here's a short explanation:
 - `parse_update` extracts the user id's of the sender (`source_id`) and receiver (`target_id`) from the message
 - `bank` is a globally accessible object that exposes the Python API of the banks operations
   - `bank.read_account` reads a bank account from the bank's database into a Python object
-  - `bank.read_account` writes a bank account back to the bank's database
+  - `bank.write_account` writes a bank account back to the bank's database
   - `bank.log` must be used to keep a log of all changes to make sure no money is lost
 
 Sadly, ~~you~~ that damn intern fell right into the trap. Let's say there are two morally corrupt customers, *Customer A* with *Account A* and *Customer B* with *Account B*, who both make a transaction simultaneously. *Customer A* sends *Transaction AB* of *10CU* to *Customer B*. At the same time, *Customer B* sends a *Transaction BA* of *100$* to *Customer A*.
