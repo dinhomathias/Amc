@@ -40,16 +40,3 @@ We can also stop the job queue by itself:
 ```python
 >>> j.stop()
 ```
-
-To be more detailed:
-
-```
->>> j.put(run, interval, repeat=True, next_t=None, prevent_autostart=False)
-```
-
-As explained in the [docs](http://pythonhosted.org/python-telegram-bot/telegram.ext.jobqueue.html?highlight=job#module-telegram.ext.jobqueue) you can define several parameters:
-1. run (function) – A function that takes the parameter bot
-2. interval (float) – The interval in seconds in which run should be executed
-3. repeat (Optional[bool]) – If False, job will only be executed once
-4. next_t (Optional[float]) – Time in seconds in which run should be executed first. Defaults to interval
-5. prevent_autostart (Optional[bool]) – If True, the job queue will not be started automatically if it is not running.
