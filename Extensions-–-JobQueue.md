@@ -43,7 +43,7 @@ We can also stop the job queue by itself:
 
 To be more detailed:
 
-```
+```python
 >>> j.put(run, interval, repeat=True, next_t=None, prevent_autostart=False)
 ```
 
