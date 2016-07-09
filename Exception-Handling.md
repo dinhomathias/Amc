@@ -1,4 +1,4 @@
-In `python-telegram-bot`, all Telegram-related errors are encapsulated in `TelegramError` exception classses and its subclasses.
+In `python-telegram-bot`, all Telegram-related errors are encapsulated in the `TelegramError` exception class and its subclasses.
 
 To simplify error handling, any `TelegramError` that is raised in one of your handlers (or while calling `getUpdates` in the `Updater`) is forwarded to all registered error handlers, so you can react to them. You can register an error handler by calling `Dispatcher.add_error_handler(callback)`, where `callback` is a function that takes the arguments `bot, update, error`. `update` will be the update that caused the error and `error` the `TelegramError` that was raised.
 
