@@ -1,3 +1,6 @@
+# Note
+The baum.xyz service has been discontinued. 
+
 ## Introduction
 Before you start, you need a working bot of your own creation. **Do not follow this tutorial just for testing one of our examples.** You can test bots on your own computer, there is no need for a hosting service to do that. 
 
