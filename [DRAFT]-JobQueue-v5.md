@@ -22,8 +22,6 @@ This job queue is also linked to the dispatcher, which is discussed later in thi
 
 Tasks in the job queue is encapsulated by the `Job` class. It takes a callback function as a parameter, which will be executed when the time comes. This callback function always takes the two parameters `bot` and `job`. Similar to handler callbacks used by the `Dispatcher`, `bot` is the `telegram.Bot` instance from your `Updater`. `job` is the `Job` instance of that task (more on that later).
 
-By default, the updater creates a job queue, but not starts it. Only when you add the first job to the queue, it will be started. To add jobs to the job queue, use the `JobQueue.put` method. You can pass `prevent_autostart=True` to this method to prevent the queue from starting automatically. 
-
 Add your first job to the queue by defining a callback function and instantiating a `Job`. For this tutorial, you can replace `'@examplechannel'` with a channel where your bot is an admin, or by your user id (use [@userinfobot](https://telegram.me/userinfobot) to find out your user id):
 
 ```python
@@ -32,10 +30,10 @@ Add your first job to the queue by defining a callback function and instantiatin
 ...     bot.sendMessage(chat_id='@examplechannel', text='One message every minute')
 ...
 >>> job_minute = Job(callback_minute, 60.0, next_t=0.0)
->>> j.put(job_minute, prevent_autostart=True)
+>>> j.put(job_minute)
 ```
 
-The `callback_minute` function will be executed every `60.0` seconds, the first time being immediately after the `JobQueue` will be started (because of `next_t=0`). 
+The `callback_minute` function will be executed every `60.0` seconds, the first time being right now (because of `next_t=0`). 
 
 You can also add a job that will be executed only once, with a delay:
 
@@ -46,7 +44,7 @@ You can also add a job that will be executed only once, with a delay:
 >>> j.put(Job(callback_30, 30.0, repeat=False))
 ```
 
-Because you didn't prevent the auto-start of the job queue this time, it will start processing its jobs. You should receive the message from `callback_minute` now, and in thirty seconds you should receive the message from `callback_30`. 
+In thirty seconds you should receive the message from `callback_30`. 
 
 If you are tired of receiving a message every minute, you can temporarily disable a job or even completely remove it from the queue:
 
