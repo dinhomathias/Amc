@@ -1,2 +1,8 @@
+## JobQueue
+We did some serious work on the `telegram.ext.JobQueue` class. The changes are similar to the changes made to the `telegram.ext.Dispatcher` class in version 4. The [Extensions – JobQueue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue) article has been updated with the changes.
+
 ## Botan
 Botan was moved from `telegram.utils.botan` to `telegram.contrib.botan`
+
+## New: ConversationHandler
+The `telegram.ext.ConversationHandler` class has been added. It implements a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) and replaces the old `state_machine_bot.py` example with the new `conversationbot.py` example.
