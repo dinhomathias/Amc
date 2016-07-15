@@ -180,7 +180,7 @@ As you may now have learned, writing good, thread-safe code is no exact science.
 - Avoid using shared state whenever possible
 - Write self-contained ([pure](https://en.wikipedia.org/wiki/Pure_function)) functions
 - When in doubt, make it sequential
-- Asynchronous functions can't return values (at least not in this implementation)
+- Asynchronous functions return values encapsulated in a [`Promise`](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/telegram/utils/promise.py)
 
 ##### Limits
 The maximum of concurrent threads is limited. This limit is 4 by default. To increase this limit, you can pass the keyword argument `workers` to the `Updater` initialization:
