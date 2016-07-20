@@ -1,5 +1,7 @@
 A list of projects that are somehow related to `python-telegram-bot`. This includes integrations with other projects like django, projects that are built on top of this library for specific use-cases and potentially others.
 
+**Note:** For *bots* that are built with this library, please use the [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples) page and not this one.
+
 If you are developing a project that fits this description, please add it here in alphabetical order. If you found a project that project that fits this description, please suggest to the maintainer of the project to add it here.
 
 Please try to keep this page up-to-date.
