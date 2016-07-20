@@ -10,3 +10,4 @@ Please try to keep this page up-to-date.
 | ------- | ----------- | ----------------------------- | ------------------ |
 | [django-telegrambot](https://github.com/JungDev/django-telegrambot) | A simple app to develop Telegram bots with Django | 4.0.1 | Beta |
 | [ownbot](https://github.com/michaelimfeld/ownbot) | Ownbot provides some cool decorators to protect your command handler functions from unauthorized users! | 4.0.1 | Unknown |
+| [telegram-send](https://github.com/rahiel/telegram-send) | Send messages and files over Telegram from the command-line | >=2.9 | Beta |
