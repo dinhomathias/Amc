@@ -10,7 +10,8 @@ Example: You're trying to send a message, but the user blocked the bot. An `Unau
 Here is an example code that uses all current subclasses of `TelegramError`:
 
 ```python
-from telegram.error import TelegramError, Unauthorized, BadRequest, TimedOut, NetworkError
+from telegram.error import (TelegramError, Unauthorized, BadRequest, 
+                            TimedOut, ChatMigrated, NetworkError)
 
 def error_callback(bot, update, error):
     try:
