@@ -23,8 +23,8 @@ Add your first job to the queue by defining a callback function and instantiatin
 >>> def callback_minute(bot, job):
 ...     bot.sendMessage(chat_id='@examplechannel', text='One message every minute')
 ...
->>> job_minute = Job(callback_minute, 60.0, next_t=0.0)
->>> j.put(job_minute)
+>>> job_minute = Job(callback_minute, 60.0)
+>>> j.put(job_minute, next_t=0.0)
 ```
 
 The `callback_minute` function will be executed every `60.0` seconds, the first time being right now (because of `next_t=0`). 
