@@ -29,7 +29,7 @@ def error_callback(bot, update, error):
     except TelegramError:
         # handle all other telegram related errors
 
-dispatcher.addErrorHandler(error_callback)
+dispatcher.add_error_handler(error_callback)
 ```
 
 Here are some examples that would cause a `BadRequest` error to be raised:
