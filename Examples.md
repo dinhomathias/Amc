@@ -6,6 +6,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) allows you to play the popular card game UNO via inline queries
 * [Welcome Bot](https://github.com/jh0ker/welcomebot) greets everyone who joins a group chat
 * [Subscription bot] (https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site 
+* [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 
 # API
 Bots using the raw API.
