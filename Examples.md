@@ -7,6 +7,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Welcome Bot](https://github.com/jh0ker/welcomebot) greets everyone who joins a group chat
 * [Subscription bot] (https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site 
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
+* [teleGit Bot](https://github.com/HeavenH) A bot to list the github repositories, show users information.
 
 # API
 Bots using the raw API.
