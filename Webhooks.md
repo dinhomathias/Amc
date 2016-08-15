@@ -183,3 +183,28 @@ def setup(token):
 def webhook(update):
     update_queue.put(update)
 ```
+
+#### Alternative (no threading)
+**Setup part, called once:**
+
+```python
+from telegram import Bot
+from telegram.ext import Dispatcher
+
+def setup(token):
+    # Create bot, update queue and dispatcher instances
+    bot = Bot(token)
+    
+    dispatcher = Dispatcher(bot, None, workers=0)
+    
+    ##### Register handlers here #####
+    
+    return dispatcher
+```
+
+**Called on webhook** with the decoded `Update` object (use `Update.de_json(json.loads(text))` to decode the update):
+
+```python
+def webhook(update):
+    dispatcher.process_update(update)
+```
