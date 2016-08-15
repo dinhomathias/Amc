@@ -1,0 +1,1 @@
+Wiki of [`python-telegram-bot`](https://python-telegram-bot.org/) – © Copyright 2015-2016 – Licenced by [Creative Commons](https://creativecommons.org/licenses/by/3.0/)
