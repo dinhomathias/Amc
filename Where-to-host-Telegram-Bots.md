@@ -11,6 +11,8 @@
 * [RamNode](https://www.ramnode.com/)
 * [Scaleway](https://www.scaleway.com/)
 * [RunAbove](https://www.runabove.com/)
+* [sabahost](http://sabatemplate.ir/)
+
 
 ### Low budget
 * [i-83](https://i-83.net/)
