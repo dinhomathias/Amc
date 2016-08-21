@@ -55,11 +55,7 @@ To post a text message with HTML formatting:
 ...                 parse_mode=telegram.ParseMode.HTML)
 ```
 
-To post Emoji (special thanks to [Tim Whitlock](http://apps.timwhitlock.info/emoji/tables/unicode)):
-
-```python
->>> bot.sendMessage(chat_id=chat_id, text=telegram.Emoji.PILE_OF_POO)
-```
+To post Emoji, see the [emoji wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Emoji).
 
 To post an image file from disk:
 
@@ -90,8 +86,8 @@ To tell the user that something is happening on the bot's side:
 To create [Custom Keyboards](https://core.telegram.org/bots#keyboards):
 
 ```python
->>> custom_keyboard = [[ telegram.Emoji.THUMBS_UP_SIGN,
-...                      telegram.Emoji.THUMBS_DOWN_SIGN ]]
+>>> custom_keyboard = [[ "Yes",
+...                      "No"  ]]
 >>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 >>> bot.sendMessage(chat_id=chat_id, text="Stay here, I'll be back.", reply_markup=reply_markup)
 ```
