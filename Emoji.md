@@ -27,7 +27,7 @@ Finally, test your emoji by sending it to yourself over Telegram. Know that Tele
 With the [emoji module](https://github.com/carpedm20/emoji) you don't have to copy paste emoji, you can use their names or aliases as on GitHub:
 ```python
 from emoji import emojize
-print(emojize("yummy :cake:", use_aliases=True))
+bot.sendMessage(emojize("yummy :cake:", use_aliases=True))
 ```
 
 Note: the `emojize` function uses regular expressions and takes on the order of microseconds to complete. If your bot handles billions of messages per second, put the emoji in reusable variables to micro-optimize:
