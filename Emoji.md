@@ -22,7 +22,7 @@ this tells Python that your source file is encoded in UTF8. Note that if you hav
 
 Finally, test your emoji by sending it to yourself over Telegram. Know that Telegram does not support all the emoji.
 
-# telegram.emoji
+# telegram.Emoji
 
 python-telegram-bot has an [internal emoji module](https://pythonhosted.org/python-telegram-bot/telegram.emoji.html?highlight=emoji#module-telegram.emoji) that you can use to handle Telegram-support emojis without having to copy/paste the Unicode representations directly:
 
