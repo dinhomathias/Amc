@@ -34,7 +34,8 @@ python-telegram-bot has an [internal emoji module](https://pythonhosted.org/pyth
 
 # The emoji module
 
-With the [emoji module](https://github.com/carpedm20/emoji) you don't have to copy paste emoji, you can use their names or aliases as on GitHub:
+You can also use the more general-purpose [emoji module](https://github.com/carpedm20/emoji), which will emojize entire blocks of text instead of having to explicitly call each emoticon as with telegram.Emoji:
+
 ```python
 from emoji import emojize
 bot.sendMessage(emojize("yummy :cake:", use_aliases=True))
