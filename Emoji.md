@@ -22,20 +22,9 @@ this tells Python that your source file is encoded in UTF8. Note that if you hav
 
 Finally, test your emoji by sending it to yourself over Telegram. Know that Telegram does not support all the emoji.
 
-# telegram.Emoji
-
-python-telegram-bot has an [internal emoji module](https://pythonhosted.org/python-telegram-bot/telegram.emoji.html?highlight=emoji#module-telegram.emoji) that you can use to handle Telegram-support emojis without having to copy/paste the Unicode representations directly:
-
-```python
-> from telegram import Emoji
-> Emoji.AIRPLANE
-'✈'
-```
-
 # The emoji module
 
-You can also use the more general-purpose [emoji module](https://github.com/carpedm20/emoji), which will emojize entire blocks of text instead of having to explicitly call each emoticon as with telegram.Emoji:
-
+With the [emoji module](https://github.com/carpedm20/emoji) you don't have to copy paste emoji, you can use their names or aliases as on GitHub:
 ```python
 from emoji import emojize
 bot.sendMessage(emojize("yummy :cake:", use_aliases=True))
