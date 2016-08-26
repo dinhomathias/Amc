@@ -1,7 +1,15 @@
 ## Introduction
 When your bot becomes popular, you will eventually want to improve response times. After all, Telegram places high priority on fast messaging. At the same time, responses become slower as more people are using your bot. This happens more quickly for inline bots, as they may receive multiple inline queries during one interaction. 
 
-There are of course many ways to tackle this problem. I'll talk about two that, in my experience, get you the biggest "bang for the buck". The first is using threads to *handle requests asynchronously*, the second is *choosing a good server location.*
+There are of course many ways to tackle this problem. I'll talk extensively about two that, in my experience, get you the biggest "bang for the buck". The first is using threads to *handle requests asynchronously*, the second is *choosing a good server location.* But first, we'll look at optimizations that take very little effort.
+
+### Free Optimizations
+
+#### ujson
+All communication with the Telegram servers is in JSON. Every message you send is JSON encoded, and every message you receive is JSON decoded. If you are using CPython, you can speed this up by installing the [ujson](https://pypi.python.org/pypi/ujson) module.
+
+#### PyPy
+[PyPy](http://pypy.org/) is a different implementation of the Python programming language. Is your bot only using pure Python code? Using PyPy can then optimize all your code -- free of charge. Do not use PyPy in combination with ujson.
 
 ### Multithreading
 
