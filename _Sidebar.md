@@ -17,6 +17,7 @@
 ## Other resources
 1. [Frequently Asked Questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
 2. [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
+3. [Press](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Press)
 
 ## Transition Guides
 - [Version 4](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-4.0)
