@@ -107,6 +107,13 @@ To download a file (you will need its `file_id`):
 >>> newFile.download('voice.ogg')
 ```
 
+To use MessageEntity extract the entities from a Message object using `get_entities`.  
+Note: This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
+
+```python
+>>> entities = message.get_entities()
+```
+
 There are many more API methods, to read the full API documentation visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://pythonhosted.org/python-telegram-bot/telegram.bot.html)
 
 #### What to read next?
