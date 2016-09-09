@@ -1,17 +1,5 @@
-# Note
-The baum.xyz service has been discontinued. 
-
-## Introduction
-Before you start, you need a working bot of your own creation. **Do not follow this tutorial just for testing one of our examples.** You can test bots on your own computer, there is no need for a hosting service to do that. 
-
-**Note:** The topics **First Login** through **Start your bot** and **What to read next?** are probably the same for all Ubuntu based servers.
-
-## Getting started
-
-### Requesting an account
-To host a bot with [baum](http://baum.xyz), you have to write their Telegram Bot at [@bothostingbot](https://telegram.me/bothostingbot) and follow a few instructions. Carefully read the rules and requirements. If you don't meet those, don't proceed. It is a free service run by volunteers, so please be respectful.
-
-The bot will ask you to explain how you will use the service. Someone will read your request and (hopefully) approve it by hand, so give your best! This will take some time. Once you received your server information, you can proceed.
+### Introduction
+You will need a VPS (or dedicated server) first. Check out the list at [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots#vps) if you don't have one already.
 
 ### First login
 Your login details should contain
@@ -87,12 +75,9 @@ To re-attach to the *screen* after you logged back in:
 screen -r mybot
 ```
 
-## Donations
-The baum.xyz-service runs on donations and volunteer work. If you found it useful and have some leftover money on your bank account, consider [a donation](http://baum.xyz/donate/) to help keeping the service free and available. Hosting servers is expensive.
-
 ## What to read next?
-If you plan on hosting multiple bots on your server, it's recommended to use `virtualenv`. It allows you to install and upgrade python modules via `pip` for one project, without worrying how it affects other projects on the server. Read [this external article](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for more information.
+If you plan on hosting multiple bots on your server, it's recommended to use `virtualenv`. It allows you to install and upgrade Python modules via `pip` for one project, without worrying how it affects other projects on the server. Read [this external article](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for more information.
 
 Learn about how to use a webhook for your bot in [this article](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks).
 
-You might also read the article on [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations) if you didn't read it yet. Note that baum.xyz hosts their servers in Germany with a good connection to the Bot API servers, so you can safely ignore the second part of that article about choosing a server location.
+You might also read the article on [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations) if you didn't read it yet.
