@@ -4,11 +4,11 @@ A non-exhaustive list of open source bots built on `python-telegram-bot` in the 
 Bots built using the `telegram.ext.Updater` class.
 
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) allows you to play the popular card game UNO via inline queries
-* [Subscription bot] (https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site 
-* [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
-* [teleGit Bot](https://github.com/HeavenH/teleGit) A bot to list the github repositories, show users information.
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) notification for pogom scanner
-
+* [Subscription bot] (https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site
+* [sudobot](https://github.com/bvanrijn/sudobot) runs commands on your server and lets you easily share the output
+* [teleGit Bot](https://github.com/HeavenH/teleGit) A bot to list the github repositories, show users information.
+* [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 # API
 Bots using the raw API.
 
