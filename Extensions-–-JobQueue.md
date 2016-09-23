@@ -21,7 +21,8 @@ Add your first job to the queue by defining a callback function and instantiatin
 ```python
 >>> from telegram.ext import Job
 >>> def callback_minute(bot, job):
-...     bot.sendMessage(chat_id='@examplechannel', text='One message every minute')
+...     bot.sendMessage(chat_id='@examplechannel', 
+...                     text='One message every minute')
 ...
 >>> job_minute = Job(callback_minute, 60.0)
 >>> j.put(job_minute, next_t=0.0)
@@ -33,7 +34,8 @@ You can also add a job that will be executed only once, with a delay:
 
 ```python
 >>> def callback_30(bot, job):
-...     bot.sendMessage(chat_id='@examplechannel', text='A single message with 30s delay')
+...     bot.sendMessage(chat_id='@examplechannel', 
+...                     text='A single message with 30s delay')
 ...
 >>> j.put(Job(callback_30, 30.0, repeat=False))
 ```
