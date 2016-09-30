@@ -95,15 +95,13 @@ To create [Custom Keyboards](https://core.telegram.org/bots#keyboards):
 To request for location and contact from user
 
 ```python
->>> location_keyboard = telegram.KeyboardButton(text="send_location", 
->>>                                             request_location=True)
->>> contact_keyboard  = telegram.KeyboardButton(text="send_location", 
->>>                                             request_contact=True)
+>>> location_keyboard = telegram.KeyboardButton(text="send_location", request_location=True)
+>>> contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
 >>> custom_keyboard = [[ location_keyboard, contact_keyboard ]]
 >>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 >>> bot.sendMessage(chat_id=chat_id, 
->>>                 text="Would mind to share location and contact with me ?", 
->>>                 reply_markup=reply_markup)
+...                 text="Would mind to share location and contact with me ?", 
+...                 reply_markup=reply_markup)
 ```
 
 To hide the keyboard:
