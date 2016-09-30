@@ -100,14 +100,14 @@ server {
     server_name         example.com;
     ssl_certificate     cert.pem;
     ssl_certificate_key private.key;
-}
 
-location /TOKEN1 {
-    proxy_pass http://127.0.0.1:5000;
-}
+    location /TOKEN1 {
+        proxy_pass http://127.0.0.1:5000;
+    }
 
-location /TOKEN2 {
-    proxy_pass http://127.0.0.1:5001;
+    location /TOKEN2 {
+        proxy_pass http://127.0.0.1:5001;
+    }
 }
 ```
 
