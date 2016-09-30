@@ -43,7 +43,7 @@ To post a text message with markdown:
 
 ```python
 >>> bot.sendMessage(chat_id=chat_id, 
-...                 text="*bold* _italic_ [link](http://google.com).", 
+...                 text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
 ...                 parse_mode=telegram.ParseMode.MARKDOWN)
 ```
 
