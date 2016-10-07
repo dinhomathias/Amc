@@ -4,6 +4,7 @@
     * **[How to create a Bot on Google App Engine](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot)** by [sooyhwang](https://github.com/sooyhwang)
 * [Heroku](https://www.heroku.com/)
 * [OpenShift](https://www.openshift.com/)
+    * **[How to run a Bot on Openshift](https://github.com/lufte/python-telegram-bot-openshift)**
 
 ### VPS
 * [DigitalOcean](https://www.digitalocean.com/)
