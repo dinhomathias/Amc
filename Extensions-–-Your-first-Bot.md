@@ -72,7 +72,7 @@ But our Bot can now only answer to the `/start` command. Let's add another handl
 ...     bot.sendMessage(chat_id=update.message.chat_id, text=update.message.text)
 ...
 >>> from telegram.ext import MessageHandler, Filters
->>> echo_handler = MessageHandler([Filters.text], echo)
+>>> echo_handler = MessageHandler(Filters.text, echo)
 >>> dispatcher.add_handler(echo_handler)
 ```
 **Related docs:** [telegram.ext.MessageHandler](http://pythonhosted.org/python-telegram-bot/telegram.ext.messagehandler.html)
@@ -130,7 +130,7 @@ Some confused users might try to send commands to the bot that it doesn't unders
 >>> def unknown(bot, update):
 ...     bot.sendMessage(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
 ...
->>> unknown_handler = MessageHandler([Filters.command], unknown)
+>>> unknown_handler = MessageHandler(Filters.command, unknown)
 >>> dispatcher.add_handler(unknown_handler)
 ```
 
