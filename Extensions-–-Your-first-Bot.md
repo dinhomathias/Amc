@@ -21,7 +21,7 @@ First, you have to create an `Updater` object. Replace `'TOKEN'` with your Bot's
 >>> from telegram.ext import Updater
 >>> updater = Updater(token='TOKEN')
 ```
-**Related docs:** [telegram.ext.Updater](http://pythonhosted.org/python-telegram-bot/telegram.ext.updater.html#telegram.ext.updater.Updater)
+**Related docs:** [telegram.ext.Updater](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.updater.Updater)
 
 For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
 
@@ -54,14 +54,14 @@ The goal is to have this function called every time the Bot receives a Telegram 
 >>> start_handler = CommandHandler('start', start)
 >>> dispatcher.add_handler(start_handler)
 ```
-**Related docs:** [telegram.ext.CommandHandler](http://pythonhosted.org/python-telegram-bot/telegram.ext.commandhandler.html), [telegram.ext.Dispatcher.add_handler](http://pythonhosted.org/python-telegram-bot/telegram.ext.dispatcher.html#telegram.ext.dispatcher.Dispatcher.add_handler)
+**Related docs:** [telegram.ext.CommandHandler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.commandhandler.html), [telegram.ext.Dispatcher.add_handler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dispatcher.html#telegram.ext.dispatcher.Dispatcher.add_handler)
 
 And that's all you need. To start the bot, run:
 
 ```python
 >>> updater.start_polling()
 ```
-**Related docs:** [telegram.ext.Updater.start_polling](http://pythonhosted.org/python-telegram-bot/telegram.ext.updater.html#telegram.ext.updater.Updater.start_polling)
+**Related docs:** [telegram.ext.Updater.start_polling](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.updater.Updater.start_polling)
 
 Give it a try! Start a chat with your bot and issue the `/start` command - if all went right, it will reply.
 
@@ -75,7 +75,7 @@ But our Bot can now only answer to the `/start` command. Let's add another handl
 >>> echo_handler = MessageHandler(Filters.text, echo)
 >>> dispatcher.add_handler(echo_handler)
 ```
-**Related docs:** [telegram.ext.MessageHandler](http://pythonhosted.org/python-telegram-bot/telegram.ext.messagehandler.html)
+**Related docs:** [telegram.ext.MessageHandler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagehandler.html)
 
 From now on, your bot should echo all non-command messages it receives.
 
@@ -120,7 +120,7 @@ As your bot is obviously a very loud one, let's continue with this theme for inl
 >>> inline_caps_handler = InlineQueryHandler(inline_caps)
 >>> dispatcher.add_handler(inline_caps_handler)
 ```
-**Related docs:** [telegram.ext.InlineQueryHandler](http://pythonhosted.org/python-telegram-bot/telegram.ext.inlinequeryhandler.html), [answerInlineQuery](https://core.telegram.org/bots/api#answerinlinequery)
+**Related docs:** [telegram.ext.InlineQueryHandler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.inlinequeryhandler.html), [answerInlineQuery](https://core.telegram.org/bots/api#answerinlinequery)
 
 Not bad! Your Bot can now yell on command (ha!) and via inline mode. 
 
