@@ -5,4 +5,4 @@ We did some serious work on the `telegram.ext.JobQueue` class. The changes are s
 Botan was moved from `telegram.utils.botan` to `telegram.contrib.botan`
 
 ## New: ConversationHandler
-The `telegram.ext.ConversationHandler` class has been added. It implements a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) and replaces the old `state_machine_bot.py` example with the new [`conversationbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/conversationbot.py) example. [Read the documentation](http://pythonhosted.org/python-telegram-bot/telegram.ext.conversationhandler.html) for more information.
+The `telegram.ext.ConversationHandler` class has been added. It implements a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) and replaces the old `state_machine_bot.py` example with the new [`conversationbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/conversationbot.py) example. [Read the documentation](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.conversationhandler.html) for more information.
