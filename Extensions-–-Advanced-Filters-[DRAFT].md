@@ -24,10 +24,13 @@ It is also possible to write our own filters. In essence a filter is actually ju
 Say we wanted to only filter messages that includes text like "python-telegram-bot is awesome" we could write a custom filter as so:
 
 ``` python
-class filter_awesome(BaseFilter):
+class FilterAwesome(BaseFilter):
     def fitler(messsage):
         if 'python-telegram-bot is awesome' in message.text:
             return True
+
+# Remember to initialize the class.
+filter_awesome = FilterAwesome()
 ```
 
 The class could of cause be named whatever you want, the only important things to take note of is that the class *must* inherit from BaseFilter and also implement a `filter` method.
