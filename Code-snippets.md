@@ -126,7 +126,7 @@ Note: This method should always be used instead of the ``entities`` attribute, s
 >>> entities = message.get_entities()
 ```
 
-There are many more API methods, to read the full API documentation visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://pythonhosted.org/python-telegram-bot/telegram.bot.html)
+There are many more API methods, to read the full API documentation visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
 
 #### What to read next?
 If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
