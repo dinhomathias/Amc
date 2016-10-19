@@ -1,5 +1,5 @@
 # What's new?
-All changes can also be reviewed in our [official documentation](http://pythonhosted.org/python-telegram-bot/py-modindex.html)!
+All changes can also be reviewed in our [official documentation](http://python-telegram-bot.readthedocs.io/)!
 ## Dispatcher
 
 **For users coming from RC release predating 26th of April, 2016**: 
