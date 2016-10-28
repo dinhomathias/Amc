@@ -5,37 +5,48 @@ When using `MessageHandler` it is sometimes useful to have more than one filter.
 ### Examples
 #### Message is either video, photo, or document (generic file)
 ``` python
-awesome_handler = MessageHandler(Filters.video | Filters.photo | Filters.document, link_function)
+from telegram.ext import MessageHandler, Filters
+
+handler = MessageHandler(Filters.video | Filters.photo | Filters.document, callback)
 ```
 
 #### Message is a forwarded photo
 ``` python
-awesome_handler = MessageHandler(Filters.forwarded & Filters.photo, link_function)
+handler = MessageHandler(Filters.forwarded & Filters.photo, callback)
 ```
 
 #### Message is text and contains a link
 ``` python
-awesome_handler = MessageHandler(Filters.text & (Filters.entity(URL) | Filters.entity(TEXT_LINK)), link_function)
+from telegram import MessageEntity
+
+handler = MessageHandler(
+    Filters.text & (Filters.entity(MessageEntity.URL) |
+                    Filters.entity(MessageEntity.TEXT_LINK)),
+    callback)
 ```
 
 ## Custom filters
-It is also possible to write our own filters. In essence a filter is actually just a python function, that receives a message and returns either `True` if the message should be filtered. However, since we want to be able to combine (see above) multiple filters, we have to define them a bit differently (namely write a class and inherit from `BaseFilter`.
+It is also possible to write our own filters. In essence, a filter is simply a function that receives a `Message` instance and returns either `True` or `False`. This function has to implemented in a new class that inherits from `BaseFilter`, which allows it to be combined with other filters. If the combination of all filters evaluates to `True`, the message will be handled. 
 
-Say we wanted to only filter messages that includes text like "python-telegram-bot is awesome" we could write a custom filter as so:
+Say we wanted to allow only those messages that contain the text "python-telegram-bot is awesome", we could write a custom filter as so:
 
-``` python
+```python
+from telegram.ext import BaseFilter
+
 class FilterAwesome(BaseFilter):
-    def fitler(messsage):
-        if 'python-telegram-bot is awesome' in message.text:
-            return True
+    def filter(messsage):
+        return 'python-telegram-bot is awesome' in message.text
 
 # Remember to initialize the class.
 filter_awesome = FilterAwesome()
 ```
 
-The class could of cause be named whatever you want, the only important things to take note of is that the class *must* inherit from BaseFilter and also implement a `filter` method.
+The class can of cause be named however you want, the only important things are:
+- The class has to inherit from `BaseFilter`
+- It has to implement a `filter` method
+- You have to create an instance of the class
 
-The filter could then be used as:
-``` python
-awesome_handler = MessageHandler(filter_awesome, awesome_function)
+The filter can then be used as:
+```python
+awesome_handler = MessageHandler(filter_awesome, callback)
 ```
