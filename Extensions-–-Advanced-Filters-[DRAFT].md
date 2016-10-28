@@ -7,7 +7,8 @@ When using `MessageHandler` it is sometimes useful to have more than one filter.
 ``` python
 from telegram.ext import MessageHandler, Filters
 
-handler = MessageHandler(Filters.video | Filters.photo | Filters.document, callback)
+handler = MessageHandler(Filters.video | Filters.photo | Filters.document, 
+                         callback)
 ```
 
 #### Message is a forwarded photo
