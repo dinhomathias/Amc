@@ -89,7 +89,7 @@ To create [Custom Keyboards](https://core.telegram.org/bots#keyboards):
 >>> custom_keyboard = [[ "Yes",
 ...                      "No"  ]]
 >>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
->>> bot.sendMessage(chat_id=chat_id, text="Stay here, I'll be back.", reply_markup=reply_markup)
+>>> bot.sendMessage(chat_id=chat_id, text="Stay here, I'll be right back.", reply_markup=reply_markup)
 ```
 
 To request for location and contact from user
@@ -100,7 +100,7 @@ To request for location and contact from user
 >>> custom_keyboard = [[ location_keyboard, contact_keyboard ]]
 >>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
 >>> bot.sendMessage(chat_id=chat_id, 
-...                 text="Would mind to share location and contact with me ?", 
+...                 text="Would you mind sharing your location and contact with me?", 
 ...                 reply_markup=reply_markup)
 ```
 
