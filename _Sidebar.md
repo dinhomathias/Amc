@@ -4,6 +4,7 @@
 ## Extensions
 1. [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot)
 2. [Job Queue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)
+3. [Advanced Filters](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Advanced-Filters)
 
 ## Code resources
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
