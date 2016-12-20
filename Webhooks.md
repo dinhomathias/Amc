@@ -90,7 +90,7 @@ This is similar to the Heroku approach, just that you set up the reverse proxy y
 Example code to start the bot:
 ```python
 updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN1')
-updater.bot.setWebhook(url='https://example.com/TOKEN1',
+updater.bot.setWebhook(webhook_url='https://example.com/TOKEN1',
                        certificate=open('cert.pem', 'rb'))
 ```
 
@@ -120,7 +120,7 @@ In this approach, each bot is assigned their own *subdomain*. If your server has
 Example code to start the bot:
 ```python
 updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN')
-updater.bot.setWebhook(url='https://bot1.example.com/TOKEN',
+updater.bot.setWebhook(webhook_url='https://bot1.example.com/TOKEN',
                        certificate=open('cert_bot1.pem', 'rb'))
 ```
 
