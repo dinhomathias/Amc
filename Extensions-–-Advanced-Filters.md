@@ -35,7 +35,7 @@ Say we wanted to allow only those messages that contain the text "python-telegra
 from telegram.ext import BaseFilter
 
 class FilterAwesome(BaseFilter):
-    def filter(messsage):
+    def filter(self, messsage):
         return 'python-telegram-bot is awesome' in message.text
 
 # Remember to initialize the class.
