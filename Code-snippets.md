@@ -1,4 +1,4 @@
-This page can be read on its own, to find the code snippet you need right now. 
+This page can be read on its own to find the code snippet you need right now. 
 
 It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets.
 
@@ -142,7 +142,7 @@ To use MessageEntity, extract the entities from a Message object using `get_enti
 >>> entities = message.get_entities()
 ```
 
-There are many more API methods, to read the full API documentation visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
+There are many more API methods. To read the full API documentation, visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
 
 ## Advanced snippets
 
