@@ -49,6 +49,10 @@ telegram.error.BadRequest: Invalid file id
 >>> bot.sendMessage(chat_id, 'a'*40960)
 [...]
 telegram.error.BadRequest: Message is too long
+
+>>> bot.editMessageText(chat_id, "sample old message")
+[...]
+telegram.error.BadRequest: Message is not modified
 ```
 
 For the last one you can check if your message is too long by comparing with `telegram.constants.MAX_MESSAGE_LENGTH`. There is something similar for captions: `telegram.constants.MAX_CAPTION_LENGTH`.
