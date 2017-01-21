@@ -5,6 +5,7 @@
 * [Heroku](https://www.heroku.com/)
 * [OpenShift](https://www.openshift.com/)
     * **[How to run a Bot on Openshift](https://github.com/lufte/python-telegram-bot-openshift)**
+* [Joyent Triton](https://www.joyent.com/triton)
 
 ### VPS
 * [DigitalOcean](https://www.digitalocean.com/)
