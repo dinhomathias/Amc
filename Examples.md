@@ -4,6 +4,7 @@ A non-exhaustive list of open source bots built on `python-telegram-bot` in the 
 Bots built using the `telegram.ext.Updater` class.
 
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) allows you to play the popular card game UNO via inline queries
+* [moodify](https://github.com/samsontmr/moodify) takes your selfie and recommends a playlist for your mood. Try it here: [@moodifyBot](http://t.me/moodifybot)
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) notification for pogom scanner
 * [Subscription bot] (https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) runs commands on your server and lets you easily share the output
