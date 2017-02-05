@@ -197,6 +197,18 @@ def build_menu(buttons: List,
 
 You can use the `header_buttons` and `footer_buttons` lists to put buttons in the first or last row respectively.
 
+##### Usage
+
+```
+button_list = [
+    InlineKeyboardButton("col 1", ...),
+    InlineKeyboardButton("col 2", ...),
+    InlineKeyboardButton("row 2", ...)
+]
+reply_markup = InlineKeyboardMarkup(util.build_menu(button_list, n_cols=2))
+bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
+```
+This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
 
 ## What to read next?
 If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
