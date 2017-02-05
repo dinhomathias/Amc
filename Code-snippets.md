@@ -199,6 +199,8 @@ You can use the `header_buttons` and `footer_buttons` lists to put buttons in th
 
 ##### Usage
 
+![Output](http://i.imgur.com/susvvR7.png)
+
 ```
 button_list = [
     InlineKeyboardButton("col 1", ...),
