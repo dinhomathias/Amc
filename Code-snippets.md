@@ -174,7 +174,7 @@ if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
 
 #### Build a menu with InlineKeyboardButtons
 
-Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of list of `buttons`.
+Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of a list of `buttons`.
 
 ```
 def build_menu(buttons: List,
