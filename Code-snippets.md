@@ -172,6 +172,31 @@ if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
 
 **Note:** Private chats are not covered by this snippet. Make sure you handle them.
 
+#### Build a menu with InlineKeyboardButtons
 
-#### What to read next?
+Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of list of `buttons`.
+
+```
+def build_menu(buttons: List,
+               n_cols: int,
+               header_buttons: List = None,
+               footer_buttons: List = None):
+    menu = list()
+    for i in range(0, len(buttons)):
+        item = buttons[i]
+        if i % n_cols == 0:
+            menu.append([item])
+        else:
+            menu[int(i / n_cols)].append(item)
+    if header_buttons:
+        menu.insert(0, header_buttons)
+    if header_buttons:
+        menu.append(footer_buttons)
+    return menu
+```
+
+You can use the `header_buttons` and `footer_buttons` lists to put buttons in the first or last row respectively.
+
+
+## What to read next?
 If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
