@@ -172,7 +172,7 @@ if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
 
 **Note:** Private chats are not covered by this snippet. Make sure you handle them.
 
-#### Build a menu with InlineKeyboardButtons
+#### Build a menu with Buttons
 
 Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of a list of `buttons`.
 
