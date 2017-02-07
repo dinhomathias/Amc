@@ -212,9 +212,12 @@ bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
 ```
 This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
 
+Replace the `...` in above snippet by an appropriate argument, as indicated in the [InlineKeyboardButton documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.inlinekeyboardbutton.html).
+
 #### Simple way of restarting the bot
 
 The following handler allows you to easily restart the bot. It goes without saying that you should protect this method from access by unauthorized users.
+
 ```python
 import os
 import time
