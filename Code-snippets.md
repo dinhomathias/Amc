@@ -159,6 +159,7 @@ LIST_OF_ADMINS = [12345678, 87654321]
 def restricted(func):
     @wraps(func)
     def wrapped(bot, update, *args, **kwargs):
+        # extract user_id from arbitrary update
         try:
             user_id = update.message.from_user.id
         except (NameError, AttributeError):
@@ -178,6 +179,16 @@ def restricted(func):
             return
         return func(bot, update, *args, **kwargs)
     return wrapped
+```
+
+##### Usage
+
+Add a `@restricted` decorator on top of your handler declaration:
+
+```python
+@restricted
+def my_handler(bot, update):
+    pass  # only accessible if `user_id` is in `LIST_OF_ADMINS`.
 ```
 
 #### Cached Telegram group administrator check
