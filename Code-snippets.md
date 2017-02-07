@@ -176,7 +176,7 @@ if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
 
 Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of a list of `buttons`.
 
-``` python
+```python
 def build_menu(buttons: List,
                n_cols: int,
                header_buttons: List = None,
@@ -201,7 +201,7 @@ You can use the `header_buttons` and `footer_buttons` lists to put buttons in th
 
 ![Output](http://i.imgur.com/susvvR7.png)
 
-``` python
+```python
 button_list = [
     InlineKeyboardButton("col 1", ...),
     InlineKeyboardButton("col 2", ...),
@@ -215,8 +215,8 @@ This is especially useful if put inside a helper method like `get_data_buttons` 
 #### Simple way of restarting the bot
 
 The following handler allows you to easily restart the bot. It goes without saying that you should protect this method from access by unauthorized users.
-``` python
-immport os
+```python
+import os
 import time
 import sys
 
