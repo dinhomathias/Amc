@@ -153,6 +153,8 @@ There are many more API methods. To read the full API documentation, visit the [
 <!--- The extraction of the user_id is going to be built in on python-telegram-bot version 6.0.
 TODO: Upon release, update this snippet!--->
 
+This decorator allows you to restrict the access of a handler to only the `user_id`s specified in `LIST_OF_ADMINS`.
+
 ```python
 from functools import wraps
 
