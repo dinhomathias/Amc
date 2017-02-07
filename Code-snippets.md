@@ -148,7 +148,7 @@ There are many more API methods. To read the full API documentation, visit the [
 
 ## Advanced snippets
 
-#### Simple restricted handler access (decorator)
+#### Restrict access to a handler (decorator)
 
 <!--- The extraction of the user_id is going to be built in on python-telegram-bot version 6.0.
 TODO: Upon release, update this snippet!--->
