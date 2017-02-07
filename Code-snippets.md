@@ -104,6 +104,8 @@ Use this to tell the user that something is happening on the bot's side:
 ...                 reply_markup=reply_markup)
 ```
 
+See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#build-a-menu-with-buttons)
+
 #### Requesting location and contact from user
 
 ```python
