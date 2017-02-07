@@ -212,5 +212,21 @@ bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
 ```
 This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
 
+#### Simple way of restarting the bot
+
+The following handler allows you to easily restart the bot. It is recommended that you restrict the access only to the bot maintainers.
+```
+immport os
+import time
+import sys
+
+def restart(bot, update):
+    bot.sendMessage(update.message.chat_id, "Bot is restarting...")
+    time.sleep(0.2)
+    os.execl(sys.executable, sys.executable, *sys.argv)
+```
+
+You can trigger this handler with the `/r`-command within Telegram, once you have added it to the dispatcher: `dispatcher.add_handler(CommandHandler('r', restart))`
+
 ## What to read next?
 If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
