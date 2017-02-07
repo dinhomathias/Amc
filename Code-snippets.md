@@ -261,7 +261,7 @@ bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
 ```
 This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
 
-Replace the `...` in above snippet by an appropriate argument, as indicated in the [InlineKeyboardButton documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.inlinekeyboardbutton.html).
+Replace the `...` in above snippet by an appropriate argument, as indicated in the [InlineKeyboardButton documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.inlinekeyboardbutton.html). If you want to use `KeyboardButtons`, use `ReplyKeyboardMarkup` instead of `InlineKeyboardMarkup`.
 
 #### Simple way of restarting the bot
 
