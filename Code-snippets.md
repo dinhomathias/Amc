@@ -146,7 +146,41 @@ There are many more API methods. To read the full API documentation, visit the [
 
 ## Advanced snippets
 
-#### Cached administrator check
+#### Simple restricted handler access (decorator)
+
+<!--- The extraction of the user_id is going to be built in on python-telegram-bot version 6.0.
+TODO: Upon release, update this snippet!--->
+
+```python
+from functools import wraps
+
+LIST_OF_ADMINS = [12345678, 87654321]
+
+def restricted(func):
+    @wraps(func)
+    def wrapped(bot, update, *args, **kwargs):
+        try:
+            user_id = update.message.from_user.id
+        except (NameError, AttributeError):
+            try:
+                user_id = update.inline_query.from_user.id
+            except (NameError, AttributeError):
+                try:
+                    user_id = update.chosen_inline_result.from_user.id
+                except (NameError, AttributeError):
+                    try:
+                        user_id = update.callback_query.from_user.id
+                    except (NameError, AttributeError):
+                        print("No user_id available in update.")
+                        return
+        if user_id not in LIST_OF_ADMINS:
+            print("Unauthorized access denied for {}.".format(chat_id))
+            return
+        return func(bot, update, *args, **kwargs)
+    return wrapped
+```
+
+#### Cached Telegram group administrator check
 If you want to limit certain bot functions to group administrators, you have to test if a user is an administrator in the group in question. This however requires an extra API request, which is why it can make sense to cache this information for a certain time, especially if your bot is very busy.
 
 This snippet requires [this timeout-based cache decorator](http://code.activestate.com/recipes/325905-memoize-decorator-with-timeout/#c1). ([gist mirror](https://gist.github.com/jh0ker/56f5b4fb7d015b1b9e4c74d4a91d4568))
