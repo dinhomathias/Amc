@@ -214,7 +214,7 @@ This is especially useful if put inside a helper method like `get_data_buttons` 
 
 #### Simple way of restarting the bot
 
-The following handler allows you to easily restart the bot. It is recommended that you restrict the access only to the bot maintainers.
+The following handler allows you to easily restart the bot. It goes without saying that you should protect this method from access by unauthorized users.
 ```
 immport os
 import time
