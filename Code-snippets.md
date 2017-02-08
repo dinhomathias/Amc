@@ -2,6 +2,35 @@ This page can be read on its own to find the code snippet you need right now.
 
 It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets.
 
+- [Pure API](#pure-api)
+    + [Fetch updates](#fetch-updates)
+    + [Fetch images sent to your Bot](#fetch-images-sent-to-your-bot)
+    + [Reply to messages](#reply-to-messages)
+- [General code snippets](#general-code-snippets)
+    + [Post a text message](#post-a-text-message)
+    + [Reply to a message](#reply-to-a-message)
+    + [Post a text message with Markdown formatting](#post-a-text-message-with-markdown-formatting)
+    + [Post a text message with HTML formatting](#post-a-text-message-with-html-formatting)
+    + [Post an image file from disk](#post-an-image-file-from-disk)
+    + [Post a voice file from disk](#post-a-voice-file-from-disk)
+    + [Post a file from an URL](#post-a-file-from-an-url)
+    + [Send a chat action](#send-a-chat-action)
+    + [[Custom Keyboards](https://core.telegram.org/bots#keyboards):](#-custom-keyboards--https---coretelegramorg-bots-keyboards--)
+    + [Requesting location and contact from user](#requesting-location-and-contact-from-user)
+    + [Hide a custom keyboard](#hide-a-custom-keyboard)
+    + [Download a file](#download-a-file)
+    + [Message entities](#message-entities)
+- [Advanced snippets](#advanced-snippets)
+    + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler--decorator-)
+      - [Usage](#usage)
+    + [Cached Telegram group administrator check](#cached-telegram-group-administrator-check)
+    + [Build a menu with Buttons](#build-a-menu-with-buttons)
+      - [Usage](#usage-1)
+    + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
+- [What to read next?](#what-to-read-next-)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Pure API
 
