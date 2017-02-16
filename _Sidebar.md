@@ -1,5 +1,6 @@
 ## Must reads
 1. [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API)
+2. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
 
 ## Extensions
 1. [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot)
