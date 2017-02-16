@@ -11,9 +11,10 @@
 2. [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling)
 3. [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations)
 4. [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks)
-5. [Emoji](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Emoji)
-6. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
-7. [Related Projects](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Related-Projects)
+5. [Writing Tests](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Writing-Tests)
+6. [Emoji](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Emoji)
+7. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
+8. [Related Projects](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Related-Projects)
 
 ## Other resources
 1. [Frequently Asked Questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
