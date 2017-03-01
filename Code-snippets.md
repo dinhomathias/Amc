@@ -65,7 +65,7 @@ These snippets usually apply to both ways of fetching updates. If you're using `
 If the bot has a chat with the user, it will send the message to that chat.
 
 
-#### Post a text message
+#### [Post a text message](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
 >>> bot.sendMessage(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
@@ -81,7 +81,7 @@ This is a shortcut to `bot.sendMessage` with same defaults. Read more about it [
 
 **Note:** There are equivalents of this method for replying with photos, audio etc., and similar shortcuts exist throughout the library. Related PRs: [#362](https://github.com/python-telegram-bot/python-telegram-bot/pull/362), [#420](https://github.com/python-telegram-bot/python-telegram-bot/pull/420), [#423](https://github.com/python-telegram-bot/python-telegram-bot/pull/423)
 
-#### Post a text message with Markdown formatting
+#### [Post a text message with Markdown formatting](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
 >>> bot.sendMessage(chat_id=chat_id, 
@@ -89,7 +89,7 @@ This is a shortcut to `bot.sendMessage` with same defaults. Read more about it [
 ...                 parse_mode=telegram.ParseMode.MARKDOWN)
 ```
 
-#### Post a text message with HTML formatting
+#### [Post a text message with HTML formatting](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
 >>> bot.sendMessage(chat_id=chat_id, 
@@ -97,25 +97,25 @@ This is a shortcut to `bot.sendMessage` with same defaults. Read more about it [
 ...                 parse_mode=telegram.ParseMode.HTML)
 ```
 
-#### Post an image file from disk
+#### [Post an image file from disk](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
 >>> bot.sendPhoto(chat_id=chat_id, photo=open('tests/test.png', 'rb'))
 ```
 
-#### Post a voice file from disk
+#### [Post a voice file from disk](https://core.telegram.org/bots/api#sendvoice)
 
 ```python
 >>> bot.sendVoice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
 ```
 
-#### Post a file from an URL
+#### [Post a file from an URL](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
 >>> bot.sendPhoto(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
 ```
 
-#### Send a chat action
+#### [Send a chat action](https://core.telegram.org/bots/api#sendchataction)
 Use this to tell the user that something is happening on the bot's side:
 
 ```python
@@ -154,7 +154,7 @@ See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/py
 >>> bot.sendMessage(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
 ```
 
-#### Download a file
+#### [Download a file](https://core.telegram.org/bots/api#getfile)
 
 ```python
 >>> file_id = message.voice.file_id
@@ -164,7 +164,7 @@ See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/py
 
 **Note:** For downloading photos, keep in mind that `update.message.photo` is an array of different photo sizes. Use `update.message.photo[-1]` to get the biggest size.
 
-#### Message entities
+#### [Message entities](https://core.telegram.org/bots/api#messageentity)
 To use MessageEntity, extract the entities from a Message object using `get_entities`.  
 
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
