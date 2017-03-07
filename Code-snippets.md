@@ -268,7 +268,7 @@ def build_menu(buttons: List,
             menu[int(i / n_cols)].append(item)
     if header_buttons:
         menu.insert(0, header_buttons)
-    if header_buttons:
+    if footer_buttons:
         menu.append(footer_buttons)
     return menu
 ```
