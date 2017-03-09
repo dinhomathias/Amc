@@ -13,7 +13,9 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Post a text message with HTML formatting](#post-a-text-message-with-html-formatting)
     + [Post an image file from disk](#post-an-image-file-from-disk)
     + [Post a voice file from disk](#post-a-voice-file-from-disk)
-    + [Post a file from an URL](#post-a-file-from-an-url)
+    + [Post a photo from a URL](#post-a-photo-from-a-url)
+    + [Post an audio from disk](#post-an-audio-from-disk)
+    + [Post a file from disk](#post-a-file-from-disk)
     + [Send a chat action](#send-a-chat-action)
     + [[Custom Keyboards](https://core.telegram.org/bots#keyboards):](#-custom-keyboards--https---coretelegramorg-bots-keyboards--)
     + [Requesting location and contact from user](#requesting-location-and-contact-from-user)
@@ -109,13 +111,13 @@ This is a shortcut to `bot.sendMessage` with same defaults. Read more about it [
 >>> bot.sendVoice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
 ```
 
-#### [Post a photo from an URL](https://core.telegram.org/bots/api#sendphoto)
+#### [Post a photo from a URL](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
 >>> bot.sendPhoto(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
 ```
 
-#### [Post a audio from disk](https://core.telegram.org/bots/api#sendaudio)
+#### [Post an audio from disk](https://core.telegram.org/bots/api#sendaudio)
 
 ```python
 >>> bot.sendAudio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
