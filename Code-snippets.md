@@ -118,7 +118,7 @@ This is a shortcut to `bot.sendMessage` with same defaults. Read more about it [
 #### [Post a audio from disk](https://core.telegram.org/bots/api#sendaudio)
 
 ```python
->>> bot.sendPhoto(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
+>>> bot.sendAudio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
 ```
 
 #### [Post a file from disk](https://core.telegram.org/bots/api#senddocument)
