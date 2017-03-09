@@ -109,10 +109,22 @@ This is a shortcut to `bot.sendMessage` with same defaults. Read more about it [
 >>> bot.sendVoice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
 ```
 
-#### [Post a file from an URL](https://core.telegram.org/bots/api#sendphoto)
+#### [Post a photo from an URL](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
 >>> bot.sendPhoto(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
+```
+
+#### [Post a audio from disk](https://core.telegram.org/bots/api#sendaudio)
+
+```python
+>>> bot.sendPhoto(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
+```
+
+#### [Post a file from disk](https://core.telegram.org/bots/api#senddocument)
+
+```python
+>>> bot.sendDocument(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
 ```
 
 #### [Send a chat action](https://core.telegram.org/bots/api#sendchataction)
