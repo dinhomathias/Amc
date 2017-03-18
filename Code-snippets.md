@@ -17,19 +17,19 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Post an audio from disk](#post-an-audio-from-disk)
     + [Post a file from disk](#post-a-file-from-disk)
     + [Send a chat action](#send-a-chat-action)
-    + [[Custom Keyboards](https://core.telegram.org/bots#keyboards):](#-custom-keyboards--https---coretelegramorg-bots-keyboards--)
+    + [Custom Keyboards](#custom-keyboards)
     + [Requesting location and contact from user](#requesting-location-and-contact-from-user)
     + [Hide a custom keyboard](#hide-a-custom-keyboard)
     + [Download a file](#download-a-file)
     + [Message entities](#message-entities)
 - [Advanced snippets](#advanced-snippets)
-    + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler--decorator-)
+    + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
       - [Usage](#usage)
     + [Cached Telegram group administrator check](#cached-telegram-group-administrator-check)
     + [Build a menu with Buttons](#build-a-menu-with-buttons)
       - [Usage](#usage-1)
     + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
-- [What to read next?](#what-to-read-next-)
+- [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
