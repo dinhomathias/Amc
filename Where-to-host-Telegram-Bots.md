@@ -1,0 +1,1 @@
+A good german Hoster is uberspace.de. You have circa 100 mbits, ssh and sftp access. You can choose your own pirice from 1 Euro to 10 Euros!
