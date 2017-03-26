@@ -75,7 +75,7 @@ If the bot has a chat with the user, it will send the message to that chat.
 
 #### Reply to a message
 
-This is a shortcut to `bot.sendMessage` with same defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
+This is a shortcut to `bot.sendMessage` with sane defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
 
 ```python
 >>> update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
