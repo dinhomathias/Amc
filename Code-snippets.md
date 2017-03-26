@@ -16,6 +16,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Post a photo from a URL](#post-a-photo-from-a-url)
     + [Post an audio from disk](#post-an-audio-from-disk)
     + [Post a file from disk](#post-a-file-from-disk)
+    + [Post an image from memory](#post-an-image-from-memory)
     + [Send a chat action](#send-a-chat-action)
     + [Custom Keyboards](#custom-keyboards)
     + [Requesting location and contact from user](#requesting-location-and-contact-from-user)
@@ -127,6 +128,18 @@ This is a shortcut to `bot.sendMessage` with sane defaults. Read more about it [
 
 ```python
 >>> bot.sendDocument(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
+```
+
+#### Post an image from memory
+In this example, `image` is a PIL (or Pillow) `Image` object, but it works the same with all media types.
+
+```python
+>>> from io import BytesIO
+>>> bio = BytesIO()
+>>> bio.name = 'image.jpeg'
+>>> image.save(bio, 'JPEG')
+>>> bio.seek(0)
+>>> bot.sendPhoto(chat_id, photo=bio)
 ```
 
 #### [Send a chat action](https://core.telegram.org/bots/api#sendchataction)
