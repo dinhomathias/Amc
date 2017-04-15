@@ -1,3 +1,5 @@
+Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Hosting-your-bot) if you've decided to get a server.
+
 ### Cloud
 * [Amazon Web Services](https://aws.amazon.com/)
 * [Google App Engine](https://cloud.google.com/appengine) 
