@@ -275,7 +275,7 @@ if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
     # admin only
 ```
 
-**Note:** Private chats are not covered by this snippet. Make sure you handle them.
+**Note:** Private chats and groups with `all_members_are_administrator` flag, are not covered by this snippet. Make sure you handle them.
 
 #### Build a menu with Buttons
 
