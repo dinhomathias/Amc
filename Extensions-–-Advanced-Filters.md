@@ -28,7 +28,7 @@ handler = MessageHandler(
 
 #### Message is a photo and it's not forwarded
 ``` python
-handler = MessageHandler(Filtes.photo & (~ Filters.forwarded), callback)
+handler = MessageHandler(Filters.photo & (~ Filters.forwarded), callback)
 ```
 
 ## Custom filters
