@@ -1,7 +1,7 @@
 This page describes advanced use cases for the filters used with `MessageHandler` from `telegram.ext`.
 
 ## Combining filters
-When using `MessageHandler` it is sometimes useful to have more than one filter. This can be done using so called bit-wise operators. In python those operators are `&` and `|` meaning AND and OR respectively.
+When using `MessageHandler` it is sometimes useful to have more than one filter. This can be done using so called bit-wise operators. In python those operators are `&`, `|` and `~` meaning AND, OR and NOT respectively.
 ### Examples
 #### Message is either video, photo, or document (generic file)
 ``` python
@@ -24,6 +24,11 @@ handler = MessageHandler(
     Filters.text & (Filters.entity(MessageEntity.URL) |
                     Filters.entity(MessageEntity.TEXT_LINK)),
     callback)
+```
+
+#### Message is a photo and it's not forwarded
+``` python
+handler = MessageHandler(Filtes.photo & (~ Filters.forwarded), callback)
 ```
 
 ## Custom filters
