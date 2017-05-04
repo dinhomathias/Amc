@@ -21,6 +21,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
 ### Low budget
 * [i-83](https://i-83.net/)
 * [Ovh](https://www.ovh.com/us/vps/) 
+* [Uberspace](https://uberspace.de/) (German only)
 
 ### Web IDEs
 * [Codenvy](https://codenvy.com/)
