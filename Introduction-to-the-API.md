@@ -1,4 +1,4 @@
-The API is exposed via the `telegram.Bot` class. The methods have names as described in the official [Telegram Bot API](https://core.telegram.org/bots/api), but equivalent snake_case methods are available for [PEP8](https://www.python.org/dev/peps/pep-0008/) enthusiasts. So for example `telegram.Bot.send_message` is the same as `telegram.Bot.sendMessage`.
+The API is exposed via the `telegram.Bot` class. The methods are the snake_case equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact camelCase method names as in the Telegram docs are also available for your convenience. So for example `telegram.Bot.send_message` is the same as `telegram.Bot.sendMessage`.
 
 To generate an Access Token, you have to talk to [BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 
@@ -18,7 +18,7 @@ First, create an instance of the `telegram.Bot`. `'TOKEN'` should be replaced by
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
 
 ```python
->>> print(bot.getMe())
+>>> print(bot.get_me())
 {"first_name": "Toledo's Palace Bot", "username": "ToledosPalaceBot"}
 ```
 
