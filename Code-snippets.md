@@ -40,17 +40,17 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
 #### Fetch updates
 To fetch messages sent to your Bot, you can use the [getUpdates](https://core.telegram.org/bots/api#getupdates) API method.
 
-**Note:** You don't have to use `getUpdates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [here](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot).
+**Note:** You don't have to use `get_updates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [here](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot).
 
 ```python
->>> updates = bot.getUpdates()
+>>> updates = bot.get_updates()
 >>> print([u.message.text for u in updates])
 ```
 
 #### Fetch images sent to your Bot
 
 ```python
->>> updates = bot.getUpdates()
+>>> updates = bot.get_updates()
 >>> print([u.message.photo for u in updates if u.message.photo])
 ```
 
@@ -58,7 +58,7 @@ To fetch messages sent to your Bot, you can use the [getUpdates](https://core.te
 You'll always need the `chat_id`
 
 ```python
->>> chat_id = bot.getUpdates()[-1].message.chat_id
+>>> chat_id = bot.get_updates()[-1].message.chat_id
 ```
 
 ## General code snippets
@@ -71,12 +71,12 @@ If the bot has a chat with the user, it will send the message to that chat.
 #### [Post a text message](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
->>> bot.sendMessage(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
+>>> bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
 ```
 
 #### Reply to a message
 
-This is a shortcut to `bot.sendMessage` with sane defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
+This is a shortcut to `bot.send_message` with sane defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
 
 ```python
 >>> update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
@@ -87,47 +87,47 @@ This is a shortcut to `bot.sendMessage` with sane defaults. Read more about it [
 #### [Post a text message with Markdown formatting](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
->>> bot.sendMessage(chat_id=chat_id, 
-...                 text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
-...                 parse_mode=telegram.ParseMode.MARKDOWN)
+>>> bot.send_message(chat_id=chat_id, 
+...                  text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
+...                  parse_mode=telegram.ParseMode.MARKDOWN)
 ```
 
 #### [Post a text message with HTML formatting](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
->>> bot.sendMessage(chat_id=chat_id, 
-...                 text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.', 
-...                 parse_mode=telegram.ParseMode.HTML)
+>>> bot.send_message(chat_id=chat_id, 
+...                  text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.', 
+...                  parse_mode=telegram.ParseMode.HTML)
 ```
 
 #### [Post an image file from disk](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
->>> bot.sendPhoto(chat_id=chat_id, photo=open('tests/test.png', 'rb'))
+>>> bot.send_photo(chat_id=chat_id, photo=open('tests/test.png', 'rb'))
 ```
 
 #### [Post a voice file from disk](https://core.telegram.org/bots/api#sendvoice)
 
 ```python
->>> bot.sendVoice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
+>>> bot.send_voice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
 ```
 
 #### [Post a photo from a URL](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
->>> bot.sendPhoto(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
+>>> bot.send_photo(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
 ```
 
 #### [Post an audio from disk](https://core.telegram.org/bots/api#sendaudio)
 
 ```python
->>> bot.sendAudio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
+>>> bot.send_audio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
 ```
 
 #### [Post a file from disk](https://core.telegram.org/bots/api#senddocument)
 
 ```python
->>> bot.sendDocument(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
+>>> bot.send_document(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
 ```
 
 #### Post an image from memory
@@ -139,14 +139,14 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 >>> bio.name = 'image.jpeg'
 >>> image.save(bio, 'JPEG')
 >>> bio.seek(0)
->>> bot.sendPhoto(chat_id, photo=bio)
+>>> bot.send_photo(chat_id, photo=bio)
 ```
 
 #### [Send a chat action](https://core.telegram.org/bots/api#sendchataction)
 Use this to tell the user that something is happening on the bot's side:
 
 ```python
->>> bot.sendChatAction(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+>>> bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
 ```
 
 #### [Custom Keyboards](https://core.telegram.org/bots#keyboards):
@@ -155,9 +155,9 @@ Use this to tell the user that something is happening on the bot's side:
 >>> custom_keyboard = [['top-left', 'top-right'], 
 ...                    ['bottom-left', 'bottom-right']]
 >>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
->>> bot.sendMessage(chat_id=chat_id, 
-...                 text="Custom Keyboard Test", 
-...                 reply_markup=reply_markup)
+>>> bot.send_message(chat_id=chat_id, 
+...                  text="Custom Keyboard Test", 
+...                  reply_markup=reply_markup)
 ```
 
 See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#build-a-menu-with-buttons)
@@ -169,23 +169,23 @@ See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/py
 >>> contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
 >>> custom_keyboard = [[ location_keyboard, contact_keyboard ]]
 >>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
->>> bot.sendMessage(chat_id=chat_id, 
-...                 text="Would you mind sharing your location and contact with me?", 
-...                 reply_markup=reply_markup)
+>>> bot.send_Message(chat_id=chat_id, 
+...                  text="Would you mind sharing your location and contact with me?", 
+...                  reply_markup=reply_markup)
 ```
 
 #### Hide a custom keyboard
 
 ```python
 >>> reply_markup = telegram.ReplyKeyboardHide()
->>> bot.sendMessage(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
+>>> bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
 ```
 
 #### [Download a file](https://core.telegram.org/bots/api#getfile)
 
 ```python
 >>> file_id = message.voice.file_id
->>> newFile = bot.getFile(file_id)
+>>> newFile = bot.get_file(file_id)
 >>> newFile.download('voice.ogg')
 ```
 
@@ -266,7 +266,7 @@ Then, add the following decorated function to your script. You can change the ti
 @MWT(timeout=60*60)
 def get_admin_ids(bot, chat_id):
     """Returns a list of admin IDs for a given chat. Results are cached for 1 hour."""
-    return [admin.user.id for admin in bot.getChatAdministrators(chat_id)]
+    return [admin.user.id for admin in bot.get_chat_administrators(chat_id)]
 ```
 
 You can then use the function like this:
@@ -323,7 +323,7 @@ import time
 import sys
 
 def restart(bot, update):
-    bot.sendMessage(update.message.chat_id, "Bot is restarting...")
+    bot.send_message(update.message.chat_id, "Bot is restarting...")
     time.sleep(0.2)
     os.execl(sys.executable, sys.executable, *sys.argv)
 ```
