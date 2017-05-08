@@ -43,7 +43,7 @@ Now, you can define a function that should process a specific type of update:
 
 ```python
 >>> def start(bot, update):
-...     bot.sendMessage(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
+...     bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
 ```
 **Related docs:** [sendMessage](https://core.telegram.org/bots/api#sendmessage)
 
@@ -69,7 +69,7 @@ But our Bot can now only answer to the `/start` command. Let's add another handl
 
 ```python
 >>> def echo(bot, update):
-...     bot.sendMessage(chat_id=update.message.chat_id, text=update.message.text)
+...     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
 ...
 >>> from telegram.ext import MessageHandler, Filters
 >>> echo_handler = MessageHandler(Filters.text, echo)
@@ -88,7 +88,7 @@ Let's add some actual functionality to your bot. We want to implement a `/caps` 
 ```python
 >>> def caps(bot, update, args):
 ...     text_caps = ' '.join(args).upper()
-...     bot.sendMessage(chat_id=update.message.chat_id, text=text_caps)
+...     bot.send_message(chat_id=update.message.chat_id, text=text_caps)
 ...
 >>> caps_handler = CommandHandler('caps', caps, pass_args=True)
 >>> dispatcher.add_handler(caps_handler)
@@ -114,7 +114,7 @@ As your bot is obviously a very loud one, let's continue with this theme for inl
 ...             input_message_content=InputTextMessageContent(query.upper())
 ...         )
 ...     )
-...     bot.answerInlineQuery(update.inline_query.id, results)
+...     bot.answer_inline_query(update.inline_query.id, results)
 ...
 >>> from telegram.ext import InlineQueryHandler
 >>> inline_caps_handler = InlineQueryHandler(inline_caps)
@@ -128,7 +128,7 @@ Some confused users might try to send commands to the bot that it doesn't unders
 
 ```python
 >>> def unknown(bot, update):
-...     bot.sendMessage(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
+...     bot.send_message(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
 ...
 >>> unknown_handler = MessageHandler(Filters.command, unknown)
 >>> dispatcher.add_handler(unknown_handler)
