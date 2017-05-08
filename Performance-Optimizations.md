@@ -38,7 +38,7 @@ Then, use it as a decorator for the `echo` function:
 ```python
 @run_async
 def echo(bot, update):
-    bot.sendMessage(update.message.chat_id, text=update.message.text)
+    bot.send_message(update.message.chat_id, text=update.message.text)
 ```
 
 Simple and straightforward, right? So, why did I bore you with all that stuff before?
@@ -59,7 +59,7 @@ def transaction(bot, update):
   chat_id = update.message.chat_id
   source_id, target_id, amount = parse_update(update)
 
-  bot.sendMessage(chat_id, 'Preparing...')
+  bot.send_message(chat_id, 'Preparing...')
   bank.log(BEGINNING_TRANSACTION, amount, source_id, target_id)
 
   source = bank.read_account(source_id)
@@ -68,13 +68,13 @@ def transaction(bot, update):
   source.balance -= amount
   target.balance += amount
 
-  bot.sendMessage(chat_id, 'Transferring money...')
+  bot.send_message(chat_id, 'Transferring money...')
   bank.log(CALCULATED_TRANSACTION, amount, source_id, target_id)
 
   bank.write_account(source)
   bank.write_account(target)
   
-  bot.sendMessage(chat_id, 'Done!')
+  bot.send_message(chat_id, 'Done!')
   bank.log(FINISHED_TRANSACTION, amount, source_id, target_id)
 ```
 
@@ -124,7 +124,7 @@ def transaction(bot, update):
   chat_id = update.message.chat_id  # 3
   source_id, target_id, amount = parse_update(update)  # 3
 
-  bot.sendMessage(chat_id, 'Preparing...')  # None
+  bot.send_message(chat_id, 'Preparing...')  # None
   bank.log(BEGINNING_TRANSACTION, amount, source_id, target_id)  # None
 
   source = bank.read_account(source_id)  # 2, 3
@@ -133,13 +133,13 @@ def transaction(bot, update):
   source.balance -= amount  # 3
   target.balance += amount  # 3
 
-  bot.sendMessage(chat_id, 'Transferring money...')  # None
+  bot.send_message(chat_id, 'Transferring money...')  # None
   bank.log(CALCULATED_TRANSACTION, amount, source_id, target_id)  # None
 
   bank.write_account(source)  # 1
   bank.write_account(target)  # 1
   
-  bot.sendMessage(chat_id, 'Done!')  # None
+  bot.send_message(chat_id, 'Done!')  # None
   bank.log(FINISHED_TRANSACTION, amount, source_id, target_id)  # None
 ```
 
@@ -151,7 +151,7 @@ As you can see, there's a pretty obvious pattern here: `bot.sendMessage` and `ba
 @run_async
 def log_and_notify(action, amount, source_id, target_id, chat_id, message):
   bank.log(action, amount, source_id, target_id)
-  bot.sendMessage(chat_id, message)
+  bot.send_message(chat_id, message)
 
 def transaction(bot, update):
   chat_id = update.message.chat_id  # 3
@@ -173,7 +173,7 @@ def transaction(bot, update):
   log_and_notify(FINISHED_TRANSACTION, amount, source_id, target_id, chat_id, 'Done!')
 ```
 
-**Note:** You might have noticed that I moved `bank.log` before `bot.sendMessage`, so the log entries will be in order *most of the time*, assuming the database operations take long enough for the log to complete.
+**Note:** You might have noticed that I moved `bank.log` before `bot.send_message`, so the log entries will be in order *most of the time*, assuming the database operations take long enough for the log to complete.
 
 **Note:** The `run_async` decorator can be placed on any function, not only handler callbacks. You can and should use this to your advantage.
 
