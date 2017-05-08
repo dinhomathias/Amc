@@ -21,8 +21,8 @@ Add your first job to the queue by defining a callback function and instantiatin
 ```python
 >>> from telegram.ext import Job
 >>> def callback_minute(bot, job):
-...     bot.sendMessage(chat_id='@examplechannel', 
-...                     text='One message every minute')
+...     bot.send_message(chat_id='@examplechannel', 
+...                      text='One message every minute')
 ...
 >>> job_minute = Job(callback_minute, 60.0)
 >>> j.put(job_minute, next_t=0.0)
@@ -34,8 +34,8 @@ You can also add a job that will be executed only once, with a delay:
 
 ```python
 >>> def callback_30(bot, job):
-...     bot.sendMessage(chat_id='@examplechannel', 
-...                     text='A single message with 30s delay')
+...     bot.send_message(chat_id='@examplechannel', 
+...                      text='A single message with 30s delay')
 ...
 >>> j.put(Job(callback_30, 30.0, repeat=False))
 ```
@@ -55,8 +55,8 @@ A job can also change its own behavior, as it is passed to the callback function
 
 ```python
 >>> def callback_increasing(bot, job):
-...     bot.sendMessage(chat_id='@examplechannel',
-...                     text='Sending messages with increasing delay up to 10s, then stops.')
+...     bot.send_message(chat_id='@examplechannel',
+...                      text='Sending messages with increasing delay up to 10s, then stops.')
 ...     job.interval += 1.0
 ...     if job.interval > 10.0:
 ...         job.schedule_removal()
@@ -71,11 +71,11 @@ You might want to add jobs in response to certain user input, and there is a con
 ```python
 >>> from telegram.ext import CommandHandler
 >>> def callback_alarm(bot, job):
-...     bot.sendMessage(chat_id=job.context, text='BEEP')
+...     bot.send_message(chat_id=job.context, text='BEEP')
 ...
 >>> def callback_timer(bot, update, job_queue):
-...     bot.sendMessage(chat_id=update.message.chat_id,
-...                     text='Setting a timer for 1 minute!')
+...     bot.send_message(chat_id=update.message.chat_id,
+...                      text='Setting a timer for 1 minute!')
 ...     
 ...     job_alarm = Job(callback_alarm,
 ...                     60.0,
