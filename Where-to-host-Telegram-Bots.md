@@ -21,14 +21,13 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
 
 ### Low budget
 * [i-83](https://i-83.net/)
-* [Ovh](https://www.ovh.com/us/vps/) 
+* [OVH](https://www.ovh.com/us/vps/) 
 * [Uberspace](https://uberspace.de/) (German only)
 
 ### Web IDEs
 * [Codenvy](https://codenvy.com/)
     * **[How to create a Bot on Codenvy](https://github.com/p92camcj/Tutorial-telegram-bot)** by [p92camcj](https://github.com/p92camcj/Tutorial-telegram-bot)
 * [Koding](https://koding.com/)
-* [Nitrous Pro](https://www.nitrous.io/)
 * [Cloud9](https://c9.io/)
 
 ### Tunnels
