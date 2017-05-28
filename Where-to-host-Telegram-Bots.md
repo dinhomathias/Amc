@@ -6,6 +6,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
 * [Google App Engine](https://cloud.google.com/appengine) 
     * **[How to create a Bot on Google App Engine](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot)** by [sooyhwang](https://github.com/sooyhwang)
 * [Heroku](https://www.heroku.com/)
+    * **[How to run a Bot on Heroku](https://github.com/Kylmakalle/heroku-telegram-bot)** by [Kylmakalle](https://github.com/Kylmakalle)
 * [OpenShift](https://www.openshift.com/)
     * **[How to run a Bot on Openshift](https://github.com/lufte/python-telegram-bot-openshift)**
 * [Joyent Triton](https://www.joyent.com/triton)
