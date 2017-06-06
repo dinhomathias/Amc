@@ -20,7 +20,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Send a chat action](#send-a-chat-action)
     + [Custom Keyboards](#custom-keyboards)
     + [Requesting location and contact from user](#requesting-location-and-contact-from-user)
-    + [Hide a custom keyboard](#hide-a-custom-keyboard)
+    + [Remove a custom keyboard](#remove-a-custom-keyboard)
     + [Download a file](#download-a-file)
     + [Message entities](#message-entities)
 - [Advanced snippets](#advanced-snippets)
@@ -174,10 +174,10 @@ See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/py
 ...                  reply_markup=reply_markup)
 ```
 
-#### Hide a custom keyboard
+#### Remove a custom keyboard
 
 ```python
->>> reply_markup = telegram.ReplyKeyboardHide()
+>>> reply_markup = telegram.ReplyKeyboardRemove()
 >>> bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
 ```
 
