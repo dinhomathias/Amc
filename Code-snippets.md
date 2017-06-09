@@ -316,7 +316,7 @@ Or, if you need a dynamic version, use list comprehension to generate your `butt
 
 ```python
 some_strings = ["col1", "col2", "row2"]
-button_list = [InlineKeyboardButton(s, ...) for s in some_strings]
+button_list = [KeyboardButton(s) for s in some_strings]
 ```
 
 This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
