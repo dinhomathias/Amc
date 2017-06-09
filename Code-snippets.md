@@ -300,6 +300,8 @@ You can use the `header_buttons` and `footer_buttons` lists to put buttons in th
 
 ![Output](http://i.imgur.com/susvvR7.png)
 
+Replace the `...` in below snippet by an appropriate argument, as indicated in the [InlineKeyboardButton documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.inlinekeyboardbutton.html). If you want to use `KeyboardButtons`, use `ReplyKeyboardMarkup` instead of `InlineKeyboardMarkup`.
+
 ```python
 button_list = [
     InlineKeyboardButton("col 1", ...),
@@ -309,9 +311,17 @@ button_list = [
 reply_markup = InlineKeyboardMarkup(util.build_menu(button_list, n_cols=2))
 bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
 ```
+
+Or, if you need a dynamic version, use list comprehension to generate your `button_list` dynamically from a list of strings:
+
+```python
+some_strings = ["col1", "col2", "row2"]
+button_list = [InlineKeyboardButton(s, ...) for s in some_strings]
+```
+
 This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
 
-Replace the `...` in above snippet by an appropriate argument, as indicated in the [InlineKeyboardButton documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.inlinekeyboardbutton.html). If you want to use `KeyboardButtons`, use `ReplyKeyboardMarkup` instead of `InlineKeyboardMarkup`.
+
 
 #### Simple way of restarting the bot
 
