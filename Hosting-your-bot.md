@@ -68,7 +68,7 @@ Start the bot (replace `python` with `python3` if you're using Python 3):
 python bot.py
 ```
 
-Detach from the *screen* by holding *Ctrl* and pressing *A*, then *D*. You can now disconnect from the server by typing `exit` if you want. 
+Detach from the *screen* by holding <kbd>CTRL</kbd> and pressing <kbd>A</kbd>, then <kbd>D</kbd>. You can now disconnect from the server by typing `exit` if you want. 
 
 To re-attach to the *screen* after you logged back in:
 ```
