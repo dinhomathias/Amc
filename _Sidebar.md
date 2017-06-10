@@ -1,4 +1,4 @@
-1. [Home](https://github.com/python-telegram-bot/python-telegram-bot/wiki)
+### [Home](https://github.com/python-telegram-bot/python-telegram-bot/wiki)
 
 ## Must reads
 1. [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API)
