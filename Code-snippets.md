@@ -219,21 +219,7 @@ LIST_OF_ADMINS = [12345678, 87654321]
 def restricted(func):
     @wraps(func)
     def wrapped(bot, update, *args, **kwargs):
-        # extract user_id from arbitrary update
-        try:
-            user_id = update.message.from_user.id
-        except (NameError, AttributeError):
-            try:
-                user_id = update.inline_query.from_user.id
-            except (NameError, AttributeError):
-                try:
-                    user_id = update.chosen_inline_result.from_user.id
-                except (NameError, AttributeError):
-                    try:
-                        user_id = update.callback_query.from_user.id
-                    except (NameError, AttributeError):
-                        print("No user_id available in update.")
-                        return
+        chat_id = update.effective_chat.id
         if user_id not in LIST_OF_ADMINS:
             print("Unauthorized access denied for {}.".format(chat_id))
             return
@@ -325,7 +311,7 @@ This is especially useful if put inside a helper method like `get_data_buttons` 
 
 #### Simple way of restarting the bot
 
-The following handler allows you to easily restart the bot. It goes without saying that you should protect this method from access by unauthorized users.
+The following handler allows you to easily restart the bot. It goes without saying that you should protect this method from access by unauthorized users, for example with [the restricted decorator](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator).
 
 ```python
 import os
