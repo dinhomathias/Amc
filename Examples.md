@@ -10,6 +10,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [sudobot](https://github.com/bvanrijn/sudobot) runs commands on your server and lets you easily share the output
 * [teleGit Bot](https://github.com/HeavenH/teleGit) A bot to list the github repositories, show users information.
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
+* [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) echoes any message and any kind of media to anonymize the forward.
 # API
 Bots using the raw API.
 
