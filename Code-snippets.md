@@ -270,8 +270,8 @@ Often times you will find yourself in need for a menu with dynamic content. Use 
 ```python
 def build_menu(buttons,
                n_cols,
-               header_buttons,
-               footer_buttons):
+               header_buttons=None,
+               footer_buttons=None):
     menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
     if header_buttons:
         menu.insert(0, header_buttons)
