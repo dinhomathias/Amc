@@ -19,6 +19,7 @@ Process
 * Bump version:
 
   * telegram/__init__.py
+  * docs/source/conf.py
 
 * Log changes to:
 
@@ -32,7 +33,7 @@ Process
 
   $ python setup.py sdist bdist_wheel
   
-* Register new version::
+* Register new version (obsolete, not needed)::
 
   $ python setup.py register
   
@@ -50,6 +51,7 @@ Process
   * Tag version: v<VERSION>
   * Release title: v<VERSION>
   * Description: <logs from CHANGES.rst>
+  * Upload the source distribution from pypi as binary attachment + asc (gpg signature) + sha1 (create it yourself).
 
 * Build documentation::
 
