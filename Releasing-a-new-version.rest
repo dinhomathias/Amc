@@ -53,13 +53,12 @@ Process
   * Description: <logs from CHANGES.rst>
   * Upload the source distribution from pypi as binary attachment + asc (gpg signature) + sha1 (create it yourself).
 
-* Build documentation::
+* Documentation::
 
-  $ python setup.py build_sphinx
-
-* Upload documentation (`Upload failed (503): backend read error` may happen but not really an issue)::
-
-  $ python setup.py upload_sphinx
+  * Build localy
+    $ python setup.py build_sphinx
+  * Fix any errors in the build
+  * On  `Readthedocs dashboard`_ trigger a build for stable release.
 
 * `Close milestones`_ for this version.
 
@@ -79,3 +78,4 @@ Please use the following channels/groups to announce a new version release:
 .. _`Close milestones`: https://github.com/python-telegram-bot/python-telegram-bot/milestones
 .. _`@pythontelegrambotgroup`: https://telegram.me/pythontelegrambotgroup
 .. _`@pythontelegrambotchannel`: https://telegram.me/pythontelegrambotchannel
+.. _`Readthedocs dashboard`: https://readthedocs.org/projects/python-telegram-bot/
