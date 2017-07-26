@@ -97,7 +97,7 @@ Which produces the following results (notice the delays happening, but be aware 
 As stated in [`@queuedmessage` docs](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html#telegram.ext.messagequeue.queuedmessage), for now the user needs to provide the `isgroup` boolean argument to wrapped methods or relay on `False` default. If you need to use MQ with group-type messages, you could determine the message type by checking `chat_id` (for group-type messages it would be < 0 ). However, this is not officially documented in [Telegram's Bot docs](https://core.telegram.org/bots/) and therefore prone to change in future. Use it on your own risk. The more reliable way is to make a request to API to determine chat type before sending message and cache the result. We're working on implementing this approach, so stay tuned.<br><br>If you're developing a multi-process bot with message sends and bot logic separated, it may come in handy to provide the `multiprocessing.Queue` instead of `queue.Queue` as argument to [`DelayQueue`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html#telegram.ext.messagequeue.DelayQueue). Be sure to start MQ manually in this case (provide `autostart=False` argument and call `start` method as needed).
 
 ### If you have any related questions
-Feel free to ask on our [Telegram Channel](https://telegram.me/pythontelegrambotchannel).
+Feel free to ask on our [Telegram Group](https://t.me/pythontelegrambotgroup).
 
 Or you may directly ask the MQ responsive dev:<br>[thodnev @ Telegram](https://telegram.me/thodnev) (support in English or Russian; please, only MQ-related questions)
 
