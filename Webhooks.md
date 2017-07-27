@@ -1,7 +1,7 @@
 ## Introduction
 Our examples usually start the bot using `Updater.start_polling`. This method uses the [getUpdates](https://core.telegram.org/bots/api#getupdates) API method to receive new updates for your bot. This is fine for smaller to medium-sized bots and for testing, but if your bot receives a lot of traffic, it might slow down the response times. There might be other reasons for you to switch to a webhook-based method for update retrieval.
 
-**First things first:** You should have a good reason to switch from polling to a webhook. Don't do it simply because it sounds cool. Or do it anyways, I'm not your mother.
+**First things first:** You should have a good reason to switch from polling to a webhook. Don't do it simply because it sounds cool.
 
 ## Polling vs. Webhook
 The general difference between polling and a webhook is: 
