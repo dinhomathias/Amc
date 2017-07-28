@@ -18,7 +18,7 @@ Process
 
 * Bump version:
 
-  * telegram/__init__.py
+  * telegram/version.py
   * docs/source/conf.py
 
 * Log changes to:
