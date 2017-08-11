@@ -13,7 +13,8 @@ Bots built using the `telegram.ext.Updater` class.
 * [teleGit Bot](https://github.com/HeavenH/teleGit) A bot to list the github repositories, show users information.
 * [Telemgur](https://github.com/vaniakosmos/telemgur) - bot for automatic broadcasting into Telegrams' channels.
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
-
+* [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) An example bot that lets you pick a timezone. This bot also uses a class for its design pattern.
+* [AlarmBot](https://github.com/guysoft/AlarmBot) This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device.
 # API
 Bots using the raw API.
 
