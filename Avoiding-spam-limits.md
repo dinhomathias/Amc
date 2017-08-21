@@ -56,6 +56,9 @@ class MQBot(telegram.bot.Bot):
         self._is_messages_queued_default = is_queued_def
         self._msg_queue = mqueue or mq.MessageQueue()
 
+    def __del__(self):
+        self._msg_queue.stop()
+
     @mq.queuedmessage
     def send_message(self, *args, **kwargs):
         '''Wrapped method would accept new `queued` and `isgroup`
