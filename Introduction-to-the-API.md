@@ -22,7 +22,7 @@ To check if your credentials are correct, call the [getMe](https://core.telegram
 {"first_name": "Toledo's Palace Bot", "username": "ToledosPalaceBot"}
 ```
 
-**Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use ``telegram.me/<bot_username>`` links or username search to find your bot.
+**Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use ``t.me/<bot_username>`` links or username search to find your bot.
 
 #### What to read next?
 If you want to continue learning about the API, read [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets).
