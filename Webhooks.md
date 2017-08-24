@@ -178,7 +178,7 @@ def setup(token):
     # return (update_queue, dispatcher)
 ```
 
-**Called on webhook** with the decoded `Update` object (use `Update.de_json(json.loads(text))` to decode the update):
+**Called on webhook** with the decoded `Update` object (use `Update.de_json(json.loads(text), bot)` to decode the update):
 
 ```python
 def webhook(update):
