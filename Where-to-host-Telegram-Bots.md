@@ -9,7 +9,8 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
     * **[Heroku getting started with Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)**
     * **[Webhooks on Heroku](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks#heroku)**
 * [OpenShift](https://www.openshift.com/)
-    * **[How to run a Bot on Openshift](https://github.com/lufte/python-telegram-bot-openshift)**
+    * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
+    * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
 * [Joyent Triton](https://www.joyent.com/triton)
 
 ### VPS
