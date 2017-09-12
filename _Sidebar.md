@@ -1,4 +1,4 @@
-## Must reads
+## Must read
 1. [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API)
 
 ## Extensions
