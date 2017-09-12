@@ -16,6 +16,8 @@ Bots built using the `telegram.ext.Updater` class.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) An example bot that lets you pick a timezone. This bot also uses a class for its design pattern.
 * [AlarmBot](https://github.com/guysoft/AlarmBot) This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device.
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) Trade crypto-currencies on the Kraken marketplace
+* [Matilda](https://github.com/xlanor/matilda) A news scraping bot for Straits Times and ChannelNewsAsia.
+
 # API
 Bots using the raw API.
 
