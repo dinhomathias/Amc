@@ -290,9 +290,9 @@ Replace the `...` in below snippet by an appropriate argument, as indicated in t
 
 ```python
 button_list = [
-    InlineKeyboardButton("col 1", ...),
-    InlineKeyboardButton("col 2", ...),
-    InlineKeyboardButton("row 2", ...)
+    [InlineKeyboardButton("col1", callback_data=...),
+    InlineKeyboardButton("col2", callback_data=...)],
+    [InlineKeyboardButton("row 2", callback_data=...)]
 ]
 reply_markup = InlineKeyboardMarkup(util.build_menu(button_list, n_cols=2))
 bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
