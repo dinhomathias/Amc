@@ -23,7 +23,7 @@ Add your first job to the queue by defining a callback function and adding it to
 ...     bot.send_message(chat_id='@examplechannel', 
 ...                      text='One message every minute')
 ...
->>> job_minute = j.run_repeating(job_minute, interval=60, first=0)
+>>> job_minute = j.run_repeating(callback_minute, interval=60, first=0)
 ```
 
 The `callback_minute` function will be executed every `60.0` seconds, the first time being right now (because of `first=0`). The `interval` and `first` parameters are in seconds if they are `int` or `float`. They can also be `datetime` objects. See the [docs](http://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) for detailed explanation.
