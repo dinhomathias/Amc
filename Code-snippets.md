@@ -31,6 +31,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
       - [Usage](#usage-1)
     + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
     + [Storing ConversationHandler States](#storing-conversation-handler-states)
+      - [Usage](#usage-2)
 - [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -374,14 +375,12 @@ def main():
                 f.close()
             except:
                 utils.logging.error(sys.exc_info()[0])
-
-    threading.Thread(target=saveData).start()
 ```
 ##### Usage
 
 ```python
 def main():
-...
+     ...
      loadData()
      threading.Thread(target=saveData).start()
 ```
