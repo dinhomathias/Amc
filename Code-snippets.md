@@ -329,6 +329,7 @@ You can trigger this handler with the `/r`-command within Telegram, once you hav
 
 
 #### Storing ConversationHandler States
+
 The following code allows you to store ConversationHandler States and UserData and reloading them when you restart the bot. Store procedure is executed every 60 seconds; to change this value, you can modify the `time.sleep(60)' instruction.
 
 You should declare the two methods at the end of the main method to use python closure for accessing ConversationHandler and UserData.
@@ -375,6 +376,14 @@ def main():
                 utils.logging.error(sys.exc_info()[0])
 
     threading.Thread(target=saveData).start()
+```
+##### Usage
+
+```python
+def main():
+...
+     loadData()
+     threading.Thread(target=saveData).start()
 ```
 
 ## What to read next?
