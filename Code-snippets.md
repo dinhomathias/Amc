@@ -30,6 +30,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Build a menu with Buttons](#build-a-menu-with-buttons)
       - [Usage](#usage-1)
     + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
+    + [Storing ConversationHandler States](#storing-conversation-handler-states)
 - [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -325,6 +326,56 @@ def restart(bot, update):
 ```
 
 You can trigger this handler with the `/r`-command within Telegram, once you have added it to the dispatcher: `dispatcher.add_handler(CommandHandler('r', restart))`
+
+
+####Storing ConversationHandler States
+The following code allows you to store ConversationHandler States and UserData and reloading them when you restart the bot. Store procedure is executed every 60 seconds; to change this value, you can modify the `time.sleep(60)' instruction.
+
+You should declare the two methods at the end of the main method to use python closure for accessing ConversationHandler and UserData.
+
+```python
+import time, threading, pickle
+
+def main():
+    def loadData():
+        try:
+            f = open('backup/conversations', 'rb')
+            conv_handler.conversations = pickle.load(f)
+            f.close()
+            f = open('backup/userdata', 'rb')
+            dp.user_data = pickle.load(f)
+            f.close()
+        except FileNotFoundError:
+            utils.logging.error("Data file not found")         
+        except:
+            utils.logging.error(sys.exc_info()[0])         
+ 
+    def saveData():
+        while True:
+            time.sleep(60)
+            # Before pickling
+            resolved = dict()
+            for k, v in conv_handler.conversations.items():
+                if isinstance(v, tuple) and len(v) is 2 and isinstance(v[1], Promise):
+                    try:
+                        new_state = v[1].result()  # Result of async function
+                    except:
+                        new_state = v[0]  # In case async function raised an error, fallback to old state
+                    resolved[k] = new_state
+                else:
+                    resolved[k] = v
+            try:
+                f = open('backup/conversations', 'wb+')
+                pickle.dump(resolved, f)
+                f.close()
+                f = open('backup/userdata', 'wb+')
+                pickle.dump(dp.user_data, f)
+                f.close()
+            except:
+                utils.logging.error(sys.exc_info()[0])
+
+    threading.Thread(target=saveData).start()
+```
 
 ## What to read next?
 If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
