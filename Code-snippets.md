@@ -328,7 +328,7 @@ def restart(bot, update):
 You can trigger this handler with the `/r`-command within Telegram, once you have added it to the dispatcher: `dispatcher.add_handler(CommandHandler('r', restart))`
 
 
-####Storing ConversationHandler States
+#### Storing ConversationHandler States
 The following code allows you to store ConversationHandler States and UserData and reloading them when you restart the bot. Store procedure is executed every 60 seconds; to change this value, you can modify the `time.sleep(60)' instruction.
 
 You should declare the two methods at the end of the main method to use python closure for accessing ConversationHandler and UserData.
