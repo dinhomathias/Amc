@@ -7,14 +7,14 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Fetch images sent to your Bot](#fetch-images-sent-to-your-bot)
     + [Reply to messages](#reply-to-messages)
 - [General code snippets](#general-code-snippets)
-    + [Post a text message](#post-a-text-message)
+    + [Post a text message](#post-a-text-message------------https---coretelegramorg-bots-api-sendmessage-)
     + [Reply to a message](#reply-to-a-message)
-    + [Send a chat action](#send-a-chat-action)
+    + [Send a chat action [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendchataction)](#send-a-chat-action------------https---coretelegramorg-bots-api-sendchataction-)
     + [Requesting location and contact from user](#requesting-location-and-contact-from-user)
   * [Message Formatting (bold, italic, code, ...)](#message-formatting--bold--italic--code---)
-    + [Post a text message with Markdown formatting](#post-a-text-message-with-markdown-formatting)
-    + [Post a text message with HTML formatting](#post-a-text-message-with-html-formatting)
-    + [Message entities](#message-entities)
+    + [Post a text message with Markdown formatting [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)](#post-a-text-message-with-markdown-formatting------------https---coretelegramorg-bots-api-sendmessage-)
+    + [Post a text message with HTML formatting [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)](#post-a-text-message-with-html-formatting------------https---coretelegramorg-bots-api-sendmessage-)
+    + [Message entities [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#messageentity)](#message-entities------------https---coretelegramorg-bots-api-messageentity-)
   * [Working with files and media](#working-with-files-and-media)
     + [Post an image file from disk [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendphoto)](#post-an-image-file-from-disk------------https---coretelegramorg-bots-api-sendphoto-)
     + [Post a voice file from disk [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendvoice)](#post-a-voice-file-from-disk------------https---coretelegramorg-bots-api-sendvoice-)
@@ -36,6 +36,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
 - [What to read next?](#what-to-read-next-)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 ## Pure API
 
