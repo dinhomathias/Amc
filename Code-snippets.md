@@ -1,6 +1,6 @@
 This page can be read on its own to find the code snippet you need right now. 
 
-It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets. ᵀᴱᴸᴱᴳᴿᴬᴹ (https://core.telegram.org/bots/api#InlineQueryResultPhoto)
+It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets.
 
 - [Pure API](#pure-api)
     + [Fetch updates](#fetch-updates)
@@ -71,7 +71,7 @@ If the bot has a chat with the user, it will send the message to that chat.
 
 
 
-#### [Post a text message](https://core.telegram.org/bots/api#sendmessage)
+#### Post a text message [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
 >>> bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
@@ -87,7 +87,7 @@ This is a shortcut to `bot.send_message` with sane defaults. Read more about it 
 
 **Note:** There are equivalents of this method for replying with photos, audio etc., and similar shortcuts exist throughout the library. Related PRs: [#362](https://github.com/python-telegram-bot/python-telegram-bot/pull/362), [#420](https://github.com/python-telegram-bot/python-telegram-bot/pull/420), [#423](https://github.com/python-telegram-bot/python-telegram-bot/pull/423)
 
-#### [Send a chat action](https://core.telegram.org/bots/api#sendchataction)
+#### Send a chat action [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendchataction)
 Use this to tell the user that something is happening on the bot's side:
 
 ```python
@@ -108,7 +108,7 @@ Use this to tell the user that something is happening on the bot's side:
 
 ### Message Formatting (bold, italic, code, ...)
 
-#### [Post a text message with Markdown formatting](https://core.telegram.org/bots/api#sendmessage)
+#### Post a text message with Markdown formatting [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
 >>> bot.send_message(chat_id=chat_id, 
@@ -116,7 +116,7 @@ Use this to tell the user that something is happening on the bot's side:
 ...                  parse_mode=telegram.ParseMode.MARKDOWN)
 ```
 
-#### [Post a text message with HTML formatting](https://core.telegram.org/bots/api#sendmessage)
+#### Post a text message with HTML formatting [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
 >>> bot.send_message(chat_id=chat_id, 
@@ -124,7 +124,7 @@ Use this to tell the user that something is happening on the bot's side:
 ...                  parse_mode=telegram.ParseMode.HTML)
 ```
 
-#### [Message entities](https://core.telegram.org/bots/api#messageentity)
+#### Message entities [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#messageentity)
 To use MessageEntity, extract the entities from a Message object using `get_entities`.  
 
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
@@ -137,31 +137,31 @@ There are many more API methods. To read the full API documentation, visit the [
 
 ### Working with files and media
 
-#### [Post an image file from disk](https://core.telegram.org/bots/api#sendphoto)
+#### Post an image file from disk [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
 >>> bot.send_photo(chat_id=chat_id, photo=open('tests/test.png', 'rb'))
 ```
 
-#### [Post a voice file from disk](https://core.telegram.org/bots/api#sendvoice)
+#### Post a voice file from disk [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendvoice)
 
 ```python
 >>> bot.send_voice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
 ```
 
-#### [Post a photo from a URL](https://core.telegram.org/bots/api#sendphoto)
+#### Post a photo from a URL [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
 >>> bot.send_photo(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
 ```
 
-#### [Post an audio from disk](https://core.telegram.org/bots/api#sendaudio)
+#### Post an audio from disk [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendaudio)
 
 ```python
 >>> bot.send_audio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
 ```
 
-#### [Post a file from disk](https://core.telegram.org/bots/api#senddocument)
+#### Post a file from disk [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#senddocument)
 
 ```python
 >>> bot.send_document(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
@@ -179,7 +179,7 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 >>> bot.send_photo(chat_id, photo=bio)
 ```
 
-#### [Download a file](https://core.telegram.org/bots/api#getfile)
+#### Download a file [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#getfile)
 
 ```python
 >>> file_id = message.voice.file_id
@@ -191,7 +191,7 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 
 ### Keyboard Menus
 
-#### [Custom Keyboards](https://core.telegram.org/bots#keyboards):
+#### Custom Keyboards [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots#keyboards):
 
 ```python
 >>> custom_keyboard = [['top-left', 'top-right'], 
@@ -294,7 +294,7 @@ def restart(bot, update):
 You can trigger this handler with the `/r`-command within Telegram, once you have added it to the dispatcher: `dispatcher.add_handler(CommandHandler('r', restart))`
 
 
-#### Storing ConversationHandler States
+#### Store ConversationHandler States
 
 The following code allows you to store ConversationHandler States and UserData and reloading them when you restart the bot. Store procedure is executed every 60 seconds; to change this value, you can modify the `time.sleep(60)` instruction.
 
