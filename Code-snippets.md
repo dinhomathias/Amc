@@ -1,6 +1,6 @@
 This page can be read on its own to find the code snippet you need right now. 
 
-It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets.
+It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets. ᵀᴱᴸᴱᴳᴿᴬᴹ (https://core.telegram.org/bots/api#InlineQueryResultPhoto)
 
 - [Pure API](#pure-api)
     + [Fetch updates](#fetch-updates)
