@@ -205,7 +205,7 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 ### Keyboard Menus
 
 #### Custom Keyboards
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots#keyboards):
+[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots#keyboards)
 
 ```python
 >>> custom_keyboard = [['top-left', 'top-right'], 
