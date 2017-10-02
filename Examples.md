@@ -17,6 +17,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [AlarmBot](https://github.com/guysoft/AlarmBot) This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device.
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) Trade crypto-currencies on the Kraken marketplace
 * [Matilda](https://github.com/xlanor/matilda) A news scraping bot for Straits Times and ChannelNewsAsia.
+* [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) Allows easy time tracking on youtrack issues.
 
 # API
 Bots using the raw API.
