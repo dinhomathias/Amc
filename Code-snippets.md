@@ -70,6 +70,7 @@ These snippets usually apply to both ways of fetching updates. If you're using `
 If the bot has a chat with the user, it will send the message to that chat.
 
 
+
 #### [Post a text message](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
@@ -86,6 +87,27 @@ This is a shortcut to `bot.send_message` with sane defaults. Read more about it 
 
 **Note:** There are equivalents of this method for replying with photos, audio etc., and similar shortcuts exist throughout the library. Related PRs: [#362](https://github.com/python-telegram-bot/python-telegram-bot/pull/362), [#420](https://github.com/python-telegram-bot/python-telegram-bot/pull/420), [#423](https://github.com/python-telegram-bot/python-telegram-bot/pull/423)
 
+#### [Send a chat action](https://core.telegram.org/bots/api#sendchataction)
+Use this to tell the user that something is happening on the bot's side:
+
+```python
+>>> bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+```
+
+#### Requesting location and contact from user
+
+```python
+>>> location_keyboard = telegram.KeyboardButton(text="send_location", request_location=True)
+>>> contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
+>>> custom_keyboard = [[ location_keyboard, contact_keyboard ]]
+>>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+>>> bot.send_Message(chat_id=chat_id, 
+...                  text="Would you mind sharing your location and contact with me?", 
+...                  reply_markup=reply_markup)
+```
+
+### Message Formatting (bold, italic, code, ...)
+
 #### [Post a text message with Markdown formatting](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
@@ -101,6 +123,19 @@ This is a shortcut to `bot.send_message` with sane defaults. Read more about it 
 ...                  text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.', 
 ...                  parse_mode=telegram.ParseMode.HTML)
 ```
+
+#### [Message entities](https://core.telegram.org/bots/api#messageentity)
+To use MessageEntity, extract the entities from a Message object using `get_entities`.  
+
+**Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
+
+```python
+>>> entities = message.get_entities()
+```
+
+There are many more API methods. To read the full API documentation, visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
+
+### Working with files and media
 
 #### [Post an image file from disk](https://core.telegram.org/bots/api#sendphoto)
 
@@ -144,12 +179,17 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 >>> bot.send_photo(chat_id, photo=bio)
 ```
 
-#### [Send a chat action](https://core.telegram.org/bots/api#sendchataction)
-Use this to tell the user that something is happening on the bot's side:
+#### [Download a file](https://core.telegram.org/bots/api#getfile)
 
 ```python
->>> bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+>>> file_id = message.voice.file_id
+>>> newFile = bot.get_file(file_id)
+>>> newFile.download('voice.ogg')
 ```
+
+**Note:** For downloading photos, keep in mind that `update.message.photo` is an array of different photo sizes. Use `update.message.photo[-1]` to get the biggest size.
+
+### Keyboard Menus
 
 #### [Custom Keyboards](https://core.telegram.org/bots#keyboards):
 
@@ -164,17 +204,6 @@ Use this to tell the user that something is happening on the bot's side:
 
 See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#build-a-menu-with-buttons)
 
-#### Requesting location and contact from user
-
-```python
->>> location_keyboard = telegram.KeyboardButton(text="send_location", request_location=True)
->>> contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
->>> custom_keyboard = [[ location_keyboard, contact_keyboard ]]
->>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
->>> bot.send_Message(chat_id=chat_id, 
-...                  text="Would you mind sharing your location and contact with me?", 
-...                  reply_markup=reply_markup)
-```
 
 #### Remove a custom keyboard
 
@@ -183,26 +212,6 @@ See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/py
 >>> bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
 ```
 
-#### [Download a file](https://core.telegram.org/bots/api#getfile)
-
-```python
->>> file_id = message.voice.file_id
->>> newFile = bot.get_file(file_id)
->>> newFile.download('voice.ogg')
-```
-
-**Note:** For downloading photos, keep in mind that `update.message.photo` is an array of different photo sizes. Use `update.message.photo[-1]` to get the biggest size.
-
-#### [Message entities](https://core.telegram.org/bots/api#messageentity)
-To use MessageEntity, extract the entities from a Message object using `get_entities`.  
-
-**Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
-
-```python
->>> entities = message.get_entities()
-```
-
-There are many more API methods. To read the full API documentation, visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
 
 ## Advanced snippets
 
@@ -264,50 +273,6 @@ if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
 ```
 
 **Note:** Private chats and groups with `all_members_are_administrator` flag, are not covered by this snippet. Make sure you handle them.
-
-#### Build a menu with Buttons
-
-Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of a list of `buttons`.
-
-```python
-def build_menu(buttons,
-               n_cols,
-               header_buttons=None,
-               footer_buttons=None):
-    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
-    if header_buttons:
-        menu.insert(0, header_buttons)
-    if footer_buttons:
-        menu.append(footer_buttons)
-    return menu
-```
-
-You can use the `header_buttons` and `footer_buttons` lists to put buttons in the first or last row respectively.
-
-##### Usage
-
-![Output](http://i.imgur.com/susvvR7.png)
-
-Replace the `...` in below snippet by an appropriate argument, as indicated in the [InlineKeyboardButton documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.inlinekeyboardbutton.html). If you want to use `KeyboardButtons`, use `ReplyKeyboardMarkup` instead of `InlineKeyboardMarkup`.
-
-```python
-button_list = [
-    [InlineKeyboardButton("col1", callback_data=...),
-    InlineKeyboardButton("col2", callback_data=...)],
-    [InlineKeyboardButton("row 2", callback_data=...)]
-]
-reply_markup = InlineKeyboardMarkup(util.build_menu(button_list, n_cols=2))
-bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
-```
-
-Or, if you need a dynamic version, use list comprehension to generate your `button_list` dynamically from a list of strings:
-
-```python
-some_strings = ["col1", "col2", "row2"]
-button_list = [KeyboardButton(s) for s in some_strings]
-```
-
-This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
 
 
 
