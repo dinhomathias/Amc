@@ -1,0 +1,1 @@
+>>> import telegram >>> bot = telegram.Bot(token='411480249:AAHmNRiESyTpPQGpwBh9RIwsYhvXKH4W8tc') >>> print(bot.get_me()) {"first_name": "ݐێ ۅێ ڢࢪݜٵد🌈💦", "username": "Far_shadBot"}
