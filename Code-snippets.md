@@ -29,6 +29,8 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
 - [Advanced snippets](#advanced-snippets)
     + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler--decorator-)
       - [Usage](#usage)
+    + [Build a menu with Buttons](#build-a-menu-with-buttons)
+      - [Usage](#usage-1)
     + [Cached Telegram group administrator check](#cached-telegram-group-administrator-check)
     + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
     + [Store ConversationHandler States](#store-conversationhandler-states)
@@ -216,7 +218,7 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 ...                  reply_markup=reply_markup)
 ```
 
-See also: [Build a  menu with Buttons](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#build-a-menu-with-buttons)
+See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
 
 
 #### Remove a custom keyboard
@@ -261,6 +263,51 @@ Add a `@restricted` decorator on top of your handler declaration:
 def my_handler(bot, update):
     pass  # only accessible if `user_id` is in `LIST_OF_ADMINS`.
 ```
+
+#### Build a menu with Buttons
+
+Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of a list of `buttons`.
+
+```python
+def build_menu(buttons,
+               n_cols,
+               header_buttons=None,
+               footer_buttons=None):
+    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
+    if header_buttons:
+        menu.insert(0, header_buttons)
+    if footer_buttons:
+        menu.append(footer_buttons)
+    return menu
+```
+
+You can use the `header_buttons` and `footer_buttons` lists to put buttons in the first or last row respectively.
+
+##### Usage
+
+![Output](http://i.imgur.com/susvvR7.png)
+
+Replace the `...` in below snippet by an appropriate argument, as indicated in the [InlineKeyboardButton documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.inlinekeyboardbutton.html). If you want to use `KeyboardButtons`, use `ReplyKeyboardMarkup` instead of `InlineKeyboardMarkup`.
+
+```python
+button_list = [
+    [InlineKeyboardButton("col1", callback_data=...),
+    InlineKeyboardButton("col2", callback_data=...)],
+    [InlineKeyboardButton("row 2", callback_data=...)]
+]
+reply_markup = InlineKeyboardMarkup(util.build_menu(button_list, n_cols=2))
+bot.send_message(..., "A two-column menu", reply_markup=reply_markup)
+```
+
+Or, if you need a dynamic version, use list comprehension to generate your `button_list` dynamically from a list of strings:
+
+```python
+some_strings = ["col1", "col2", "row2"]
+button_list = [KeyboardButton(s) for s in some_strings]
+```
+
+This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
+
 
 #### Cached Telegram group administrator check
 If you want to limit certain bot functions to group administrators, you have to test if a user is an administrator in the group in question. This however requires an extra API request, which is why it can make sense to cache this information for a certain time, especially if your bot is very busy.
