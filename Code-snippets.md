@@ -339,21 +339,45 @@ if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
 
 #### Simple way of restarting the bot
 
-The following handler allows you to easily restart the bot. It goes without saying that you should protect this method from access by unauthorized users, for example with [the restricted decorator](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator).
+The following example allows you to restart the bot from within a handler. It goes without saying that you should protect this method from access by unauthorized users, which is why we are using a `Filters.user` filter. If you want multiple users to have access the restart command, you can pass a list of usernames as well. You can also filter by user IDs which is arguably a bit safer since they can't change. See the [docs](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.filters.html#telegram.ext.filters.Filters.user) for more information.
+
+This example is using closures so it has access to the `updater` variable. Alternatively, you could make it global.
 
 ```python
 import os
-import time
 import sys
+from threading import Thread
 
-def restart(bot, update):
-    bot.send_message(update.message.chat_id, "Bot is restarting...")
-    time.sleep(0.2)
-    os.execl(sys.executable, sys.executable, *sys.argv)
+# Other code
+
+def main():
+    updater = Updater("TOKEN")
+    dp = updater.dispatcher
+
+    # Add your other handlers here...
+
+    def stop_and_restart():
+        """Gracefully stop the Updater and replace the current process with a new one"""
+        updater.stop()
+        os.execl(sys.executable, sys.executable, *sys.argv)
+
+    def restart(bot, update):
+        update.message.reply_text('Bot is restarting...')
+        Thread(target=stop_and_restart).start()
+
+    # ...or here...
+
+    dp.add_handler(CommandHandler('r', restart, filters=Filters.user(username='@jh0ker')))
+
+    # ...or here, depending on your preference :)
+
+    updater.start_polling()
+    updater.idle()
+
+
+if __name__ == '__main__':
+    main()
 ```
-
-You can trigger this handler with the `/r`-command within Telegram, once you have added it to the dispatcher: `dispatcher.add_handler(CommandHandler('r', restart))`
-
 
 #### Store ConversationHandler States
 
