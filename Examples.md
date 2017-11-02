@@ -28,6 +28,7 @@ Bots using the raw API.
 * [Simple-Echo-Telegram-Bot](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot) simple Python Telegram bot that echoes your input with Flask microframework, setWebhook method, and Google App Engine (optional).
 * [TwitterForwarderBot](https://github.com/franciscod/telegram-twitter-forwarder-bot) forwards you tweets from people that you have subscribed to.
 * [YATAB](https://github.com/Nhoya/YATAB/) modular administration helper bot
+* [Help SA BOLO Bot](https://github.com/nqcm/python-telegram-bot) A vehicle lookup Telegram bot made in Python.
 
 ---
 Is your open source bot also using `python-telegram-bot`? Then you may add it to the right section, but be sure to keep the names sorted alphabetically
