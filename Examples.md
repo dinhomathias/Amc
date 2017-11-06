@@ -3,8 +3,10 @@ A non-exhaustive list of open source bots built on `python-telegram-bot` in the 
 # Updater
 Bots built using the `telegram.ext.Updater` class.
 
-
+* [AlarmBot](https://github.com/guysoft/AlarmBot) This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device.
+* [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group.
 * [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) echoes any message and any kind of media to anonymize the forward.
+* [Matilda](https://github.com/xlanor/matilda) A news scraping bot for Straits Times and ChannelNewsAsia.
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) allows you to play the popular card game UNO via inline queries
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) - bot for automatic broadcasting content from different sources into channels.
 * [moodify](https://github.com/samsontmr/moodify) takes your selfie and recommends a playlist for your mood. Try it here: [@moodifyBot](http://t.me/moodifybot)
@@ -12,11 +14,9 @@ Bots built using the `telegram.ext.Updater` class.
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) runs commands on your server and lets you easily share the output
 * [teleGit Bot](https://github.com/HeavenH/teleGit) A bot to list the github repositories, show users information.
-* [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) An example bot that lets you pick a timezone. This bot also uses a class for its design pattern.
-* [AlarmBot](https://github.com/guysoft/AlarmBot) This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device.
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) Trade crypto-currencies on the Kraken marketplace
-* [Matilda](https://github.com/xlanor/matilda) A news scraping bot for Straits Times and ChannelNewsAsia.
+* [Vocaloid Bot](https://github.com/bomjacob/VocaBot) uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) Allows easy time tracking on youtrack issues.
 
 # API
