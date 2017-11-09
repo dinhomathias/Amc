@@ -6,7 +6,7 @@ This project adheres to the `Semantic Versioning`_ specification by Tom Preston-
 Releasing on Windows
 --------------------
 
-Creating a release on windows is inadvisable due to the limitations for setting file permissions on the Windows file-system. On Windows 10 you can install a native `Ubuntu shell_` to solve this problem.
+Creating a release on windows is inadvisable due to the limitations for setting file permissions on the Windows file-system. On Windows 10 you can install a native `Ubuntu shell`_ to solve this problem.
 Within the shell first run::
 
 $ umask 0022
