@@ -3,6 +3,15 @@ Releasing a new version
 
 This project adheres to the `Semantic Versioning`_ specification by Tom Preston-Werner.
 
+Releasing on Windows
+--------------------
+
+Creating a release on windows is inadvisable due to the limitations for setting file permissions on the Windows file-system. On Windows 10 you can install a native `Ubuntu shell_` to solve this problem.
+Within the shell first run::
+
+$ umask 0022
+
+To make sure file permissions will be set right. then Clone the repo (or pull the latest master) and follow the steps below to package the library. Uploading can be done from within Windows again if you prefer.
 
 Requirements
 ------------
@@ -79,3 +88,4 @@ Please use the following channels/groups to announce a new version release:
 .. _`@pythontelegrambotgroup`: https://telegram.me/pythontelegrambotgroup
 .. _`@pythontelegrambotchannel`: https://telegram.me/pythontelegrambotchannel
 .. _`Readthedocs dashboard`: https://readthedocs.org/projects/python-telegram-bot/
+.. _`Ubuntu shell`: https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
