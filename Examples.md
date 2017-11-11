@@ -11,6 +11,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) - bot for automatic broadcasting content from different sources into channels.
 * [moodify](https://github.com/samsontmr/moodify) takes your selfie and recommends a playlist for your mood. Try it here: [@moodifyBot](http://t.me/moodifybot)
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) notification for pogom scanner
+* [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) collects stats and kicks lurkers(inactive members)
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) runs commands on your server and lets you easily share the output
 * [teleGit Bot](https://github.com/HeavenH/teleGit) A bot to list the github repositories, show users information.
