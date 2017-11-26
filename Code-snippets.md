@@ -107,7 +107,7 @@ Use this to tell the user that something is happening on the bot's side:
 >>> contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
 >>> custom_keyboard = [[ location_keyboard, contact_keyboard ]]
 >>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
->>> bot.send_Message(chat_id=chat_id, 
+>>> bot.send_message(chat_id=chat_id, 
 ...                  text="Would you mind sharing your location and contact with me?", 
 ...                  reply_markup=reply_markup)
 ```
