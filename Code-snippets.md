@@ -11,7 +11,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Reply to a message](#reply-to-a-message)
     + [Send a chat action](#send-a-chat-action)
     + [Requesting location and contact from user](#requesting-location-and-contact-from-user)
-  * [Message Formatting (bold, italic, code, ...)](#message-formatting--bold--italic--code---)
+  * [Message Formatting (bold, italic, code, ...)](#message-formatting-bold-italic-code-)
     + [Post a text message with Markdown formatting](#post-a-text-message-with-markdown-formatting)
     + [Post a text message with HTML formatting](#post-a-text-message-with-html-formatting)
     + [Message entities](#message-entities)
@@ -27,7 +27,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Custom Keyboards](#custom-keyboards)
     + [Remove a custom keyboard](#remove-a-custom-keyboard)
 - [Advanced snippets](#advanced-snippets)
-    + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler--decorator-)
+    + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
       - [Usage](#usage)
     + [Build a menu with Buttons](#build-a-menu-with-buttons)
       - [Usage](#usage-1)
@@ -35,7 +35,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
     + [Store ConversationHandler States](#store-conversationhandler-states)
       - [Usage](#usage-1)
-- [What to read next?](#what-to-read-next-)
+- [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
