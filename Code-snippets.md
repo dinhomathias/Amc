@@ -35,6 +35,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
     + [Store ConversationHandler States](#store-conversationhandler-states)
       - [Usage](#usage-1)
+    + [Save and load jobs using pickle](#save-and-load-jobs-using-pickle)
 - [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -433,6 +434,102 @@ def main():
      ...
      loadData()
      threading.Thread(target=saveData).start()
+```
+
+#### Save and load jobs using pickle 
+The following snippet pickles the jobs in the job queue periodically and on bot shutdown and unpickles and queues them again on startup. Since `pickle` doesn't support threading primitives, they are converted.
+
+**Note:** Race condition for asynchronous jobs that use `job.job_queue`, `job.removed`, `job.schedule_removal` or `job.enabled` while the job is being pickled.
+
+```python
+import pickle
+from threading import Event
+from time import time
+from datetime import timedelta
+
+
+JOBS_PICKLE = 'job_tuples.pickle'
+
+
+def load_jobs(jq):
+    now = time()
+
+    with open(JOBS_PICKLE, 'rb') as fp:
+        while True:
+            try:
+                next_t, job = pickle.load(fp)
+            except EOFError:
+                break  # Loaded all job tuples
+
+            # Create threading primitives
+            enabled = job._enabled
+            removed = job._remove
+
+            job._enabled = Event()
+            job._remove = Event()
+
+            if enabled:
+                job._enabled.set()
+
+            if removed:
+                job._remove.set()
+
+            next_t -= now  # Convert from absolute to relative time
+
+            jq.put(job, next_t)
+
+
+def save_jobs(jq):
+    job_tuples = jq.queue.queue
+
+    with open(JOBS_PICKLE, 'wb') as fp:
+        for next_t, job in job_tuples:
+            # Back up objects
+            _job_queue = job._job_queue
+            _remove = job._remove
+            _enabled = job._enabled
+
+            # Replace un-pickleable threading primitives
+            job._job_queue = None  # Will be reset in jq.put
+            job._remove = job.removed  # Convert to boolean
+            job._enabled = job.enabled  # Convert to boolean
+
+            # Pickle the job
+            pickle.dump((next_t, job), fp)
+
+            # Restore objects
+            job._job_queue = _job_queue
+            job._remove = _remove
+            job._enabled = _enabled
+
+
+def save_jobs_job(bot, job):
+    save_jobs(job.job_queue)
+
+
+def main():
+    # updater = Updater(..)
+
+    job_queue = updater.job_queue
+
+    # Periodically save jobs
+    job_queue.run_repeating(save_jobs_job, timedelta(minutes=1))
+
+    try:
+        load_jobs(job_queue)
+
+    except FileNotFoundError:
+        # First run
+        pass
+
+    # updater.start_[polling|webhook]()
+    # updater.idle()
+
+    # Run again after bot has been properly shut down
+    save_jobs(job_queue)
+
+if __name__ == '__main__':
+    main()
 ```
 
 ## What to read next?
