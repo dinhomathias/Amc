@@ -7,7 +7,8 @@ def start_callback(bot, update):
 
 ...
 
-dispatcher.add_handler(CommandHandler("start", start_callback))```
+dispatcher.add_handler(CommandHandler("start", start_callback))
+```
 
 ## CommandHandlers with arguments
 
