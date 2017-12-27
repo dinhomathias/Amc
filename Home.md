@@ -5,3 +5,6 @@ For a long time, our documentation consisted of our [API documentation](http://p
 
 ### How to read this Wiki
 Ideally, this Wiki should read a bit like a [Choose Your Own Adventure](https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure) book - You start with [page one](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API) and choose your way through the docs, depending on your preferences. At the end of most articles, you will find a section called **What to read next?**, where related articles are linked.
+
+### Contributing to this Wiki
+If you stumble upon a part of the wiki that is unclear or missing important points, please go ahead and drop us a message in our [Telegram Group](https://t.me/pythontelegrambotgroup). We'd like our wiki to be as complete as possible 🙂
