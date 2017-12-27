@@ -21,7 +21,8 @@ def start_callback(bot, update, args):
 
 ...
 
-dispatcher.add_handler(CommandHandler("start", start_callback, pass_args=True))```
+dispatcher.add_handler(CommandHandler("start", start_callback, pass_args=True))
+```
 
 Sending "/start Hello World!" to your bot will now split everything after /start separated by the space character into a list of words and pass it on to the `args` parameter of `start_callback`: `["Hello", "World!"]`. We join these chunks together by calling `" ".join(args)` and echo the resulting string back to the user.
 
