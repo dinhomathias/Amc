@@ -1,7 +1,7 @@
 ## Introduction
-The `telegram.ext` submodule is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer, so you [don't have to repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+The `telegram.ext` submodule is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer, so you [don't have to repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
-It consists of several classes, but the two most important ones are `telegram.ext.Updater` and `telegram.ext.Dispatcher`.
+It consists of several classes, but the two most important ones are [telegram.ext.Updater](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.Updater) and [telegram.ext.Dispatcher](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dispatcher.html#telegram.ext.Dispatcher).
 
 The `Updater` class continuously fetches new updates from telegram and forwards them to the `Dispatcher` class. 
 If you create an `Updater` object, it will create a `Dispatcher` for you and link them together with a `Queue`. 
