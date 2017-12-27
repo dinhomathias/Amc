@@ -29,7 +29,7 @@ Sending "/start Hello World!" to your bot will now split everything after /start
 ### Deep-Linking start parameters
 The argument passing described above works exactly the same when the user clicks on a deeply linked start URL, like this one:
 
-https://t.me/roolsbot?start=Hello%20World!
+[https://t.me/roolsbot?start=Hello%20World!](https://t.me/roolsbot?start=Hello%20World!)
 
 Clicking this link will open your Telegram Client and show a big START button. When it is pressed, the URL parameters "Hello World!" will be passed on to the `args` of your /start callback.
 
