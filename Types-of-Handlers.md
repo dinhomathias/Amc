@@ -38,12 +38,7 @@ Clicking this link will open your Telegram Client and show a big START button. W
 
 For more complex inputs you can employ the [telegram.ext.RegexHandler](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.regexhandler.html), which internally uses the `re`-module to match textual user input with a supplied pattern.
 
-A quick example:
-```
-
-```
-
 Keep in mind that for extracting URLs, #Hashtags, @Mentions, and other Telegram entities, there's no need to parse them with a `RegexHandler` because the Bot API already sends them to us with every update. Refer to [this snippet](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#message-entities) to learn how to work with entities instead.
 
 
-To learn about all 
+This tutorial only covers some of the available handlers (for now). Refer to the documentation for all other types: https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.html#handlers
