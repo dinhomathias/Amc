@@ -3,11 +3,11 @@ The `telegram.ext` submodule is built on top of the pure API implementation. It 
 
 It consists of several classes, but the two most important ones are [telegram.ext.Updater](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.Updater) and [telegram.ext.Dispatcher](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dispatcher.html#telegram.ext.Dispatcher).
 
-The `Updater` class continuously fetches new updates from telegram and forwards them to the `Dispatcher` class. 
+The `Updater` class continuously fetches new updates from telegram and passes them on to the `Dispatcher` class. 
 If you create an `Updater` object, it will create a `Dispatcher` for you and link them together with a `Queue`. 
 You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined.
 
-Every handler is an instance of any subclass of the `telegram.ext.Handler` class. The library provides handler classes for almost all use cases, but if you need something very specific, you can also subclass `Handler` yourself.
+Every handler is an instance of any subclass of the [telegram.ext.Handler](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.handler.html#telegram.ext.Handler) class. The library provides [handler classes for almost all use cases](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-of-Handlers), but if you need something very specific, you can also subclass `Handler` yourself.
 
 To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
 
