@@ -10,7 +10,7 @@
 
 ## Code resources
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
-    1.1. [test](test)
+    * [test](test)
 2. [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling)
 3. [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations)
 4. [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks)
