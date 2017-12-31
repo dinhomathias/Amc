@@ -71,7 +71,7 @@ The reverse proxy is set up for you and an environment is created. From this env
 import os
 
 TOKEN = "TOKEN"
-PORT = int(os.environ.get('PORT', '5000'))
+PORT = int(os.environ.get('PORT', '8443'))
 updater = Updater(TOKEN)
 # add handlers
 updater.start_webhook(listen="0.0.0.0",
