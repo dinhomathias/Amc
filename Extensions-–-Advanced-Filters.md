@@ -32,7 +32,7 @@ handler = MessageHandler(Filters.photo & (~ Filters.forwarded), callback)
 ```
 
 ## Custom filters
-It is also possible to write our own filters. In essence, a filter is simply a function that receives a `Message` instance and returns either `True` or `False`. This function has to implemented in a new class that inherits from `BaseFilter`, which allows it to be combined with other filters. If the combination of all filters evaluates to `True`, the message will be handled. 
+It is also possible to write our own filters. In essence, a filter is simply a function that receives a `Message` instance and returns either `True` or `False`. This function has to be implemented in a new class that inherits from `BaseFilter`, which allows it to be combined with other filters. If the combination of all filters evaluates to `True`, the message will be handled. 
 
 Say we wanted to allow only those messages that contain the text "python-telegram-bot is awesome", we could write a custom filter as so:
 
