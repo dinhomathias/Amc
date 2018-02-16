@@ -65,7 +65,7 @@ A job can also change its own behavior, as it is passed to the callback function
 
 This job will send a first message after one second, a second message after two _more_ seconds, a third message after _three more_ seconds, and so on. After the ten messages, the job will terminate itself.
 
-You might want to add jobs in response to certain user input, and there is a convenient way to do that. All `Handler` classes can pass the job queue into their callback functions, if you need them to. To do that, simply set `pass_job_queue=True` when instantiating the Handler. Another feature you can use here is the `context` keyword argument of `Job`. Let's see how it looks in code:
+You might want to add jobs in response to certain user input, and there is a convenient way to do that. All `Handler` classes can pass the job queue into their callback functions, if you need them to. To do that, simply set `pass_job_queue=True` when instantiating the Handler. Another feature you can use here is the `context` keyword argument of `Job`. You can pass any object as a `context` parameter when you launch a Job and retrieve it at a later stage as long as the Job exists. Let's see how it looks in code:
 
 ```python
 >>> from telegram.ext import CommandHandler
