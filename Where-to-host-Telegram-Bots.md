@@ -21,6 +21,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
 * [Scaleway](https://www.scaleway.com/)
 * [RunAbove](https://www.runabove.com/)
 * [sabahost](http://sabatemplate.ir/)
+* [Netcup](https://www.netcup.eu/vserver/vps.php)
 
 
 ### Low budget
