@@ -39,5 +39,5 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
 * [ngrok](https://ngrok.com/)
 
 ### Boards
-* [Banana Pi](http://www.bananapi.org/)
+* [Banana Pi](http://www.banana-pi.org/)
 * [Raspberry Pi](https://www.raspberrypi.org/)
