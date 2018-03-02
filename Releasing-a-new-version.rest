@@ -50,10 +50,6 @@ Process
 
   $ python setup.py sdist bdist_wheel
   
-* Register new version (obsolete, not needed)::
-
-  $ python setup.py register
-  
 * Upload to PyPI (-s to sign the package with your GnuPG key)::
  
   $ twine upload -s dist/python*
