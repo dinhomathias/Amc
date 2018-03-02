@@ -27,7 +27,7 @@ Process
 
 * Build documentation locally, fix any error & commit::
 
-  $ python setup.py build_sphinx
+  $ make -C docs/ html
 
 * Run tests, fix any error & commit::
   
