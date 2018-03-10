@@ -202,7 +202,7 @@ Where `photos` is a list of `PhotoSize` objects and `desired_size` is a tuple co
 >>> def get_closest(photos, desired_size):
 >>>     def diff(p): return p.width - desired_size[0], p.height - desired_size[1]
 >>>     def norm(t): return abs(t[0] + t[1] * 1j)
->>>     return sorted(photos, key=lambda p:  norm(diff(p)))[0]
+>>>     return min(photos, key=lambda p:  norm(diff(p)))
 ```
 
 #### Download a file
