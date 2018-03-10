@@ -22,6 +22,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Post an audio from disk](#post-an-audio-from-disk)
     + [Post a file from disk](#post-a-file-from-disk)
     + [Post an image from memory](#post-an-image-from-memory)
+    + [Get image with dimensions closest to a desired size](#get-image-with-dimensions-closest-to-a-desired-size)
     + [Download a file](#download-a-file)
   * [Keyboard Menus](#keyboard-menus)
     + [Custom Keyboards](#custom-keyboards)
@@ -195,7 +196,7 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 ```
 
 #### Get image with dimensions closest to a desired size
-Where photos is a list of PhotoSize objects and desired_size is a tuple containing the desired size.
+Where `photos` is a list of `PhotoSize` objects and `desired_size` is a tuple containing the desired size.
 
 ```python
 >>> def get_closest(photos, desired_size):
