@@ -194,6 +194,16 @@ In this example, `image` is a PIL (or Pillow) `Image` object, but it works the s
 >>> bot.send_photo(chat_id, photo=bio)
 ```
 
+#### Get image with dimensions closest to a desired size
+Where photos is a list of PhotoSize objects and desired_size is a tuple containing the desired size.
+
+```python
+def get_closest(photos, desired_size):
+    def diff(p): return p.width - desired_size[0], p.height - desired_size[1]
+    def norm(t): return abs(t[0] + t[1] * 1j)
+    return sorted(photos, key=lambda p:  norm(diff(p)))[0]
+```
+
 #### Download a file
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#getfile)
 
