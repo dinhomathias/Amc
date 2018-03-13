@@ -27,6 +27,8 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
   * [Keyboard Menus](#keyboard-menus)
     + [Custom Keyboards](#custom-keyboards)
     + [Remove a custom keyboard](#remove-a-custom-keyboard)
+  * [Other useful stuff](#other-useful-stuff)
+    + [Generate flag emojis from country codes](#generate-flag-emojis-from-country-codes)
 - [Advanced snippets](#advanced-snippets)
     + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
       - [Usage](#usage)
@@ -240,6 +242,27 @@ See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
 >>> bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
 ```
 
+### Other useful stuff
+
+#### Generate flag emojis from country codes
+
+The Unicode flag emoji for any country can by definition be calculated from the countries [2 letter country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). The following snippet only works in Python 3.
+
+```python
+>>> OFFSET = 127462 - ord('A')
+>>> 
+>>> def flag(code):
+...     code = code.upper()
+...     return chr(ord(code[0]) + OFFSET) + chr(ord(code[1]) + OFFSET)
+... 
+>>> flag('de')
+'🇩🇪'
+>>> flag('us')
+'🇺🇸'
+>>> flag('ru')
+'🇷🇺'
+>>>
+```
 
 ## Advanced snippets
 
