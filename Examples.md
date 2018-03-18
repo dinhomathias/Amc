@@ -9,6 +9,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Cryptora](https://github.com/izanmubarak/Cryptora) gets all kinds of cryptocurrency-related data, including up-to-the-minute information from CoinMarketCap for thousands of cryptocurrencies and the latest headlines from CoinDesk.
 * [EFB Telegram Master Channel](https://github.com/blueset/efb-telegram-master/) A master channel for EH Forwarder Bot: an extensible chat tunneling framework that gather your IMs at one place.
 * [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) echoes any message and any kind of media to anonymize the forward.
+* [Marie](https://github.com/PaulSonOfLars/tgbot) A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) A news scraping bot for Straits Times and ChannelNewsAsia.
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) allows you to play the popular card game UNO via inline queries
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) - bot for automatic broadcasting content from different sources into channels.
