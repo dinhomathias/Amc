@@ -16,6 +16,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) - bot for automatic broadcasting content from different sources into channels.
 * [moodify](https://github.com/samsontmr/moodify) takes your selfie and recommends a playlist for your mood. Try it here: [@moodifyBot](http://t.me/moodifybot)
 * [Natalia](https://github.com/Whalepool/Natalia) An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
+* [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) lowers the quality of photos
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) notification for pogom scanner
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) collects stats and kicks lurkers(inactive members)
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) helps organise a subscription for a news web site
