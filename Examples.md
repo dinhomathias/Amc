@@ -5,7 +5,7 @@ Bots built using the `telegram.ext.Updater` class.
 
 * [AlarmBot](https://github.com/guysoft/AlarmBot) This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device.
 * [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group.
-* [BotListBot](https://github.com/JosXa/BotListBot) Large project, maintains the [@BotList channel](https://t.me/botlist). Simplifies navigation, allows submitting and editing bots by the [@BotListChat community](https://t.me/botlistchat) community.
+* [BotListBot](https://github.com/JosXa/BotListBot) - Large project, maintains the [@BotList channel](https://t.me/botlist). Simplifies navigation, allows submitting and editing bots by the [@BotListChat community](https://t.me/botlistchat) community.
 * [CryptoCoinsInfoBot](https://github.com/lytves/crypto-coins-info-bot-v2) This bot sends you actual prices of cryptocoins using info from CoinMarketCap and CryptoCompare APIs.
 * [CryptoKitty](https://github.com/xlanor/CryptoKitties) Source code for a broadcast bot that scans [CryptoKitties](https://www.cryptokitties.co/) API and returns cats that matches the input parameters. 
 * [Cryptora](https://github.com/izanmubarak/Cryptora) gets all kinds of cryptocurrency-related data, including up-to-the-minute information from CoinMarketCap for thousands of cryptocurrencies and the latest headlines from CoinDesk.
