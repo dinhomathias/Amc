@@ -4,18 +4,18 @@ A non-exhaustive list of open source bots built on `python-telegram-bot` in the 
 Bots built using the `telegram.ext.Updater` class.
 
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
-* [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group.
-* [BotListBot](https://github.com/JosXa/BotListBot) — Large project, maintains the [@BotList channel](https://t.me/botlist). Simplifies navigation, allows submitting and editing bots by the [@BotListChat community](https://t.me/botlistchat) community.
-* [CryptoCoinsInfoBot](https://github.com/lytves/crypto-coins-info-bot-v2) — This bot sends you actual prices of cryptocoins using info from CoinMarketCap and CryptoCompare APIs.
-* [CryptoKitty](https://github.com/xlanor/CryptoKitties) — Source code for a broadcast bot that scans [CryptoKitties](https://www.cryptokitties.co/) API and returns cats that matches the input parameters. 
-* [Cryptora](https://github.com/izanmubarak/Cryptora) — gets all kinds of cryptocurrency-related data, including up-to-the-minute information from CoinMarketCap for thousands of cryptocurrencies and the latest headlines from CoinDesk.
+* [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/blackjackbot)
+* [BotListBot](https://github.com/JosXa/BotListBot) — Large project, maintains the [@BotList channel](https://t.me/botlist). Simplifies navigation, allows submitting and editing bots by the [@BotListChat community](https://t.me/botlistchat) community. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/botlistbot)
+* [CryptoCoinsInfoBot](https://github.com/lytves/crypto-coins-info-bot-v2) — This bot sends you actual prices of cryptocoins using info from CoinMarketCap and CryptoCompare APIs. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/cryptocoinsinfobot)
+* [CryptoKitty](https://github.com/xlanor/CryptoKitties) — Source code for a broadcast bot that scans [CryptoKitties](https://www.cryptokitties.co/) API and returns cats that matches the input parameters.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/cryptokittybot)
+* [Cryptora](https://github.com/izanmubarak/Cryptora) — gets all kinds of cryptocurrency-related data, including up-to-the-minute information from CoinMarketCap for thousands of cryptocurrencies and the latest headlines from CoinDesk. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/cryptorabot)
 * [EFB Telegram Master Channel](https://github.com/blueset/efb-telegram-master/) — A master channel for EH Forwarder Bot: an extensible chat tunneling framework that gather your IMs at one place.
-* [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) — Echoes any message and any kind of media to anonymize the forward.
+* [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) — Echoes any message and any kind of media to anonymize the forward. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/forwardscoverbot)
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
-* [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) — Allows you to play the popular card game UNO via inline queries
+* [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) — Allows you to play the popular card game UNO via inline queries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/unobot)
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) — Bot for automatic broadcasting content from different sources into channels.
-* [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood. Try it here: [@moodifyBot](http://t.me/moodifybot)
+* [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
