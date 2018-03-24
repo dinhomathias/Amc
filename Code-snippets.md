@@ -343,6 +343,7 @@ button_list = [KeyboardButton(s) for s in some_strings]
 
 This is especially useful if put inside a helper method like `get_data_buttons` to work on dynamic data and updating the menu according to user input.
 
+To handle the `callback_data`, you need to set a `CallbackQueryHandler`.
 
 #### Cached Telegram group administrator check
 If you want to limit certain bot functions to group administrators, you have to test if a user is an administrator in the group in question. This however requires an extra API request, which is why it can make sense to cache this information for a certain time, especially if your bot is very busy.
