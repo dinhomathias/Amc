@@ -511,11 +511,11 @@ def load_jobs(jq):
 
             next_t -= now  # Convert from absolute to relative time
 
-            jq.put(job, next_t)
+            jq._put(job, next_t)
 
 
 def save_jobs(jq):
-    job_tuples = jq.queue.queue
+    job_tuples = jq._queue.queue
 
     with open(JOBS_PICKLE, 'wb') as fp:
         for next_t, job in job_tuples:
