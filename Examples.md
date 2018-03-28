@@ -19,6 +19,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
+* [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers(inactive members)
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organise a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
