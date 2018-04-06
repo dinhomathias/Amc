@@ -1,4 +1,4 @@
-In case you want to practice [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development), or ensure your bot still works after consecutive changes, you should write test cases.
+In case you want to practice [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development), or ensure your bot still works after consecutive changes ([regression bugs](https://en.wikipedia.org/wiki/Software_regression) are rather common for chatbots), you should write test cases.
 
 **This page needs contribution! For now, see `test_updater.py` as a reference.**
 
