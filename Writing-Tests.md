@@ -4,6 +4,8 @@ In case you want to practice [test-driven development](https://en.wikipedia.org/
 
 ## Unit Tests
 Unit tests are performed on a logically encapsulated component of the system. The definition of unit tests in contrast to integration tests is that they have no external dependencies.
+@Eldinnie has written an initial POC of a unit test framework for python-telegram-bot, but as the library grew it was no maintained. Perhaps you might be able to help us out here and help in completing the project ;)
+https://github.com/Eldinnie/ptbtest
 
 ### Mocking
 _Placeholder_
