@@ -138,12 +138,12 @@ Use this to tell the user that something is happening on the bot's side:
 
 #### Message entities
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#messageentity)
-To use MessageEntity, extract the entities from a Message object using `get_entities`.  
+To use MessageEntity, extract the entities from a Message object using `parse_entities`.  
 
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
 
 ```python
->>> entities = message.get_entities()
+>>> entities = message.parse_entities()
 ```
 
 There are many more API methods. To read the full API documentation, visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
