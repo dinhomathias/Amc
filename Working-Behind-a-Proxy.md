@@ -10,7 +10,7 @@ TOKEN='YOUR_BOT_TOKEN'
 REQUEST_KWARGS={
     'proxy_url': 'URL_OF_THE_PROXY_SERVER',
     # Optional, if you need authentication:
-    urllib3_proxy_kwargs = {
+    'urllib3_proxy_kwargs': {
         'username': 'PROXY_USER',
         'password': 'PROXY_PASS',
     }
