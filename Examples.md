@@ -21,6 +21,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
+* [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — provides sed-like pattern-replacement commnads based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers(inactive members)
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organise a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
