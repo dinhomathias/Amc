@@ -18,11 +18,14 @@
 7. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
 8. [Related Projects](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Related-Projects)
 
+## Networking
+1. [Working Behind a Proxy](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Working-Behind-a-Proxy)
+1. [Handling network errors](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Handling-network-errors)
+
 ## Other resources
 1. [Frequently Asked Questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
 2. [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
 3. [Press](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Press)
-4. [Handling network errors](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Handling-network-errors)
 
 ## Transition Guides
 - [Version 4](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-4.0)
