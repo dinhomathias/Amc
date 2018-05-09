@@ -19,7 +19,7 @@ dp.add_handler(CommandHandler("help", help., pass_jobqueue=True, pass_args=True)
 
 to the new style using HandlerContext
 ``` python
-def start(update: Update, context, HandlerContext):
+def start(update: Update, context: HandlerContext):
     # Stuff here
     # args will be available as context.args
     # jobqueue will be available as context.jobqueue
@@ -59,7 +59,6 @@ import warnings
 from telegram.utils.deprecate import TelegramDeprecationWarning
 warnings.filterwarnings('ignore', category=TelegramDeprecationWarning)
 ```
-
 
 ***
 
