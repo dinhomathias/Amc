@@ -24,7 +24,7 @@ And add `use_context=True` so it looks like
 ```python
 updater = Updater('TOKEN', use_context=True)
 ```
-**Note that this is only necessary in version 11 of `python-telegram-bot`. Version 12 will have `use_context=True` set as default.**
+**Note that this is only necessary in version 11 of `python-telegram-bot`. Version 12 will have `use_context=True` set as default.**  
 _If you do **not** use `Updater` but only `Dispatcher` you should instead set `use_context=True` when you create the `Dispatcher`._
 
 ## Handler callbacks
