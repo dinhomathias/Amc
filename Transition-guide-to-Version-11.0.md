@@ -86,7 +86,7 @@ def like_callback(update, context): # Registered with a RegexHandler with patter
 ```
 
 ## Note about version 12
-In version 12 of `python-telegram-bot`, `use_context` will default to `True`. This means that your old handlers using pass_ will stop working. It also means that after upgrading to version 12, you can remove `use_context=True` from your `` if you so desire.
+In version 12 of `python-telegram-bot`, `use_context` will default to `True`. This means that your old handlers using pass_ will stop working. It also means that after upgrading to version 12, you can remove `use_context=True` from your `Updater` if you so desire.
 
 # Custom handlers
 This part is only relavant if you've developed custom handlers, that subclass `telegram.ext.Handler`. To support the new context based callbacks, add a method called `collect_additional_context` to your handler. The method receives a `CallbackContext` object, and should add whatever extra context is needed (at least everything that could be added via `pass_` arguments before). Note that `job_queue, update_queue, chat_data, user_data` is automatically added by the base `Handler`.
