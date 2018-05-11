@@ -13,6 +13,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
     * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
 * [Joyent Triton](https://www.joyent.com/triton)
+* [PythonAnywhere] (https://www.pythonanywhere.com)
 
 ### VPS
 * [DigitalOcean](https://www.digitalocean.com/)
