@@ -7,6 +7,9 @@
     * [Note about group and groupdict](#note-about-group-and-groupdict)
     * [Note about version 12](#note-about-version-12)
     * [Custom handlers](#custom-handlers)
+* [Handler changes](#handler-changes)
+    * [CommandHandler](#commandhandler)
+    * [PrefixHandler](#prefixhandler)
 * [Filters in handlers](#filters-in-handlers)
 
 # Context based callbacks
@@ -89,10 +92,19 @@ def like_callback(update, context): # Registered with a RegexHandler with patter
 In version 12 of `python-telegram-bot`, `use_context` will default to `True`. This means that your old handlers using pass_ will stop working. It also means that after upgrading to version 12, you can remove `use_context=True` from your `Updater` if you so desire.
 
 # Custom handlers
-This part is only relavant if you've developed custom handlers, that subclass `telegram.ext.Handler`. To support the new context based callbacks, add a method called `collect_additional_context` to your handler. The method receives a `CallbackContext` object, and should add whatever extra context is needed (at least everything that could be added via `pass_` arguments before). Note that `job_queue, update_queue, chat_data, user_data` is automatically added by the base `Handler`.
+This part is only relavant if you've developed custom handlers, that subclass `telegram.ext.Handler`. To support the new context based callbacks, add a method called `collect_additional_context` to your handler. The method receives a `CallbackContext` object and whatever is return by `check_update()`, and should add whatever extra context is needed (at least everything that could be added via `pass_` arguments before). Note that `job_queue, update_queue, chat_data, user_data` is automatically added by the base `Handler`.
 
 ***
+# Handler changes
+We made some changes to the behavior of some handlers. Listed below are the changes notable to you and maybe requires some action in your code.
 
+## CommandHandler
+From now on `CommandHandler` will only respond to [valid bot commands](https://core.telegram.org/bots#commands). It will raise `ValueError` when an invalid command is given as the `command` argument. If you previously used commands not considered valid by @botfather, you can use the new [PrefixHandler](#prefixhandler) instead.
+
+## PrefixHandler
+Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.prefixhandler.html) for more details on it's use and implementation.
+
+***
 # Filters in handlers
 Using a list of filters in a handler like below has been deprecated for a while now. Version 11 removes the ability completely.
 ``` python
