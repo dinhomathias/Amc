@@ -10,6 +10,7 @@
 * [Handler changes](#handler-changes)
     * [CommandHandler](#commandhandler)
     * [PrefixHandler](#prefixhandler)
+    * [MessageHandler](#messagehandler)
 * [Filters in handlers](#filters-in-handlers)
 
 # Context based callbacks
@@ -100,9 +101,13 @@ We made some changes to the behavior of some handlers. Listed below are the chan
 
 ## CommandHandler
 From now on `CommandHandler` will only respond to [valid bot commands](https://core.telegram.org/bots#commands). It will raise `ValueError` when an invalid command is given as the `command` argument. If you previously used commands not considered valid by @botfather, you can use the new [PrefixHandler](#prefixhandler) instead.
+In addition `allow_edited` is deprecated until V12, when it will be removed. The new default behavior is to accept both `message` and `edited_message` with a valid command. If you would like to exclude edited message from your CommandHandler pass `filters=~Filters.update_type.edited_message` to the constructor.
 
 ## PrefixHandler
 Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.prefixhandler.html) for more details on it's use and implementation.
+
+## MessageHandler
+`MessageHandler` received some upgrades to switch to the filter system. We've removed `allow_edited` which has been deprecated for a while. Also we now deprecated `message_updates`, `channel_post_updates` and `edited_updates` in the constructor. The defaults remain the same (not edited messages and channel_posts). To tweak the message you receive with MessageHandler, please use the [update_type filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.update_type).
 
 ***
 # Filters in handlers
