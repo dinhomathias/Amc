@@ -86,9 +86,11 @@ If the bot has a chat with the user, it will send the message to that chat.
 >>> bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
 ```
 
+**Note:** `send_message` method (as any of `send_*` methods of `Bot` class) returns the instance of `Message` class, so it can be used in code later.
+
 #### Reply to a message
 
-This is a shortcut to `bot.send_message` with sane defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
+This is a shortcut to `bot.send_message` with same defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
 
 ```python
 >>> update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
