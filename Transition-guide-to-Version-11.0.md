@@ -107,7 +107,7 @@ In addition `allow_edited` is deprecated until V12, when it will be removed. The
 Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.prefixhandler.html) for more details on it's use and implementation.
 
 ## MessageHandler
-`MessageHandler` received some upgrades to switch to the filter system. We've removed `allow_edited` which has been deprecated for a while. Also we now deprecated `message_updates`, `channel_post_updates` and `edited_updates` in the constructor. The defaults remain the same (not edited messages and channel_posts). To tweak the message you receive with MessageHandler, please use the [update_type filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.update_type).
+`MessageHandler` received some upgrades to switch to the filter system. We've removed `allow_edited` which has been deprecated for a while. Also we now deprecated `message_updates`, `channel_post_updates` and `edited_updates` in the constructor. The defaults remain the same (not edited messages and channel_posts). To tweak the message you receive with MessageHandler, please use the [updates filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.updates).
 
 ***
 # Filters in handlers
