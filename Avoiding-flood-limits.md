@@ -72,11 +72,14 @@ class MQBot(telegram.bot.Bot):
 
 if __name__ == '__main__':
     from telegram.ext import MessageHandler, Filters
+    from telegram.utils.request import Request
     import os
     token = os.environ.get('TOKEN') or open('token.txt').read().strip()
     # for test purposes limit global throughput to 3 messages per 3 seconds
     q = mq.MessageQueue(all_burst_limit=3, all_time_limit_ms=3000)
-    testbot = MQBot(token, mqueue=q)
+    # set connection pool size for bot 
+    request = Request(con_pool_size=8)
+    testbot = MQBot(token, request=request, mqueue=q)
     upd = telegram.ext.updater.Updater(bot=testbot)
 
     def reply(bot, update):
