@@ -13,7 +13,7 @@ _Placeholder_
 ## Integration Tests
 In contrast to unit tests, integration tests may test the system in its eventual environment together with service integrations, such as the Bot API.
 
-In order to test your bot the same way your users will, you can make use of a [userbot](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) library that will send messages to your bot and evaluate whether it responds in the way it should. The best choices for Python are [Telethon](https://github.com/LonamiWebs/Telethon) and [Pyrogram](https://github.com/LonamiWebs/Telethon).
+In order to test your bot the same way your users will, you can make use of a [userbot](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) library that will send messages to your bot and evaluate whether it responds in the way it should. The best choices for Python are [Telethon](https://github.com/LonamiWebs/Telethon) and [Pyrogram](https://github.com/pyrogram/pyrogram).
 
 Once you have picked a userbot library and set it up, it is time to build an abstraction around the test capabilities you want to use. Common examples include methods such as `send_message_await_response` and `click_button`, as these functionalities don't come included with the libraries.
 Ideally, we would be able to give you a fully functional integration test framework, but no open source solutions exist so far.
