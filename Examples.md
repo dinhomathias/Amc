@@ -15,12 +15,13 @@ Bots built using the `telegram.ext.Updater` class.
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) — Allows you to play the popular card game UNO via inline queries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/unobot)
-* [memes-reposter](https://github.com/vaniakosmos/memes-reposter) — Bot for automatic broadcasting content from different sources into channels.
+* [memes-reposter](https://github.com/vaniakosmos/memes-reposter) — Bot for automatic broadcasting content from different sources (such as reddit or imgur) into telegram channels.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
+* [rss2tg](https://github.com/vaniakosmos/rss2tg) - kinda rss client for telegram (django + celery + ptb)
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commnads based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
 * [@someone bot](https://github.com/zeroone2numeral2/someone-bot) — Bot that randomly mentions people when @someone is used [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/randmentionbot)
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers(inactive members)
