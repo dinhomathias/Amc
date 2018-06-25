@@ -30,6 +30,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [teleGit Bot](https://github.com/HeavenH/teleGit) — A bot to list the github repositories, show users information.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) — Lets you pick a timezone. This bot also uses a class for its design pattern.
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) — Trade crypto-currencies on the Kraken marketplace
+* [Twitter-lists-bot](https://github.com/lytves/twitter-lists-bot) - a bot to resend your twitter list notifications
 * [Url-Shortener-Bot](https://github.com/paradox70/url-shortener-goo.gl) — Shortens any URL and reports total number of clicks on shortened link. Try it [@shortenMyUrlBot](http://t.me/shortenMyUrlBot)
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
