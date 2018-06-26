@@ -8,11 +8,11 @@ For full details see the official Telegram documentation at [Bots: An introducti
 
 To get a feeling for the API and how to use it with `python-telegram-bot`, **please open a Python command line** and follow the next few steps.
 
-First, create an instance of the `telegram.Bot`. `'TOKEN'` should be replaced by the API token you received from `@BotFather`:
+First, create an instance of the `telegram.Bot`. `'556554949:AAHq93byBZfXHEwUlnJqfn7Vxt61rMMpgi8'` should be replaced by the API token you received from `@BotFather`:
 
 ```python
 >>> import telegram
->>> bot = telegram.Bot(token='TOKEN')
+>>> bot = telegram.Bot(token='556554949:AAHq93byBZfXHEwUlnJqfn7Vxt61rMMpgi8')
 ```
 
 To check if your credentials are correct, call the [getMe](https://core.telegram.org/bots/api#getme) API method:
