@@ -34,7 +34,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Url-Shortener-Bot](https://github.com/paradox70/url-shortener-goo.gl) — Shortens any URL and reports total number of clicks on shortened link. Try it [@shortenMyUrlBot](http://t.me/shortenMyUrlBot)
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
-* [VoZBot](https://github.com/trinhvv/VoZBot) — Technical analysis based chatbot using TA-lib, python-telegram-bot and heroku cloud deployment.
+* [VoZBot](https://t.me/VietnamOzBot) — Technical analysis based chatbot using TA-lib, python-telegram-bot and heroku cloud deployment.
 
 # API
 Bots using the raw API.
