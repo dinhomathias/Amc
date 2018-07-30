@@ -17,6 +17,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) — Allows you to play the popular card game UNO via inline queries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/unobot)
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) — Bot for automatic broadcasting content from different sources (such as reddit or imgur) into telegram channels.
+* [ML monitoring helper](https://github.com/snk4tr/ML-monitoring-helper) - Bot for convenient managment of learning process on one or more remote machines.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
