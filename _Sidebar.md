@@ -15,8 +15,9 @@
 4. [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks)
 5. [Writing Tests](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Writing-Tests)
 6. [Emoji](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Emoji)
-7. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
-8. [Related Projects](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Related-Projects)
+7. [Telegram Passport](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Telegram-Passport)
+8. [Examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
+9. [Related Projects](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Related-Projects)
 
 ## Networking
 1. [Working Behind a Proxy](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Working-Behind-a-Proxy)
