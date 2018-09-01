@@ -67,12 +67,12 @@ Telegram.Passport.createAuthButton('telegram_passport_auth', {
     bot_id:       BOT_ID, // YOUR BOT ID
     scope:        {data: [{type: 'id_document', selfie: true}, 'address_document', 'phone_number', 'email'], v: 1}, // WHAT DATA YOU WANT TO RECEIVE
     public_key:   '-----BEGIN PUBLIC KEY----- ...', // YOUR PUBLIC KEY
-    payload:      'thisisatest', // YOUR BOT WILL RECEIVE THIS DATA WITH THE REQUEST
+    nonce:      'thisisatest', // YOUR BOT WILL RECEIVE THIS DATA WITH THE REQUEST
     callback_url: 'https://example.org' // TELEGRAM WILL SEND YOUR USER BACK TO THIS URL
 });
 ```
 
-Note: For security purposes you should generate a random payload for each user that visits your site, and ALWAYS verify it with your bot when you receive the passport data. If your site has a python backend something like [itsdangerous](https://pythonhosted.org/itsdangerous/) could come in handy - otherwise other HMAC signing methods should be safe too.
+Note: For security purposes you should generate a random nonce for each user that visits your site, and ALWAYS verify it with your bot when you receive the passport data. If your site has a python backend something like [itsdangerous](https://pythonhosted.org/itsdangerous/) could come in handy - otherwise other HMAC signing methods should be safe too.
 
 Note: For simple testing using `https://example.org` as the callback_url is fine, but on real sites, this should be set to a url where users will be notified that they've been logged in successfully - after your bot has verified the passport data of course.
 
