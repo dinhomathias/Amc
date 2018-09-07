@@ -28,7 +28,7 @@ And add `use_context=True` so it looks like
 ```python
 updater = Updater('TOKEN', use_context=True)
 ```
-**Note that this is only necessary in version 11 of `python-telegram-bot`. Version 12 will have `use_context=True` set as default.**  
+**Note that this is only necessary in version 12 of `python-telegram-bot`. Version 13 will have `use_context=True` set as default.**  
 _If you do **not** use `Updater` but only `Dispatcher` you should instead set `use_context=True` when you create the `Dispatcher`._
 
 ## Handler callbacks
@@ -78,7 +78,7 @@ _Note that both bot, and job have been merged into the `CallbackContext` object.
 `CallbackContext` is an object that contains all the extra context information regarding an update. It replaces the old behaviour with having a ton of `pass_something=True` in your handlers. Instead, all this data is availible directly on the `CallbackContext` - always!
 
 ## Note about groups and groupdict
-Before version 11, you could both pass_groups and pass_groupdict. Inside `CallbackContext` this has been combined into a single `Match` object. Therefore if your handler looked like this before:
+Before version 12, you could both pass_groups and pass_groupdict. Inside `CallbackContext` this has been combined into a single `Match` object. Therefore if your handler looked like this before:
 ``` python
 def like_callback(bot, update, groups, groupdict): # Registered with a RegexHandler with pattern (?i)i (like|dislike) (?P<thing>.*)
     update.reply_text('You {} {}'.format(groups[1], groupdict['thing'])
@@ -111,7 +111,7 @@ Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot
 
 ***
 # Filters in handlers
-Using a list of filters in a handler like below has been deprecated for a while now. Version 11 removes the ability completely.
+Using a list of filters in a handler like below has been deprecated for a while now. Version 12 removes the ability completely.
 ``` python
 MessageHandler([Filters.audio, Filters.video], your_callback)
 ```
