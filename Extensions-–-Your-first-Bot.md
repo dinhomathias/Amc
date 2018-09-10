@@ -18,23 +18,23 @@ So, *let's get started!* Again, please fire up a Python command line if you want
 First, you have to create an `Updater` object. Replace `'TOKEN'` with your Bot's API token.
 
 ```python
->>> from telegram.ext import Updater
->>> updater = Updater(token='TOKEN')
+from telegram.ext import Updater
+updater = Updater(token='TOKEN')
 ```
 **Related docs:** [telegram.ext.Updater](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.updater.Updater)
 
 For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
 
 ```python
->>> dispatcher = updater.dispatcher
+dispatcher = updater.dispatcher
 ```
 
 This is a good time to set up the `logging` module, so you will know when (and why) things don't work as expected:
 
 ```python
->>> import logging
->>> logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-...                     level=logging.INFO)
+import logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                     level=logging.INFO)
 ```
 
 **Note:** Read the article on [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling) if you want to learn more.
@@ -42,24 +42,24 @@ This is a good time to set up the `logging` module, so you will know when (and w
 Now, you can define a function that should process a specific type of update:
 
 ```python
->>> def start(bot, update):
-...     bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
+def start(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
 ```
 **Related docs:** [sendMessage](https://core.telegram.org/bots/api#sendmessage)
 
 The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command. To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` subclasses) and register it in the dispatcher:
 
 ```python
->>> from telegram.ext import CommandHandler
->>> start_handler = CommandHandler('start', start)
->>> dispatcher.add_handler(start_handler)
+from telegram.ext import CommandHandler
+start_handler = CommandHandler('start', start)
+dispatcher.add_handler(start_handler)
 ```
 **Related docs:** [telegram.ext.CommandHandler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.commandhandler.html), [telegram.ext.Dispatcher.add_handler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dispatcher.html#telegram.ext.dispatcher.Dispatcher.add_handler)
 
 And that's all you need. To start the bot, run:
 
 ```python
->>> updater.start_polling()
+updater.start_polling()
 ```
 **Related docs:** [telegram.ext.Updater.start_polling](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.updater.Updater.start_polling)
 
@@ -68,12 +68,12 @@ Give it a try! Start a chat with your bot and issue the `/start` command - if al
 But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo to all text messages:
 
 ```python
->>> def echo(bot, update):
-...     bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
-...
->>> from telegram.ext import MessageHandler, Filters
->>> echo_handler = MessageHandler(Filters.text, echo)
->>> dispatcher.add_handler(echo_handler)
+def echo(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
+
+from telegram.ext import MessageHandler, Filters
+echo_handler = MessageHandler(Filters.text, echo)
+dispatcher.add_handler(echo_handler)
 ```
 **Related docs:** [telegram.ext.MessageHandler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagehandler.html)
 
@@ -86,12 +86,12 @@ From now on, your bot should echo all non-command messages it receives.
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS. To make things easy, you can receive the arguments (as a `list`, split on spaces) that were passed to a command in the callback function:
 
 ```python
->>> def caps(bot, update, args):
-...     text_caps = ' '.join(args).upper()
-...     bot.send_message(chat_id=update.message.chat_id, text=text_caps)
-...
->>> caps_handler = CommandHandler('caps', caps, pass_args=True)
->>> dispatcher.add_handler(caps_handler)
+def caps(bot, update, args):
+    text_caps = ' '.join(args).upper()
+    bot.send_message(chat_id=update.message.chat_id, text=text_caps)
+
+caps_handler = CommandHandler('caps', caps, pass_args=True)
+dispatcher.add_handler(caps_handler)
 ```
 
 **Note:** Take a look at the `pass_args=True` in the `CommandHandler` initiation. This is required to let the handler know that you want it to pass the list of command arguments to the callback. All handler classes have keyword arguments like this. Some are the same among all handlers, some are specific to the handler class. If you use a new type of handler for the first time, look it up in the docs and see if one of them is useful to you.
@@ -101,24 +101,24 @@ Another cool feature of the Telegram Bot API is the [inline mode](https://core.t
 As your bot is obviously a very loud one, let's continue with this theme for inline. You probably know the process by now, but there are a number of new types used here, so pay some attention:
 
 ```python
->>> from telegram import InlineQueryResultArticle, InputTextMessageContent
->>> def inline_caps(bot, update):
-...     query = update.inline_query.query
-...     if not query:
-...         return
-...     results = list()
-...     results.append(
-...         InlineQueryResultArticle(
-...             id=query.upper(),
-...             title='Caps',
-...             input_message_content=InputTextMessageContent(query.upper())
-...         )
-...     )
-...     bot.answer_inline_query(update.inline_query.id, results)
-...
->>> from telegram.ext import InlineQueryHandler
->>> inline_caps_handler = InlineQueryHandler(inline_caps)
->>> dispatcher.add_handler(inline_caps_handler)
+from telegram import InlineQueryResultArticle, InputTextMessageContent
+def inline_caps(bot, update):
+    query = update.inline_query.query
+    if not query:
+        return
+    results = list()
+    results.append(
+        InlineQueryResultArticle(
+            id=query.upper(),
+            title='Caps',
+            input_message_content=InputTextMessageContent(query.upper())
+        )
+    )
+    bot.answer_inline_query(update.inline_query.id, results)
+
+from telegram.ext import InlineQueryHandler
+inline_caps_handler = InlineQueryHandler(inline_caps)
+dispatcher.add_handler(inline_caps_handler)
 ```
 **Related docs:** [telegram.ext.InlineQueryHandler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.inlinequeryhandler.html), [answerInlineQuery](https://core.telegram.org/bots/api#answerinlinequery)
 
@@ -127,11 +127,11 @@ Not bad! Your Bot can now yell on command (ha!) and via inline mode.
 Some confused users might try to send commands to the bot that it doesn't understand, so you can use a `MessageHandler` with a `command` filter to reply to all commands that were not recognized by the previous handlers. 
 
 ```python
->>> def unknown(bot, update):
-...     bot.send_message(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
-...
->>> unknown_handler = MessageHandler(Filters.command, unknown)
->>> dispatcher.add_handler(unknown_handler)
+def unknown(bot, update):
+    bot.send_message(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
+
+unknown_handler = MessageHandler(Filters.command, unknown)
+dispatcher.add_handler(unknown_handler)
 ```
 
 **Note:** This handler *must* be added last. If you added it sooner, it would be triggered before the `CommandHandlers` had a chance to look at the update. Once an update is handled, all further handlers are ignored. To circumvent this, you can pass the keyword argument `group (int)` to `add_handler` with a value other than 0.
@@ -139,7 +139,7 @@ Some confused users might try to send commands to the bot that it doesn't unders
 If you're done playing around, stop the bot with:
 
 ```python
->>> updater.stop()
+updater.stop()
 ```
 
 **Note:** As you have read earlier, the `Updater` runs in a separate thread. That is very nice for this tutorial, but if you are writing a script, you probably want to stop the Bot by pressing Ctrl+C or sending a signal to the Bot process. To do that, use `updater.idle()`. It blocks execution until one of those two things occur, then calls `updater.stop()` and then continues execution of the script.
