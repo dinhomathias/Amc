@@ -517,7 +517,10 @@ def load_jobs(jq):
 
 
 def save_jobs(jq):
-    job_tuples = jq._queue.queue
+    if jq:
+        job_tuples = jq._queue.queue
+    else:
+        job_tuples = []
 
     with open(JOBS_PICKLE, 'wb') as fp:
         for next_t, job in job_tuples:
