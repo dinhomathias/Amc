@@ -23,7 +23,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
-* [rss2tg](https://github.com/vaniakosmos/rss2tg) - kinda rss client for telegram (django + celery + ptb)
 * [Shortlink Revealer Bot](https://github.com/domestic2citsemod/shortlink-revealer-bot) - Send a shortlink to the bot and he will reveal you the real link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/Shortlink_Revealer_Bot)
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commnads based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
 * [Sex Roulette Bot](https://github.com/domestic2citsemod/sex-roulette-bot) - With this bot you can have fun with your partner. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SexRouletteBot_bot)
