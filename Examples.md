@@ -24,11 +24,12 @@ Bots built using the `telegram.ext.Updater` class.
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
 * [rss2tg](https://github.com/vaniakosmos/rss2tg) - kinda rss client for telegram (django + celery + ptb)
-* [Shortlink Revealer Bot](https://github.com/domestic2citsemod/shortlink-revealer-bot) - Send a shortlink to the bot and he will reveal you the real link. [Try it on telegram!](https://t.me/Shortlink_Revealer_Bot)
+* [Shortlink Revealer Bot](https://github.com/domestic2citsemod/shortlink-revealer-bot) - Send a shortlink to the bot and he will reveal you the real link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/Shortlink_Revealer_Bot)
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commnads based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
 * [Sex Roulette Bot](https://github.com/domestic2citsemod/sex-roulette-bot) - With this bot you can have fun with your partner. [Try it on telegram!](https://t.me/SexRouletteBot_bot)
 * [@someone bot](https://github.com/zeroone2numeral2/someone-bot) — Bot that randomly mentions people when @someone is used [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/randmentionbot)
-* [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers(inactive members)
+* [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers (inactive members)
+* [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organise a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
 * [teleGit Bot](https://github.com/HeavenH/teleGit) — A bot to list the github repositories, show users information.
