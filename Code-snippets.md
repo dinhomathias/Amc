@@ -105,6 +105,26 @@ Use this to tell the user that something is happening on the bot's side:
 ```python
 >>> bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
 ```
+Alternatively, if you have several commands and don't want to repeat the above code snippet inside all commands, you can copy the snippet below and just decorate the callback functions with `@send_typing_action`.
+
+```python
+from functools import wraps
+
+def send_typing_action(func):
+    """Sends typing action while processing func command."""
+
+    @wraps(func)
+    def command_func(*args, **kwargs):
+        bot, update = args
+        bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.TYPING)
+        func(bot, update, **kwargs)
+
+    return command_func
+
+@send_typing_action
+def my_handler(bot, update):
+    pass # Will send 'typing' action while processing the request.
+```
 
 #### Requesting location and contact from user
 
@@ -300,6 +320,51 @@ Add a `@restricted` decorator on top of your handler declaration:
 def my_handler(bot, update):
     pass  # only accessible if `user_id` is in `LIST_OF_ADMINS`.
 ```
+---
+
+#### Send action while handling command (decorator)
+This parametrized decorator allows you to signal different actions depending on the type of response of your bot. This way users will have similar feedback from your bot as they would from a real human. 
+```python
+from functools import wraps
+from telegram import ChatAction
+
+def send_action(action):
+    """Sends `action` while processing func command."""
+
+    def decorator(func):
+        @wraps(func)
+        def command_func(*args, **kwargs):
+            bot, update = args
+            bot.send_chat_action(chat_id=update.message.chat_id, action=action)
+            func(bot, update, **kwargs)
+        return command_func
+    
+    return decorator
+```
+##### Usage
+![Result](https://i.imgur.com/ErBKSS4.png)
+
+You can decorate handler callbacks directly with `@send_action(ChatAction.<Action>)` or create aliases and decorate with them (more readable) .
+```python
+send_typing_action = send_action(ChatAction.TYPING)
+send_upload_video_action = send_action(ChatAction.UPLOAD_VIDEO)
+send_upload_photo_action = send_action(ChatAction.UPLOAD_PHOTO)
+```
+With the above aliases, the following decorators are equivalent
+```python
+@send_typing_action
+def my_handler(bot, update):
+    pass  # user will see 'typing' while your bot is handling the request.
+    
+@send_action(ChatAction.TYPING)
+def my_handler(bot, update):
+    pass  # user will see 'typing' while your bot is handling the request.
+```
+All possible actions are documented [here](https://core.telegram.org/bots/api#sendchataction).
+
+---
+
+
 
 #### Build a menu with Buttons
 
