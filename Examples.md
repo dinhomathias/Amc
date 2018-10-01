@@ -13,6 +13,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [EFB Telegram Master Channel](https://github.com/blueset/efb-telegram-master/) — A master channel for EH Forwarder Bot: an extensible chat tunneling framework that gather your IMs at one place.
 * [ETHdroidBot](https://github.com/lytves/ETHdroidBot) — A telegram bot to control balance of Ethereum and ERC tokens on yours wallets. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/ETHdroidBot)
 * [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) — Echoes any message and any kind of media to anonymize the forward. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/forwardscoverbot)
+* [Hera](https://github.com/xlanor/SIM-UoW-Timetable-bot) - A specialised telegram bot to scrape students timetables from the SIMConnect portal. I'm adding it here because I couldn't find any examples of bots using celery to delegate tasks.
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) — Allows you to play the popular card game UNO via inline queries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/unobot)
