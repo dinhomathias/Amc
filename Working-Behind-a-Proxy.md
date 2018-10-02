@@ -4,15 +4,17 @@ PTB will obtain its proxy configuration in the following order (the first to be 
 2. Using `HTTPS_PROXY` environment variable.
 3. Using `https_proxy` environment variable.
 
-# Programmatic Setting a Proxy Server
+# Setting a HTTP Proxy Server
 ```python
+# Make sure to import required function
+from urllib3 import make_headers
+
 TOKEN='YOUR_BOT_TOKEN'
 REQUEST_KWARGS={
-    'proxy_url': 'URL_OF_THE_PROXY_SERVER',
+    'proxy_url': 'http://PROXY_HOST:PROXY_PORT/',
     # Optional, if you need authentication:
     'urllib3_proxy_kwargs': {
-        'username': 'PROXY_USER',
-        'password': 'PROXY_PASS',
+        'proxy_headers': make_headers(proxy_basic_auth='username:password'),
     }
 }
 
@@ -25,3 +27,13 @@ To install:
 ```bash
 pip install python-telegram-bot[socks]
 ```
+```python
+TOKEN='YOUR_BOT_TOKEN'
+REQUEST_KWARGS={
+    'proxy_url': 'socks5://URL_OF_THE_PROXY_SERVER',
+    # Optional, if you need authentication:
+    'urllib3_proxy_kwargs': {
+        'username': 'PROXY_USER',
+        'password': 'PROXY_PASS',
+    }
+}
