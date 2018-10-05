@@ -4,18 +4,16 @@ PTB will obtain its proxy configuration in the following order (the first to be 
 2. Using `HTTPS_PROXY` environment variable.
 3. Using `https_proxy` environment variable.
 
-# Setting a HTTP Proxy Server
+# Setting a HTTP Proxy Server Programmatically
 ```python
 # Make sure to import required function
-from urllib3 import make_headers
 
 TOKEN='YOUR_BOT_TOKEN'
 REQUEST_KWARGS={
     'proxy_url': 'http://PROXY_HOST:PROXY_PORT/',
     # Optional, if you need authentication:
-    'urllib3_proxy_kwargs': {
-        'proxy_headers': make_headers(proxy_basic_auth='username:password'),
-    }
+    'username': 'PROXY_USER',
+    'password': 'PROXY_PASS',
 }
 
 updater = Updater(TOKEN, request_kwargs=REQUEST_KWARGS)
