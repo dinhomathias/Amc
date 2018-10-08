@@ -196,12 +196,14 @@ There are many more API methods. To read the full API documentation, visit the [
 ```
 
 #### Post a gif from a URL (send_animation)
-Documentation: 
-https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_animation
+[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendanimation)
 
 ```python
 >>> bot.send_animation(chat_id, animation, duration=None, width=None, height=None, thumb=None, caption=None, parse_mode=None, disable_notification=False, reply_to_message_id=None, reply_markup=None, timeout=20, **kwargs)
 ```
+Documentation: 
+https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_animation
+
 
 
 #### Post an audio from disk
