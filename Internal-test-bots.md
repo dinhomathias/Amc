@@ -37,6 +37,9 @@ The token for the new bot will be shown.
 `# @{bot_username}`  
 `# Enable`  
 
+### Allow the bot to talk to you
+Search for the bot, and press the `Start` button
+
 ### Add it to the developer group
 `>>> telegram.Bot() - Developers`
 
