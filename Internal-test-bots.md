@@ -4,8 +4,8 @@
 ```
 CI = AppVeyor|Travis
 py_platform = CPython|PyPy
-py_version = 27|34|35|36|37
-bot_username = ptb_{CI.lower()}_{py_platform.lower()}_{py_version.lower()}_tests_bot
+py_version = 2.7|3.4|3.5|3.6|3.7
+bot_username = ptb_{CI.lower()}_{py_platform.lower()}_{py_version.replace('.', '')}_tests_bot
 ```
 
 ## Setup a new bot
