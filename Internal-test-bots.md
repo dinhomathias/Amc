@@ -10,8 +10,8 @@ bot_username = ptb_{CI.lower()}_{py_platform.lower()}_{py_version.lower()}_testb
 
 ## Setup a new bot
 
-`#` means *send a message to @BotFather*
-`%` means *click button in inlinekeyboard*
+`#` means *send a message to @BotFather*  
+`%` means *click button in inlinekeyboard*  
 
 ### Create the bot
 
