@@ -37,6 +37,13 @@ The token for the new bot will be shown.
 `# @{bot_username}`  
 `# Enable`  
 
+### Add it to the developer group
+`>>> telegram.Bot() - Developers`
+
+### Add it to the testing channel
+[`>>> telegram.Bot() - Tests`](https://t.me/pythontelegrambottests)
+
+
 ### Turn on inline so we can create a game for the bot
 
 `# /set_inline`  
