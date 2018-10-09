@@ -52,7 +52,7 @@ The token for the new bot will be shown.
 ### Payment
 Now we need to setup payment. This can only be done via the beta /mybots interface.
 
-`#mybots`  
+`# /mybots`  
 `% @{bot_username}`  
 `% Payments`  
 `% Stripe` *(might have a flag in front, depending on your country)*  
