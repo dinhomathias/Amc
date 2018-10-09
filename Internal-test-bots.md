@@ -16,7 +16,7 @@ bot_username = ptb_{CI.lower()}_{py_platform.lower()}_{py_version.replace('.', '
 ### Create the bot
 
 `# /newbot`  
-`# Python-telegram-bot tests on {CI} {py_platform} {py_version}` *(Bot name)*  
+`# Python-telegram-bot tests on {CI} using {py_platform} {py_version}` *(Bot name)*  
 `# {bot_username}` *(Bot username)*  
 
 The token for the new bot will be shown.
