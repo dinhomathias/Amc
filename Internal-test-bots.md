@@ -31,6 +31,12 @@ The token for the new bot will be shown.
 `# @{bot_username}`  
 `# This bot is only for running tests for python-telegram-bot and has no actual functionality.`  
 
+### Make sure it can join groups
+
+`# /setjoingroups`
+`# @{bot_username}`
+`# Enable`
+
 ### Turn on inline so we can create a game for the bot
 
 `# /set_inline`  
