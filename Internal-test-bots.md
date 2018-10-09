@@ -33,9 +33,9 @@ The token for the new bot will be shown.
 
 ### Make sure it can join groups
 
-`# /setjoingroups`
-`# @{bot_username}`
-`# Enable`
+`# /setjoingroups`  
+`# @{bot_username}`  
+`# Enable`  
 
 ### Turn on inline so we can create a game for the bot
 
