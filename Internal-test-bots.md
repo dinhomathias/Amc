@@ -35,7 +35,7 @@ The token for the new bot will be shown.
 
 `# /set_inline`  
 `# @{bot_username}`  
-`# This bot is only for running tests. {CI} {py_platform} {py_version}`  
+`# This bot is only for running tests.`  
 
 ### Create a game for the bot
 
