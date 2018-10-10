@@ -13,6 +13,5 @@ Please try to keep this page up-to-date.
 | [permabots](https://github.com/jlmadurga/permabots) | Connect instant messaging bots to your APIs. http://www.permabots.com | 4.2.0 | Beta |
 | [python-telegram-bot-seed](https://github.com/alesanmed/python-telegram-bot-seed) | Seed project for developing bots using python-telegram-bot | 10.1.0 | Pre-Alpha |
 | [telegram-send](https://github.com/rahiel/telegram-send) | Send messages and files over Telegram from the command-line | >=2.9 | Beta |
-| [telegram-send](https://github.com/rahiel/telegram-send) | Send messages and files over Telegram from the command-line | >=2.9 | Beta |
 | [telegram.bot](https://github.com/ebeneditos/telegram.bot) | Develop a Telegram Bot with R | >=4.0.1 | Beta |
 | [flexget](https://github.com/Flexget/Flexget)| Use telegram as a notifier | 3.4 | Stable
