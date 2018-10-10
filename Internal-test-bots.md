@@ -7,6 +7,9 @@ py_platform = CPython|PyPy
 py_version = 2.7|3.4|3.5|3.6|3.7
 bot_username = ptb_{CI.lower()}_{py_platform.lower()}_{py_version.replace('.', '')}_bot
 ```
+## Script
+[Here](https://gist.github.com/jsmnbom/2e8044ca5cc55813a0e0380ad375b320) is a script that does all the setup below in a semi automated way using Telethon.
+
 
 ## Setup a new bot
 
