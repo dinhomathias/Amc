@@ -31,8 +31,9 @@ The argument passing described above works exactly the same when the user clicks
 
 [https://t.me/roolsbot?start=Hello_World!](https://t.me/roolsbot?start=Hello_World!)
 
-Clicking this link will open your Telegram Client and show a big START button. When it is pressed, the URL parameters "Hello World!" will be passed on to the `args` of your /start callback.
+Clicking this link will open your Telegram Client and show a big START button. When it is pressed, the URL parameters "Hello_World!" will be passed on to the `args` of your /start callback.
 
+Note that since telegram doesn't support spaces in deep linking parameters, you will have to manually split the single `Hello_World` argument, into `["Hello", "World!"]` (using `args[0].split('_')` for example)
 
 ## Pattern matching: The RegexHandler
 
