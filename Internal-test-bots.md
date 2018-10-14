@@ -89,7 +89,8 @@ Now we need to setup payment. This can only be done via the beta /mybots interfa
 
 The payment provider token should be displayed in the last message.
 
-# Create a sticker set for the bot
+### Create a sticker set for the bot
+
 We need to use the bot api to do this.
 ```
 me_id = YOURUSERID
