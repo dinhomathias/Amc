@@ -24,6 +24,9 @@ bot_username = ptb_{CI.lower()}_{py_platform.lower()}_{py_version.replace('.', '
 
 The token for the new bot will be shown.
 
+### Allow the bot to talk to you
+Search for the bot, and press the `Start` button
+
 ### Set texts in case a user stumbles upon the bot
 
 `# /set_description`  
@@ -40,15 +43,17 @@ The token for the new bot will be shown.
 `# @{bot_username}`  
 `# Enable`  
 
-### Allow the bot to talk to you
-Search for the bot, and press the `Start` button
-
 ### Add it to the developer group
 `>>> telegram.Bot() - Developers`
 
 ### Add it to the testing channel
 [`>>> telegram.Bot() - Tests`](https://t.me/pythontelegrambottests)
 
+### Make sure it can not join groups anymore
+
+`# /setjoingroups`  
+`# @{bot_username}`  
+`# Disable` 
 
 ### Turn on inline so we can create a game for the bot
 
@@ -84,4 +89,17 @@ Now we need to setup payment. This can only be done via the beta /mybots interfa
 
 The payment provider token should be displayed in the last message.
 
+# Create a sticker set for the bot
+We need to use the bot api to do this.
+```
+me_id = YOURUSERID
+sticker_set_name = 'test_by_{username}
+sticker_set_title = 'Test',
+sticker = 'tests/data/telegram_sticker.png',
+sticker_emoji = '😄'
 
+bot = telegram.Bot(token)
+with open(sticker, 'rb') as f:
+    assert bot.create_new_sticker_set(me.id, sticker_set_name, sticker_set_title,
+                                      f, sticker_emoji)
+```
