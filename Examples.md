@@ -33,6 +33,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
 * [teleGit Bot](https://github.com/HeavenH/teleGit) — A bot to list the github repositories, show users information.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) — Lets you pick a timezone. This bot also uses a class for its design pattern.
+* [Telegram-Facebook-bot](https://github.com/MorenK1/telegram-facebook-bot/blob/master/README.md) - a botto load content from Facebok pages and send it to Telegram channels
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) — Trade crypto-currencies on the Kraken marketplace
 * [Twitter-lists-bot](https://github.com/lytves/twitter-lists-bot) - a bot to resend your twitter list notifications
 * [Url-Shortener-Bot](https://github.com/paradox70/url-shortener-goo.gl) — Shortens any URL and reports total number of clicks on shortened link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/shortenMyUrlBot)
