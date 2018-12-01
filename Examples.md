@@ -4,6 +4,7 @@ A non-exhaustive list of open source bots built on `python-telegram-bot` in the 
 Bots built using the `telegram.ext.Updater` class.
 
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
+* [AmbroBot](https://github.com/Ambro17/AmbroBot) — This bot can search series or movies by name and lets you download them, it can also list latest yts movies, lets you set reminders, solve linear equations and a few other neat things [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CuervoBot)
 * [Bitcoin Cash Explorer Bot](https://github.com/domestic2citsemod/bitcoincash-explorer-bot) - With this bot you can explore the bitcoincash blockchain in easy way on telegram. [Try it on telegram!](https://t.me/BitcoinCashExplorer_bot)
 * [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/blackjackbot)
 * [BotAgainstHumanity](https://gitlab.com/OctoNezd/bot_against_humanity) - a clone of "Cards Against Humanity" for telegram [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/humanity_against_bot)
