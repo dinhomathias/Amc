@@ -26,3 +26,7 @@ From the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#what-mes
 > Bots talking to each other could potentially get stuck in unwelcome loops. To avoid this, we decided that bots will not be able to see messages from other bots regardless of mode.
 >
 ***
+
+### Can my bot delete messages from the user in a private chat?
+
+No.
