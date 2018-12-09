@@ -29,6 +29,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Remove a custom keyboard](#remove-a-custom-keyboard)
   * [Other useful stuff](#other-useful-stuff)
     + [Generate flag emojis from country codes](#generate-flag-emojis-from-country-codes)
+    + [Get the add group message](#get-the-add-group-message)
 - [Advanced snippets](#advanced-snippets)
     + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
       - [Usage](#usage)
@@ -297,6 +298,21 @@ The Unicode flag emoji for any country can by definition be calculated from the 
 >>> flag('ru')
 '🇷🇺'
 >>>
+```
+
+#### Get the add group message
+```
+class NewMember(BaseFilter):
+      def filter(self, message):
+          if not message.new_chat_members:
+              return False
+          return True
+
+def add_group(bot, update):
+    for members in update.message.new_chat_members:
+        bot.send_message(update.message.chat_id, text="{username} add group".format(username=members.username))
+
+add_group_handle = MessageHandler(callback=add_group, filters=NewMember())
 ```
 
 ## Advanced snippets
