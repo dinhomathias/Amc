@@ -163,7 +163,7 @@ def my_handler(bot, update):
 
 #### Message entities
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#messageentity)
-To use MessageEntity, extract the entities from a Message object using `parse_entities`.  
+To use MessageEntity, extract the entities and their respective text from a Message object using `parse_entities`.  
 
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
 
