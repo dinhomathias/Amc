@@ -14,5 +14,4 @@ In contrast to unit tests, integration tests may test the system in its eventual
 
 
 In order to test your bot in a real environment, you can make use of a [userbot](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) library that will send messages to your bot and evaluate whether it responds in the way it should. [Telethon](https://github.com/LonamiWebs/Telethon) or [Pyrogram](https://github.com/pyrogram/pyrogram) should be the choices in a Python environment.
-The [TgIntegration library](https://github.com/JosXa/tgintegration/) should cover everything you need.
-**NOTE:** TgIntegration is currently unmaintained, contact @JosXa for alternatives.
+The currently unmaintained [TgIntegration library](https://github.com/JosXa/tgintegration/) was written for exactly this purpose. Maybe someone could come along with a pull request to update it to the latest version of Pyrogram.
