@@ -5,9 +5,6 @@ Unit tests are performed on a logically encapsulated component of the system. Th
 @Eldinnie has written an initial POC of a unit test framework for python-telegram-bot, but as the library grew it was not maintained. Perhaps you might be able to help us out here and help in completing the project ;)
 https://github.com/Eldinnie/ptbtest
 
-### Mocking
-_Placeholder_
-
 ## Integration Tests
 In contrast to unit tests, integration tests may test the system in its eventual environment together with service integrations, such as the Bot API.
 
