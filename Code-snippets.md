@@ -149,7 +149,7 @@ def my_handler(bot, update):
 ```python
 >>> bot.send_message(chat_id=chat_id, 
 ...                  text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
-...                  parse_mode=telegram.ParseMode.MARKDOWN)
+...                  parse_mode='MARKDOWN')
 ```
 
 #### Post a text message with HTML formatting
@@ -158,7 +158,7 @@ def my_handler(bot, update):
 ```python
 >>> bot.send_message(chat_id=chat_id, 
 ...                  text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.', 
-...                  parse_mode=telegram.ParseMode.HTML)
+...                  parse_mode='HTML')
 ```
 
 #### Message entities
