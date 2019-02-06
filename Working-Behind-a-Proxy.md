@@ -28,7 +28,7 @@ pip install python-telegram-bot[socks]
 ```python
 TOKEN='YOUR_BOT_TOKEN'
 REQUEST_KWARGS={
-    'proxy_url': 'socks5://URL_OF_THE_PROXY_SERVER',
+    'proxy_url': 'socks5://URL_OF_THE_PROXY_SERVER:PROXY_PORT',
     # Optional, if you need authentication:
     'urllib3_proxy_kwargs': {
         'username': 'PROXY_USER',
