@@ -5,13 +5,14 @@
     * [Job callbacks](#job-callbacks)
     * [What exactly is `CallbackContext`](#what-exactly-is-callbackcontext)
     * [Note about group and groupdict](#note-about-group-and-groupdict)
-    * [Note about version 12](#note-about-version-12)
+    * [Note about version 13](#note-about-version-13)
     * [Custom handlers](#custom-handlers)
 * [Handler changes](#handler-changes)
     * [CommandHandler](#commandhandler)
     * [PrefixHandler](#prefixhandler)
     * [MessageHandler](#messagehandler)
 * [Filters in handlers](#filters-in-handlers)
+    * [Special note about regex filters](#special-note-about-regex-filters)
 
 # Context based callbacks
 The biggest change in this release is context based callbacks. When running your bot you will probably see a warning like the following:
@@ -88,20 +89,21 @@ It would instead now look something like this:
 def like_callback(update, context): # Registered with a RegexHandler with pattern (?i)i (like|dislike) (?P<thing>.*)
     update.reply_text('You {} {}'.format(context.match[1], context.match.groupdict()['thing'])
 ```
+Also see [Special note about regex filters](#special-note-about-regex-filters).
 
-## Note about version 12
-In version 12 of `python-telegram-bot`, `use_context` will default to `True`. This means that your old handlers using pass_ will stop working. It also means that after upgrading to version 12, you can remove `use_context=True` from your `Updater` if you so desire.
+## Note about version 13
+In version 13 of `python-telegram-bot`, `use_context` will default to `True`. This means that your old handlers using pass_ will stop working. It also means that after upgrading to version 13, you can remove `use_context=True` from your `Updater` if you so desire.
 
 # Custom handlers
-This part is only relavant if you've developed custom handlers, that subclass `telegram.ext.Handler`. To support the new context based callbacks, add a method called `collect_additional_context` to your handler. The method receives a `CallbackContext` object and whatever is return by `check_update()`, and should add whatever extra context is needed (at least everything that could be added via `pass_` arguments before). Note that `job_queue, update_queue, chat_data, user_data` is automatically added by the base `Handler`.
+This part is only relevant if you've developed custom handlers, that subclass `telegram.ext.Handler`. To support the new context based callbacks, add a method called `collect_additional_context` to your handler. The method receives a `CallbackContext` object and whatever is return by `check_update()`, and should add whatever extra context is needed (at least everything that could be added via `pass_` arguments before). Note that `job_queue, update_queue, chat_data, user_data` is automatically added by the base `Handler`.
 
 ***
 # Handler changes
-We made some changes to the behavior of some handlers. Listed below are the changes notable to you and maybe requires some action in your code.
+We made some changes to the behaviour of some handlers. Listed below are the changes notable to you and maybe requires some action in your code.
 
 ## CommandHandler
 From now on `CommandHandler` will only respond to [valid bot commands](https://core.telegram.org/bots#commands). It will raise `ValueError` when an invalid command is given as the `command` argument. If you previously used commands not considered valid by @botfather, you can use the new [PrefixHandler](#prefixhandler) instead.
-In addition `allow_edited` is deprecated until V12, when it will be removed. The new default behavior is to accept both `message` and `edited_message` with a valid command. If you would like to exclude edited message from your CommandHandler pass `filters=~Filters.update.edited_message` to the constructor.
+In addition `allow_edited` is deprecated until V13, when it will be removed. The new default behavior is to accept both `message` and `edited_message` with a valid command. If you would like to exclude edited message from your CommandHandler pass `filters=~Filters.update.edited_message` to the constructor.
 
 ## PrefixHandler
 Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.prefixhandler.html) for more details on it's use and implementation.
@@ -110,7 +112,8 @@ Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot
 `MessageHandler` received some upgrades to switch to the filter system. We've removed `allow_edited` which has been deprecated for a while. Also we now deprecated `message_updates`, `channel_post_updates` and `edited_updates` in the constructor. The defaults remain the same (not edited messages and channel_posts). To tweak the message you receive with MessageHandler, please use the [update filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.update).
 
 ## RegexHandler
-`RegexHandler` is being deprecated. It's basically a MessageHandler with a `Filters.regex`, now the CallbackContext contains all match information. For now we keep it in, but you should switch the use of `RegexHandler` to using `MessageHandler(Filters.regex('pattern'), callback)`
+`RegexHandler` is being deprecated. It's basically a MessageHandler with a `Filters.regex`, now the CallbackContext contains all match information. For now we keep it in, but you should switch the use of `RegexHandler` to using `MessageHandler(Filters.regex('pattern'), callback)`.  
+See [Special note about regex filters](#special-note-about-regex-filters) and [Note about group and groupdict](#note-about-group-and-groupdict) for more details.
 
 ***
 # Filters in handlers
@@ -142,3 +145,14 @@ Filters.text & (Filters.entity(URL) | Filters.entity(TEXT_LINK))
 # Handle messages that are text but are not forwarded
 Filters.text & (~ Filters.forwarded)
 ```
+
+### Special note about regex filters
+Regex filters can also be used in advanced combinations like so:  
+``` python
+((Filters.regex('(test)') | Filters.command) & (Filters.regex('(it)') | Filters.forwarded))
+```
+This would make `context.matches` equal a list of regex matches, but only if the regex filter actually executed. This means that:
+ * it will be a list with a single match for `test` if it's a command but not forwarded.
+ * it will be a list with a single match for `it` if it's forwarded but not a command.
+ * it will be a list of two matches. The first one will be `test` and the second one `it`.
+Note that in the last case, the order is the order that the filters were executed in, and not necessarily left to right.
