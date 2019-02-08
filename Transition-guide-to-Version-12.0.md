@@ -156,3 +156,5 @@ This would make `context.matches` equal a list of regex matches, but only if the
  * it will be a list with a single match for `it` if it's forwarded but not a command.
  * it will be a list of two matches. The first one will be `test` and the second one `it`.
 Note that in the last case, the order is the order that the filters were executed in, and not necessarily left to right.
+
+Also note that `context.match` is a shortcut for `context.matches[0]`. Very useful when you are only interested in the first match.
