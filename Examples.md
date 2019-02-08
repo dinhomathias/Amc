@@ -26,6 +26,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
+* [OpenCryptoBot](https://github.com/Endogen/OpenCryptoBot) - The Swiss Army knife for crypto-currencies [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/opencryptobot)
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
