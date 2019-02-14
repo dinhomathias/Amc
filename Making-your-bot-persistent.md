@@ -6,12 +6,12 @@ The persistence structure is designed to make `chat_data`, `user_data` and `Conv
 
 ## Included persistence classes
 three classes concerning persistence in bots have been added. 
-[BasePersistence](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintaint a database-connection for example, you must inherit from `BasePersistence`
-[PicklePersistence](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.
-[DictPersistence](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent.
+[BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintaint a database-connection for example, you must inherit from `BasePersistence`
+[PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.
+[DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent.
 
 ## 3rd party persistence classes
-If you want to create your own persistence class, please carfully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. If you;ve written a persistence class that could be of use to others (e.g. a general one covering all types of data). Please add it  below.
+If you want to create your own persistence class, please carfully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. If you;ve written a persistence class that could be of use to others (e.g. a general one covering all types of data). Please add it  below.
 
 ## What do I need to change?
 To make your bot persistent you need to know the following.
