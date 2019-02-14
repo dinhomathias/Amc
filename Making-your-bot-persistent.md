@@ -1,4 +1,4 @@
-In Vx.x we added a persistence mechanism to `telegram.ext`. This wiki is set up to help you understand and set up persistence for your bots.
+In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki is set up to help you understand and set up persistence for your bots.
 
 ## What can become persistent?
 The persistence structure is designed to make `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
