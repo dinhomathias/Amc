@@ -21,7 +21,7 @@ The biggest change in this release is context based callbacks. When running your
 ```
 echobot2.py:62: TelegramDeprecationWarning: Old Handler API is deprecated - see https://git.io/vp113 for details
 ```
-This means you're using the old style callbacks, and should upgrade to context based callbacks.
+This means you're using the old style callbacks and should upgrade to context based callbacks.
 
 The first thing you should do is find where you create your `Updater`.
 ``` python
@@ -78,7 +78,7 @@ def job_callback(context):
 _Note that both bot, and job have been merged into the `CallbackContext` object._
 
 ## What exactly is `CallbackContext`
-`CallbackContext` is an object that contains all the extra context information regarding an update. It replaces the old behaviour with having a ton of `pass_something=True` in your handlers. Instead, all this data is availible directly on the `CallbackContext` - always!
+`CallbackContext` is an object that contains all the extra context information regarding an update. It replaces the old behaviour with having a ton of `pass_something=True` in your handlers. Instead, all this data is available directly on the `CallbackContext` - always!
 
 ## Note about groups and groupdict
 Before version 12, you could both pass_groups and pass_groupdict. Inside `CallbackContext` this has been combined into a single `Match` object. Therefore if your handler looked like this before:
@@ -108,13 +108,13 @@ From now on `CommandHandler` will only respond to [valid bot commands](https://c
 In addition `allow_edited` is deprecated until V13, when it will be removed. The new default behavior is to accept both `message` and `edited_message` with a valid command. If you would like to exclude edited message from your CommandHandler pass `filters=~Filters.update.edited_message` to the constructor.
 
 ## PrefixHandler
-Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.prefixhandler.html) for more details on it's use and implementation.
+Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.prefixhandler.html) for more details on its use and implementation.
 
 ## MessageHandler
 `MessageHandler` received some upgrades to switch to the filter system. We've removed `allow_edited` which has been deprecated for a while. Also we now deprecated `message_updates`, `channel_post_updates` and `edited_updates` in the constructor. The defaults remain the same (not edited messages and channel_posts). To tweak the message you receive with MessageHandler, please use the [update filters](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.filters.html#telegram.ext.filters.Filters.update).
 
 ## RegexHandler
-`RegexHandler` is being deprecated. It's basically a MessageHandler with a `Filters.regex`, now the CallbackContext contains all match information. For now we keep it in, but you should switch the use of `RegexHandler` to using `MessageHandler(Filters.regex('pattern'), callback)`.  
+`RegexHandler` is being deprecated. It's basically a MessageHandler with a `Filters.regex`, now the CallbackContext contains all match information. For now, we keep it in, but you should switch the use of `RegexHandler` to using `MessageHandler(Filters.regex('pattern'), callback)`.  
 See [Special note about regex filters](#special-note-about-regex-filters) and [Note about group and groupdict](#note-about-group-and-groupdict) for more details.
 
 ## ConversationHandler
@@ -128,7 +128,7 @@ Using a list of filters in a handler like below has been deprecated for a while 
 MessageHandler([Filters.audio, Filters.video], your_callback)
 ```
 ## Combine filters using bitwise operators
-Instead you can now combine filters using bitwise operators like below. (The pipe ( `|` ) character means OR, so the below is equalivant to the above example using a list).
+Instead, you can now combine filters using bitwise operators like below. (The pipe ( `|` ) character means OR, so the below is equivalent to the above example using a list).
 ``` python
 # Handle messages that contain EITHER audio or video
 MessageHandler(Filters.audio | Filters.video, your_callback)
