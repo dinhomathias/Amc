@@ -14,6 +14,7 @@
     * [ConversationHandler](#conversationhandler)
 * [Filters in handlers](#filters-in-handlers)
     * [Special note about regex filters](#special-note-about-regex-filters)
+* [Persistence](#persistence)
 
 # Context based callbacks
 The biggest change in this release is context based callbacks. When running your bot you will probably see a warning like the following:
@@ -163,3 +164,7 @@ This would make `context.matches` equal a list of regex matches, but only if the
 Note that in the last case, the order is the order that the filters were executed in, and not necessarily left to right.
 
 Also note that `context.match` is a shortcut for `context.matches[0]`. Very useful when you are only interested in the first match.
+
+***
+# Persistence
+In version 12 we introduce persistence to the bot's mechanics. If you want to use this please read the [wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent) dedicated to persistence.
