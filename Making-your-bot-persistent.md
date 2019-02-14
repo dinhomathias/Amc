@@ -6,12 +6,12 @@ The persistence structure is designed to make `chat_data`, `user_data` and `Conv
 
 ## Included persistence classes
 three classes concerning persistence in bots have been added. 
-[BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintaint a database-connection for example, you must inherit from `BasePersistence`
+[BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence`
 [PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.
 [DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent.
 
 ## 3rd party persistence classes
-If you want to create your own persistence class, please carfully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. If you;ve written a persistence class that could be of use to others (e.g. a general one covering all types of data). Please add it  below.
+If you want to create your own persistence class, please carefully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. If you've written a persistence class that could be of use to others (e.g. a general one covering all types of data). Please add it below.
 
 ## What do I need to change?
 To make your bot persistent you need to know the following.
@@ -19,9 +19,9 @@ To make your bot persistent you need to know the following.
 - Create a persistence object (e.g. `my_persistence = PicklePersistence(filename='my_file')`)
 - Construct Updater with the persistence (`Updater('TOKEN', persistence=my_persistence)`)
 
-This is enough for to make `user_data` and `chat_data` persistent.
+This is enough to make `user_data` and `chat_data` persistent.
 To make a conversationhandler persistent (save states between bot restarts)
 `ConversationHandler(<no change>, persistent=True, name='my_name')`
-If you want a conversationhandler to be persisten you **MUST NAME IT**. persistent is `False` by default.
+If you want a conversationhandler to be persistent you **MUST NAME IT**. persistent is `False` by default.
 Adding these arguments and adding the conversationhandler to a persistence-aware updater/dispatcher will make it persistent.
  
