@@ -7,6 +7,7 @@
 3. [Types of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)
 4. [Advanced Filters](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Advanced-Filters)
 5. [Avoiding flood limits](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits)
+6. [Making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent)
 
 ## Code resources
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
@@ -31,3 +32,4 @@
 ## Transition Guides
 - [Version 4](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-4.0)
 - [Version 5](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-5.0)
+- [Version 12](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0)
