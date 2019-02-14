@@ -11,6 +11,7 @@
     * [CommandHandler](#commandhandler)
     * [PrefixHandler](#prefixhandler)
     * [MessageHandler](#messagehandler)
+    * [ConversationHandler](#conversationhandler)
 * [Filters in handlers](#filters-in-handlers)
     * [Special note about regex filters](#special-note-about-regex-filters)
 
@@ -114,6 +115,10 @@ Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot
 ## RegexHandler
 `RegexHandler` is being deprecated. It's basically a MessageHandler with a `Filters.regex`, now the CallbackContext contains all match information. For now we keep it in, but you should switch the use of `RegexHandler` to using `MessageHandler(Filters.regex('pattern'), callback)`.  
 See [Special note about regex filters](#special-note-about-regex-filters) and [Note about group and groupdict](#note-about-group-and-groupdict) for more details.
+
+## ConversationHandler
+The arguments `run_async_timeout` and `timed_out_behavior` have been removed.
+The timeout for waiting for a @run_async handler is now always 0. If an update would have waited before, ConversationHandler will now try to use a handler in the new special state `ConversationHandler.WAITING`. This allows you to either manually wait in the handler if you want the old functionality, or send a message back to the user like "I am still processing your last request, please wait".
 
 ***
 # Filters in handlers
