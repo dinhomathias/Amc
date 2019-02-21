@@ -13,11 +13,11 @@ Bots built using the `telegram.ext.Updater` class.
 * [CryptoCoinsInfoBot](https://github.com/lytves/crypto-coins-info-bot-v2) — This bot sends you actual prices of cryptocoins using info from CoinMarketCap and CryptoCompare APIs. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/cryptocoinsinfobot)
 * [CryptoKitty](https://github.com/xlanor/CryptoKitties) — Source code for a broadcast bot that scans [CryptoKitties](https://www.cryptokitties.co/) API and returns cats that matches the input parameters.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/cryptokittybot)
 * [Cryptora](https://github.com/izanmubarak/Cryptora) — gets all kinds of cryptocurrency-related data, including up-to-the-minute information from CoinMarketCap for thousands of cryptocurrencies and the latest headlines from CoinDesk. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/cryptorabot)
-* [I'm not a bot](https://github.com/MarckTomack/imnotabot-telegram-captcha-bot) - Captcha bot for Telegram [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/captcha_imnotabot)
 * [EFB Telegram Master Channel](https://github.com/blueset/efb-telegram-master/) — A master channel for EH Forwarder Bot: an extensible chat tunneling framework that gather your IMs at one place.
 * [ETHdroidBot](https://github.com/lytves/ETHdroidBot) — A telegram bot to control balance of Ethereum and ERC tokens on yours wallets. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/ETHdroidBot)
 * [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) — Echoes any message and any kind of media to anonymize the forward. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/forwardscoverbot)
 * [Hera](https://github.com/xlanor/SIM-UoW-Timetable-bot) - A specialised telegram bot to scrape students timetables from the SIMConnect portal. I'm adding it here because I couldn't find any examples of bots using celery to delegate tasks.
+* [I'm not a bot](https://github.com/MarckTomack/imnotabot-telegram-captcha-bot) - Captcha bot for Telegram [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/captcha_imnotabot)
 * [LogBot](https://github.com/apiad/logbot) — A simple bot that accepts messages through a REST API and redirects them to Telegram, with optional actionable buttons. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/apiad_demo_logbot)
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
