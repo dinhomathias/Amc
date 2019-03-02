@@ -128,6 +128,19 @@ def send_typing_action(func):
 def my_handler(bot, update):
     pass # Will send 'typing' action while processing the request.
 ```
+If you are using v12 that will not work as bot is no longer received as the first argument. Instead use:
+```python
+def send_typing_action(func):
+    """Sends typing action while processing func command."""
+
+    @wraps(func)
+    def command_func(update, context, *args, **kwargs):
+        context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
+        return func(update, context,  *args, **kwargs)
+    return command_func
+    
+    return decorator
+```
 
 #### Requesting location and contact from user
 
@@ -355,7 +368,6 @@ def my_handler(bot, update):
 This parametrized decorator allows you to signal different actions depending on the type of response of your bot. This way users will have similar feedback from your bot as they would from a real human. 
 ```python
 from functools import wraps
-from telegram import ChatAction
 
 def send_action(action):
     """Sends `action` while processing func command."""
@@ -370,6 +382,20 @@ def send_action(action):
     
     return decorator
 ```
+If you are using telegram v12 the above snippet won't work, as the bot instance is not longer received as the first argument, instead we can access it through the context object.
+```python
+def send_action(action):
+    """Sends `action` while processing func command."""
+
+    def decorator(func):
+        @wraps(func)
+        def command_func(update, context, *args, **kwargs):
+            context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
+            return func(update, context,  *args, **kwargs)
+        return command_func
+    
+    return decorator
+```  
 ##### Usage
 ![Result](https://i.imgur.com/ErBKSS4.png)
 
