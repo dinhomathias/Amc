@@ -17,7 +17,7 @@ If you want to create your own persistence class, please carefully read the docs
 To make your bot persistent you need to know the following.
 
 - Create a persistence object (e.g. `my_persistence = PicklePersistence(filename='my_file')`)
-- Construct Updater with the persistence (`Updater('TOKEN', persistence=my_persistence)`)
+- Construct Updater with the persistence (`Updater('TOKEN', persistence=my_persistence, use_context=True)`)
 
 This is enough to make `user_data` and `chat_data` persistent.
 To make a conversationhandler persistent (save states between bot restarts)

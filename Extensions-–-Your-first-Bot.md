@@ -1,3 +1,8 @@
+## Version 12 beta note
+This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
+This version has proven to be generally generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
+If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot/c8dd272e26b939168eaa5812de5bf2b066ff10d6).
+
 ## Introduction
 The `telegram.ext` submodule is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer, so you [don't have to repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
@@ -19,11 +24,13 @@ First, you have to create an `Updater` object. Replace `'TOKEN'` with your Bot's
 
 ```python
 from telegram.ext import Updater
-updater = Updater(token='TOKEN')
+updater = Updater(token='TOKEN', use_context=True)
 ```
 **Related docs:** [telegram.ext.Updater](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.updater.Updater)
 
 For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
+
+**Note**: The `use_context=True` is a special argument only needed for version 12 of the library. It allows for better backwards compatibility with older versions of the library, and to give users some time to upgrade. From version 13 it `use_context=True` will be the default.
 
 ```python
 dispatcher = updater.dispatcher
@@ -42,10 +49,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 Now, you can define a function that should process a specific type of update:
 
 ```python
-def start(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
+def start(update, context):
+    context.bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
 ```
-**Related docs:** [sendMessage](https://core.telegram.org/bots/api#sendmessage)
+**Related docs:** [sendMessage](https://core.telegram.org/bots/api#sendmessage), [CallbackContext (the type of the context argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html)
 
 The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command. To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` subclasses) and register it in the dispatcher:
 
@@ -68,8 +75,8 @@ Give it a try! Start a chat with your bot and issue the `/start` command - if al
 But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo to all text messages:
 
 ```python
-def echo(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
+def echo(update, context):
+    context.bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
 
 from telegram.ext import MessageHandler, Filters
 echo_handler = MessageHandler(Filters.text, echo)
@@ -86,15 +93,15 @@ From now on, your bot should echo all non-command messages it receives.
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS. To make things easy, you can receive the arguments (as a `list`, split on spaces) that were passed to a command in the callback function:
 
 ```python
-def caps(bot, update, args):
-    text_caps = ' '.join(args).upper()
-    bot.send_message(chat_id=update.message.chat_id, text=text_caps)
+def caps(update, context):
+    text_caps = ' '.join(context.args).upper()
+    context.bot.send_message(chat_id=update.message.chat_id, text=text_caps)
 
-caps_handler = CommandHandler('caps', caps, pass_args=True)
+caps_handler = CommandHandler('caps', caps)
 dispatcher.add_handler(caps_handler)
 ```
 
-**Note:** Take a look at the `pass_args=True` in the `CommandHandler` initiation. This is required to let the handler know that you want it to pass the list of command arguments to the callback. All handler classes have keyword arguments like this. Some are the same among all handlers, some are specific to the handler class. If you use a new type of handler for the first time, look it up in the docs and see if one of them is useful to you.
+**Note:** Take a look at the usage of `context.args`. The [CallbackContext)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html) will have many different attributes, depending on which handler is used.
 
 Another cool feature of the Telegram Bot API is the [inline mode](https://core.telegram.org/bots/inline). If you want to implement inline functionality for your bot, please first talk to [@BotFather](https://telegram.me/botfather) and enable inline mode using `/setinline`. It sometimes takes a while until your Bot registers as an inline bot on your client. You might be able to speed up the process by restarting your Telegram App (or sometimes, you just have to wait for a while).
 
@@ -102,7 +109,7 @@ As your bot is obviously a very loud one, let's continue with this theme for inl
 
 ```python
 from telegram import InlineQueryResultArticle, InputTextMessageContent
-def inline_caps(bot, update):
+def inline_caps(update, context):
     query = update.inline_query.query
     if not query:
         return
@@ -114,7 +121,7 @@ def inline_caps(bot, update):
             input_message_content=InputTextMessageContent(query.upper())
         )
     )
-    bot.answer_inline_query(update.inline_query.id, results)
+    context.bot.answer_inline_query(update.inline_query.id, results)
 
 from telegram.ext import InlineQueryHandler
 inline_caps_handler = InlineQueryHandler(inline_caps)
@@ -127,8 +134,8 @@ Not bad! Your Bot can now yell on command (ha!) and via inline mode.
 Some confused users might try to send commands to the bot that it doesn't understand, so you can use a `MessageHandler` with a `command` filter to reply to all commands that were not recognized by the previous handlers. 
 
 ```python
-def unknown(bot, update):
-    bot.send_message(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
+def unknown(update, context):
+    context.bot.send_message(chat_id=update.message.chat_id, text="Sorry, I didn't understand that command.")
 
 unknown_handler = MessageHandler(Filters.command, unknown)
 dispatcher.add_handler(unknown_handler)

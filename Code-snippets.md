@@ -1,3 +1,8 @@
+## Version 12 beta note
+This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
+This version has proven to be generally generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
+If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets/d23093978b3c4a62bfc55e49b9ea80a4e568a73a).
+
 This page can be read on its own to find the code snippet you need right now. 
 
 It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets.
@@ -56,22 +61,22 @@ To fetch messages sent to your Bot, you can use the [getUpdates](https://core.te
 **Note:** You don't have to use `get_updates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [here](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot).
 
 ```python
->>> updates = bot.get_updates()
->>> print([u.message.text for u in updates])
+updates = bot.get_updates()
+print([u.message.text for u in updates])
 ```
 
 #### Fetch images sent to your Bot
 
 ```python
->>> updates = bot.get_updates()
->>> print([u.message.photo for u in updates if u.message.photo])
+updates = bot.get_updates()
+print([u.message.photo for u in updates if u.message.photo])
 ```
 
 #### Reply to messages
 You'll always need the `chat_id`
 
 ```python
->>> chat_id = bot.get_updates()[-1].message.chat_id
+chat_id = bot.get_updates()[-1].message.chat_id
 ```
 
 ## General code snippets
@@ -86,7 +91,7 @@ If the bot has a chat with the user, it will send the message to that chat.
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
->>> bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
+bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
 ```
 
 **Note:** `send_message` method (as any of `send_*` methods of `Bot` class) returns the instance of `Message` class, so it can be used in code later.
@@ -96,7 +101,7 @@ If the bot has a chat with the user, it will send the message to that chat.
 This is a shortcut to `bot.send_message` with sane defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
 
 ```python
->>> update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
+update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
 ```
 
 **Note:** There are equivalents of this method for replying with photos, audio etc., and similar shortcuts exist throughout the library. Related PRs: [#362](https://github.com/python-telegram-bot/python-telegram-bot/pull/362), [#420](https://github.com/python-telegram-bot/python-telegram-bot/pull/420), [#423](https://github.com/python-telegram-bot/python-telegram-bot/pull/423)
@@ -106,7 +111,7 @@ This is a shortcut to `bot.send_message` with sane defaults. Read more about it 
 Use this to tell the user that something is happening on the bot's side:
 
 ```python
->>> bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
 ```
 Alternatively, if you have several commands and don't want to repeat the above code snippet inside all commands, you can copy the snippet below and just decorate the callback functions with `@send_typing_action`.
 
@@ -117,10 +122,9 @@ def send_typing_action(func):
     """Sends typing action while processing func command."""
 
     @wraps(func)
-    def command_func(*args, **kwargs):
-        bot, update = args
-        bot.send_chat_action(chat_id=update.effective_message.chat_id, action=telegram.ChatAction.TYPING)
-        return func(bot, update, **kwargs)
+    def command_func(update, context, *args, **kwargs):
+        context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
+        return func(update, context,  *args, **kwargs)
 
     return command_func
 
@@ -128,27 +132,15 @@ def send_typing_action(func):
 def my_handler(bot, update):
     pass # Will send 'typing' action while processing the request.
 ```
-If you are using v12 that will not work as bot is no longer received as the first argument. Instead use:
-```python
-def send_typing_action(func):
-    """Sends typing action while processing func command."""
-
-    @wraps(func)
-    def command_func(update, context, *args, **kwargs):
-        context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
-        return func(update, context,  *args, **kwargs)
-    
-    return command_func
-```
 
 #### Requesting location and contact from user
 
 ```python
->>> location_keyboard = telegram.KeyboardButton(text="send_location", request_location=True)
->>> contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
->>> custom_keyboard = [[ location_keyboard, contact_keyboard ]]
->>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
->>> bot.send_message(chat_id=chat_id, 
+location_keyboard = telegram.KeyboardButton(text="send_location", request_location=True)
+contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
+custom_keyboard = [[ location_keyboard, contact_keyboard ]]
+reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+bot.send_message(chat_id=chat_id, 
 ...                  text="Would you mind sharing your location and contact with me?", 
 ...                  reply_markup=reply_markup)
 ```
@@ -159,18 +151,18 @@ def send_typing_action(func):
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
->>> bot.send_message(chat_id=chat_id, 
-...                  text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
-...                  parse_mode=telegram.ParseMode.MARKDOWN)
+bot.send_message(chat_id=chat_id, 
+                 text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
+                 parse_mode=telegram.ParseMode.MARKDOWN)
 ```
 
 #### Post a text message with HTML formatting
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
->>> bot.send_message(chat_id=chat_id, 
-...                  text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.', 
-...                  parse_mode=telegram.ParseMode.HTML)
+bot.send_message(chat_id=chat_id, 
+                 text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.', 
+                 parse_mode=telegram.ParseMode.HTML)
 ```
 
 #### Message entities
@@ -180,7 +172,7 @@ To use MessageEntity, extract the entities and their respective text from a Mess
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
 
 ```python
->>> entities = message.parse_entities()
+entities = message.parse_entities()
 ```
 
 There are many more API methods. To read the full API documentation, visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
@@ -191,28 +183,28 @@ There are many more API methods. To read the full API documentation, visit the [
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
->>> bot.send_photo(chat_id=chat_id, photo=open('tests/test.png', 'rb'))
+bot.send_photo(chat_id=chat_id, photo=open('tests/test.png', 'rb'))
 ```
 
 #### Post a voice file from disk
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendvoice)
 
 ```python
->>> bot.send_voice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
+bot.send_voice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
 ```
 
 #### Post a photo from a URL
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendphoto)
 
 ```python
->>> bot.send_photo(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
+bot.send_photo(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
 ```
 
 #### Post a gif from a URL (send_animation)
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendanimation)
 
 ```python
->>> bot.send_animation(chat_id, animation, duration=None, width=None, height=None, thumb=None, caption=None, parse_mode=None, disable_notification=False, reply_to_message_id=None, reply_markup=None, timeout=20, **kwargs)
+bot.send_animation(chat_id, animation, duration=None, width=None, height=None, thumb=None, caption=None, parse_mode=None, disable_notification=False, reply_to_message_id=None, reply_markup=None, timeout=20, **kwargs)
 ```
 See the [online documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_animation)
 
@@ -223,45 +215,45 @@ See the [online documentation](https://python-telegram-bot.readthedocs.io/en/lat
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendaudio)
 
 ```python
->>> bot.send_audio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
+bot.send_audio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
 ```
 
 #### Post a file from disk
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#senddocument)
 
 ```python
->>> bot.send_document(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
+bot.send_document(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
 ```
 
 #### Post an image from memory
 In this example, `image` is a PIL (or Pillow) `Image` object, but it works the same with all media types.
 
 ```python
->>> from io import BytesIO
->>> bio = BytesIO()
->>> bio.name = 'image.jpeg'
->>> image.save(bio, 'JPEG')
->>> bio.seek(0)
->>> bot.send_photo(chat_id, photo=bio)
+from io import BytesIO
+bio = BytesIO()
+bio.name = 'image.jpeg'
+image.save(bio, 'JPEG')
+bio.seek(0)
+bot.send_photo(chat_id, photo=bio)
 ```
 
 #### Get image with dimensions closest to a desired size
 Where `photos` is a list of `PhotoSize` objects and `desired_size` is a tuple containing the desired size.
 
 ```python
->>> def get_closest(photos, desired_size):
->>>     def diff(p): return p.width - desired_size[0], p.height - desired_size[1]
->>>     def norm(t): return abs(t[0] + t[1] * 1j)
->>>     return min(photos, key=lambda p:  norm(diff(p)))
+def get_closest(photos, desired_size):
+    def diff(p): return p.width - desired_size[0], p.height - desired_size[1]
+    def norm(t): return abs(t[0] + t[1] * 1j)
+    return min(photos, key=lambda p:  norm(diff(p)))
 ```
 
 #### Download a file
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#getfile)
 
 ```python
->>> file_id = message.voice.file_id
->>> newFile = bot.get_file(file_id)
->>> newFile.download('voice.ogg')
+file_id = message.voice.file_id
+newFile = bot.get_file(file_id)
+newFile.download('voice.ogg')
 ```
 
 **Note:** For downloading photos, keep in mind that `update.message.photo` is an array of different photo sizes. Use `update.message.photo[-1]` to get the biggest size.
@@ -272,12 +264,12 @@ Where `photos` is a list of `PhotoSize` objects and `desired_size` is a tuple co
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots#keyboards)
 
 ```python
->>> custom_keyboard = [['top-left', 'top-right'], 
-...                    ['bottom-left', 'bottom-right']]
->>> reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
->>> bot.send_message(chat_id=chat_id, 
-...                  text="Custom Keyboard Test", 
-...                  reply_markup=reply_markup)
+custom_keyboard = [['top-left', 'top-right'], 
+                   ['bottom-left', 'bottom-right']]
+reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
+bot.send_message(chat_id=chat_id, 
+                 text="Custom Keyboard Test", 
+                 reply_markup=reply_markup)
 ```
 
 See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
@@ -286,8 +278,8 @@ See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
 #### Remove a custom keyboard
 
 ```python
->>> reply_markup = telegram.ReplyKeyboardRemove()
->>> bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
+reply_markup = telegram.ReplyKeyboardRemove()
+bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
 ```
 
 ### Other useful stuff
@@ -297,23 +289,22 @@ See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
 The Unicode flag emoji for any country can by definition be calculated from the countries [2 letter country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). The following snippet only works in Python 3.
 
 ```python
->>> OFFSET = 127462 - ord('A')
->>> 
->>> def flag(code):
-...     code = code.upper()
-...     return chr(ord(code[0]) + OFFSET) + chr(ord(code[1]) + OFFSET)
-... 
+OFFSET = 127462 - ord('A')
+
+def flag(code):
+    code = code.upper()
+    return chr(ord(code[0]) + OFFSET) + chr(ord(code[1]) + OFFSET)
+
 >>> flag('de')
 '🇩🇪'
 >>> flag('us')
 '🇺🇸'
 >>> flag('ru')
 '🇷🇺'
->>>
 ```
 
 #### Get the add group message
-```
+```python
 class NewMember(BaseFilter):
       def filter(self, message):
           if not message.new_chat_members:
@@ -343,12 +334,12 @@ LIST_OF_ADMINS = [12345678, 87654321]
 
 def restricted(func):
     @wraps(func)
-    def wrapped(bot, update, *args, **kwargs):
+    def wrapped(update, context, *args, **kwargs):
         user_id = update.effective_user.id
         if user_id not in LIST_OF_ADMINS:
             print("Unauthorized access denied for {}.".format(user_id))
             return
-        return func(bot, update, *args, **kwargs)
+        return func(update, context, *args, **kwargs)
     return wrapped
 ```
 
@@ -373,28 +364,14 @@ def send_action(action):
 
     def decorator(func):
         @wraps(func)
-        def command_func(*args, **kwargs):
-            bot, update = args
-            bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
-            return func(bot, update, **kwargs)
-        return command_func
-    
-    return decorator
-```
-If you are using telegram v12 the above snippet won't work, as the bot instance is not longer received as the first argument, instead we can access it through the context object.
-```python
-def send_action(action):
-    """Sends `action` while processing func command."""
-
-    def decorator(func):
-        @wraps(func)
         def command_func(update, context, *args, **kwargs):
             context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
             return func(update, context,  *args, **kwargs)
         return command_func
     
     return decorator
-```  
+```
+
 ##### Usage
 ![Result](https://i.imgur.com/ErBKSS4.png)
 
@@ -518,7 +495,7 @@ def main():
         updater.stop()
         os.execl(sys.executable, sys.executable, *sys.argv)
 
-    def restart(bot, update):
+    def restart(update, context):
         update.message.reply_text('Bot is restarting...')
         Thread(target=stop_and_restart).start()
 
@@ -538,59 +515,7 @@ if __name__ == '__main__':
 
 #### Store ConversationHandler States
 
-The following code allows you to store ConversationHandler States and UserData and reloading them when you restart the bot. Store procedure is executed every 60 seconds; to change this value, you can modify the `time.sleep(60)` instruction.
-
-You should declare the two methods at the end of the main method to use python closure for accessing ConversationHandler and UserData.
-
-```python
-import time, threading, pickle
-
-def main():
-    def loadData():
-        try:
-            f = open('backup/conversations', 'rb')
-            conv_handler.conversations = pickle.load(f)
-            f.close()
-            f = open('backup/userdata', 'rb')
-            dp.user_data = pickle.load(f)
-            f.close()
-        except FileNotFoundError:
-            utils.logging.error("Data file not found")         
-        except:
-            utils.logging.error(sys.exc_info()[0])         
- 
-    def saveData():
-        while True:
-            time.sleep(60)
-            # Before pickling
-            resolved = dict()
-            for k, v in conv_handler.conversations.items():
-                if isinstance(v, tuple) and len(v) is 2 and isinstance(v[1], Promise):
-                    try:
-                        new_state = v[1].result()  # Result of async function
-                    except:
-                        new_state = v[0]  # In case async function raised an error, fallback to old state
-                    resolved[k] = new_state
-                else:
-                    resolved[k] = v
-            try:
-                f = open('backup/conversations', 'wb+')
-                pickle.dump(resolved, f)
-                f.close()
-                f = open('backup/userdata', 'wb+')
-                pickle.dump(dp.user_data, f)
-                f.close()
-            except:
-                utils.logging.error(sys.exc_info()[0])
-```
-##### Usage
-
-```python
-def main():
-     ...
-     loadData()
-     threading.Thread(target=saveData).start()
-```
+Version 12 and up includes tools for [making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent).
 
 #### Save and load jobs using pickle 
 The following snippet pickles the jobs in the job queue periodically and on bot shutdown and unpickles and queues them again on startup. Since `pickle` doesn't support threading primitives, they are converted.
@@ -662,8 +587,8 @@ def save_jobs(jq):
             job._enabled = _enabled
 
 
-def save_jobs_job(bot, job):
-    save_jobs(job.job_queue)
+def save_jobs_job(context):
+    save_jobs(context.job_queue)
 
 
 def main():

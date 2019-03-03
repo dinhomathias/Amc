@@ -1,3 +1,8 @@
+## Version 12 beta note
+This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
+This version has proven to be generally generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
+If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations/e804e4c8e8a4df1f67beacb17ea890bde57b34e8).
+
 ## Introduction
 When your bot becomes popular, you will eventually want to improve response times. After all, Telegram places high priority on fast messaging. At the same time, responses become slower as more people are using your bot. This happens more quickly for inline bots, as they may receive multiple inline queries during one interaction. 
 
@@ -37,8 +42,8 @@ Then, use it as a decorator for the `echo` function:
 
 ```python
 @run_async
-def echo(bot, update):
-    bot.send_message(update.message.chat_id, text=update.message.text)
+def echo(update, context):
+    context.bot.send_message(update.message.chat_id, text=update.message.text)
 ```
 
 Simple and straightforward, right? So, why did I bore you with all that stuff before?
@@ -120,7 +125,8 @@ I went through our bank example line by line and noted which of the criteria it 
 
 ```python
 @run_async
-def transaction(bot, update):
+def transaction(update, context):
+  bot = context.bot
   chat_id = update.message.chat_id  # 3
   source_id, target_id, amount = parse_update(update)  # 3
 
@@ -153,7 +159,7 @@ def log_and_notify(action, amount, source_id, target_id, chat_id, message):
   bank.log(action, amount, source_id, target_id)
   bot.send_message(chat_id, message)
 
-def transaction(bot, update):
+def transaction(update, context):
   chat_id = update.message.chat_id  # 3
   source_id, target_id, amount = parse_update(update)  # 3
 
