@@ -1,6 +1,6 @@
 ## Version 12 beta note
 This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
-This version has proven to be generally generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
+This version has proven to be generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
 If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot/c8dd272e26b939168eaa5812de5bf2b066ff10d6).
 
 ## Introduction
