@@ -30,7 +30,7 @@ updater = Updater(token='TOKEN', use_context=True)
 
 For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
 
-**Note**: The `use_context=True` is a special argument only needed for version 12 of the library. It allows for better backwards compatibility with older versions of the library, and to give users some time to upgrade. From version 13 it `use_context=True` will be the default.
+**Note**: The `use_context=True` is a special argument only needed for version 12 of the library. It allows for better backwards compatibility with older versions of the library, and to give users some time to upgrade. From version 13 `use_context=True` will be the default.
 
 ```python
 dispatcher = updater.dispatcher
