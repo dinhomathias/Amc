@@ -1,9 +1,9 @@
 ## Table of contents
 * [Context based callbacks](#context-based-callbacks)
+    * [What exactly is CallbackContext](#what-exactly-is-callbackcontext)
     * [Handler callbacks](#handler-callbacks)
     * [Error handler callbacks](#error-handler-callbacks)
     * [Job callbacks](#job-callbacks)
-    * [What exactly is `CallbackContext`](#what-exactly-is-callbackcontext)
     * [Note about group and groupdict](#note-about-group-and-groupdict)
     * [Note about version 13](#note-about-version-13)
     * [Custom handlers](#custom-handlers)
@@ -33,6 +33,19 @@ updater = Updater('TOKEN', use_context=True)
 ```
 **Note that this is only necessary in version 12 of `python-telegram-bot`. Version 13 will have `use_context=True` set as default.**  
 _If you do **not** use `Updater` but only `Dispatcher` you should instead set `use_context=True` when you create the `Dispatcher`._
+
+## What exactly is `CallbackContext`
+[`CallbackContext`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html) is an object that contains all the extra context information regarding an `Update`, error or `Job`. It replaces the old behaviour with having a ton of `pass_something=True` in your handlers. Instead, all this data is available directly on the `CallbackContext` - always!
+So what information is stored on a `CallbackContext`? The parameters marked with a star will only be set on specific updates.
+* bot
+* job_queue
+* update_queue
+* chat_data*
+* user_data*
+* job*
+* error*
+* args*
+* matches/match*
 
 ## Handler callbacks
 Now on to the bulk of the change. You wanna change all your callback functions from the following:
@@ -76,9 +89,6 @@ def job_callback(context):
     context.bot.send_message(SOMEONE, job.context)
 ```
 _Note that both bot, and job have been merged into the `CallbackContext` object._
-
-## What exactly is `CallbackContext`
-`CallbackContext` is an object that contains all the extra context information regarding an update. It replaces the old behaviour with having a ton of `pass_something=True` in your handlers. Instead, all this data is available directly on the `CallbackContext` - always!
 
 ## Note about groups and groupdict
 Before version 12, you could both pass_groups and pass_groupdict. Inside `CallbackContext` this has been combined into a single `Match` object. Therefore if your handler looked like this before:
