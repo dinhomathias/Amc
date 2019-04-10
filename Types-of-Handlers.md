@@ -37,7 +37,7 @@ Note that since telegram doesn't support spaces in deep linking parameters, you 
 
 You also have to pay attention to the maximum lenght accepted by Telegram itself. As stated in the [documentation](https://core.telegram.org/bots#deep-linking) the maximum lenght for the start parameter is 64.
 
-Also, since this is an URL parameter, you have to pay attention on how to correctly pass the values in order to  avoid passing URL reserved characters. Consier the usage of `base64.urlsafe_b64encode`.
+Also, since this is an URL parameter, you have to pay attention on how to correctly pass the values in order to  avoid passing URL reserved characters. Consider the usage of `base64.urlsafe_b64encode`.
 
 ## Pattern matching: The RegexHandler
 
