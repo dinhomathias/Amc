@@ -334,12 +334,12 @@ LIST_OF_ADMINS = [12345678, 87654321]
 
 def restricted(func):
     @wraps(func)
-    def wrapped(update, context, *args, **kwargs):
+    def wrapped(context, update, *args, **kwargs):
         user_id = update.effective_user.id
         if user_id not in LIST_OF_ADMINS:
             print("Unauthorized access denied for {}.".format(user_id))
             return
-        return func(update, context, *args, **kwargs)
+        return func(context, update, *args, **kwargs)
     return wrapped
 ```
 
