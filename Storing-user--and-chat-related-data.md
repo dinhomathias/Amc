@@ -1,5 +1,11 @@
-Sometimes you need to temporarily store some information about the current user and/or chat for later use. An example of this would be a survey bot that asks the user a series of questions one after another and saves them to your database when all answers are collected. 
+## Version 12 beta note
+This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
+This version has proven to be generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
+If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Storing-user--and-chat-related-data/73954b0cfb69cc7f07a3330a7dd90b420440a8c9).
 
+***
+
+Sometimes you need to temporarily store some information about the current user and/or chat for later use. An example of this would be a survey bot that asks the user a series of questions one after another and saves them to your database when all answers are collected. 
 # `user_data` and `chat_data`
 The `telegram.ext` framework provides a built-in solution for this common task. To understand how it works, let's take a look at a naïve solution using a global variable. In case you're in a hurry, you can also [**jump straight to the explanation**](#explanation).
 
@@ -14,7 +20,7 @@ from telegram.ext import Updater, CommandHandler
 
 all_user_data = dict()
 
-def put(bot, update):
+def put(update, context):
     """Usage: /put value"""
     # Generate ID and seperate value from command
     key = str(uuid4())
@@ -32,7 +38,7 @@ def put(bot, update):
 
     update.message.reply_text(key)
 
-def get(bot, update):
+def get(update, context):
     """Usage: /get uuid"""
     # Seperate ID from command
     key = update.message.text.partition(' ')[2]
@@ -49,7 +55,7 @@ def get(bot, update):
         update.message.reply_text('Not found')
 
 if __name__ == '__main__':
-    updater = Updater('TOKEN')
+    updater = Updater('TOKEN', use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler('put', put))
@@ -66,38 +72,36 @@ If you read the code carefully, you might have noticed that the code that gets t
 from uuid import uuid4
 from telegram.ext import Updater, CommandHandler
 
-def put(bot, update, user_data):
+def put(update, context):
     """Usage: /put value"""
     # Generate ID and seperate value from command
     key = str(uuid4())
     value = update.message.text.partition(' ')[2]
 
     # Store value
-    user_data[key] = value
+    context.user_data[key] = value
 
     update.message.reply_text(key)
 
-def get(bot, update, user_data):
+def get(update, context):
     """Usage: /get uuid"""
     # Seperate ID from command
     key = update.message.text.partition(' ')[2]
 
     # Load value
     try:
-        value = user_data[key]
+        value = context.user_data[key]
         update.message.reply_text(value)
 
     except KeyError:
         update.message.reply_text('Not found')
 
 if __name__ == '__main__':
-    updater = Updater('TOKEN')
+    updater = Updater('TOKEN', use_context=True)
     dp = updater.dispatcher
 
-    dp.add_handler(CommandHandler(
-        'put', put, pass_user_data=True))
-    dp.add_handler(CommandHandler(
-        'get', get, pass_user_data=True))
+    dp.add_handler(CommandHandler('put', put))
+    dp.add_handler(CommandHandler('get', get))
 
     updater.start_polling()
     updater.idle()
@@ -107,19 +111,18 @@ if __name__ == '__main__':
 - The global variable `all_user_data` was removed
 - The repeated code to get the storage of the current user was removed
 - The code to ensure that the storage exists was removed
-- The parameter `user_data` was added to the `put` and `get` functions
-- The parameter `pass_user_data=True` is now passed to both `CommandHandler`
+- Both the `put` and `get` functions use context.user_data
 
 ### Explanation
-By passing `pass_user_data=True` to any `Handler` constructor, you instruct the handler to pass a user-specific `dict` to the handler callback. The callback function *must* accept a parameter named `user_data`.
+By using `context.user_data` in any `Handler` callback, you have access to a user-specific `dict`.
 
-*Every time the bot receives a message*, the handler for that message checks if it was created with `pass_user_data=True`. If that is the case, it finds (or creates) the `user_data` of the user who sent the message and passes it to the callback function as a keyword argument. This dictionary is *shared across all handlers* of the bot.
+*Every time the bot receives a message*, the handler for that message finds (or creates) the `user_data` of the user who sent the message. This dictionary is *shared across all handlers* of the bot.
 
 #### What about `chat_data`?
-`chat_data` works in the exact same way as `user_data`, except it is managed per *chat* instead of every *user*. Use the `pass_chat_data=True` parameter in the `Handler` constructor to have it passed to your callback.  
+`chat_data` works in the exact same way as `user_data`, except it is managed per *chat* instead of every *user*. Use `context.chat_data` to get access to this dict.
 
 #### Notes & Tips
-- **Everything is stored in memory.** This means that all `user_data` and `chat_data` is deleted when the bot process ends.
+- **Everything is stored in memory.** This means that all `user_data` and `chat_data` is deleted when the bot process ends. If you don't want this, have a look at the [persistent page](Making-your-bot-persistent).
 - Empty `user_data` and `chat_data` dictionaries are automatically deleted from memory after the update is processed.
  - If not empty, `user_data` and `chat_data` will be kept until the process ends.
 - `user_data` and `chat_data` are different dictionaries even for private chats.
