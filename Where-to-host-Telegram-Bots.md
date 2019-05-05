@@ -4,7 +4,8 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
 * [Amazon Web Services](https://aws.amazon.com/)
 * [Microsoft Azure](https://azure.microsoft.com/)
 * [Google App Engine](https://cloud.google.com/appengine) 
-    * **[How to create a Bot on Google App Engine](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot)** by [sooyhwang](https://github.com/sooyhwang)
+    * [[Notes about GAE - Google App Engine]]
+    * **[How to create a Bot on Google App Engine](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot)** by [sooyhwang](https://github.com/sooyhwang) (NOTE: This might be obsolete)
 * [Google Cloud Functions](https://cloud.google.com/functions/) 
     * **[Building a serverless Telegram bot](https://seminar.io/2018/09/03/building-serverless-telegram-bot/)** by [pabluk](https://github.com/pabluk)
 * [Heroku](https://www.heroku.com/)
