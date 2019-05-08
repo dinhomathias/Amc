@@ -78,7 +78,7 @@ from telegram.ext import CommandHandler
 def callback_alarm(context):
     context.bot.send_message(chat_id=context.job.context, text='BEEP')
 
-def callback_timer(context, update):
+def callback_timer(update, context):
     context.bot.send_message(chat_id=update.message.chat_id,
                              text='Setting a timer for 1 minute!')
 
