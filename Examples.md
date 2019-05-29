@@ -26,11 +26,13 @@ Bots built using the `telegram.ext.Updater` class.
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) — Bot for automatic broadcasting content from different sources (such as reddit or imgur) into telegram channels.
 * [ML monitoring helper](https://github.com/snk4tr/ML-monitoring-helper) - Bot for convenient managment of learning process on one or more remote machines.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
+* [Motivational Quotes Bot](https://github.com/SumitAgr/MotivationalQuotes-Bot) - A simple Telegram bot that generates a new motivational quote with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/MotivationalQuotes_Bot)
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
 * [OpenCryptoBot](https://github.com/Endogen/OpenCryptoBot) - The Swiss Army knife for crypto-currencies [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/opencryptobot)
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
+* [Picture of The Day Bot](https://github.com/SumitAgr/PictureofTheDay-Bot) - A simple bot that retrieves NASA's Picture of the Day with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://github.com/SumitAgr/PictureofTheDay-Bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
 * [Shortlink Revealer Bot](https://github.com/domestic2citsemod/shortlink-revealer-bot) - Send a shortlink to the bot and he will reveal you the real link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/Shortlink_Revealer_Bot)
