@@ -305,17 +305,12 @@ def flag(code):
 
 #### Get the add group message
 ```python
-class NewMember(BaseFilter):
-      def filter(self, message):
-          if not message.new_chat_members:
-              return False
-          return True
+def add_group(update, context):
+    for member in update.message.new_chat_members:
+        update.reply_text("{username} add group".format(username=member.username))
 
-def add_group(bot, update):
-    for members in update.message.new_chat_members:
-        bot.send_message(update.message.chat_id, text="{username} add group".format(username=members.username))
-
-add_group_handle = MessageHandler(callback=add_group, filters=NewMember())
+add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
+dispatchet.add_handler(add_group_handle)
 ```
 
 ## Advanced snippets
