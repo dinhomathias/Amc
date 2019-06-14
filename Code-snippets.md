@@ -307,7 +307,7 @@ def flag(code):
 ```python
 def add_group(update, context):
     for member in update.message.new_chat_members:
-        update.reply_text("{username} add group".format(username=member.username))
+        update.message.reply_text("{username} add group".format(username=member.username))
 
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatchet.add_handler(add_group_handle)
