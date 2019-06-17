@@ -76,7 +76,7 @@ But our Bot can now only answer to the `/start` command. Let's add another handl
 
 ```python
 def echo(update, context):
-    context.bot.send_message(chat_id=update.message.chat_id, text=update.message.text)
+    update.send_message(chat_id=context.message.chat_id, text=context.message.text)
 
 from telegram.ext import MessageHandler, Filters
 echo_handler = MessageHandler(Filters.text, echo)
@@ -95,7 +95,7 @@ Let's add some actual functionality to your bot. We want to implement a `/caps` 
 ```python
 def caps(update, context):
     text_caps = ' '.join(context.args).upper()
-    context.bot.send_message(chat_id=update.message.chat_id, text=text_caps)
+    update.send_message(chat_id=context.message.chat_id, text=text_caps)
 
 caps_handler = CommandHandler('caps', caps)
 dispatcher.add_handler(caps_handler)
