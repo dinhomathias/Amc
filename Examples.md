@@ -5,7 +5,6 @@ Bots built using the `telegram.ext.Updater` class.
 
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
 * [AmbroBot](https://github.com/Ambro17/AmbroBot) — This bot can search series or movies by name and lets you download them, it can also list latest yts movies, lets you set reminders, solve linear equations and a few other neat things [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CuervoBot)
-* [Bitcoin Cash Explorer Bot](https://github.com/domestic2citsemod/bitcoincash-explorer-bot) - With this bot you can explore the bitcoincash blockchain in easy way on telegram. [Try it on telegram!](https://t.me/BitcoinCashExplorer_bot)
 * [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/blackjackbot)
 * [@boobsbot_bot](https://github.com/ouhettur/boobsbot) - Bot for viewing, loading pictures and animations with the rating system. Used inline commands, inline keyboards, keyboards, сonversationHandler, SQLAlchemy and etc. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/boobsbot_bot)
 * [BotAgainstHumanity](https://gitlab.com/OctoNezd/bot_against_humanity) - a clone of "Cards Against Humanity" for telegram [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/humanity_against_bot)
@@ -18,7 +17,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [ETHdroidBot](https://github.com/lytves/ETHdroidBot) — A telegram bot to control balance of Ethereum and ERC tokens on yours wallets. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/ETHdroidBot)
 * [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) — Echoes any message and any kind of media to anonymize the forward. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/forwardscoverbot)
 * [Hera](https://github.com/xlanor/SIM-UoW-Timetable-bot) - A specialised telegram bot to scrape students timetables from the SIMConnect portal. I'm adding it here because I couldn't find any examples of bots using celery to delegate tasks.
-* [I'm not a bot](https://github.com/MarckTomack/imnotabot-telegram-captcha-bot) - Captcha bot for Telegram [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/captcha_imnotabot)
 * [LogBot](https://github.com/apiad/logbot) — A simple bot that accepts messages through a REST API and redirects them to Telegram, with optional actionable buttons. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/apiad_demo_logbot)
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
@@ -35,7 +33,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [Picture of The Day Bot](https://github.com/SumitAgr/PictureofTheDay-Bot) - A simple bot that retrieves NASA's Picture of the Day with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://github.com/SumitAgr/PictureofTheDay-Bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
-* [Shortlink Revealer Bot](https://github.com/domestic2citsemod/shortlink-revealer-bot) - Send a shortlink to the bot and he will reveal you the real link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/Shortlink_Revealer_Bot)
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commnads based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
 * [@someone bot](https://github.com/zeroone2numeral2/someone-bot) — Bot that randomly mentions people when @someone is used [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/randmentionbot)
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers (inactive members)
