@@ -49,7 +49,8 @@ Bots built using the `telegram.ext.Updater` class.
 * [VorpalRobot](https://github.com/Tronikart/VorpalRobot) - an inline dice rolling bot [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/VorpalRobot)
 * [Trading-Analysis-Bot](https://github.com/trinhvv/trading-analysis-bot) — Telegram chatbot for data-driven analytics of cryptocurrencies market, particularly Binance, providing standard technical indicators as well as modern statistical metrics for blockchain network [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/trading_analysis_bot)
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
-
+* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
+ 
 # API
 Bots using the raw API.
 
