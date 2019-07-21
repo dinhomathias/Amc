@@ -74,6 +74,10 @@ To re-attach to the *screen* after you logged back in:
 ```
 screen -r mybot
 ```
+Or
+```
+screen -d -m mybot
+```
 
 ## What to read next?
 If you plan on hosting multiple bots on your server, it's recommended to use `virtualenv`. It allows you to install and upgrade Python modules via `pip` for one project, without worrying how it affects other projects on the server. Read [this external article](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for more information.
