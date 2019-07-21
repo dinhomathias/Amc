@@ -76,7 +76,7 @@ screen -r mybot
 ```
 or
 ```
-screen -d -m mybot
+screen -d -r mybot
 ```
 
 ## What to read next?
