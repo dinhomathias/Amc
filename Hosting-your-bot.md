@@ -74,7 +74,7 @@ To re-attach to the *screen* after you logged back in:
 ```
 screen -r mybot
 ```
-Or
+or
 ```
 screen -d -m mybot
 ```
