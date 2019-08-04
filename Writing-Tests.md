@@ -14,5 +14,5 @@ The currently unmaintained [TgIntegration library](https://github.com/JosXa/tgin
 
 ## Feature Tests
 We are testing features of our bot using behave python module and using python-telegram-bot.
-I am implementing this concept on this repo [chat bots behave test](https://github.com/mmdaz/feature_testing_chat_bots/blob/master/steps/test.py)
+I am implementing this concept on this repo [chat bots behave test](https://github.com/mmdaz/feature_testing_chat_bots)
 I will be happy if I get comments and pull requests for improving it.
