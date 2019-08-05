@@ -32,6 +32,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
 * [Picture of The Day Bot](https://github.com/SumitAgr/PictureofTheDay-Bot) - A simple bot that retrieves NASA's Picture of the Day with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://github.com/SumitAgr/PictureofTheDay-Bot)
+* [reactor](https://github.com/vanyakosmos/reactor) - like @like but with dynamic number of buttons. Users can add own reactions on messages, similarly to slack/discord reactions. [try it out](https://t.me/emojinator_bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commnads based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
