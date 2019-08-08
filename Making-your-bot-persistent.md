@@ -5,9 +5,9 @@ The persistence structure is designed to make `chat_data`, `user_data` and `Conv
 `Job`'s and the `job_queue` is not supported because the serialization of callbacks is too unstable to reliably make persistent for broad user-cases. For a snippet on how to save and restore a basic `job_queue` see [here](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#save-and-load-jobs-using-pickle).
 
 ## Included persistence classes
-three classes concerning persistence in bots have been added. 
-[BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence`
-[PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.
+Three classes concerning persistence in bots have been added.  
+[BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence`  
+[PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.  
 [DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent.
 
 ## 3rd party persistence classes
