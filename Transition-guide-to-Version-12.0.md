@@ -12,9 +12,11 @@
     * [PrefixHandler](#prefixhandler)
     * [MessageHandler](#messagehandler)
     * [ConversationHandler](#conversationhandler)
+    * [Error Handler](#error-handler)
 * [Filters in handlers](#filters-in-handlers)
     * [Special note about regex filters](#special-note-about-regex-filters)
 * [Persistence](#persistence)
+* [Return UTC from from_timestamp()](#return-utc-from-from_timestamp)
 
 # Context based callbacks
 The biggest change in this release is context based callbacks. When running your bot you will probably see a warning like the following:
@@ -131,6 +133,13 @@ See [Special note about regex filters](#special-note-about-regex-filters) and [N
 The arguments `run_async_timeout` and `timed_out_behavior` have been removed.
 The timeout for waiting for a @run_async handler is now always 0. If an update would have waited before, ConversationHandler will now try to use a handler in the new special state `ConversationHandler.WAITING`. This allows you to either manually wait in the handler if you want the old functionality, or send a message back to the user like "I am still processing your last request, please wait".
 
+## Error handler
+Error handler got a major improvement. Instead of only handling TelegramErrors, every error from every handler will be passed to its callback.
+
+You can use it for example to send yourself notifications if an error happened while your bot is running.
+
+Note: If an error handler callback is successfully executed, the error itself won't be caught by the logger module. If you still want this, reraise the error at the end of your function.
+
 ***
 # Filters in handlers
 Using a list of filters in a handler like below has been deprecated for a while now. Version 12 removes the ability completely.
@@ -178,3 +187,7 @@ Also note that `context.match` is a shortcut for `context.matches[0]`. Very usef
 ***
 # Persistence
 In version 12 we introduce persistence to the bot's mechanics. If you want to use this please read the [wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent) dedicated to persistence.
+***
+# Return UTC from from_timestamp()
+
+from_timestamp() now returns UTC timestamps. The recommended way to work is to run your bot on a machine configured to UTC.
