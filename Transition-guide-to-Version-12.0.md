@@ -190,4 +190,4 @@ In version 12 we introduce persistence to the bot's mechanics. If you want to us
 ***
 # Return UTC from from_timestamp()
 
-from_timestamp() now returns UTC timestamps. The recommended way to work is to run your bot on a machine configured to UTC.
+from_timestamp() now returns UTC timestamps. The recommended way to work is to run your bot on a machine configured to UTC. This means that from now on. `telegram.Message.date` will always be in UTC format.
