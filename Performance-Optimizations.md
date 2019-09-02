@@ -1,8 +1,3 @@
-## Version 12 beta note
-This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
-This version has proven to be generally generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
-If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations/e804e4c8e8a4df1f67beacb17ea890bde57b34e8).
-
 ## Introduction
 When your bot becomes popular, you will eventually want to improve response times. After all, Telegram places high priority on fast messaging. At the same time, responses become slower as more people are using your bot. This happens more quickly for inline bots, as they may receive multiple inline queries during one interaction. 
 
