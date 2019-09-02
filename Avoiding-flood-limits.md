@@ -1,9 +1,3 @@
-## Version 12 beta note
-This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
-This version has proven to be generally generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
-If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits/bd30b9aa7c12515496af55650205485d3455821f).
-
-
 ## What the spam limits are and why you should avoid hitting them
 Considering [Telegram's Bot documentation](https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this), currently the maximum amount of messages being sent by bots is limited to 30&#160;messages/second for all ordinary messages and 20&#160;messages/minute for group messages. According to [@BotSupport](https://t.me/BotSupport) the limit for group also applies to channels (this is not confirmed by Telegram in their documentation however). When your bot hits spam limits, it starts to get 429 errors from Telegram API. And assuming that error handling in such case usually is coded as simple retrials, the running machine would spend a lot of CPU time retrying (or got locked down, depending on bot implementation details). And constantly retrying to send messages while ignoring API errors could result in your bot being banned for some time.
 
