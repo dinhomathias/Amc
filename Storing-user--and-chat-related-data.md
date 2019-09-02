@@ -1,10 +1,3 @@
-## Version 12 beta note
-This wiki page has been updated to work with the beta version 12 of the python-telegram-bot library.  
-This version has proven to be generally stable enough for most usecases. See [the v12 transistion guide](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-12.0) for more info.  
-If you're still using version 11.1.0, please see the [old version of this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Storing-user--and-chat-related-data/73954b0cfb69cc7f07a3330a7dd90b420440a8c9).
-
-***
-
 Sometimes you need to temporarily store some information about the current user and/or chat for later use. An example of this would be a survey bot that asks the user a series of questions one after another and saves them to your database when all answers are collected. 
 # `user_data` and `chat_data`
 The `telegram.ext` framework provides a built-in solution for this common task. To understand how it works, let's take a look at a naïve solution using a global variable. In case you're in a hurry, you can also [**jump straight to the explanation**](#explanation).
