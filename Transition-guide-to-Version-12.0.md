@@ -123,7 +123,7 @@ In addition `allow_edited` is deprecated until V13, when it will be removed. The
 Newly added is the `PrefixHandler`. [read the docs ](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.prefixhandler.html) for more details on its use and implementation.
 
 ## MessageHandler
-`MessageHandler` received some upgrades to switch to the filter system. We've removed `allow_edited` which has been deprecated for a while. Also we now deprecated `message_updates`, `channel_post_updates` and `edited_updates` in the constructor. The defaults remain the same (not edited messages and channel_posts). To tweak the message you receive with MessageHandler, please use the [update filters](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.filters.html#telegram.ext.filters.Filters.update).
+`MessageHandler` received some upgrades to switch to the filter system. We've removed `allow_edited` which has been deprecated for a while. Also we now deprecated `message_updates`, `channel_post_updates` and `edited_updates` in the constructor. The defaults have also changed to accepting **all updates** by default. This includes (edited_)channel_posts and (edited_)messages. To tweak the message you receive with MessageHandler, please use the [update filters](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.filters.html#telegram.ext.filters.Filters.update).
 
 ## RegexHandler
 `RegexHandler` is being deprecated. It's basically a MessageHandler with a `Filters.regex`, now the CallbackContext contains all match information. For now, we keep it in, but you should switch the use of `RegexHandler` to using `MessageHandler(Filters.regex('pattern'), callback)`.  
