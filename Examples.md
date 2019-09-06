@@ -31,9 +31,10 @@ Bots built using the `telegram.ext.Updater` class.
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
 * [OpenCryptoBot](https://github.com/Endogen/OpenCryptoBot) - The Swiss Army knife for crypto-currencies [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/opencryptobot)
+* [Picture of The Day Bot](https://github.com/SumitAgr/PictureofTheDay-Bot) - A simple bot that retrieves NASA's Picture of the Day with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://github.com/SumitAgr/PictureofTheDay-Bot)
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for a group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
-* [Picture of The Day Bot](https://github.com/SumitAgr/PictureofTheDay-Bot) - A simple bot that retrieves NASA's Picture of the Day with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://github.com/SumitAgr/PictureofTheDay-Bot)
+* [privibot](https://github.com/pawamoy/privibot) - A Python library to add a privilege/permission system to your Telegram bot.
 * [reactor](https://github.com/vanyakosmos/reactor) - like @like but with dynamic number of buttons. Users can add own reactions on messages, similarly to slack/discord reactions. [try it out](https://t.me/emojinator_bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
