@@ -643,7 +643,8 @@ def error(update, context):
         if update.effective_chat.username:
             payload += f' (@{update.effective_chat.username})'
     # but only one where you have an empty payload by now: A poll (buuuh)
-    payload += f' with the poll id {update.poll.id}.'
+    if update.poll:
+        payload += f' with the poll id {update.poll.id}.'
     # lets put this in a "well" formatted text
     text = f"Hey.\n The error <code>{context.error}</code> happened{payload}. The full traceback:\n\n<code>{trace}" \
            f"</code>"
