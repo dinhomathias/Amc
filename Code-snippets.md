@@ -454,7 +454,7 @@ def get_admin_ids(bot, chat_id):
 
 You can then use the function like this:
 ```python
-if update.message.from_user.id in get_admin_ids(bot, update.message.chat_id):
+if update.effective_user.id in get_admin_ids(context.bot, update.message.chat_id):
     # admin only
 ```
 
