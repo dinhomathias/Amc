@@ -29,4 +29,4 @@ From the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#what-mes
 
 ### Can my bot delete messages from the user in a private chat?
 
-No.
+Yes, but only within the first 48 hours.
