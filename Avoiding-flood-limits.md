@@ -61,7 +61,6 @@ class MQBot(telegram.bot.Bot):
             self._msg_queue.stop()
         except:
             pass
-        super(MQBot, self).__del__()
 
     @mq.queuedmessage
     def send_message(self, *args, **kwargs):
