@@ -11,7 +11,9 @@ Three classes concerning persistence in bots have been added.
 [DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent.
 
 ## 3rd party persistence classes
-If you want to create your own persistence class, please carefully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. If you've written a persistence class that could be of use to others (e.g. a general one covering all types of data). Please add it below.
+If you want to create your own persistence class, please carefully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. 
+
+If you've written a persistence class that could benefit others (e.g. a general one covering all types of data), please add it below.
 
 ## What do I need to change?
 To make your bot persistent you need to do the following.
