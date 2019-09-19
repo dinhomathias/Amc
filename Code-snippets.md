@@ -125,7 +125,7 @@ def send_typing_action(func):
     return command_func
 
 @send_typing_action
-def my_handler(bot, update):
+def my_handler(update, context):
     pass # Will send 'typing' action while processing the request.
 ```
 
