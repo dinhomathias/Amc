@@ -340,7 +340,7 @@ Add a `@restricted` decorator on top of your handler declaration:
 
 ```python
 @restricted
-def my_handler(bot, update):
+def my_handler(update, context):
     pass  # only accessible if `user_id` is in `LIST_OF_ADMINS`.
 ```
 ---
