@@ -49,6 +49,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) — Lets you pick a timezone. This bot also uses a class for its design pattern.
 * [Telegram-Facebook-bot](https://github.com/MorenK1/telegram-facebook-bot/blob/master/README.md) - a botto load content from Facebok pages and send it to Telegram channels
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) — Trade crypto-currencies on the Kraken marketplace
+* [TelegramSSH](https://github.com/wwilliamcook/TelegramSSH) - Enables virtual SSH on bot machine without port forwarding.
 * [Travis CI Telegram Notification](https://github.com/vanyakosmos/travis-tg-notifier) - helps to setup notifications about builds.
 * [Twitter-lists-bot](https://github.com/lytves/twitter-lists-bot) - a bot to resend your twitter list notifications
 * [Url-Shortener-Bot](https://github.com/paradox70/url-shortener-goo.gl) — Shortens any URL and reports total number of clicks on shortened link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/shortenMyUrlBot)
