@@ -56,6 +56,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [VorpalRobot](https://github.com/Tronikart/VorpalRobot) - an inline dice rolling bot [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/VorpalRobot)
 * [Trading-Analysis-Bot](https://github.com/trinhvv/trading-analysis-bot) — Telegram chatbot for data-driven analytics of cryptocurrencies market, particularly Binance, providing standard technical indicators as well as modern statistical metrics for blockchain network [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/trading_analysis_bot)
+* [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
  
