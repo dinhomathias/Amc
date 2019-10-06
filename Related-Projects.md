@@ -9,6 +9,7 @@ Please try to keep this page up-to-date.
 | Project | Description | `python-telegram-bot` version | Development Status |
 | ------- | ----------- | ----------------------------- | ------------------ |
 | [django-telegrambot](https://github.com/JungDev/django-telegrambot) | A simple app to develop Telegram bots with Django | >=6.0.1 | Stable |
+| [jackfruit](https://github.com/zzzzlzzzz/jackfruit) | A django-style way to develop Telegram bots | >=12.0 | Alpha |
 | [ownbot](https://github.com/michaelimfeld/ownbot) | Ownbot provides some cool decorators to protect your command handler functions from unauthorized users! | 5.1.1 | Beta |
 | [permabots](https://github.com/jlmadurga/permabots) | Connect instant messaging bots to your APIs. http://www.permabots.com | 4.2.0 | Beta |
 | [python-telegram-bot-seed](https://github.com/alesanmed/python-telegram-bot-seed) | Seed project for developing bots using python-telegram-bot | 10.1.0 | Pre-Alpha |
