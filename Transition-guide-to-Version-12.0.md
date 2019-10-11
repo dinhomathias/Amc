@@ -58,12 +58,12 @@ def start(bot, update, args, job_queue):
 
 to the new style using CallbackContext
 ``` python
-def start(update: Updater, context: CallbackContext):
+def start(update: Update, context: CallbackContext):
     # Stuff here
     # args will be available as context.args
     # jobqueue will be available as context.jobqueue
 ```
-_On python 2 which doesn't support annotations replace `update: Updater, context: CallbackContext` with simply `update, context`._
+_On python 2 which doesn't support annotations replace `update: Update, context: CallbackContext` with simply `update, context`._
 
 ## Error handler callbacks
 Error handler callbacks are the ones added using `Dispatcher.add_error_handler`. These have also been changed from the old form:
