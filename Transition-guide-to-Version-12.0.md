@@ -21,7 +21,7 @@
 # Context based callbacks
 The biggest change in this release is context based callbacks. When running your bot you will probably see a warning like the following:
 ```
-echobot2.py:62: TelegramDeprecationWarning: Old Handler API is deprecated - see https://git.io/vp113 for details
+echobot2.py:62: TelegramDeprecationWarning: Old Handler API is deprecated - see https://git.io/fxJuV for details
 ```
 This means you're using the old style callbacks and should upgrade to context based callbacks.
 
