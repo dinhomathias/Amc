@@ -47,7 +47,7 @@ class FilterAwesome(BaseFilter):
 filter_awesome = FilterAwesome()
 ```
 
-The class can of cause be named however you want, the only important things are:
+The class can of course be named however you want, the only important things are:
 - The class has to inherit from `BaseFilter`
 - It has to implement a `filter` method
 - You have to create an instance of the class
