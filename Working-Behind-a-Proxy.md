@@ -34,4 +34,4 @@ REQUEST_KWARGS={
     }
 }
 
-updater = Updater(TOKEN, request_kwargs=REQUEST_KWARGS
+updater = Updater(TOKEN, request_kwargs=REQUEST_KWARGS)
