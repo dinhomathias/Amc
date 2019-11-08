@@ -103,11 +103,11 @@ server {
     ssl_certificate_key private.key;
 
     location /TOKEN1 {
-        proxy_pass http://127.0.0.1:5000;
+        proxy_pass http://127.0.0.1:5000/TOKEN1/;
     }
 
     location /TOKEN2 {
-        proxy_pass http://127.0.0.1:5001;
+        proxy_pass http://127.0.0.1:5001/TOKEN2/;
     }
 }
 ```
