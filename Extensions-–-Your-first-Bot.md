@@ -101,7 +101,7 @@ caps_handler = CommandHandler('caps', caps)
 dispatcher.add_handler(caps_handler)
 ```
 
-**Note:** Take a look at the usage of `context.args`. The [CallbackContext)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html) will have many different attributes, depending on which handler is used.
+**Note:** Take a look at the usage of `context.args`. The [CallbackContext](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html) will have many different attributes, depending on which handler is used.
 
 Another cool feature of the Telegram Bot API is the [inline mode](https://core.telegram.org/bots/inline). If you want to implement inline functionality for your bot, please first talk to [@BotFather](https://telegram.me/botfather) and enable inline mode using `/setinline`. It sometimes takes a while until your Bot registers as an inline bot on your client. You might be able to speed up the process by restarting your Telegram App (or sometimes, you just have to wait for a while).
 
