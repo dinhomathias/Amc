@@ -52,11 +52,12 @@ Bots built using the `telegram.ext.Updater` class.
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) — Trade crypto-currencies on the Kraken marketplace
 * [TelegramSSH](https://github.com/wwilliamcook/TelegramSSH) - Enables virtual SSH on bot machine without port forwarding.
 * [Travis CI Telegram Notification](https://github.com/vanyakosmos/travis-tg-notifier) - helps to setup notifications about builds.
+* [Trading-Analysis-Bot](https://github.com/trinhvv/trading-analysis-bot) — Telegram chatbot for data-driven analytics of cryptocurrencies market, particularly Binance, providing standard technical indicators as well as modern statistical metrics for blockchain network [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/trading_analysis_bot)
 * [Twitter-lists-bot](https://github.com/lytves/twitter-lists-bot) - a bot to resend your twitter list notifications
 * [Url-Shortener-Bot](https://github.com/paradox70/url-shortener-goo.gl) — Shortens any URL and reports total number of clicks on shortened link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/shortenMyUrlBot)
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [VorpalRobot](https://github.com/Tronikart/VorpalRobot) - an inline dice rolling bot [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/VorpalRobot)
-* [Trading-Analysis-Bot](https://github.com/trinhvv/trading-analysis-bot) — Telegram chatbot for data-driven analytics of cryptocurrencies market, particularly Binance, providing standard technical indicators as well as modern statistical metrics for blockchain network [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/trading_analysis_bot)
+* [Watermaker-bot](https://github.com/alistvt/watermarker-bot) - A bot to watermark your files by your logo.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
