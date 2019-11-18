@@ -9,6 +9,9 @@
 5. [Avoiding flood limits](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits)
 6. [Making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent)
 
+## Examples explained
+1. [Inlinekeyboard Example](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Inlinekeyboard-Example)
+
 ## Code resources
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
 2. [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling)
