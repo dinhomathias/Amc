@@ -1,7 +1,7 @@
 # Introduction
 Hey, this wiki page will walk you through the inline keyboard example found [here](../blob/master/examples/inlinekeyboard.py). We will start with how python starts with the example, then follow through the code in the same way we expect updates from the user would go through it. Let's do it.
 
-_Disclaimer: We will conveniently ignore the imports. If they provide you trouble, you shouldn't program a telegram bot._
+_Disclaimer: We will conveniently ignore the imports._
 ## Startup
 
 ```python
