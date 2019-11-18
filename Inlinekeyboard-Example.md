@@ -31,12 +31,12 @@ The last handler is an [error handler](https://python-telegram-bot.readthedocs.i
 ```python
 updater.start_polling()
 ```
-[line 56](../blob/master/examples/inlinekeyboard.py#L56) tells the PTB library to start the bot using polling, which means that the library will continuously make a request to the telegram servers and get new updates from their, if they exists.
+[Line 56](../blob/master/examples/inlinekeyboard.py#L56) tells the PTB library to start the bot using polling, which means that the library will continuously make a request to the telegram servers and get new updates from there, if they exists.
 
 ```python
 updater.idle()
 ```
-[line 60](../blob/master/examples/inlinekeyboard.py#L60) actually runs the bot until a termination signal is send.
+[Line 60](../blob/master/examples/inlinekeyboard.py#L60) actually runs the bot until a termination signal is send.
 
 
 Let's start our way through the handlers in the same way we would expect an user to go through it: With the start handler:
@@ -72,14 +72,14 @@ Now we expect people to press one of the provided buttons, so let's jump to the 
 ```python
 def button(update, context):
 ```
-[Line 29](../blob/master/examples/inlinekeyboard.py#L29) we define a function called start. It takes the two arguments update and context.
+[Line 29](../blob/master/examples/inlinekeyboard.py#L29) we define a function called button. It takes the two arguments update and context.
 
 ```python
 query = update.callback_query
 
 query.edit_message_text(text="Selected option: {}".format(query.data))
 ```
-[Line 30 to 32](../blob/master/examples/inlinekeyboard.py#L30-L32) query is defined as a shortcut to access the provided callbackquery. Then we edit the message where to callbackquery originates from with the text where we tell the user which option we picked. We insert query.data into the string, which is the data we defined in the keyboard, so the number 1, 2 or 3. Since we don't pass the inline keyboard along again, it will disappear.
+[Line 30 to 32](../blob/master/examples/inlinekeyboard.py#L30-L32) query is defined as a shortcut to access the provided callbackquery. Then we edit the message where to callbackquery originates from with the text where we tell the user which option we picked. We insert `query.data` into the string, which is the data we defined in the keyboard, so the number 1, 2 or 3. Since we don't pass the inline keyboard along again, it will disappear.
 ## help
 
 ```python
@@ -96,5 +96,6 @@ def error(update, context):
 ```
 [Line 39 to 41](../blob/master/examples/inlinekeyboard.py#L39-41) we simply log in the logger that the provided update raised the provided error.
 
+***
 
-This section of the wiki is currently in development, feedback is greatly appreciated. Ping one of the admins in our telegram group to anything you catch/want to tell us.
+This section of the wiki is currently in development, feedback is greatly appreciated. Ping one of the admins in our telegram group to anything you want to tell us.
