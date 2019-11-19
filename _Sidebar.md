@@ -10,7 +10,7 @@
 6. [Making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent)
 
 ## Examples explained
-1. [Inlinekeyboard Example](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Inlinekeyboard-Example)
+1. [InlineKeyboard Example](https://github.com/python-telegram-bot/python-telegram-bot/wiki/InlineKeyboard-Example)
 
 ## Code resources
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
