@@ -11,7 +11,7 @@ PTB will obtain its proxy configuration in the following order (the first to be 
 TOKEN='YOUR_BOT_TOKEN'
 REQUEST_KWARGS={
     # "USERNAME:PASSWORD@" is optional, if you need authentication:
-    'proxy_url': 'USERNAME:PASSWORD@http://PROXY_HOST:PROXY_PORT/',
+    'proxy_url': 'http://USERNAME:PASSWORD@PROXY_HOST:PROXY_PORT/',
 }
 
 updater = Updater(TOKEN, request_kwargs=REQUEST_KWARGS)
