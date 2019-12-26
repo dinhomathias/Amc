@@ -28,9 +28,9 @@ updater = Updater(token='TOKEN', use_context=True)
 ```
 **Related docs:** [telegram.ext.Updater](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.updater.html#telegram.ext.updater.Updater)
 
-For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
-
 **Note**: The `use_context=True` is a special argument only needed for version 12 of the library. It allows for better backwards compatibility with older versions of the library, and to give users some time to upgrade. From version 13 `use_context=True` will be the default.
+
+For quicker access to the `Dispatcher` used by your `Updater`, you can introduce it locally:
 
 ```python
 dispatcher = updater.dispatcher
