@@ -54,7 +54,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Telegram-Facebook-bot](https://github.com/MorenK1/telegram-facebook-bot/blob/master/README.md) - a botto load content from Facebok pages and send it to Telegram channels
 * [Telegram-Kraken-Bot](https://github.com/Endogen/Telegram-Kraken-Bot) — Trade crypto-currencies on the Kraken marketplace
 * [TelegramSSH](https://github.com/wwilliamcook/TelegramSSH) - Enables virtual SSH on bot machine without port forwarding.
-* [toptracksbot](https://github.com/pltnk/toptracksbot) - This bot fetches video from YouTube for the top three tracks by specified artist according to Last.fm overall charts.
+* [toptracksbot](https://github.com/pltnk/toptracksbot) - This bot fetches video from YouTube for the top three tracks by specified artist according to Last.fm overall charts. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/toptracksbot)
 * [Travis CI Telegram Notification](https://github.com/vanyakosmos/travis-tg-notifier) - helps to setup notifications about builds.
 * [Trading-Analysis-Bot](https://github.com/trinhvv/trading-analysis-bot) — Telegram chatbot for data-driven analytics of cryptocurrencies market, particularly Binance, providing standard technical indicators as well as modern statistical metrics for blockchain network [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/trading_analysis_bot)
 * [Twitter-lists-bot](https://github.com/lytves/twitter-lists-bot) - a bot to resend your twitter list notifications
