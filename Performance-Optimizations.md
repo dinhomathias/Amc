@@ -55,7 +55,8 @@ An example that is often used to illustrate this is that of a bank. Let's say yo
 
 ```python
 @run_async
-def transaction(bot, update):
+def transaction(update, context):
+  bot = context.bot
   chat_id = update.message.chat_id
   source_id, target_id, amount = parse_update(update)
 
