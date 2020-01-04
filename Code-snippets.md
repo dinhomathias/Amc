@@ -375,11 +375,11 @@ send_upload_photo_action = send_action(ChatAction.UPLOAD_PHOTO)
 With the above aliases, the following decorators are equivalent
 ```python
 @send_typing_action
-def my_handler(bot, update):
+def my_handler(update, context):
     pass  # user will see 'typing' while your bot is handling the request.
     
 @send_action(ChatAction.TYPING)
-def my_handler(bot, update):
+def my_handler(update, context):
     pass  # user will see 'typing' while your bot is handling the request.
 ```
 All possible actions are documented [here](https://core.telegram.org/bots/api#sendchataction).
@@ -476,7 +476,7 @@ from threading import Thread
 # Other code
 
 def main():
-    updater = Updater("TOKEN")
+    updater = Updater("TOKEN", context=True)
     dp = updater.dispatcher
 
     # Add your other handlers here...
