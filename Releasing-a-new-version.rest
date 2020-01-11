@@ -67,7 +67,7 @@ Process
 
 * Trigger documentation rebuild::
 
-* On `Readthedocs dashboard`_ trigger a build for stable release.
+* On `Readthedocs dashboard`_ trigger a build for stable release (you'd probably need to do it twice: check the git revision being built to make sure it's the right one).
 
 * `Close milestones`_ for this version.
 
