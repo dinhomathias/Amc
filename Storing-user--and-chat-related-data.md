@@ -120,3 +120,71 @@ By using `context.user_data` in any `Handler` callback, you have access to a use
  - If not empty, `user_data` and `chat_data` will be kept until the process ends.
 - `user_data` and `chat_data` are different dictionaries even for private chats.
 - You can not assign a new value to `user_data` or `chat_data`. Instead of `user_data = {}` and `user_data = other_dict`, use `user_data.clear()` and/or `user_data.update(other_dict)` respectively.
+
+## Chat Migration
+If a group chat migrates to supergroup, its chat id will change. Since the `chat_data` dicts are stored *per chat id* you'll need to transfer the data to the new id. Here are the two situations you may encounter:
+
+### Status Updates sent by Telegram
+When a group migrates, Telegram will send an update that just states the new info. In order to catch those, simply define a corresponding handler:
+
+```
+def chat_migration(update, context):
+    m = update.message
+    dp = context.dispatcher
+
+    # Get old and new chat ids
+    old_id = m.chat_id or m.migrate_from_chat_id
+    new_id = m.migrate_to_chat_id or m.chat_id
+
+    # transfer data, if old data is still present
+    if old_id in dp.chat_data:
+        dp.chat_data[new_id].update(dp.chat_data.get(old_id))
+        del dp.chat_data[old_id]
+
+...
+
+def main():
+    updater = Updater("TOKEN", use_context=True)
+    dp = updater.dispatcher
+
+    dp.add_handler(MessageHandler(Filters.status_update.migrate, chat_migration))
+
+...
+```
+To be entirely sure that the update will be processed by this handler, either add it first or put it in its own group.
+
+### ChatMigrated Errors
+
+If you try e.g. sending a message to the old chat id, Telegram will respond by a Bad Request including the new chat id. You can access it using an error handler:
+
+```
+def error(update, context):
+    """Log Errors caused by Updates."""
+    logger.warning('Update "%s" caused error "%s"', update, context.error)
+
+    if isinstance(context.error, ChatMigrated):
+        new_chat_id = context.error.new_chat_id
+```
+Unfortunately, Telegram does *not* pass along the old chat id, so there is currently no simple way to perform a data transfer like above within the error handler. So make sure, that you catch the status updates! Still, you can wrap your requests into a `try-except`-clause:
+
+```
+def my_callback(update, context):
+    dp = context.dispatcher
+
+    ...
+
+    try:
+        context.bot.send_message(chat_id, text)
+    except ChatMigrated as e:
+        new_id = e.new_chat_id
+
+        # Resend to new chat id
+        context.bot.send_message(new_id, text)
+
+        # Transfer data
+        if chat_id in dp.chat_data:
+            dp.chat_data[new_id].update(dp.chat_data.get(chat_id))
+            del dp.chat_data[chat_id]
+
+    ...
+```
