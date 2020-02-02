@@ -1,5 +1,5 @@
 Sometimes you need to temporarily store some information about the current user and/or chat for later use. An example of this would be a survey bot that asks the user a series of questions one after another and saves them to your database when all answers are collected. 
-# `user_data` and `chat_data`
+# `bot_data`, `user_data` and `chat_data`
 The `telegram.ext` framework provides a built-in solution for this common task. To understand how it works, let's take a look at a naïve solution using a global variable. In case you're in a hurry, you can also [**jump straight to the explanation**](#explanation).
 
 ## Bad Example
@@ -111,15 +111,15 @@ By using `context.user_data` in any `Handler` callback, you have access to a use
 
 *Every time the bot receives a message*, the handler for that message finds (or creates) the `user_data` of the user who sent the message. This dictionary is *shared across all handlers* of the bot.
 
-#### What about `chat_data`?
-`chat_data` works in the exact same way as `user_data`, except it is managed per *chat* instead of every *user*. Use `context.chat_data` to get access to this dict.
+#### What about `bot_data` and `chat_data`?
+`chat_data` works in the exact same way as `user_data`, except it is managed per *chat* instead of every *user*. Use `context.chat_data` to get access to this dict. `bot_data` works in the exact same way as `user_data`, except it's a single dictionary for your bot. Use `context.bot_data` to get access to this dict.
 
 #### Notes & Tips
-- **Everything is stored in memory.** This means that all `user_data` and `chat_data` is deleted when the bot process ends. If you don't want this, have a look at the [persistent page](Making-your-bot-persistent).
-- Empty `user_data` and `chat_data` dictionaries are automatically deleted from memory after the update is processed.
- - If not empty, `user_data` and `chat_data` will be kept until the process ends.
+- **Everything is stored in memory.** This means that all `bot_data`, `user_data` and `chat_data` is deleted when the bot process ends. If you don't want this, have a look at the [persistent page](Making-your-bot-persistent).
+- Empty `bot_data`, `user_data` and `chat_data` dictionaries are automatically deleted from memory after the update is processed.
+ - If not empty, bot_data`, `user_data` and `chat_data` will be kept until the process ends.
 - `user_data` and `chat_data` are different dictionaries even for private chats.
-- You can not assign a new value to `user_data` or `chat_data`. Instead of `user_data = {}` and `user_data = other_dict`, use `user_data.clear()` and/or `user_data.update(other_dict)` respectively.
+- You can not assign a new value to `bot_data`, `user_data` or `chat_data`. Instead of `user_data = {}` and `user_data = other_dict`, use `user_data.clear()` and/or `user_data.update(other_dict)` respectively.
 
 ## Chat Migration
 If a group chat migrates to supergroup, its chat id will change. Since the `chat_data` dicts are stored *per chat id* you'll need to transfer the data to the new id. Here are the two situations you may encounter:
