@@ -1,7 +1,7 @@
 In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki is set up to help you understand and set up persistence for your bots.
 
 ## What can become persistent?
-The persistence structure is designed to make `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
+The persistence structure is designed to make `bot_data`, `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
 `Job`'s and the `job_queue` is not supported because the serialization of callbacks is too unstable to reliably make persistent for broad user-cases. For a snippet on how to save and restore a basic `job_queue` see [here](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#save-and-load-jobs-using-pickle).
 
 ## Included persistence classes
