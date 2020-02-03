@@ -43,6 +43,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
       - [Usage](#usage-3)
     + [Save and load jobs using pickle](#save-and-load-jobs-using-pickle)
     + [An (good) error handler](#an-good-error-handler)
+    + [Use default values](#use-default-values)
 - [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -654,6 +655,41 @@ def error(update, context):
     # we raise the error again, so the logger module catches it. If you don't use the logger module, use it.
     raise
 ``` 
+
+#### Use default values
+As of version 12.4, PTB supports passing default values for arguments such as `parse_mode` to reduce the need for repetition. For this purpose, the [Defaults](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.defaults.html) class was introduced. Here is a show case for setting `parse_mode` to `ParseMode.HTML` by default:
+
+```
+from telegram import ParseMode
+from telegram.ext import Updater, MessageHandler, Filters, Defaults
+
+def echo(update, context):
+    # Send with default parse mode
+    update.message.reply_text('<b>{}</b>'.format(update.message.text))
+    # Override default parse mode locally
+    update.message.reply_text('*{}*'.format(update.message.text), parse_mode=ParseMode.MARKDOWN)
+    update.message.reply_text('*{}*'.format(update.message.text), parse_mode=None)
+
+def main():
+    """Instanciate a Defaults object"""
+    defaults = Defaults(parse_mode=ParseMode.HTML)
+
+    """Start the bot."""
+    updater = Updater("TOKEN", use_context=True, defaults=defaults)
+
+    # Get the dispatcher to register handlers
+    dp = updater.dispatcher
+
+    # on noncommand i.e message - echo the message on Telegram
+    dp.add_handler(MessageHandler(Filters.text, echo))
+
+    # Start the Bot
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == '__main__':
+    main()
+```
 
 ## What to read next?
 If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
