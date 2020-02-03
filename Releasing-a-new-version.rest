@@ -42,6 +42,8 @@ Process
 
   * CHANGES.rst
 
+  Since writing adding the correct links is a bit tiresome, here is a little `Gist`_ to help you with it.
+
 * Commit the version bump and CHANGEs.rst::
 
   $ git commit -a -m 'Bump version to v<VERSION>'
@@ -89,3 +91,4 @@ Please use the following channels/groups to announce a new version release:
 .. _`@pythontelegrambotchannel`: https://telegram.me/pythontelegrambotchannel
 .. _`Readthedocs dashboard`: https://readthedocs.org/projects/python-telegram-bot/
 .. _`Ubuntu shell`: https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
+.. _`Gist`: https://gist.github.com/Bibo-Joshi/2fbb1b59af8b69fe6de5951f00328e22
