@@ -1,4 +1,4 @@
->Warning: bot_data will be released with 12.1 and is currently in the master branch, but not released.
+>Warning: bot_data will be released with 12.4 and is currently in the master branch, but not released.
 
 Sometimes you need to temporarily store some information about the current user and/or chat for later use. An example of this would be a survey bot that asks the user a series of questions one after another and saves them to your database when all answers are collected. 
 # `bot_data`, `user_data` and `chat_data`
@@ -114,7 +114,7 @@ By using `context.user_data` in any `Handler` callback, you have access to a use
 *Every time the bot receives a message*, the handler for that message finds (or creates) the `user_data` of the user who sent the message. This dictionary is *shared across all handlers* of the bot.
 
 #### What about `bot_data` and `chat_data`?
-`chat_data` works in the exact same way as `user_data`, except it is managed per *chat* instead of every *user*. Use `context.chat_data` to get access to this dict. `bot_data` works in the exact same way as `user_data`, except it's a single dictionary for your bot. Use `context.bot_data` to get access to this dict.
+`chat_data` works in the exact same way as `user_data`, except it is managed per *chat* instead of every *user*. Use `context.chat_data` to get access to this dict. As of version 12.4 `bot_data` is provided as well and works in the exact same way as `user_data`, except it's a single dictionary for your bot. Use `context.bot_data` to get access to this dict.
 
 #### Notes & Tips
 - **Everything is stored in memory.** This means that all `bot_data`, `user_data` and `chat_data` is deleted when the bot process ends. If you don't want this, have a look at the [persistent page](Making-your-bot-persistent).
@@ -132,7 +132,7 @@ When a group migrates, Telegram will send an update that just states the new inf
 ```
 def chat_migration(update, context):
     m = update.message
-    dp = context.dispatcher
+    dp = context.dispatcher # available since version 12.4
 
     # Get old and new chat ids
     old_id = m.chat_id or m.migrate_from_chat_id
@@ -147,7 +147,7 @@ def chat_migration(update, context):
 
 def main():
     updater = Updater("TOKEN", use_context=True)
-    dp = updater.dispatcher
+    dp = updater.dispatcher # available since version 12.4
 
     dp.add_handler(MessageHandler(Filters.status_update.migrate, chat_migration))
 
@@ -171,7 +171,7 @@ Unfortunately, Telegram does *not* pass along the old chat id, so there is curre
 
 ```
 def my_callback(update, context):
-    dp = context.dispatcher
+    dp = context.dispatcher # available since version 12.4
 
     ...
 
