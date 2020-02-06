@@ -11,7 +11,7 @@ As of version 12.4, PTB supports passing default values for arguments such as `p
 ## Example
 Here is a show case for setting `parse_mode` to `ParseMode.HTML` by default:
 
-```
+```python
 from telegram import ParseMode
 from telegram.ext import Updater, MessageHandler, Filters, Defaults
 
