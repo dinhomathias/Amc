@@ -1,5 +1,3 @@
->Warning: bot_data will be released with 12.4 and is currently in the master branch, but not released.
-
 Sometimes you need to temporarily store some information about the current user and/or chat for later use. An example of this would be a survey bot that asks the user a series of questions one after another and saves them to your database when all answers are collected. 
 # `bot_data`, `user_data` and `chat_data`
 The `telegram.ext` framework provides a built-in solution for this common task. To understand how it works, let's take a look at a naïve solution using a global variable. In case you're in a hurry, you can also [**jump straight to the explanation**](#explanation).
