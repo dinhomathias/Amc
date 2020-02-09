@@ -135,7 +135,7 @@ def chat_migration(update, context):
     dp = context.dispatcher # available since version 12.4
 
     # Get old and new chat ids
-    old_id = m.chat_id or m.migrate_from_chat_id
+    old_id = m.migrate_from_chat_id or m.chat_id
     new_id = m.migrate_to_chat_id or m.chat_id
 
     # transfer data, if old data is still present
