@@ -1,0 +1,1 @@
+This page is now over at [[Storing bot, user and chat related data|Storing-bot,-user-and-chat-related-data]]
