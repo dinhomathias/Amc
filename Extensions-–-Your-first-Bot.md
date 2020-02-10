@@ -45,7 +45,7 @@ Now, you can define a function that should process a specific type of update:
 
 ```python
 def start(update, context):
-    context.bot.send_message(chat_id=updater.effective_chat.id, text="I'm a bot, please talk to me!")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 ```
 **Related docs:** [sendMessage](https://core.telegram.org/bots/api#sendmessage), [CallbackContext (the type of the context argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html)
 
