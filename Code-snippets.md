@@ -476,7 +476,7 @@ from threading import Thread
 # Other code
 
 def main():
-    updater = Updater("TOKEN", context=True)
+    updater = Updater("TOKEN", use_context=True)
     dp = updater.dispatcher
 
     # Add your other handlers here...
