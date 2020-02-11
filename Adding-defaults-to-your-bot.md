@@ -33,7 +33,7 @@ def main():
     dp = updater.dispatcher
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text & ~filters.command(only_start=true), echo))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command(only_start=true), echo))
 
     # Start the Bot
     updater.start_polling()
