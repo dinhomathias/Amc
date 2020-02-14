@@ -1,4 +1,4 @@
-In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki is set up to help you understand and set up persistence for your bots.
+In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is there to help you understand and set up persistence for your bots.
 
 ## What can become persistent?
 The persistence structure is designed to make `bot_data`, `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
@@ -21,7 +21,7 @@ To make your bot persistent you need to do the following.
 - Create a persistence object (e.g. `my_persistence = PicklePersistence(filename='my_file')`)
 - Construct Updater with the persistence (`Updater('TOKEN', persistence=my_persistence, use_context=True)`)
 
-This is enough to make `user_data` and `chat_data` persistent.
+This is enough to make `user_data`, `bot_data` and `chat_data` persistent.
 To make a conversationhandler persistent (save states between bot restarts)
 `ConversationHandler(<no change>, persistent=True, name='my_name')`
 If you want a conversationhandler to be persistent you **MUST NAME IT**. persistent is `False` by default.
