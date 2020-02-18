@@ -15,6 +15,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Post a text message with Markdown formatting](#post-a-text-message-with-markdown-formatting)
     + [Post a text message with HTML formatting](#post-a-text-message-with-html-formatting)
     + [Message entities](#message-entities)
+    + [Telegram formatting to BBCode](#telegram-formatting-to-bbcode)
   * [Working with files and media](#working-with-files-and-media)
     + [Post an image file from disk](#post-an-image-file-from-disk)
     + [Post a voice file from disk](#post-a-voice-file-from-disk)
@@ -170,6 +171,72 @@ To use MessageEntity, extract the entities and their respective text from a Mess
 ```python
 entities = message.parse_entities()
 ```
+
+#### Telegram formatting to BBCode
+This is an example how to use entities to convert Telegram formatting to BBCode.
+
+Define parsing function:
+```python
+import sys
+
+def parse_bbcode(message_text, entities, urled=False):
+    """BBCode parsing function"""
+    if message_text is None:
+        return None
+
+    if not sys.maxunicode == 0xffff:
+        message_text = message_text.encode('utf-16-le')
+
+    bbcode_text = ''
+    last_offset = 0
+
+    for entity, text in sorted(entities.items(), key=(lambda item: item[0].offset)):
+
+        if entity.type == 'text_link':
+            insert = '[url={}]{}[/url]'.format(entity.url, text)
+        elif entity.type == 'mention':
+            insert = '[url=https://t.me/{0}]{1}[/url]'.format(text.strip('@'),text)
+        elif entity.type == 'url' and urled:
+            insert = '[url={0}]{0}[/url]'.format(text)
+        elif entity.type == 'bold':
+            insert = '[b]' + text + '[/b]'
+        elif entity.type == 'italic':
+            insert = '[i]' + text + '[/i]'
+        elif entity.type == 'underline':
+            insert = '[u]' + text + '[/u]'
+        elif entity.type == 'strikethrough':
+            insert = '[s]' + text + '[/s]'
+        elif entity.type == 'code':
+            insert = '[code]' + text + '[/code]'
+        elif entity.type == 'pre':
+            insert = '[pre]' + text + '[/pre]'
+        else:
+            insert = text
+        if sys.maxunicode == 0xffff:
+            bbcode_text += message_text[last_offset:entity.offset] + insert
+        else:
+            bbcode_text += message_text[last_offset * 2:entity.offset * 2].decode('utf-16-le') + insert
+
+        last_offset = entity.offset + entity.length
+
+    if sys.maxunicode == 0xffff:
+        bbcode_text += message_text[last_offset:]
+    else:
+        bbcode_text += message_text[last_offset * 2:].decode('utf-16-le')
+    return bbcode_text
+```
+Call it with:
+```python
+entities = update.message.parse_entities()
+bbcode = parse_bbcode(update.message.text, entities, urled=True)
+```
+
+...or for photo captions:
+```python
+entities = update.message.parse_caption_entities()
+bbcode = parse_bbcode(caption, entities, urled=True)
+```
+`bbcode` will contain message/caption text formatted in BBCode. `urled` parameter determines if URLs in text are to be processed as links or left as text.
 
 There are many more API methods. To read the full API documentation, visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
 
