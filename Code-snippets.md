@@ -173,7 +173,7 @@ entities = message.parse_entities()
 ```
 
 #### Telegram formatting to BBCode
-This is an example how to use entities to convert Telegram formatting to BBCode.
+This is an example how to use entities to convert Telegram formatting to BBCode. In the current version it does *not* support nested entities.
 
 Define parsing function:
 ```python
