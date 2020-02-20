@@ -26,19 +26,19 @@ Install [puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 In the field *Host Name (or IP address)* enter the IP address of your server. As the connection type, select *SSH* and set *Port* to *22*. You can save these settings my entering a name in the field below *Saved Sessions* and clicking *Save*. Then, click *Open* and enter your username and password when asked to do so.
 
 ### Setup
-First, install the Python package manager `pip` (replace `python-pip` with `python3-pip` if you want to use Python 3).
-```
-apt-get update && apt-get install python-pip
-```
-
-Now, install the `python-telegram-bot` library (replace `pip` with `pip3` if you're using Python 3):
-```
-pip install python-telegram-bot
+First, install the Python package manager `pip` (use `apt` for Debian based distributions, others vary):
+```shell
+sudo apt update && sudo apt install python3-pip
 ```
 
-Finally, confirm the installation (replace `python` with `python3` if you're using Python 3):
+Now, install the `python-telegram-bot` library:
+```shell
+python3 -m pip install python-telegram-bot
 ```
-python -c "import telegram;print(telegram.__version__)"
+
+Finally, confirm the installation:
+```shell
+python3 -c "import telegram; print(telegram.__version__)"
 ```
 
 ### Upload your bot's files
@@ -63,9 +63,9 @@ Create a new *screen* and attach to it:
 screen -S mybot
 ```
 
-Start the bot (replace `python` with `python3` if you're using Python 3):
+Start the bot:
 ```
-python bot.py
+python3 bot.py
 ```
 
 Detach from the *screen* by holding <kbd>CTRL</kbd> and pressing <kbd>A</kbd>, then <kbd>D</kbd>. You can now disconnect from the server by typing `exit` if you want. 
