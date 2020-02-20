@@ -12,7 +12,7 @@ then there will be a lot of if and else statement.
 Conversation is unique per chat_id, and if we assume each to and fro communication is Chat
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #Base chat
 class TelegramChat(object):
