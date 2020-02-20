@@ -28,7 +28,7 @@ In the field *Host Name (or IP address)* enter the IP address of your server. As
 ### Setup
 First, install the Python package manager `pip` (use `apt` for Debian based distributions, others vary):
 ```shell
-sudo apt update && sudo apt install python3-pip
+apt update && apt install python3-pip
 ```
 
 Now, install the `python-telegram-bot` library:
