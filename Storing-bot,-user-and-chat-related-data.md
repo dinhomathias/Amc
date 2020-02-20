@@ -127,7 +127,7 @@ If a group chat migrates to supergroup, its chat id will change. Since the `chat
 ### Status Updates sent by Telegram
 When a group migrates, Telegram will send an update that just states the new info. In order to catch those, simply define a corresponding handler:
 
-```python
+```
 def chat_migration(update, context):
     m = update.message
     dp = context.dispatcher # available since version 12.4
@@ -157,7 +157,7 @@ To be entirely sure that the update will be processed by this handler, either ad
 
 If you try e.g. sending a message to the old chat id, Telegram will respond by a Bad Request including the new chat id. You can access it using an error handler:
 
-```python
+```
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
@@ -167,7 +167,7 @@ def error(update, context):
 ```
 Unfortunately, Telegram does *not* pass along the old chat id, so there is currently no simple way to perform a data transfer like above within the error handler. So make sure, that you catch the status updates! Still, you can wrap your requests into a `try-except`-clause:
 
-```python
+```
 def my_callback(update, context):
     dp = context.dispatcher # available since version 12.4
 
