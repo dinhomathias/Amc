@@ -18,8 +18,8 @@ Requirements
 
 Packages::
 
-$ python3 -m pip install -r requirements.txt -r requirements-dev.txt -r docs/requirements-docs.txt
-$ python3 -m pip install wheel twine
+$ pip install -r requirements.txt -r requirements-dev.txt -r docs/requirements-docs.txt
+$ pip install wheel twine
 
 
 Process
@@ -50,7 +50,7 @@ Process
   
 * Build source distribution::
 
-  $ python3 setup.py sdist bdist_wheel
+  $ python setup.py sdist bdist_wheel
   
 * Upload to PyPI (-s to sign the package with your GnuPG key)::
  
@@ -73,7 +73,7 @@ Process
 
 * `Close milestones`_ for this version.
 
-* Test in a clean virtualenv that ``python3 -m pip install python-telegram-bot`` works with the new version.
+* Test in a clean virtualenv that ``pip install python-telegram-bot`` works with the new version.
 
 
 Public Announcements
