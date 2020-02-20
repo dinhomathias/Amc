@@ -21,7 +21,7 @@ updater = Updater(TOKEN, request_kwargs=REQUEST_KWARGS)
 This is configuration is supported, but requires an optional/extra python package.
 To install:
 ```bash
-pip install python-telegram-bot[socks]
+$ python3 -m pip install python-telegram-bot[socks]
 ```
 ```python
 TOKEN='YOUR_BOT_TOKEN'
