@@ -1,7 +1,7 @@
 A `Handler` is an instance derived from the base class [telegram.ext.Handler](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.handler.html#telegram.ext.Handler) which is responsible for the routing of different kinds of updates (text, audio, inlinequery, button presses, ...) to their _corresponding callback function_ in your code.
 
 For example, if you want your bot to respond to the command `/start`, you can use a [CommandHandler](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.commandhandler.html) that maps this user input to a callback named `start_callback`:
-```python
+```
 def start_callback(update, context):
     update.message.reply_text("Welcome to my awesome bot!")
 
@@ -14,7 +14,7 @@ dispatcher.add_handler(CommandHandler("start", start_callback))
 
 It is also possible to work with parameters for commands offered by your bot. Let's extend the `start_callback` with some arguments so that the user can provide additional information in the same step:
 
-```python
+```
 def start_callback(update, context):
     user_says = " ".join(context.args)
     update.message.reply_text("You said: " + user_says)
