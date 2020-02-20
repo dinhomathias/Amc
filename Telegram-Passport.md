@@ -9,7 +9,7 @@ Please read the following article describing Telegram Passport from a user's per
 Python-telegram-bot added support for Telegram Passport in version 11.0.0, so first make sure that your installation is up to date by upgrading using:
 
 ``` console
-$ pip install python-telegram-bot --upgrade
+$ python3 -m pip install python-telegram-bot --upgrade
 ```
 
 ### Step 2) Generating keys
