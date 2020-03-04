@@ -375,12 +375,6 @@ def add_group(update, context):
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatcher.add_handler(add_group_handle)
 ```
-#### Exclude channel posts from MessageHandlers
-If you're using MessageHandlers and do not want them to respond to automatically forwarded channel posts you can exclude this filter in your MessageHandler:
-```python
-(~ Filters.user(777000))
-```
-This was not documented, hope this helps anybody.
 
 ## Advanced snippets
 
