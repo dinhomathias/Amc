@@ -31,6 +31,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
   * [Other useful stuff](#other-useful-stuff)
     + [Generate flag emojis from country codes](#generate-flag-emojis-from-country-codes)
     + [Get the add group message](#get-the-add-group-message)
+    + [Exclude forwarded channel posts in discussion groups from MessageHandlers](#exclude-forwarded-channel-posts-in-discussion-groups-from-messagehandlers)
 - [Advanced snippets](#advanced-snippets)
     + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
       - [Usage](#usage)
@@ -375,6 +376,13 @@ def add_group(update, context):
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatcher.add_handler(add_group_handle)
 ```
+
+#### Exclude forwarded channel posts in discussion groups from MessageHandlers	
+If you're using MessageHandlers and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your MessageHandler:	
+```python	
+~ Filters.user(777000)
+```	
+`777000` is the user id of the Telegram Service Messages chat, that also gives you your login codes and in this case will be the originator of the forwarded channel post.
 
 ## Advanced snippets
 
