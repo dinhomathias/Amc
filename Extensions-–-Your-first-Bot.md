@@ -67,7 +67,7 @@ updater.start_polling()
 
 Give it a try! Start a chat with your bot and issue the `/start` command - if all went right, it will reply.
 
-But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo to all text messages:
+But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo all text messages:
 
 ```python
 def echo(update, context):
