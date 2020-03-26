@@ -9,7 +9,7 @@ You can then register handlers of different types in the `Dispatcher`, which wil
 
 Every handler is an instance of any subclass of the [telegram.ext.Handler](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.handler.html#telegram.ext.Handler) class. The library provides [handler classes for almost all use cases](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-of-Handlers), but if you need something very specific, you can also subclass `Handler` yourself.
 
-To begin, you'll need an Access Token. If you already read and followed [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
+To begin, you'll need an Access Token. If you have already read and followed [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
 
 
 ## Your first Bot, step-by-step
