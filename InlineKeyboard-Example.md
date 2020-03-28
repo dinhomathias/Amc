@@ -14,7 +14,7 @@ if __name__ == '__main__':
 ```python
 updater = Updater("TOKEN", use_context=True)
 ```
-[First line](../blob/master/examples/inlinekeyboard.py#L48) in the main function, it creates an updater instance from the [Updater class](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.updater.html). The "TOKEN" part is where you put the bot token, use_context means that we use context based handlers.
+[The first line](../blob/master/examples/inlinekeyboard.py#L48) in the main function, it creates an updater instance from the [Updater class](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.updater.html). The "TOKEN" part is where you put the bot token, use_context means that we use context based handlers.
 
 ```python
 updater.dispatcher.add_handler(CommandHandler('start', start))
