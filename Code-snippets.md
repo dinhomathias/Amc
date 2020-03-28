@@ -148,10 +148,12 @@ bot.send_message(chat_id=chat_id,
 #### Post a text message with Markdown formatting
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
+*Note:* In the API 4.5 update, Telegram introduced MarkdownV2, which supports nested entities and needs other escaping than v1. Markdown V1 is refered as legacy mode the the official API docs and you should prefer MarkdownV2. Make sure to also use `reply_markdown_v2` instead of `reply_markdown` etc.
+
 ```python
 bot.send_message(chat_id=chat_id, 
-                 text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
-                 parse_mode=telegram.ParseMode.MARKDOWN)
+                 text="*bold* _italic_ `fixed width font` [link](http://google.com)\.", 
+                 parse_mode=telegram.ParseMode.MARKDOWN_V2)
 ```
 
 #### Post a text message with HTML formatting
