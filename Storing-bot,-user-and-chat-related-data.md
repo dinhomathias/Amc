@@ -117,7 +117,7 @@ By using `context.user_data` in any `Handler` callback, you have access to a use
 #### Notes & Tips
 - **Everything is stored in memory.** This means that all `bot_data`, `user_data` and `chat_data` is deleted when the bot process ends. If you don't want this, have a look at the [persistent page](Making-your-bot-persistent).
 - Empty `bot_data`, `user_data` and `chat_data` dictionaries are automatically deleted from memory after the update is processed.
- - If not empty, bot_data`, `user_data` and `chat_data` will be kept until the process ends.
+ - If not empty, `bot_data`, `user_data` and `chat_data` will be kept until the process ends.
 - `user_data` and `chat_data` are different dictionaries even for private chats.
 - You can not assign a new value to `bot_data`, `user_data` or `chat_data`. Instead of `user_data = {}` and `user_data = other_dict`, use `user_data.clear()` and/or `user_data.update(other_dict)` respectively.
 
