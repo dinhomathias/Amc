@@ -65,6 +65,10 @@ Process
   * Tag version: v<VERSION>
   * Release title: v<VERSION>
   * Description: <logs from CHANGES.rst>
+  * create sha1 signature:
+    ```bash
+    sha1sum --binary dist/python-telegram-bot-X.Y.tar.gz > dist/python-telegram-bot-X.Y.tar.gz.sha1
+    ```
   * Upload the source distribution from pypi as binary attachment + asc (gpg signature) + sha1 (create it yourself).
 
 * Trigger documentation rebuild::
