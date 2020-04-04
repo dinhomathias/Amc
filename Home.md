@@ -1,20 +1,10 @@
-<p align="center"><img src="https://user-images.githubusercontent.com/57357104/78434011-940c1c80-767e-11ea-8bcb-4bb49b6490e8.png" align="center"></p>
-
-
-<h3 dir="rtl" align="right">עלינו</h3>
-<p align="right">
-.TalpiBot-ברוכים הבאים למקום שמאגד את כל המידע על ה
-<br>
-.כאן תוכלו למצוא כאן את כל המידע שאתם צריכים בשביל ליצור את הפיצ'ר שאתם מדמיינים
-<br>
-הסבר על ה-API, מדריכים להתחלה ראשונית, דוגמאות לפיצרים, ועוד...
-</p> 
-
-<div align="right">
-ניסון ל-TalpiBot, בוורד מאוד קל לעשות דברים מימן לשמאל. האם זה יעבוד?
-
-אפילו אני בודק איך זה יורד שורה.
+<p align="center"> 
+<img src="![לוגו לטופז](https://user-images.githubusercontent.com/57357104/78434011-940c1c80-767e-11ea-8bcb-4bb49b6490e8.png)
+">
 </p>
+
+### About this Wiki
+For a long time, our documentation consisted of our [API documentation](http://python-telegram-bot.readthedocs.io/) and README. As a result, the README became simply too big to be useful. In an effort to change that, we moved large parts of our README into different Wiki articles. In the process, we improved the texts with additional information, clearer wording and some cross-references. 
 
 ### How to read this Wiki
 Ideally, this Wiki should read a bit like a [Choose Your Own Adventure](https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure) book - You start with [page one](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API) and choose your way through the docs, depending on your preferences. At the end of most articles, you will find a section called **What to read next?**, where related articles are linked.
