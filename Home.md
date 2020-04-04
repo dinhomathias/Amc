@@ -1,4 +1,4 @@
-[![Logo](https://github.com/python-telegram-bot/logos/raw/master/logo-text/png/ptb-logo-text_768.png)](https://python-telegram-bot.org/)
+![](![לוגו לטופז](https://user-images.githubusercontent.com/57357104/78433006-4394bf00-767e-11ea-8c8b-82a02b2d7388.png))
 
 ### About this Wiki
 For a long time, our documentation consisted of our [API documentation](http://python-telegram-bot.readthedocs.io/) and README. As a result, the README became simply too big to be useful. In an effort to change that, we moved large parts of our README into different Wiki articles. In the process, we improved the texts with additional information, clearer wording and some cross-references. 
