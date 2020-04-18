@@ -15,6 +15,7 @@
     * [Error Handler](#error-handler)
 * [Filters in handlers](#filters-in-handlers)
     * [Special note about regex filters](#special-note-about-regex-filters)
+    * [Special note about `Filters.command` and `Filters.text`](#special-note-about-filterscommand-and-filterstext)
 * [Persistence](#persistence)
 * [Return UTC from from_timestamp()](#return-utc-from-from_timestamp)
 
@@ -183,6 +184,9 @@ This would make `context.matches` equal a list of regex matches, but only if the
 Note that in the last case, the order is the order that the filters were executed in, and not necessarily left to right.
 
 Also note that `context.match` is a shortcut for `context.matches[0]`. Very useful when you are only interested in the first match.
+
+### Special note about `Filters.command` and `Filters.text`:
+As of **version 12.4**, `Filters.command` checks for `MessageEntity.BOT_COMMAND` instead of a leading slash and accordingld, `Filters.text` accepts text with a leading slash. Use `Filters.text & (~Filters.command)` to filter for text messages that have no commands. For more details, please see the [changelog](https://python-telegram-bot.readthedocs.io/en/stable/changelog.html#version-12-4-0) and the documentation on filters.
 
 ***
 # Persistence
