@@ -8,7 +8,7 @@ py_version = 2.7|3.4|3.5|3.6|3.7
 bot_username = ptb_{CI.lower()}_{py_platform.lower()}_{py_version.replace('.', '')}_bot
 ```
 ## Script
-[Here](https://gist.github.com/jsmnbom/2e8044ca5cc55813a0e0380ad375b320) is a script that does all the setup below in a semi automated way using Telethon. Also check [this version](https://gist.github.com/Bibo-Joshi/75f135edf1ca3530decf4c2ae06bd699), which was updated for the animated sticker sets. **Note:** As of [#1919](https://github.com/python-telegram-bot/python-telegram-bot/pull/1919) each bot is supposed to have its own supergroup, so make sure to add one and make the bot an admin afterwards.
+[Here](https://gist.github.com/jsmnbom/2e8044ca5cc55813a0e0380ad375b320) is a script that does all the setup below in a semi automated way using Telethon. Also check [this version](https://gist.github.com/Bibo-Joshi/75f135edf1ca3530decf4c2ae06bd699), which was updated for the animated sticker sets and automatically creates a new super group for the bot to be added to (see [#1919](https://github.com/python-telegram-bot/python-telegram-bot/pull/1919)).
 
 
 ## Setup a new bot
