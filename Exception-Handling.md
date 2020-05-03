@@ -58,7 +58,7 @@ For the last one you can check if your message is too long by comparing with `te
 
 ### Other exceptions
 
-If a handler raises an uncaught exception that is no `TelegramError` (e.g. an `IndexError`), the exception will be caught and logged by the `Dispatcher`, so that the bot does not crash but you still have an indication of it and can address the issue. To take advantage of this, it is imperative to set up the `logging` module.
+If a handler raises an uncaught exception that is no `TelegramError` (e.g. an `IndexError`), the exception will be caught and logged by the `Dispatcher`, so that the bot does not crash but you still have an indication of it and can address the issue. To take advantage of this, it is helpful to set up the `logging` module.
 
 Example code to set up the `logging` module:
 
