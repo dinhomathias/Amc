@@ -39,7 +39,7 @@ When sending big files, calling `Bot.send_*(timeout=BIGGER_VALUE)` might be a go
 
 The `connect_timeout` value controls the timeout for establishing a connection to the Telegram server(s).
 
-Changing the defaults of `read_timeout` & `connet_timeout` is done when initializing the `Updater`. For example:
+Changing the defaults of `read_timeout` & `connect_timeout` is done when initializing the `Updater`. For example:
 ```python
 Updater(..., request_kwargs={'read_timeout': 6, 'connect_timeout': 7})
 ```
