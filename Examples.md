@@ -22,6 +22,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [ForwardsCoverBot](https://github.com/91DarioDev/ForwardsCoverBot) — Echoes any message and any kind of media to anonymize the forward. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/forwardscoverbot)
 * [Friendship Quiz](https://github.com/alistvt/friendship-quiz-bot) — A friendship quiz bot trying to simulate friendsquiz.site/quiz website! It also has suggested some new ideas in developing Bots to make it like Django!
 * [GatekeeperRobot](https://github.com/Juhannuspukki/gatekeeper-bot) — Auto-silences everyone who joins a group and then uses a simple inline-keyboard captcha to ensure that the newly-joined user is not a spambot.
+* [GoIP Configurator](https://github.com/dangoriaynov/goip-configurator) - A specialised telegram bot and application to monitor and adjust the GoIP-1 VoIP gateway.
 * [Hera](https://github.com/xlanor/SIM-UoW-Timetable-bot) - A specialised telegram bot to scrape students timetables from the SIMConnect portal. I'm adding it here because I couldn't find any examples of bots using celery to delegate tasks.
 * [HomeworkHelp](https://github.com/leeweiminsg/homework-help-bot) - A telegram bot to facilitate communication between tutors and their students!
 * [LogBot](https://github.com/apiad/logbot) — A simple bot that accepts messages through a REST API and redirects them to Telegram, with optional actionable buttons. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/apiad_demo_logbot)
