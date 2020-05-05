@@ -105,6 +105,23 @@ Which produces the following results (notice the delays happening, but be aware 
 > **Recommendations:**<br>
 As stated in [`@queuedmessage` docs](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html#telegram.ext.messagequeue.queuedmessage), for now the user needs to provide the `isgroup` boolean argument to wrapped methods or relay on `False` default. If you need to use MQ with group-type messages, you could determine the message type by checking `chat_id` (for group-type messages it would be < 0 ). However, this is not officially documented in [Telegram's Bot docs](https://core.telegram.org/bots/) and therefore prone to change in future. Use it on your own risk. The more reliable way is to make a request to API to determine chat type before sending message and cache the result. We're working on implementing this approach, so stay tuned.
 
+> **Example**: Using the following wrapper before the @mq.queuedmessage will set the isgroup parameter automatically.<br>
+```
+    def auto_group(method):
+        @functools.wraps(method)
+        def wrapped(self, *args, **kwargs):
+            chat_id = 0
+            if "chat_id" in kwargs:
+                chat_id = kwargs["chat_id"]
+            elif len(args) > 0:
+                chat_id = args[0]
+            if type(chat_id) is str:
+                is_group = (chat_id == CHANNEL_ID)
+            else:
+                is_group = (chat_id < 0)
+            return method(self, *args, **kwargs, isgroup=is_group)
+```
+
 ### If you have any related questions
 Feel free to ask on our [Telegram Group](https://t.me/pythontelegrambotgroup).
 
