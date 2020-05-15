@@ -34,7 +34,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Motivational Quotes Bot](https://github.com/SumitAgr/MotivationalQuotes-Bot) - A simple Telegram bot that generates a new motivational quote with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/MotivationalQuotes_Bot)
 * [Motivator bot](https://github.com/SabaunT/bot-motivator) - Telegram bot (with celery engine) that will motivate you doing something good or stop doing something bad. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/PersuaderBot)
-* [Movie bot](https://github.com/rpolve/telegram-movie-bot) - Bot for fecthing info from the IMDb, keeping a watch list and getting film recommendations. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/polve_bot)
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
 * [OpenCryptoBot](https://github.com/Endogen/OpenCryptoBot) - The Swiss Army knife for crypto-currencies [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/opencryptobot)
