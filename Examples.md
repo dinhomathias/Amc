@@ -46,6 +46,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commnads based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
+* [Smokey Bot](https://github.com/udit-001/smokey-bot) - A telegram bot that provides real-time worldwide air pollution data [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/smokey_bot)
 * [@someone bot](https://github.com/zeroone2numeral2/someone-bot) — Bot that randomly mentions people when @someone is used [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/randmentionbot)
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers (inactive members)
 * [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
