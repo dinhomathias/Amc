@@ -49,6 +49,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Smokey Bot](https://github.com/udit-001/smokey-bot) - A telegram bot that provides real-time worldwide air pollution data [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/smokey_bot)
 * [@someone bot](https://github.com/zeroone2numeral2/someone-bot) — Bot that randomly mentions people when @someone is used [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/randmentionbot)
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers (inactive members)
+* [SplitwizeBot](https://github.com/krnbatra/SplitwiseTelegramBot) - A telegram bot for managing expenses in Splitwise application. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SplitwizeBot)
 * [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organise a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
