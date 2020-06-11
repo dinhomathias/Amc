@@ -1,10 +1,8 @@
-A non-exhaustive list of open-source bots built on `python-telegram-bot` in the wild. 
+A non-exhaustive list of open-source bots built on `python-telegram-bot` in the wild. You are welcome to add your bot in alphabetical order.
 
 # Updater
 Bots built using the `telegram.ext.Updater` class.
 
-* [Instagram Engagement Push bot](https://github.com/konichar/Engagement-Pushbot) -- This is a Telegram Engagement Push bot designed to organize and pair members together in an Engagement Pod to help increase engagement on each other’s content. 
-* [MVC sample](https://github.com/mmdaz/mvc_model_bot_developing) -- This is a great sample for bot developing using python-telegram-bot and based on MVC model. I will be happy if I get comments and pull requests for improving it.
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
 * [AmbroBot](https://github.com/Ambro17/AmbroBot) — This bot can search series or movies by name and lets you download them, it can also list latest yts movies, lets you set reminders, solve linear equations and a few other neat things [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CuervoBot)
 * [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/blackjackbot)
@@ -27,6 +25,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [GoIP Configurator](https://github.com/dangoriaynov/goip-configurator) - A specialised telegram bot and application to monitor and adjust the GoIP-1 VoIP gateway.
 * [Hera](https://github.com/xlanor/SIM-UoW-Timetable-bot) - A specialised telegram bot to scrape students' timetables from the SIMConnect portal. I'm adding it here because I couldn't find any examples of bots using celery to delegate tasks.
 * [HomeworkHelp](https://github.com/leeweiminsg/homework-help-bot) - A telegram bot to facilitate communication between tutors and their students!
+* [Instagram Engagement Push bot](https://github.com/konichar/Engagement-Pushbot) — This is a Telegram Engagement Push bot designed to organize and pair members together in an Engagement Pod to help increase engagement on each other’s content. 
 * [LogBot](https://github.com/apiad/logbot) — A simple bot that accepts messages through a REST API and redirects them to Telegram, with optional actionable buttons. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/apiad_demo_logbot)
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
@@ -36,6 +35,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Motivational Quotes Bot](https://github.com/SumitAgr/MotivationalQuotes-Bot) - A simple Telegram bot that generates a new motivational quote with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/MotivationalQuotes_Bot)
 * [Motivator bot](https://github.com/SabaunT/bot-motivator) - Telegram bot (with celery engine) that will motivate you to do something good or stop doing something bad. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/PersuaderBot)
+* [MVC sample](https://github.com/mmdaz/mvc_model_bot_developing) -- This is a great sample for bot developing using python-telegram-bot and based on MVC model. I will be happy if I get comments and pull requests for improving it.
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
 * [OpenCryptoBot](https://github.com/Endogen/OpenCryptoBot) - The Swiss Army knife for crypto-currencies [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/opencryptobot)
