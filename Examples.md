@@ -3,6 +3,7 @@ A non-exhaustive list of open-source bots built on `python-telegram-bot` in the 
 # Updater
 Bots built using the `telegram.ext.Updater` class.
 
+* [Instagram Engagement Push bot](https://github.com/konichar/Engagement-Pushbot) -- This is a Telegram Engagement Push bot designed to organize and pair members together in an Engagement Pod to help increase engagement on each other’s content. 
 * [MVC sample](https://github.com/mmdaz/mvc_model_bot_developing) -- This is a great sample for bot developing using python-telegram-bot and based on MVC model. I will be happy if I get comments and pull requests for improving it.
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
 * [AmbroBot](https://github.com/Ambro17/AmbroBot) — This bot can search series or movies by name and lets you download them, it can also list latest yts movies, lets you set reminders, solve linear equations and a few other neat things [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CuervoBot)
