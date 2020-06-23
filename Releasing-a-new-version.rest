@@ -85,8 +85,13 @@ Public Announcements
 
 Please use the following channels/groups to announce a new version release:
 
-* `@pythontelegrambotgroup`_
 * `@pythontelegrambotchannel`_
+* `@pythontelegrambotgroup`_ (Channel posts are automatically forwarded to here)
+
+Channel posts should be a bit more verbose than the plain release notes. E.g. they can
+
+* list the (non-dev-team) authors, who contributed to the release, maybe even for each PR
+* have a short, informative description of new/changed features
 
 .. _`Semantic Versioning`: http://semver.org/
 .. _`New release`: https://github.com/python-telegram-bot/python-telegram-bot/releases/new
