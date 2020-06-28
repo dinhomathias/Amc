@@ -18,7 +18,7 @@ This job queue is also linked to the dispatcher, which is discussed later in thi
 
 Tasks in the job queue are encapsulated by the `Job` class. It takes a callback function as a parameter, which will be executed when the time comes. This callback function always takes one parameter: `context`, a `telegram.ext.CallbackContext`. Like in the case of handler callbacks used by the `Dispatcher`, through this object you can access `context.bot`, the `Updater`'s `telegram.Bot` instance; and for this particular case you can also access `context.job`, which is the `Job` instance of the task that triggered the callback (more on that later). 
 
-You can use the following 3 methods to create jobs with different frequency and time: `job_queue.run_once`, `job_queue.run_repeating` and `job_queue.run_daily`. (As before, you do not usually need to instantiate the `Job` class directly.)
+You can use the following 3 methods to create jobs with different frequency and time: `job_queue.run_once`, `job_queue.run_repeating`, `job_queue.run_daily` and `job_queue.run_monthly`. (As before, you do not usually need to instantiate the `Job` class directly.)
 
 ### Tutorial
 
