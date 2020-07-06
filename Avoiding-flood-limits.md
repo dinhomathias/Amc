@@ -79,7 +79,7 @@ if __name__ == '__main__':
     # set connection pool size for bot 
     request = Request(con_pool_size=8)
     testbot = MQBot(token, request=request, mqueue=q)
-    upd = telegram.ext.updater.Updater(bot=testbot)
+    upd = telegram.ext.updater.Updater(bot=testbot, use_context=True)
 
     def reply(update, context):
         # tries to echo 10 msgs at once
