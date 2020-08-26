@@ -1,15 +1,17 @@
 ## Must read
 1. [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API)
+2. [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot)
+3. [FAQ](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
+4. [How to ask good questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Ask-Right)
 
 ## Extensions
-1. [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot)
-2. [Job Queue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)
-3. [Types of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)
-4. [Advanced Filters](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Advanced-Filters)
-5. [Avoiding flood limits](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits)
-6. [Storing data](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Storing-bot,-user-and-chat-related-data)
-7. [Making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent)
-8. [Adding Defaults](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Adding-defaults-to-your-bot)
+1. [Job Queue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)
+2. [Types of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)
+3. [Advanced Filters](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Advanced-Filters)
+4. [Avoiding flood limits](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits)
+5. [Storing data](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Storing-bot,-user-and-chat-related-data)
+6. [Making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent)
+7. [Adding Defaults](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Adding-defaults-to-your-bot)
 
 ## Examples explained
 1. [InlineKeyboard Example](https://github.com/python-telegram-bot/python-telegram-bot/wiki/InlineKeyboard-Example)
@@ -31,12 +33,11 @@
 1. [Handling network errors](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Handling-network-errors)
 
 ## Other resources
-1. [Frequently Asked Questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
-2. [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
-4. [How to host your bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Hosting-your-bot)
-5. [Notes on GAE](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Notes-about-GAE---Google-App-Engine)
-6. [Press](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Press)
-7. [Ask Support](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Ask-Support)
+1. [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
+2. [How to host your bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Hosting-your-bot)
+3. [Notes on GAE](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Notes-about-GAE---Google-App-Engine)
+4. [Press](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Press)
+5. [Ask Support](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Ask-Support)
 
 ## Transition Guides
 - [Version 4](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-4.0)
