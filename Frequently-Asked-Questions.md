@@ -35,9 +35,17 @@ From the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#what-mes
 
 Yes, but only within the first 48 hours.
 
+### How can I get a list of all chats/users/channels by bot is interacting with?
+
+There is no method for that. You'll need to keep track.
+
 ### How do I send messages to all my bots users?
 
 Broadcasting to your users is a common use case. Please have a look at this short [article](https://telegra.ph/Sending-notifications-to-all-users-07-17).
+
+### Does my bot get an update, when someone joins my channel?
+
+No. Those service messages are available only in groups.
 
 ### My bot doesn't receive messages from groups. Why?
 
