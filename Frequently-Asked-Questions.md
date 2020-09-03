@@ -92,4 +92,4 @@ Note that this approach can only work, if all the handlers in the conversation a
 
 ### Can I check, if a `ConversationHandler` is currently active for a user?
 
-There is no built-in way to do that. You can however easily set a flag as e.g. `context.user_data['in_conversation'] = True` in `enrty_points`s and set it to `False` before returning `ConversationHandler.END`.
+There is no built-in way to do that. You can however easily set a flag as e.g. `context.user_data['in_conversation'] = True` in your `entry_points`s and set it to `False` before returning `ConversationHandler.END`.
