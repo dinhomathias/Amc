@@ -23,6 +23,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Post an audio from disk](#post-an-audio-from-disk)
     + [Post a file from disk](#post-a-file-from-disk)
     + [Post an image from memory](#post-an-image-from-memory)
+    + [Post a media group from a URL](#post-a-media-group-from-a-url)
     + [Get image with dimensions closest to a desired size](#get-image-with-dimensions-closest-to-a-desired-size)
     + [Download a file](#download-a-file)
   * [Keyboard Menus](#keyboard-menus)
@@ -274,8 +275,26 @@ bot.send_animation(chat_id, animation, duration=None, width=None, height=None, t
 ```
 See the [online documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_animation)
 
+#### Post a media group from a URL
+[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmediagroup)
 
+```python
+from telegram import InputMediaPhoto
 
+list_of_urls = [
+    'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gigantic_galapagos_turtle_on_the_island_of_santa_cruz.JPG',
+    'https://upload.wikimedia.org/wikipedia/commons/9/99/T.h._hermanni_con_speroni_5.JPG',
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Sheldonbasking.JPG/1280px-Sheldonbasking.JPG' 
+]
+
+media_group = list()
+
+for number, url in enumerate(list_of_urls):
+    media_group.append(InputMediaPhoto(media=url), caption="Turtle" + number)
+
+bot.send_media_group(chat_id=chat_id, media=media_group)
+```
+See the [online documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_media_group)
 
 #### Post an audio from disk
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendaudio)
