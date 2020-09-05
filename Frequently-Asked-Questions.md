@@ -58,7 +58,7 @@ You can find a full list of all available methods in the [official docs](https:/
 Anything *not* listed there can not be done with bots.
 
 In some cases, using a userbot can help overcome restrictions of the Bot API. Please have a look at this [article](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) about userbots.
-Note that userbots are not was python-telegram-bot is for.
+Note that userbots are not what python-telegram-bot is for.
 
 ### I'm using `ConversationHandler` and want to one handler to be run multiple times. How do I do that?
 
