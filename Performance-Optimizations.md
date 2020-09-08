@@ -87,18 +87,18 @@ I skipped some of the implementation details, so here's a short explanation:
   - `bank.write_account` writes a bank account back to the bank's database
   - `bank.log` must be used to keep a log of all changes to make sure no money is lost
 
-Sadly, ~~you~~ that damn intern fell right into the trap. Let's say there are two morally corrupt customers, *Customer A* with *Account A* and *Customer B* with *Account B*, who both make a transaction simultaneously. *Customer A* sends *Transaction AB* of *10CU* to *Customer B*. At the same time, *Customer B* sends a *Transaction BA* of *100$* to *Customer A*.
+Sadly, ~~you~~ that damn intern fell right into the trap. Let's say there are two morally corrupt customers, *Customer A* with *Account A* and *Customer B* with *Account B*, who both make a transaction simultaneously. *Customer A* sends *Transaction AB* of *$10* to *Customer B*. At the same time, *Customer B* sends a *Transaction BA* of *$100* to *Customer A*.
 
 Now the Dispatcher starts two threads, *Thread AB* and *Thread BA*, almost simultaneously. Both threads read the accounts from the database with the **same** balance and calculate a new balance for both of them. In most cases, one of the two transactions will simply overwrite the other. That's not too bad, but will at least be confusing to the customers. But threads are quite unpredictable and can be [suspended and resumed by the operating system](https://en.wikipedia.org/wiki/Scheduling_(computing)) at *any* point in the code, so the following order of execution can occur:
 
-1. *Thread AB* executes `bank.write_account(source)` and updates *Account A* with *-10$*
+1. *Thread AB* executes `bank.write_account(source)` and updates *Account A* with *-$10*
 2. Before updating *Account B*, *Thread AB* is put to sleep by the operating system
 3. *Thread BA* is resumed by the operating system
-4. *Thread BA* executes `bank.write_account(source)` and updates *Account B* with *-100$*
-5. *Thread BA* also executes `bank.write_account(target)` and updates *Account A* with *+100$*
-6. When *Thread AB* is resumed again, it executes `bank.write_account(target)` and updates *Account B* with *+10$*
+4. *Thread BA* executes `bank.write_account(source)` and updates *Account B* with *-$100*
+5. *Thread BA* also executes `bank.write_account(target)` and updates *Account A* with *+$100*
+6. When *Thread AB* is resumed again, it executes `bank.write_account(target)` and updates *Account B* with *+$10*
 
-In the end, *Account A* is at *+100$* and *Account B* is at *+10CU*. Of course, this won't happen very often. And that's what makes this bug so critical. It will probably be missed by your tests and end up in production, potentially causing a lot of financial damage.
+In the end, *Account A* is at *+$100* and *Account B* is at *+$10*. Of course, this won't happen very often. And that's what makes this bug so critical. It will probably be missed by your tests and end up in production, potentially causing a lot of financial damage.
 
 **Note:** This kind of bug is called a [race condition](https://en.wikipedia.org/wiki/Race_condition) and has been the source of many, many security vulnerabilities. It's also one of the reasons why banking software is not written by unpaid interns.
 
