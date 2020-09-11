@@ -70,7 +70,7 @@ Receiving updates from an external service, e.g. updates about your GitHub repo,
 How exactly you get them sadly is beyond the scope of PTB, as that depends on the service. For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-JobQueue) for that.
 
 If you have a setup for getting the updates, you can put them in your bots update queue via `updater.update_queue.put(your_update)`. The `update_queue` is also available as `dispatcher.update_queue` and `context.update_queue`.
-Note that `your_update` does need to be an instance of `telegram.Update` - on the contrary! You can e.g. write your own custom class to represent an update from your external service.
+Note that `your_update` does *not* need to be an instance of `telegram.Update` - on the contrary! You can e.g. write your own custom class to represent an update from your external service.
 To actually do something with the update, you can register a [`TypeHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html). [`StringCommandHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.stringcommandhandler.html) and [`StringRegexHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.stringregexhandler.html) might also be interesting for some use cases. 
 
 ### Why am I getting `ImportError: cannot import name 'XY' from 'telegram'`?
