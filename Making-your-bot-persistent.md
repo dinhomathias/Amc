@@ -22,8 +22,7 @@ To make your bot persistent you need to do the following.
 - Construct Updater with the persistence (`Updater('TOKEN', persistence=my_persistence, use_context=True)`)
 
 This is enough to make `user_data`, `bot_data` and `chat_data` persistent.
-To make a conversationhandler persistent (save states between bot restarts)
-`ConversationHandler(<no change>, persistent=True, name='my_name')`
-If you want a conversationhandler to be persistent you **MUST NAME IT**. persistent is `False` by default.
-Adding these arguments and adding the conversationhandler to a persistence-aware updater/dispatcher will make it persistent.
+To make a conversation handler persistent (save states between bot restarts) you **must name it** and set `persistent` to `True`.
+Like `ConversationHandler(<no change>, persistent=True, name='my_name')`. `persistent` is `False` by default.
+Adding these arguments and adding the conversation handler to a persistence-aware updater/dispatcher will make it persistent.
  
