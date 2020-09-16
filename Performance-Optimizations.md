@@ -9,7 +9,9 @@ There are of course many ways to tackle this problem. I'll talk extensively abou
 All communication with the Telegram servers is in JSON. Every message you send is JSON encoded, and every message you receive is JSON decoded. If you are using CPython, you can speed this up by installing the [ujson](https://pypi.python.org/pypi/ujson) module.
 
 #### PyPy
-[PyPy](http://pypy.org/) is a different implementation of the Python programming language. Is your bot only using pure Python code? Using PyPy can then optimize all your code -- free of charge. Do not use PyPy in combination with ujson.
+[PyPy](http://pypy.org/) is a different implementation of the Python programming language. Is your bot only using pure Python code? Using PyPy can then probably¹ optimize all your code -- free of charge. Do not use PyPy in combination with ujson.
+
+¹PTB does *not* officially support PyPy as there have been a lot of issues in the past. It may still work out for you.
 
 ### Multithreading
 
