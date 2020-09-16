@@ -93,3 +93,11 @@ Note that this approach can only work, if all the handlers in the conversation a
 ### Can I check, if a `ConversationHandler` is currently active for a user?
 
 There is no built-in way to do that. You can however easily set a flag as e.g. `context.user_data['in_conversation'] = True` in your `entry_points`s and set it to `False` before returning `ConversationHandler.END`.
+
+### How can I list all messages of a particular chat or search through them based on a search query?
+
+There is no API method for that (see [here](#can-you-add-feature-to-ptb-can-i-do-thing-with-my-bot)). If you really need this functionality, you'll need to save all the messages send to the chat manually. Keep in mind that
+
+1. In group chats your bot doesn't receive all messages, if privacy mode is enabled (see [here](#what-messages-can-my-bot-see))
+2. Messages may be edited (in which case your bot will receive a corresponding update)
+3. Messages may be deleted (and there are no updates for "message deleted"!)
