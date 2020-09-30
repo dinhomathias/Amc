@@ -33,6 +33,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Generate flag emojis from country codes](#generate-flag-emojis-from-country-codes)
     + [Get the add group message](#get-the-add-group-message)
     + [Exclude forwarded channel posts in discussion groups from MessageHandlers](#exclude-forwarded-channel-posts-in-discussion-groups-from-messagehandlers)
+    + [Exclude messages from anonymous admins](#exclude-messages-from-anonymous-admins)
 - [Advanced snippets](#advanced-snippets)
     + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
       - [Usage](#usage)
@@ -404,6 +405,13 @@ If you're using MessageHandlers and do not want them to respond to the channel p
 ~ Filters.user(777000)
 ```	
 `777000` is the user id of the Telegram Service Messages chat, that also gives you your login codes and in this case will be the originator of the forwarded channel post.
+
+#### Exclude Messages from anonymous Admins	
+If you're using MessageHandlers and do not want them to respond to messages from anonymous admins, you can use this filter in your MessageHandler:	
+```python	
+~ Filters.user(1087968824)
+```	
+`1087968824` is the user id of the @GroupAnonymousBot that will be the sender of those messages.
 
 ## Advanced snippets
 
