@@ -17,6 +17,7 @@ def put(update, context):
     """Usage: /put value"""
     # Generate ID and seperate value from command
     key = str(uuid4())
+    # We don't use context.args here, because the value may contain whitespaces
     value = update.message.text.partition(' ')[2]
 
     user_id = update.message.from_user.id
@@ -34,7 +35,7 @@ def put(update, context):
 def get(update, context):
     """Usage: /get uuid"""
     # Seperate ID from command
-    key = update.message.text.partition(' ')[2]
+    key = context.args[0]
 
     user_id = update.message.from_user.id
 
@@ -69,6 +70,7 @@ def put(update, context):
     """Usage: /put value"""
     # Generate ID and seperate value from command
     key = str(uuid4())
+    # We don't use context.args here, because the value may contain whitespaces
     value = update.message.text.partition(' ')[2]
 
     # Store value
@@ -79,7 +81,7 @@ def put(update, context):
 def get(update, context):
     """Usage: /get uuid"""
     # Seperate ID from command
-    key = update.message.text.partition(' ')[2]
+    key = context.args[0]
 
     # Load value
     try:
