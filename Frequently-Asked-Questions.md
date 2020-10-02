@@ -55,7 +55,13 @@ See [here](#What-messages-can-my-Bot-see?). TL;DR: Disable group privacy with [@
 
 Please note that python-telegram-bot is only a *wrapper* for the Telegram Bot API, i.e. PTB can only provide methods that are available through the API.
 You can find a full list of all available methods in the [official docs](https://core.telegram.org/bots/api#available-methods).
-Anything *not* listed there can not be done with bots.
+Anything *not* listed there can not be done with bots. Here is a short list of frequently requested tasks, that can *not* be done with the Bot API:
+
+* Getting a list of all members of a group
+* Adding members to a group/channel (note that you can just send an inivite link, which is also less likely to be seen as spam)
+* Clearing the chat history for a user
+* Getting a message by its `message_id`
+* Getting the last sent message in a chat (you can keep track of that by using [`chat_data`](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Storing-bot,-user-and-chat-related-data))
 
 In some cases, using a userbot can help overcome restrictions of the Bot API. Please have a look at this [article](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) about userbots.
 Note that userbots are not what python-telegram-bot is for.
