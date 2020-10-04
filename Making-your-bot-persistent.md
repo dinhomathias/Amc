@@ -8,7 +8,8 @@ The persistence structure is designed to make `bot_data`, `chat_data`, `user_dat
 Three classes concerning persistence in bots have been added.  
 [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence`  
 [PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.  
-[DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent.
+[DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent. Note that this class is mainly intended as starting point for custom persistence
+        classes that need to JSON-serialize the stored data before writing them to file/database and does *not* actually write any data to file/database.
 
 ## 3rd party persistence classes
 If you want to create your own persistence class, please carefully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. 
