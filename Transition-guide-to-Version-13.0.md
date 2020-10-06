@@ -2,6 +2,7 @@
 - [Deprecations](#deprecations)
   * [Old handler API](#old-handler-api)
   * [Python 3.5](#python-35)
+  * [`Message.default_quote`](#-messagedefault-quote-)
   * [`@run_async`](#--run-async-)
 - [API Keyword Arguments](#api-keyword-arguments)
 - [JobQueue Refactored](#jobqueue-refactored)
@@ -13,7 +14,6 @@
 - [Persistence of Bots](#persistence-of-bots)
 - [Rich Comparison](#rich-comparison)
   * [Special note on `Message`](#special-note-on--message-)
-- [Deprecation of `Message.default_quote`](#deprecation-of--messagedefault-quote-)
 - [Refactoring of Filters](#refactoring-of-filters)
 
 # Deprecations
@@ -25,6 +25,10 @@ The context-based API introduced in v12 is now the default, i.e. the `use_contex
 ## Python 3.5
 
 As Python 3.5 reaches/reached its end of life on ~2020-09-13, v13 drops support for Python 3.5. More precisely, some Python 3.6+-only features are introduced, making PTB incompitable with Python 3.5 as of v13.
+
+## `Message.default_quote`
+
+`Message` objects no longer have a `default_quote` attribute. Instead, `Message.bot.defaults.quote` is used. This happened in accordance with the refactoring of persistence of Bots.
 
 ## `@run_async`
 
@@ -126,10 +130,6 @@ v13 adds rich comparison to more Telegram objects. This means that e.g. `inline_
 ## Special note on `Message`
 
 Pre-v13, comparing `Message` objects only compared the `message_id`. As those are not globally unique, as of v13 also `message.chat` is compared, i.e. messages with the same `message_id` sent in different chats are no longer evaluated as equal. While strictly speaking this is a breaking change, in most cases it shouldn't affect your code.
-
-# Deprecation of `Message.default_quote`
-
-`Message` objects no longer have a `default_quote` attribute. Instead, `Message.bot.defaults.quote` is used. This happened in accordance with the refactoring of persistence of Bots.
 
 # Refactoring of Filters
 
