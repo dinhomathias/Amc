@@ -29,18 +29,8 @@ So, how do you get around that? Note that I said **by default**. To solve this k
 #### How to use it
 I don't want to bore you with *words* any further, so let's see some code! Sticking with the Echobot example, this is how you can mark the `echo` function to run in a thread:
 
-At the beginning of your script, import `run_async`:
-
 ```python
-from telegram.ext.dispatcher import run_async
-```
-
-Then, use it as a decorator for the `echo` function:
-
-```python
-@run_async
-def echo(update, context):
-    context.bot.send_message(update.message.chat_id, text=update.message.text)
+dispatcher.add_handler(MessagHandler(Filters.text & ~Filters.command, echo, run_async=True))
 ```
 
 Simple and straightforward, right? So, why did I bore you with all that stuff before?
@@ -56,7 +46,6 @@ This is probably the biggest cause of issues with threading, and those issues ar
 An example that is often used to illustrate this is that of a bank. Let's say you have been hired by a bank to write a Telegram bot to manage bank accounts. The bot has the command `/transaction <amount> <recipient>`, and because many people will be using this command, you think it's a good idea to make this command asynchronous. ~~You~~ Some unpaid intern wrote the following (**BAD AND DANGEROUS**) callback function:
 
 ```python
-@run_async
 def transaction(update, context):
   bot = context.bot
   chat_id = update.message.chat_id
@@ -79,6 +68,8 @@ def transaction(update, context):
   
   bot.send_message(chat_id, 'Done!')
   bank.log(FINISHED_TRANSACTION, amount, source_id, target_id)
+
+dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=True))
 ```
 
 I skipped some of the implementation details, so here's a short explanation:
@@ -122,7 +113,6 @@ Make sure you have a good idea what *shared state* means. Don't hesitate to do a
 I went through our bank example line by line and noted which of the criteria it matches, here's the result:
 
 ```python
-@run_async
 def transaction(update, context):
   bot = context.bot
   chat_id = update.message.chat_id  # 3
@@ -145,14 +135,17 @@ def transaction(update, context):
   
   bot.send_message(chat_id, 'Done!')  # None
   bank.log(FINISHED_TRANSACTION, amount, source_id, target_id)  # None
+
+dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=True))
 ```
 
 **Note:** One could argue that `bank.log` modifies shared state. However, logging libraries are usually thread-safe and it's unlikely that the log has a critical functional role. It's not being read from in this function, and I assume it's not being read from anywhere else in the code, so maybe consider this an exception to the rule. Also, for the sake of this example, it'd be boring if only `bot.sendMessage` would be safe to run in parallel. However, we will keep this in mind for the next step.
 
-As you can see, there's a pretty obvious pattern here: `bot.sendMessage` and `bank.log` are not matching any criteria we have set for strictly sequential code. That means we can run this code asynchronously without risk. Therefore, the second step is to extract that code to separate functions and mark them with `@run_async`. Since our async code parts are all very similar, they can be replaced by a single function. We could have done that before, but then this moment would've been less cool. 
+As you can see, there's a pretty obvious pattern here: `bot.sendMessage` and `bank.log` are not matching any criteria we have set for strictly sequential code. That means we can run this code asynchronously without risk. Therefore, the second step is to extract that code to separate functions and run only them asynchronously. Since our async code parts are all very similar, they can be replaced by a single function. We could have done that before, but then this moment would've been less cool. 
+
+**Note:** Not only handler callbacks can be run asynchronously. The `Dispatcher` has a `run_async` function that let's you run custom functions asynchronously. You can and should use this to your advantage.
 
 ```python
-@run_async
 def log_and_notify(action, amount, source_id, target_id, chat_id, message):
   bank.log(action, amount, source_id, target_id)
   bot.send_message(chat_id, message)
@@ -161,7 +154,16 @@ def transaction(update, context):
   chat_id = update.message.chat_id  # 3
   source_id, target_id, amount = parse_update(update)  # 3
 
-  log_and_notify(BEGINNING_TRANSACTION, amount, source_id, target_id, chat_id, 'Preparing...')
+  context.dispatcher.run_async(
+    log_and_notify,
+    BEGINNING_TRANSACTION,
+    amount,
+    source_id,
+    target_id,
+    chat_id,
+    'Preparing...',
+    update=update
+  )
 
   source = bank.read_account(source_id)  # 2, 3
   target = bank.read_account(target_id)  # 2, 3
@@ -169,17 +171,36 @@ def transaction(update, context):
   source.balance -= amount  # 3
   target.balance += amount  # 3
 
-  log_and_notify(CALCULATED_TRANSACTION, amount, source_id, target_id, chat_id, 'Transferring money...')
+  context.dispatcher.run_async(
+    log_and_notify,
+    CALCULATED_TRANSACTION,
+    amount,
+    source_id,
+    target_id,
+    chat_id,
+    'Transferring money...',
+    update=update
+  )
 
   bank.write_account(source)  # 1
   bank.write_account(target)  # 1
   
-  log_and_notify(FINISHED_TRANSACTION, amount, source_id, target_id, chat_id, 'Done!')
+
+  context.dispatcher.run_async(
+    log_and_notify,
+    FINISHED_TRANSACTION,
+    amount,
+    source_id,
+    target_id,
+    chat_id,
+    'Done!',
+    update=update
+  )
+
+dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=True))
 ```
 
 **Note:** You might have noticed that I moved `bank.log` before `bot.send_message`, so the log entries will be in order *most of the time*, assuming the database operations take long enough for the log to complete.
-
-**Note:** The `run_async` decorator can be placed on any function, not only handler callbacks. You can and should use this to your advantage.
 
 **Note:** It's likely that `bank.read_account` and `bank.write_account` require some I/O operations to interact with the banks database. You see that it's not always possible to write code asynchronously, at least with this simplified method. Read about [Transactions](https://en.wikipedia.org/wiki/Database_transaction) to learn how databases solve this in "real life".
 
