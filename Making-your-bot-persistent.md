@@ -1,8 +1,15 @@
 In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is there to help you understand and set up persistence for your bots.
 
+- [What can become persistent?](#what-can-become-persistent-)
+- [Included persistence classes](#included-persistence-classes)
+- [3rd party persistence classes](#3rd-party-persistence-classes)
+- [What do I need to change?](#what-do-i-need-to-change-)
+- [Storing Bots](#storing-bots)
+
 ## What can become persistent?
-The persistence structure is designed to make `bot_data`, `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
-`Job`'s and the `job_queue` is not supported because the serialization of callbacks is too unstable to reliably make persistent for broad user-cases. For a snippet on how to save and restore a basic `job_queue` see [here](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#save-and-load-jobs-using-pickle).
+* The persistence structure is designed to make `bot_data`, `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
+* `Job`'s and the `job_queue` is not supported because the serialization of callbacks is too unstable to reliably make persistent for broad user-cases. However, the current `JobQueue` backend [GAPScheduler](https://apscheduler.readthedocs.io/en/stable/) has it's own persistence logic that you can leverage.
+* For a special note about `Bot` instances, see [below](#storing-bots)
 
 ## Included persistence classes
 Three classes concerning persistence in bots have been added.  
@@ -26,4 +33,14 @@ This is enough to make `user_data`, `bot_data` and `chat_data` persistent.
 To make a conversation handler persistent (save states between bot restarts) you **must name it** and set `persistent` to `True`.
 Like `ConversationHandler(<no change>, persistent=True, name='my_name')`. `persistent` is `False` by default.
 Adding these arguments and adding the conversation handler to a persistence-aware updater/dispatcher will make it persistent.
+
+## Storing Bots
+
+As of v13, persistence will try to replace `telegram.Bot` instances by [`REPLACED_BOT`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.REPLACED_BOT) and
+insert the bot set with [`set_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.set_bot) upon loading of the data. This is to ensure that
+changes to the bot apply to the saved objects, too. For example, you might change the [default values](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Adding-defaults-to-your-bot) used by the bot. If you change the bots token, this may
+lead to e.g. `Chat not found` errors. For the limitations on replacing bots see
+[`replace_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.replace_bot) and [`insert_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.insert_bot).
+
+This is relevant e.g. if you store Telegram objects like `Message` in `bot/user/chat_data`, as some of them have a `bot` attribute, which holds a reference to the `Dispatchers` bot.
  
