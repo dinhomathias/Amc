@@ -4,6 +4,8 @@
   * [Python 3.5](#python-35)
   * [`Message.default_quote`](#-messagedefault-quote-)
   * [`@run_async`](#--run-async-)
+- [Persistence of Bots](#persistence-of-bots)
+  * [Converting existing pickle files](#converting-existing-pickle-files)
 - [API Keyword Arguments](#api-keyword-arguments)
 - [JobQueue Refactored](#jobqueue-refactored)
   * [Handling of timezones](#handling-of-timezones)
@@ -11,7 +13,6 @@
     + [New features](#new-features)
     + [Changes](#changes)
   * [Setting up a `JobQueue`](#setting-up-a--jobqueue-)
-- [Persistence of Bots](#persistence-of-bots)
 - [Rich Comparison](#rich-comparison)
   * [Special note on `Message`](#special-note-on--message-)
 - [Refactoring of Filters](#refactoring-of-filters)
@@ -48,7 +49,29 @@ It has been a long stanting issue that methods decorated with `@run_async` will 
     ```
     Of course the use of  `Dispatcher.run_async` is not limited to within handler callbacks and you don't have to pass an `update` in that case. Passing the `update` when possible is just preferable because that way it's available in the error handlers.
 
-While `@run_asyn` will still work, we recommand to switch to the new syntax.
+While `@run_asyn` will still work, we recommand to switch to the new syntax. 
+
+# Persistence of Bots
+
+Storing `Bot` objects (directly or e.g. as attributes of an PTB object) may lead to problems. For example, if you change
+the `Defaults` objects passed to your `Updater` you would expect the loaded `Bot` instances to use the new defaults.
+For that reason, v13 makes two changes:
+
+1. `Bot` instance are no longer picklable
+2. Instead, all subclasses of `BasePersistence` will replace all* `Bot` instance with a placeholder. When loading the data again,
+the new `Bot` instance will be inserted.
+
+Note, that changing the used bot token may lead to e.g. `Chat not found` errors.
+
+*Okay, almost all, For the limitations, see [`replace_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.replace_bot) and [`insert_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.insert_bot).
+
+## Converting existing pickle files
+
+In order for v13s `PicklePersistence` to be able to read your pickle files, you need to convert them once *before* upgrading to v13.* We prepared a [Gist](https://gist.github.com/Bibo-Joshi/5fd32dde338fba474fb15f40909c92f8) for that.
+
+If you have a custom implementation of `BasePersistence` and you currently stores `Bot` instances (or any PTB object that has a `bot` attribute, e.g. `Message`), you may need to do something similar. The above Gist is a good starting point in that case.
+
+*This is due to the fact that `PicklePersistence` uses `deepcopy`, which in turn uses the same interface as `pickle` and `Bots` are no longer picklable in v13 …
 
 # API Keyword Arguments
 
@@ -107,21 +130,7 @@ There are some other minor changes, most of which will most likely not affect yo
 
 ## Setting up a `JobQueue`
 
-Passing a `Bot` instance to the `JobQueue` has bee deprecated for a while now. v13 removes this completely. Use `JobQueue.set_dispatcher()` instead. 
-
-# Persistence of Bots
-
-Storing `Bot` objects (directly or e.g. as attributes of an PTB object) may lead to problems. For example, if you change
-the `Defaults` objects passed to your `Updater` you would expect the loaded `Bot` instances to use the new defaults.
-For that reason, v13 makes two changes:
-
-1. `Bot` instance are no longer picklable
-2. Instead, all subclasses of `BasePersistence` will replace all* `Bot` instance with a placeholder. When loading the data again,
-the new `Bot` instance will be inserted.
-
-In most cases, this won't directly affect you. Note however, that changing the used bot token may lead to e.g. `Chat not found` errors. 
-
-*Okay, almost all, For the limitations, see [`replace_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.replace_bot) and [`insert_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.insert_bot).
+Passing a `Bot` instance to the `JobQueue` has bee deprecated for a while now. v13 removes this completely. Use `JobQueue.set_dispatcher()` instead.
 
 # Rich Comparison
 
