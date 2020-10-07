@@ -25,7 +25,7 @@ The context-based API introduced in v12 is now the default, i.e. the `use_contex
 
 ## Python 3.5
 
-As Python 3.5 reaches/reached its end of life on ~2020-09-13, v13 drops support for Python 3.5. More precisely, some Python 3.6+-only features are introduced, making PTB incompitable with Python 3.5 as of v13.
+As Python 3.5 reached its end of life on 2020-09-05, v13 drops support for Python 3.5. More precisely, some Python 3.6+-only features are introduced, making PTB incompitable with Python 3.5 as of v13.
 
 ## `Message.default_quote`
 
