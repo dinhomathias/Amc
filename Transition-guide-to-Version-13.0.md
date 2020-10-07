@@ -3,7 +3,7 @@
   * [Old handler API](#old-handler-api)
   * [Python 3.5](#python-35)
   * [`Message.default_quote`](#-messagedefault-quote-)
-  * [`@run_async`](#--run-async-)
+  * [`@run_async`](#run_async)
 - [Persistence of Bots](#persistence-of-bots)
   * [Converting existing pickle files](#converting-existing-pickle-files)
 - [API Keyword Arguments](#api-keyword-arguments)
