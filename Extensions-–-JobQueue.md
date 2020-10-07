@@ -1,6 +1,13 @@
 ## Introduction
 The extension class `telegram.ext.JobQueue` allows you to perform tasks with a delay or even periodically, at a set interval. Among many other things, you can use it to send regular updates to your subscribers.
 
+### When working with `JobQueue`, please keep in mind:
+
+* PTBs `JobQueue` provides an easy to use and ready to use way of scheduling tasks in a way that ties in with the PTB architecture
+* Managing scheduling logic is not the main intend of PTB and hence as of v13 a third party library is used
+* If you need highly customized scheduling thingies, you *can* use advanced features of the third party library
+* We can't guarantee that the backend will stay the same forever. For example, if the third party library is discontinued, we will have to look for alternatives.
+
 ## Usage
 The `JobQueue` class is tightly integrated with other `telegram.ext` classes. Similar to `Updater` and `Dispatcher`, it runs asynchronously in a separate thread.
 
