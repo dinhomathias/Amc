@@ -32,14 +32,16 @@ handler = MessageHandler(Filters.photo & (~ Filters.forwarded), callback)
 ```
 
 ## Custom filters
-It is also possible to write our own filters. In essence, a filter is simply a function that receives a `Message` instance and returns either `True` or `False`. This function has to be implemented in a new class that inherits from `BaseFilter`, which allows it to be combined with other filters. If the combination of all filters evaluates to `True`, the message will be handled. 
+It is also possible to write our own filters. In essence, a filter is simply a function that receives either a `Message` instance or a `Update` instance and returns either `True` or `False`. This function has to be implemented in a new class that inherits from either `MessageFilter` or `UpdateFilter`, which allows it to be combined with other filters. If the combination of all filters evaluates to `True`, the message will be handled.
+
+The difference between `UpdateFilter` and `MessageFilter` is that the `filter` function of the former will receive the `update`, allowing e.g. to differentiate between channel post updates and message updates, while the `filter` function of the latter will receive the `update.effective_message`.
 
 Say we wanted to allow only those messages that contain the text "python-telegram-bot is awesome", we could write a custom filter as so:
 
 ```python
-from telegram.ext import BaseFilter
+from telegram.ext import MessageFilter
 
-class FilterAwesome(BaseFilter):
+class FilterAwesome(MessageFilter):
     def filter(self, message):
         return 'python-telegram-bot is awesome' in message.text
 
@@ -48,7 +50,7 @@ filter_awesome = FilterAwesome()
 ```
 
 The class can of course be named however you want, the only important things are:
-- The class has to inherit from `BaseFilter`
+- The class has to inherit from `MessageFilter` or `UpdateFilter`
 - It has to implement a `filter` method
 - You have to create an instance of the class
 
