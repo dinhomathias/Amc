@@ -21,7 +21,7 @@
 
 ## Old handler API
 
-The context-based API introduced in v12 is now the default, i.e. the `use_context` argument of the `Dispatcher` now defaults to `True`.
+The context-based API introduced in v12 is now the default, i.e. the `use_context` argument of the `Dispatcher`/`Updater` now defaults to `True`.
 
 ## Python 3.5
 
@@ -90,7 +90,7 @@ As PTB is currently up to date with the Telegram API, this shouldn't affect your
 
 # JobQueue Refactored
 
-Previously, PTB implemented the scheduling of tasks inside the `JobQueue` manually. As timing logic is not always straightforward, maintaining the `JobQueue` was not easy and new features were only reluctantly added. To decrease development effort in that area, we refactored the `JobQueue` in v13. Now, it relays on the third party library [APScheduler](https://apscheduler.readthedocs.io/en/stable/) behind the scenes.
+Previously, PTB implemented the scheduling of tasks inside the `JobQueue` manually. As timing logic is not always straightforward, maintaining the `JobQueue` was not easy and new features were only reluctantly added. To decrease development effort in that area, we refactored the `JobQueue` in v13. Now, it relies on the third party library [APScheduler](https://apscheduler.readthedocs.io/en/stable/) behind the scenes.
 
 But what does this mean for you in detail? If you're scheduling tasks vanilla style as e.g.
 
@@ -138,7 +138,7 @@ v13 adds rich comparison to more Telegram objects. This means that e.g. `inline_
 
 ## Special note on `Message`
 
-Pre-v13, comparing `Message` objects only compared the `message_id`. As those are not globally unique, as of v13, `message.chat` is compared as well, i.e. messages with the same `message_id` sent in different chats are no longer evaluated as equal. While strictly speaking this is a breaking change, it just shouldn't affect your code. Please.
+Pre-v13, comparing `Message` objects only compared the `message_id`. As those are not globally unique, as of v13, `message.chat` is compared as well, i.e. messages with the same `message_id` sent in different chats are no longer evaluated as equal. While strictly speaking this is a breaking change, it shouldn't affect your code.
 
 # Refactoring of Filters
 
