@@ -67,9 +67,9 @@ Note, that changing the used bot token may lead to e.g. `Chat not found` errors.
 
 ## Converting existing pickle files
 
-In order for v13s `PicklePersistence` to be able to read your pickle files, you need to convert them once *before* upgrading to v13.* We prepared a [Gist](https://gist.github.com/Bibo-Joshi/5fd32dde338fba474fb15f40909c92f8) for that.
+In order for v13s `PicklePersistence` to be able to read your pickle files, you need to convert them once *before* upgrading to v13.* We prepared a [Gist](https://gist.github.com/Bibo-Joshi/5fd32dde338fba474fb15f40909c92f8) for that. Of course this is only really needed, if you store `Bot` instances somewhere. But if you're not sure, just run the Gist ;)
 
-If you have a custom implementation of `BasePersistence` and you currently stores `Bot` instances (or any PTB object that has a `bot` attribute, e.g. `Message`), you may need to do something similar. The above Gist is a good starting point in that case.
+If you have a custom implementation of `BasePersistence` and you currently store `Bot` instances (or any PTB object that has a `bot` attribute, e.g. `Message`), you may need to do something similar. The above Gist is a good starting point in that case.
 
 *This is due to the fact that `PicklePersistence` uses `deepcopy`, which in turn uses the same interface as `pickle` and `Bots` are no longer picklable in v13 …
 
