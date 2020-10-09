@@ -39,13 +39,13 @@ It has been a long-standing issue that methods decorated with `@run_async` have 
 2. To run custom functions asynchronously, you can use `Dispatcher.run_async`. Here is a small example:
 
     ```python
-    def custom_function(a, b=None):
+    def custom_function(a, update=update, b=None):
         pass
 
     def my_callback(update, context):
         a = 7
         b = 'b'
-        context.dispatcher.run_async(custom_function, custom_function, a, update=update, b=b)
+        context.dispatcher.run_async(custom_function, a, update=update, b=b)
     ```
     Of course the use of  `Dispatcher.run_async` is not limited to handler callbacks and you don't have to pass an `update` in that case. Passing the `update` when possible is just preferable because that way it's available in the error handlers.
 
