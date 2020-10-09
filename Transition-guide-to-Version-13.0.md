@@ -39,7 +39,7 @@ It has been a long-standing issue that methods decorated with `@run_async` have 
 2. To run custom functions asynchronously, you can use `Dispatcher.run_async`. Here is a small example:
 
     ```python
-    def custom_function(a, update=None, b=None):
+    def custom_function(a, b=None):
         pass
 
     def my_callback(update, context):
