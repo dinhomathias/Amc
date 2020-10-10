@@ -107,3 +107,14 @@ There is no API method for that (see [here](#can-you-add-feature-to-ptb-can-i-do
 1. In group chats your bot doesn't receive all messages, if privacy mode is enabled (see [here](#what-messages-can-my-bot-see))
 2. Messages may be edited (in which case your bot will receive a corresponding update)
 3. Messages may be deleted (and there are no updates for "message deleted"!)
+
+### How can I disable logging for the `APScheduler` module?
+
+You can specify the logging level of `APScheduler` as follows:
+
+```python
+import logging
+
+aps_logger = logging.getLogger('apscheduler')
+aps_logger.setLevel(logging.WARNING)
+```
