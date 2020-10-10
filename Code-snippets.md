@@ -342,6 +342,13 @@ newFile = bot.get_file(file_id)
 newFile.download('voice.ogg')
 ```
 
+Or using the shorcuts:
+
+```python
+newFile = message.effective_attachment.get_file()
+newFile.download('file_name')
+```
+
 **Note:** For downloading photos, keep in mind that `update.message.photo` is an array of different photo sizes. Use `update.message.photo[-1]` to get the biggest size.
 
 ### Keyboard Menus
