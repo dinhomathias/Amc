@@ -291,7 +291,7 @@ list_of_urls = [
 media_group = list()
 
 for number, url in enumerate(list_of_urls):
-    media_group.append(InputMediaPhoto(media=url), caption="Turtle" + number)
+    media_group.append(InputMediaPhoto(media=url, caption="Turtle" + number))
 
 bot.send_media_group(chat_id=chat_id, media=media_group)
 ```
