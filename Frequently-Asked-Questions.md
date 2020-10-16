@@ -66,7 +66,7 @@ Anything *not* listed there can not be done with bots. Here is a short list of f
 In some cases, using a userbot can help overcome restrictions of the Bot API. Please have a look at this [article](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) about userbots.
 Note that userbots are not what python-telegram-bot is for.
 
-### I'm using `ConversationHandler` and want to one handler to be run multiple times. How do I do that?
+### I'm using `ConversationHandler` and want one handler to be run multiple times. How do I do that?
 
 If your handlers callback returns `None` instead of the next state, you will stay in the current state. That means the next incoming update can be handled by the same callback.
 
