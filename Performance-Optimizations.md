@@ -197,7 +197,7 @@ def transaction(update, context):
     update=update
   )
 
-dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=True))
+dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=False))
 ```
 
 **Note:** You might have noticed that I moved `bank.log` before `bot.send_message`, so the log entries will be in order *most of the time*, assuming the database operations take long enough for the log to complete.
