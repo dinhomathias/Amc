@@ -5,6 +5,7 @@ As of version 12.4, PTB supports passing default values for arguments such as `p
 * `parse_mode`
 * `disable_notification`
 * `disable_web_page_preview`
+* `allow_sending_without_reply`
 * `timeout`
 * `quote`
 * `tzinfo`
