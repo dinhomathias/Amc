@@ -84,12 +84,8 @@ def get(update, context):
     key = context.args[0]
 
     # Load value
-    try:
-        value = context.user_data[key]
-        update.message.reply_text(value)
-
-    except KeyError:
-        update.message.reply_text('Not found')
+    value = context.user_data.get(key, 'Not found')
+    update.message.reply_text(value)
 
 if __name__ == '__main__':
     updater = Updater('TOKEN', use_context=True)
