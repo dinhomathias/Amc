@@ -84,7 +84,7 @@ To actually do something with the update, you can register a [`TypeHandler`](htt
 You probably have a file named `telegram.py` or a directory/module named `telegram` in your working directory. This leads to namespace issues.
 Rename them to something else.
 
-### What do the `per_*` setting in `ConversationHandler` do?
+### What do the `per_*` settings in `ConversationHandler` do?
 
 `ConversationHandler` needs to decide somehow to which conversation an update belongs.
 The default setting (`per_user=True` and `per_chat=True`) means that in each chat each user can have its own conversation - even in groups.
