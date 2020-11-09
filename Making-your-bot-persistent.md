@@ -8,7 +8,7 @@ In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is
 
 ## What can become persistent?
 * The persistence structure is designed to make `bot_data`, `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
-* `Job`'s and the `job_queue` is not supported because the serialization of callbacks is too unstable to reliably make persistent for broad user-cases. However, the current `JobQueue` backend [GAPScheduler](https://apscheduler.readthedocs.io/en/stable/) has it's own persistence logic that you can leverage.
+* `Job`'s and the `job_queue` is not supported because the serialization of callbacks is too unstable to reliably make persistent for broad user-cases. However, the current `JobQueue` backend [APScheduler](https://apscheduler.readthedocs.io/en/stable/) has it's own persistence logic that you can leverage.
 * For a special note about `Bot` instances, see [below](#storing-bots)
 
 ## Included persistence classes
