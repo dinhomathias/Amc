@@ -1,1 +1,1 @@
-Wiki of [`-telegram-bot`](https://python-telegram-bot.org/)© Copyright 2015-2020 – Licensed by [Creative Commons](https://creativecommons.org/licenses/by/3.0/)
+Wiki of [`python-telegram-bot`](https://python-telegram-bot.org/)© Copyright 2015-2020 – Licensed by [Creative Commons](https://creativecommons.org/licenses/by/3.0/)
