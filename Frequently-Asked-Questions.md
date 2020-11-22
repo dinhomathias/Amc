@@ -2,6 +2,22 @@
 
 *Note:* You may also want to check the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#what-messages-will-my-bot-get).
 
+- [What messages can my Bot see?](#what-messages-can-my-bot-see)
+- [What about messages from other Bots?](#what-about-messages-from-other-bots)
+- [Can my bot delete messages from the user in a private chat?](#can-my-bot-delete-messages-from-the-user-in-a-private-chat)
+- [How can I get a list of all chats/users/channels by bot is interacting with?](#how-can-i-get-a-list-of-all-chatsuserschannels-by-bot-is-interacting-with)
+- [How do I send messages to all my bots users?](#how-do-i-send-messages-to-all-my-bots-users)
+- [Does my bot get an update, when someone joins my channel?](#does-my-bot-get-an-update-when-someone-joins-my-channel)
+- [My bot doesn't receive messages from groups. Why?](#my-bot-doesnt-receive-messages-from-groups-why)
+- [Can you add [feature] to PTB? Can I do [thing] with my bot?](#can-you-add-feature-to-ptb-can-i-do-thing-with-my-bot)
+- [I'm using `ConversationHandler` and want one handler to be run multiple times. How do I do that?](#im-using-conversationhandler-and-want-one-handler-to-be-run-multiple-times-how-do-i-do-that)
+- [I want to handle updates from an external service in addition to the Telegram updates. How do I do that?](#i-want-to-handle-updates-from-an-external-service-in-addition-to-the-telegram-updates-how-do-i-do-that)
+- [Why am I getting `ImportError: cannot import name 'XY' from 'telegram'`?](#why-am-i-getting-importerror-cannot-import-name-xy-from-telegram)
+- [What do the `per_*` settings in `ConversationHandler` do?](#what-do-the-per_-settings-in-conversationhandler-do)
+- [Can I check, if a `ConversationHandler` is currently active for a user?](#can-i-check-if-a-conversationhandler-is-currently-active-for-a-user)
+- [How can I list all messages of a particular chat or search through them based on a search query?](#how-can-i-list-all-messages-of-a-particular-chat-or-search-through-them-based-on-a-search-query)
+- [How can I disable logging for the `APScheduler` module?](#how-can-i-disable-logging-for-the-apscheduler-module)
+
 ### What messages can my Bot see?
 
 From the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#what-messages-will-my-bot-get):
