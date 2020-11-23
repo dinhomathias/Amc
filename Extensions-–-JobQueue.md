@@ -65,22 +65,6 @@ job_minute.schedule_removal()  # Remove this job completely
 
 **Note:** `schedule_removal` does not immediately remove the job from the queue. Instead, it is marked for removal and will be removed as soon as its current interval is over (it will not run again after being marked for removal).
 
-A job can also change its own behavior, as it is passed to the callback function as the second argument:
-
-```python
-def callback_increasing(context: telegram.ext.CallbackContext):
-    job = context.job
-    context.bot.send_message(chat_id='@examplechannel',
-                             text='Sending messages with increasing delay up to 10s, then stops.')
-    job.interval += 1.0
-    if job.interval > 10.0:
-        job.schedule_removal()
-
-j.run_repeating(callback_increasing, 1)
-```
-
-This job will send a first message after one second, a second message after two _more_ seconds, a third message after _three more_ seconds, and so on. After the ten messages, the job will terminate itself.
-
 You might want to add jobs in response to certain user input, and there is a convenient way to do that. The `context` argument of your `Handler` callbacks has the `JobQueue` attached as `context.job_queue` ready to be used. Another feature you can use here is the `context` keyword argument of `Job`. You can pass any object as a `context` parameter when you launch a `Job` and retrieve it at a later stage as long as the `Job` exists. Let's see how it looks in code:
 
 ```python
