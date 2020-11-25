@@ -14,5 +14,5 @@ Bot API 5.0 is supported by PTB since v13.1.
 
 ### Working with files
 * When running the server with the `--local` flag, `get_file` will give you the local file path as `file_path`. PTB detects that, so that `get_file(…).download()` just opens the local file instead of downloading it.
-* When running the server with the `--local` flag, you can send files by passing `file:///absolute/path/to/file` instead of an URL or a file handler. Note that as of now you have to set the `file://` prefix manually!
+* When running the server with the `--local` flag, you can send files by passing `'file:///absolute/path/to/file'` instead of an URL or a file handler. Skipping the `'file://'` prefix and passing relative paths (without prefix) is also supported as convenience feature by PTB.
 * When running the server *without* the `--local` flag, the Bot API server does *not* automatically serve the files obtained by `get_file()`. See this [telegram-bot-api/#26](https://github.com/tdlib/telegram-bot-api/issues/26). Changing this is not within the scope of PTB, so this is merely a heads up.
