@@ -38,7 +38,7 @@
 3. [Notes on GAE](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Notes-about-GAE---Google-App-Engine)
 4. [Press](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Press)
 5. [Ask Support](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Ask-Support)
-6. [Local API Servers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Local-Bot-API-Servers)
+6. [Local API Server](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Local-Bot-API-Server)
 
 ## Transition Guides
 - [Version 4](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-4.0)
