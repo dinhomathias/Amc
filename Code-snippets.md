@@ -483,18 +483,16 @@ dispatcher.add_handler(add_group_handle)
 ```
 
 #### Exclude forwarded channel posts in discussion groups from MessageHandlers	
-If you're using MessageHandlers and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your MessageHandler:	
+If you're using `MessageHandlers` and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your `MessageHandler`:
 ```python	
-~ Filters.user(777000)
-```	
-`777000` is the user id of the Telegram Service Messages chat, that also gives you your login codes and in this case will be the originator of the forwarded channel post.
+~ Filters.sender_chat.channel
+```
 
 #### Exclude Messages from anonymous Admins	
-If you're using MessageHandlers and do not want them to respond to messages from anonymous admins, you can use this filter in your MessageHandler:	
+If you're using `MessageHandlers` and do not want them to respond to messages from anonymous admins, you can use this filter in your `MessageHandler`:
 ```python	
-~ Filters.user(1087968824)
-```	
-`1087968824` is the user id of the @GroupAnonymousBot that will be the sender of those messages.
+~ Filters.sender_chat.super_group
+```
 
 ## Advanced snippets
 
