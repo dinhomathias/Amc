@@ -9,6 +9,7 @@ As of version 12.4, PTB supports passing default values for arguments such as `p
 * `timeout`
 * `quote`
 * `tzinfo`
+* `run_async`
 
 ## Example
 Here is a show case for setting `parse_mode` to `ParseMode.HTML` and `tzinfo` to `pytz.timezone('Europe/Berlin')` by default:
