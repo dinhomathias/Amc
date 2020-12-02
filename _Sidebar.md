@@ -49,3 +49,4 @@
 ## Administration
 - [Test Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Internal-test-bots)
 - [How To Release](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Releasing-a-new-version)
+- [Bots, Groups & Channels](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Project-Bots,-Groups-and-Channels)
