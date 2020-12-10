@@ -25,7 +25,7 @@ The context-based API introduced in v12 is now the default, i.e. the `use_contex
 
 ## Python 3.5
 
-As Python 3.5 reached its end of life on 2020-09-05, v13 drops support for Python 3.5. More precisely, some Python 3.6+-only features are introduced, making PTB incompitable with Python 3.5 as of v13.
+As Python 3.5 reached its end of life on 2020-09-05, v13 drops support for Python 3.5. More precisely, some Python 3.6+-only features are introduced, making PTB incompatible with Python 3.5 as of v13.
 
 ## `Message.default_quote`
 
@@ -71,7 +71,7 @@ In order for v13s `PicklePersistence` to be able to read your pickle files, you 
 
 If you have a custom implementation of `BasePersistence` and you currently store `Bot` instances (or any PTB object that has a `bot` attribute, e.g. `Message`), you may need to do something similar. The above Gist is a good starting point in that case.
 
-*This is due to the fact that `PicklePersistence` uses `deepcopy`, which in turn uses the same interface as `pickle` and `Bots` are no longer picklable in v13…
+*This is due to the fact that `PicklePersistence` uses `deepcopy`, which in turn uses the same interface as `pickle` and `Bots` are no longer pickable in v13…
 
 # API Keyword Arguments
 
