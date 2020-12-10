@@ -49,7 +49,7 @@ It has been a long-standing issue that methods decorated with `@run_async` have 
     ```
     Of course the use of  `Dispatcher.run_async` is not limited to handler callbacks and you don't have to pass an `update` in that case. Passing the `update` when possible is just preferable because that way it's available in the error handlers.
 
-While `@run_async` will still work, we recommend switching to the new syntax, as the decorator will be depreciated over the course of the next releases. 
+While `@run_async` will still work, we recommend switching to the new syntax, as the decorator will be deprecated over the course of the next releases. 
 
 # Persistence of Bots
 
