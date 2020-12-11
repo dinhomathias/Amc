@@ -57,7 +57,7 @@ Storing `Bot` objects (directly or e.g. as attributes of an PTB object) may lead
 the `Defaults` object passed to your `Updater`, you would expect the loaded `Bot` instances to use the new defaults.
 For that reason, v13 makes two changes:
 
-1. `Bot` instances are no longer pickable
+1. `Bot` instances are no longer picklable
 2. Instead, all subclasses of `BasePersistence` will replace all* `Bot` instances with a placeholder. When loading the data again,
 the new `Bot` instance will be inserted.
 
@@ -152,4 +152,4 @@ and
 
 both inheriting from `BaseFilter`.
 
-If you have custom filters inheriting from `BaseFilter`, you will need change their parent class to `MessageFilter` or, if you're currently setting `update_filter = True`, to `UpdateFilter`. In that case, you can remove the `update_filter = True`.
+If you have custom filters inheriting from `BaseFilter`, you will need to change their parent class to `MessageFilter` or, if you're currently setting `update_filter = True`, to `UpdateFilter`. In that case, you can remove the `update_filter = True`.
