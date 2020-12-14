@@ -37,6 +37,7 @@ Process
 
   * telegram/version.py
   * docs/source/conf.py
+  * (if the release includes a Bot API update, update README.rst)
 
 * Log changes to:
 
