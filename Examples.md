@@ -45,6 +45,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
 * [privibot](https://github.com/pawamoy/privibot) - A Python library to add a privilege/permission system to your Telegram bot.
 * [reactor](https://github.com/vanyakosmos/reactor) - like @like but with a dynamic number of buttons. Users can add their own reactions to messages, similarly to slack/discord reactions. [try it out](https://t.me/emojinator_bot)
+* [Reddit2Telegram](https://gitlab.com/tea-project/reddit2telegram) - A simple and effective solution to create Telegram channels out of subreddits. 
 * [RemindMeBot](https://github.com/dmakeienko/remind_me_bot) - create reminders, check it's statuses, update/delete them. [try it out](https://t.me/how_to_find_name_for_bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
