@@ -14,7 +14,6 @@ The `JobQueue` class is tightly integrated with other `telegram.ext` classes. Si
 To use the `JobQueue`, you don't have to do much. When you instantiate the `Updater`, it will create a `JobQueue` for you:
 
 ```python
-import telegram.ext
 from telegram.ext import Updater
 
 u = Updater('TOKEN', use_context=True)
