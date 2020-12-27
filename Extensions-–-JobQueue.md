@@ -35,12 +35,12 @@ def callback_minute(context: telegram.ext.CallbackContext):
     context.bot.send_message(chat_id='@examplechannel', 
                              text='One message every minute')
 
-job_minute = j.run_repeating(callback_minute, interval=60, first=0)
+job_minute = j.run_repeating(callback_minute, interval=60, first=10)
 ```
 
 *(Ignore the type annotations if you're on Python 2)*
 
-The `callback_minute` function will be executed every `60.0` seconds, the first time being right now (because of `first=0`). The `interval` and `first` parameters are in seconds if they are `int` or `float`. They can also be `datetime` objects. See the [docs](http://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) for detailed explanation.
+The `callback_minute` function will be executed every `60.0` seconds, the first time being after 10 seconds (because of `first=10`). The `interval` and `first` parameters are in seconds if they are `int` or `float`. They can also be `datetime` objects. See the [docs](http://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) for detailed explanation.
 The return value of these functions are the `Job` objects being created. You don't need to store the result of `run_repeating` (which is the newly instantiated `Job`) if you don't need it; we will make use of it later in this tutorial.
 
 You can also add a job that will be executed only once, with a delay:
