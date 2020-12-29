@@ -140,8 +140,11 @@ aps_logger.setLevel(logging.WARNING)
 
 ### How do I enforce users joining a specific channel before using my bot?
 
-After sending an (invite) link to the channel to the user, you can use [`Bot.get_chat_member`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.get_chat_member) to check if the user is an that channel. If the method call fails with an error, it means that the user is not in that channel. Note that 
+After sending an (invite) link to the channel to the user, you can use [`Bot.get_chat_member`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.get_chat_member) to check if the user is an that channel. 
+Note that:
 * the bot needs to be admin in that channel
 * the user must have started the bot for this approach to work. If you try to run `get_chat_member` for a user that has not started the bot, the bot can not find the user in a chat, even if it is a member of it.
+
+Otherwise the method call will fail with an error.
 
 If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is to add at [`TypeHandler(telegram.Update, callback)`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html) to a low group and have the `callback` raise [`DispatcherHandlerStop`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) if the user did not join yet. See the docs of [`Dispatcher.add_handler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) for more info on handler groups and `DispatcherHandlerStop`.
