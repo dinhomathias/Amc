@@ -18,3 +18,7 @@ Moreover [@python_telegram_bot](https://t.me/python_telegram_bot) is *not* owned
 * [@ptbfaq](https://t.me/PTBFaq) is a channel that was supposed to hold FAQ messages, but was never really in use (roolsbot can still forward to there?!). @josxa is still admin, be he lost the phone with the owner account.
 
 Moreover [@run_async](https://t.me/run_async) is *not* owned by any of the developers and also irrelevant since the deprecation of `@run_async` in v13.0
+
+# Sticker Packs
+
+The test user account ownes the sticker pack [PythonTelegramBot](https://t.me/addstickers/PythonTelegramBot), which is the group sticker pack in both the on- & off-topic group. The stickers can be found [here](https://github.com/python-telegram-bot/logos/tree/master/sticker-pack).
