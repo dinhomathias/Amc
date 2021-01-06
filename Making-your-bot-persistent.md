@@ -13,15 +13,17 @@ In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is
 
 ## Included persistence classes
 Three classes concerning persistence in bots have been added.  
-[BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence`  
-[PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.  
-[DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent. Note that this class is mainly intended as starting point for custom persistence
+* [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes. If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence`  
+* [PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.  
+* [DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent. Note that this class is mainly intended as starting point for custom persistence
         classes that need to JSON-serialize the stored data before writing them to file/database and does *not* actually write any data to file/database.
 
 ## 3rd party persistence classes
+Instead of manually handling a database to store data, consider implementing a subclass of `BasePersistence`. This allows you to simply pass an instance of that subclass to the `Updater/Dispatcher` and let PTB handle the loading, updating & storing of the data!
+
 If you want to create your own persistence class, please carefully read the docs on [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html). It will tell you what methods you need to overwrite. 
 
-If you've written a persistence class that could benefit others (e.g. a general one covering all types of data), please add it below.
+If you've written a persistence class that could benefit others (e.g. a general one covering all types of data), it would be great if you linked it here or even better made it available in [ptbcontrib](https://github.com/python-telegram-bot/ptbcontrib).
 
 ## What do I need to change?
 To make your bot persistent you need to do the following.
@@ -36,7 +38,7 @@ Adding these arguments and adding the conversation handler to a persistence-awar
 
 ## Storing Bots
 
-As of v13, persistence will try to replace `telegram.Bot` instances by [`REPLACED_BOT`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.REPLACED_BOT) and
+As of v13, persistence will automatically try to replace `telegram.Bot` instances by [`REPLACED_BOT`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.REPLACED_BOT) and
 insert the bot set with [`set_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.set_bot) upon loading of the data. This is to ensure that
 changes to the bot apply to the saved objects, too. For example, you might change the [default values](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Adding-defaults-to-your-bot) used by the bot. If you change the bots token, this may
 lead to e.g. `Chat not found` errors. For the limitations on replacing bots see

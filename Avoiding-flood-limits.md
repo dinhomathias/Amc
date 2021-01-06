@@ -25,9 +25,7 @@ If you need more details on MQ implementation, [follow its docs](http://python-t
 
 ## MessageQueue from user perspective
 ### Current status
-For now, it's still under development, but **could be already used**. More detailed, now it's detached from other Python-Telegram-Bot lib components and therefore you should do a little extra work to use it. We plan to tightly couple it with [`telegram.Bot`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html) so that it could be used more conveniently (and even implicitly unless other specified). But anyway, **the future releases would be backwards compatible with current [`MessageQueue`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) class and `queuedmessage` decorator**.
-
-So, feel free to use it and stay tuned for new features. We will NOT join the dark side and break the API.
+For now, it's still under development and has some bugs (see [#2139](https://github.com/python-telegram-bot/python-telegram-bot/issues/2139) for details), but **could be already used**. More detailed, now it's detached from other Python-Telegram-Bot lib components and therefore you should do a little extra work to use it. We plan to tightly couple it with [`telegram.Bot`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html) so that it could be used more conveniently (and even implicitly unless other specified). But anyway, **the future releases would be backwards compatible with current [`MessageQueue`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) class and `queuedmessage` decorator**.
 
 ### Using MQ with @queuedmessage decorator
 [`MessageQueue`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) module includes a convenient `@queuedmessage` decorator, which allows to delegate the required send method calls to MQ. However, it requires you to do a little work by hand, mainly create a [`telegram.Bot`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html) subclass and decorate those methods. 
@@ -100,8 +98,6 @@ Which produces the following results (notice the delays happening, but be aware 
 ![test_result](https://user-images.githubusercontent.com/16870636/28393529-e753ea26-6cef-11e7-981f-35b98fcddd61.png) |
 ---|
 
-> **Note:** such way of MQ usage may become overkill in future as more convenient interface would be implemented, but as being said it would remain backwards-compatible.
-
 > **Recommendations:**<br>
 As stated in [`@queuedmessage` docs](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html#telegram.ext.messagequeue.queuedmessage), for now the user needs to provide the `isgroup` boolean argument to wrapped methods or rely on `False` default. If you need to use MQ with group-type messages, you could determine the message type by checking `chat_id` (for group-type messages it would be < 0 ). However, this is not officially documented in [Telegram's Bot docs](https://core.telegram.org/bots/) and therefore prone to change in future. Use it on your own risk. The more reliable way is to make a request to API to determine chat type before sending message and cache the result. We're working on implementing this approach, so stay tuned.
 
@@ -126,12 +122,3 @@ As stated in [`@queuedmessage` docs](https://python-telegram-bot.readthedocs.io/
 Feel free to ask on our [Telegram Group](https://t.me/pythontelegrambotgroup).
 
 Or you may directly ask the MQ responsive dev:<br>[thodnev @ Telegram](https://telegram.me/thodnev) (support in English or Russian; please, only MQ-related questions)
-
-
-
-## What to read next?
-_Check out our_ [Extensions -- JobQueue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue). _It's amazing!_
-
-_Probably, you would be also interested in_ [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations) _for your bot._
-
-_You've coded something worth sharing or just want to participate in dev process? Great! We would really appreciate that. Check out our_ [Contribution Guide](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/.github/CONTRIBUTING.rst) _for more details._

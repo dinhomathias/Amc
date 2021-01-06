@@ -1,14 +1,18 @@
-## Introduction
+# Introduction
 The extension class `telegram.ext.JobQueue` allows you to perform tasks with a delay or even periodically, at a set interval. Among many other things, you can use it to send regular updates to your subscribers.
 
-### When working with `JobQueue`, please keep in mind:
+## When working with `JobQueue`, please keep in mind:
 
 * PTBs `JobQueue` provides an easy to use and ready to use way of scheduling tasks in a way that ties in with the PTB architecture
 * Managing scheduling logic is not the main intend of PTB and hence as of v13 a third party library is used
 * If you need highly customized scheduling thingies, you *can* use advanced features of the third party library
 * We can't guarantee that the backend will stay the same forever. For example, if the third party library is discontinued, we will have to look for alternatives.
 
-## Usage
+## Example
+
+In addition to the tuorial below there is also the `timerbot.py` example at the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
+
+# Usage
 The `JobQueue` class is tightly integrated with other `telegram.ext` classes. Similar to `Updater` and `Dispatcher`, it runs asynchronously in a separate thread.
 
 To use the `JobQueue`, you don't have to do much. When you instantiate the `Updater`, it will create a `JobQueue` for you:
@@ -24,9 +28,9 @@ This job queue is also linked to the dispatcher, which is discussed later in thi
 
 Tasks in the job queue are encapsulated by the `Job` class. It takes a callback function as a parameter, which will be executed when the time comes. This callback function always takes one parameter: `context`, a `telegram.ext.CallbackContext`. Like in the case of handler callbacks used by the `Dispatcher`, through this object you can access `context.bot`, the `Updater`'s `telegram.Bot` instance; and for this particular case you can also access `context.job`, which is the `Job` instance of the task that triggered the callback (more on that later). 
 
-You can use the following 3 methods to create jobs with different frequency and time: `job_queue.run_once`, `job_queue.run_repeating`, `job_queue.run_daily` and `job_queue.run_monthly`. (As before, you do not usually need to instantiate the `Job` class directly.)
+You can use the following methods to create jobs with different frequency and time: `job_queue.run_once`, `job_queue.run_repeating`, `job_queue.run_daily` and `job_queue.run_monthly`. (As before, you do not usually need to instantiate the `Job` class directly.)
 
-### Tutorial
+## Tutorial
 
 Add your first job to the queue by defining a callback function and adding it to the job queue. For this tutorial, you can replace `'@examplechannel'` with a channel where your bot is an admin, or by your user id (use [@userinfobot](https://telegram.me/userinfobot) to find out your user id):
 
@@ -37,8 +41,6 @@ def callback_minute(context: telegram.ext.CallbackContext):
 
 job_minute = j.run_repeating(callback_minute, interval=60, first=10)
 ```
-
-*(Ignore the type annotations if you're on Python 2)*
 
 The `callback_minute` function will be executed every `60.0` seconds, the first time being after 10 seconds (because of `first=10`). The `interval` and `first` parameters are in seconds if they are `int` or `float`. They can also be `datetime` objects. See the [docs](http://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) for detailed explanation.
 The return value of these functions are the `Job` objects being created. You don't need to store the result of `run_repeating` (which is the newly instantiated `Job`) if you don't need it; we will make use of it later in this tutorial.

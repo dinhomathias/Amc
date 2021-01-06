@@ -1,4 +1,6 @@
-The API is exposed via the [telegram.Bot](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/telegram/bot.py) class. The methods are the snake_case equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact camelCase method names as in the Telegram docs are also available for your convenience. So for example `telegram.Bot.send_message` is the same as `telegram.Bot.sendMessage`.
+## Pure Telegram Bot API
+
+The Bot API is exposed via the [`telegram.Bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html) class. The methods are the snake_case equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api). The exact camelCase method names as in the Telegram docs are also available for your convenience. So for example `telegram.Bot.send_message` is the same as `telegram.Bot.sendMessage`. All the classes of the Bot API can also be found in the `telegram` module, e.g. the `Message` class is available as [`telegram.Message`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html).
 
 To generate an Access Token, you have to talk to [BotFather](https://t.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 
@@ -24,7 +26,6 @@ To check if your credentials are correct, call the [getMe](https://core.telegram
 
 **Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use ``telegram.me/<bot_username>`` links or username search to find your bot.
 
-#### What to read next?
-To get real and start building your first bot using the `telegram.ext` classes, read [Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)
+## Beyond the pure API
 
-If you want to continue learning about the API, read [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets).
+That's all very nice, but usually you want your bot to actually react to some user input. That is, you want to build a chat-bot. `python-telegram-bot` offers a powerful extension module called `telegram.ext` that takes a lot of work of your shoulders. You can find an introduction at the [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
