@@ -1,4 +1,4 @@
-This page describes advanced use cases for the filters used with `MessageHandler` from `telegram.ext`.
+This page describes advanced use cases for the filters used with `MessageHandler` (also with `CommandHandler` and `PrefixHandler`) from `telegram.ext`.
 
 # Combining filters
 When using `MessageHandler` it is sometimes useful to have more than one filter. This can be done using so called bit-wise operators. In Python those operators are `&`, `|` and `~` meaning AND, OR and NOT respectively. Since version 13.1 filters support `^` for XOR.
