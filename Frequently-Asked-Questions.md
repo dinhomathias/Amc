@@ -42,6 +42,8 @@ From the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#what-mes
 > **Note that each particular message can only be available to one privacy-enabled bot at a time, i.e., a reply to bot A containing an explicit command for bot B or sent via bot C will only be available to bot A. Replies have the highest priority.**
 ***
 
+Note that turning off the privacy mode has no effect for groups the bot is already in (because obviously that would be a security issue). You need to re-add your bot to those groups.
+
 ### What about messages from other Bots?
 ***
 > Bots talking to each other could potentially get stuck in unwelcome loops. To avoid this, we decided that bots will not be able to see messages from other bots regardless of mode.
