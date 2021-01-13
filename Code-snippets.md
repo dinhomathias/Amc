@@ -32,7 +32,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
   * [Other useful stuff](#other-useful-stuff)
     + [Generate flag emojis from country codes](#generate-flag-emojis-from-country-codes)
     + [Map a Slot Machine Dice value to the corresponding symbols](#map-a-slot-machine-dice-value-to-the-corresponding-symbols)
-    + [Get the add group message](#get-the-add-group-message)
+    + [Get the new members group message](#get-the-new-members-message)
     + [Exclude forwarded channel posts in discussion groups from MessageHandlers](#exclude-forwarded-channel-posts-in-discussion-groups-from-messagehandlers)
     + [Exclude messages from anonymous admins](#exclude-messages-from-anonymous-admins)
 - [Advanced snippets](#advanced-snippets)
@@ -472,11 +472,11 @@ slot_machine_value = {
 }
 ```
 
-#### Get the add group message
+#### Get the new members message
 ```python
-def add_group(update, context):
+def add_group(update: Update, context: CallbackContext):
     for member in update.message.new_chat_members:
-        update.message.reply_text("{username} add group".format(username=member.username))
+        update.message.reply_text("{member.full_name} just joined the group")
 
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatcher.add_handler(add_group_handle)
