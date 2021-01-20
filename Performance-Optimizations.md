@@ -99,7 +99,7 @@ To be fair, you probably don't write software for banks (if you do, you should a
 
 There are many ways to fix race conditions in a multithreaded environment, but I won't explain any of them here. Mostly because it probably isn't worth the work; partly because it's cumbersome and I feel lazy. Instead, as promised in the first paragraph, I'll show you how to avoid them completely. That's not always as easy as it is in this case, but we're lucky:
 
-1. Our set of tools is very limited - `@run_async` is the only thread-related tool we're using
+1. Our set of tools is very limited - `Dispatcher.run_async` is the only thread-related tool we're using
 2. Our goals are not very ambitious - we only want to speed up our I/O
 
 There are two relatively simple steps you have to follow. First, identify those parts of the code that **must** run sequentially (the opposite of *in parallel* or *asynchronously*). Usually, that is code that fits **at least one** of these criteria:
@@ -227,18 +227,17 @@ If an asynchronous function is called from anywhere, including the Dispatcher, a
 This can lead to a so-called [deadlock](https://en.wikipedia.org/wiki/Deadlock), especially with nested function calls:
 
 ```python
-@run_async
 def grandchild():
   pass
 
-@run_async
 def child():
-  grandchild()
+  dispatcher.run_async(grandchild)
 
-@run_async
 def parent():
-  child()
-  child()
+  dispatcher.run_async(child)
+  dispatcher.run_async(child)
+
+dispatcher.run_async(parent)
 ```
 
 If you limited the maximum amount of threads to 2 and call the `parent` function, you start a thread. This thread calls the `child` function and starts another thread, so the amount of concurrent threads is 2. It now tries to call the `child` function a second time, but has to wait until the just started `child` thread ended. The `child` thread tries to call `grandchild`, but it has to wait until the `parent` thread ended. Now both threads are waiting for each other and blocking all other code that tries to run an asynchronous function. The calling thread (usually the Dispatcher) is effectively dead, hence the term *deadlock*.
