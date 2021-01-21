@@ -15,7 +15,7 @@ Moreover [@python_telegram_bot](https://t.me/python_telegram_bot) is *not* owned
 # Channels
 
 * [@pythontelegrambotchannel](https://t.me/pythontelegrambotchannel) is the offical channel of PTB where the release notes go. Currently owned by Leandro.
-* [@ptbfaq](https://t.me/PTBFaq) is a channel that was supposed to hold FAQ messages, but was never really in use (roolsbot can still forward to there?!). @josxa is still admin, be he lost the phone with the owner account.
+* [@ptbfaq](https://t.me/PTBFaq) is a channel that was supposed to hold FAQ messages, but was never really in use (roolsbot can still forward to there?!). @josxa is still admin, but he lost the phone with the owner account.
 
 Moreover [@run_async](https://t.me/run_async) is *not* owned by any of the developers and also irrelevant since the deprecation of `@run_async` in v13.0
 
