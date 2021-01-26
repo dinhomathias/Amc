@@ -1,7 +1,7 @@
 # Groups
 
 * [@pythontelegrambotgroup](https://t.me/pythontelegrambotgroup) is the on-topic user group for questions about PTB. Currently owned by Leandro.
-* [@pythontelegrambottalk](https://t.me/pythontelegrambottalk) is the off-topic user group were we can redirect people who have off-topic questions about e.g. python in general and where meta-discussions can happen. Currently owned by @jh0ker
+* [@pythontelegrambottalk](https://t.me/pythontelegrambottalk) is the off-topic user group were we can redirect people who have off-topic questions about e.g. python in general and where meta-discussions can happen. It's owned by the test user account, who is an anonymous admin (in order to hide it from the user list).
 
 # Bots
 Besides the test bots, the developers team maintains a few helper bots:
