@@ -4,7 +4,7 @@ When working with PTB, you will sooner or later have a question. And that's fine
 This article is about *how to ask good questions*, focusing on questions appearing when working with PTB.
 Before we begin, please try to keep one rule of thumb in mind:
 
-> You want something from from somebody else, so please put some effort in it.
+> You want something from somebody else, so please put some effort in it.
 
 Putting effort in it makes it easier for others to actually help you and it's more pleasant for both sides ;)
 
