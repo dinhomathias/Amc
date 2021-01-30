@@ -35,13 +35,14 @@ Process
 
 * Bump version:
 
-  * telegram/version.py
-  * docs/source/conf.py
-  * (if the release includes a Bot API update, update README.rst)
+  * `telegram/version.py`
+  * `docs/source/conf.py`
+  * if the release includes a Bot API update, update `README(_RAW).rst`
+  * if the release drops a Python version, update `README(_RAW).rst` and `setup.py`
 
 * Log changes to:
 
-  * CHANGES.rst
+  * `CHANGES.rst`
 
   Since writing adding the correct links is a bit tiresome, here is a little `something`_ to help you with it.
 
@@ -53,9 +54,13 @@ Process
 
   $ python setup.py sdist bdist_wheel
   
+  This will also build PTB-Raw
+
 * Upload to PyPI (-s to sign the package with your GnuPG key)::
  
   $ twine upload -s dist/python*
+ 
+  This will also upload PTB-Raw
   
 * Push all changes
 
@@ -69,6 +74,7 @@ Process
   * create sha1 signature:
     ```bash
     sha1sum --binary dist/python-telegram-bot-X.Y.tar.gz > dist/python-telegram-bot-X.Y.tar.gz.sha1
+    sha1sum --binary dist/python-telegram-bot-raw-X.Y.tar.gz > dist/python-telegram-bot-raw-X.Y.tar.gz.sha1
     ```
   * Upload the source distribution from pypi as binary attachment + asc (gpg signature) + sha1 (create it yourself).
 
@@ -78,7 +84,7 @@ Process
 
 * `Close milestones`_ for this version.
 
-* Test in a clean virtualenv that ``pip install python-telegram-bot`` works with the new version.
+* Test in a clean virtualenv that ``pip install python-telegram-bot`` and ``pip install python-telegram-bot-raw`` work with the new version.
 
 
 Public Announcements
