@@ -30,7 +30,7 @@ So, how do you get around that? Note that I said **by default**. To solve this k
 I don't want to bore you with *words* any further, so let's see some code! Sticking with the Echobot example, this is how you can mark the `echo` function to run in a thread:
 
 ```python
-dispatcher.add_handler(MessagHandler(Filters.text & ~Filters.command, echo, run_async=True))
+dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo, run_async=True))
 ```
 
 Simple and straightforward, right? So, why did I bore you with all that stuff before?
