@@ -5,12 +5,11 @@ i'am working on chatbot using API-Medic api  and Telegram Api when i run the cod
 
 ![chaterror](http://bharathsoxfordspokenenglish.in/images/chaterror.png)
 
-````#!/usr/bin/env python
 
-from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
+
+````from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
-                          ConversationHandler)
-
+                         ConversationHandler)
 import logging
 from symptoms import HealthCare
 from translate import translate_from_english, translate_to_english
