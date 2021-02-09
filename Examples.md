@@ -60,6 +60,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organize a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
+* [SurfSpot Bot](https://github.com/ereid7/surfspot-bot-telegram) - Bot which retrieves the surf report for a given surf spot
 * [teleGit Bot](https://github.com/HeavenH/teleGit) — A bot to list the GitHub repositories, show users information.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) — Lets you pick a timezone. This bot also uses a class for its design pattern.
 * [Telegram-Facebook-bot](https://github.com/MorenK1/telegram-facebook-bot/blob/master/README.md) - a bot to load content from Facebok pages and send it to Telegram channels
