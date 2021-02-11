@@ -20,7 +20,7 @@ Please be aware that neither the PTBs user group on Telegram nor the issue track
 ## Design Questions
 
 Many questions are not about how to use a specific method/class of PTB, but more along the lines "If a users does this, I want my bot do react like that. What can I use for that?"
-When asking how to build a specific functionality with PTB, please try describe it precisely and include all relevant information. Try to answer the following questions:
+When asking how to build a specific functionality with PTB, please try describe it precisely and include all relevant information. Answering the following questions usually is a good starting point:
 
 1. What kind of event should trigger the functionality? Possible triggers are e.g.
     * User sends a message containing a command/specific expression/an image/…
