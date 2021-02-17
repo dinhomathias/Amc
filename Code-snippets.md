@@ -476,7 +476,7 @@ slot_machine_value = {
 ```python
 def add_group(update: Update, context: CallbackContext):
     for member in update.message.new_chat_members:
-        update.message.reply_text("{member.full_name} just joined the group")
+        update.message.reply_text(f"{member.full_name} just joined the group")
 
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatcher.add_handler(add_group_handle)
