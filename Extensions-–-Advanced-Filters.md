@@ -64,7 +64,7 @@ awesome_handler = MessageHandler(filter_awesome, callback)
 You may have noticed that when using `Filters.regex`, the attributes `context.matches` and `context.match` are set to the corresponding matches. To achieve something like this for your custom filter, you can do the following:
 
 1. Set `self.data_filter=True` for your filter.
-2. If the update should be handled return a dictionary of the form `{attributen_name: value}`. This dict will be merged with the internal dict of the `context` argument making `value` available as `context.attribute_name`. This currently works with `MessageHandler`, `CommandHandler` and `PrefixHandler`, which are the only handlers that accept filters.
+2. If the update should be handled return a dictionary of the form `{attribute_name: value}`. This dict will be merged with the internal dict of the `context` argument making `value` available as `context.attribute_name`. This currently works with `MessageHandler`, `CommandHandler` and `PrefixHandler`, which are the only handlers that accept filters.
 
 If you want this to work with your custom handler, make sure that `YourHandler.collect_additional_context` does something like
 
