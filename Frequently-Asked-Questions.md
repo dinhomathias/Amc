@@ -18,6 +18,7 @@
 - [How can I list all messages of a particular chat or search through them based on a search query?](#how-can-i-list-all-messages-of-a-particular-chat-or-search-through-them-based-on-a-search-query)
 - [How can I disable logging for the `APScheduler` module?](#how-can-i-disable-logging-for-the-apscheduler-module)
 - [How do I enforce users joining a specific channel before using my bot?](#how-do-i-enforce-users-joining-a-specific-channel-before-using-my-bot)
+- [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
 
 ### What messages can my Bot see?
 
@@ -152,3 +153,7 @@ Otherwise depending on whether the user in the channel, has joind and left again
 * return a `ChatMember` instance. In that case make sure to check the [`ChatMember.status`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmember.html#telegram.ChatMember.status) attribute
 
 If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is to add at [`TypeHandler(telegram.Update, callback)`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html) to a low group and have the `callback` raise [`DispatcherHandlerStop`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) if the user did not join yet. See the docs of [`Dispatcher.add_handler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) for more info on handler groups and `DispatcherHandlerStop`.
+
+### Why am I getting an error `The following arguments have not been supplied`?
+
+The `callback` method you pass to `JobQueue.run_*` only takes *one* argument of type `CallbackContext`. This is, because jobs are triggered by a schedule and not by an update from Telegram. If you want to access data in the callback that changes at runtime (e.g. because you schedule jobs on demand), you can either access `context.bot_data` or pass the data to `run_*` as `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. Note that `context.{user, chat}_data` will be `None`, as those can only be present, when the `context` object is related to an update, which is not the case for jobs
