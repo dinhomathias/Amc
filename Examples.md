@@ -78,6 +78,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
+* [MusicToolBot](https://github.com/amirhoseinsalimi/music-tool-bot) - A bot to edit, convert, and cut music files and MP3s. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/MusicToolBot)
  
 # API
 Bots using the raw API.
