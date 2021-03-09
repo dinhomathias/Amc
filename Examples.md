@@ -27,6 +27,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [HomeworkHelp](https://github.com/leeweiminsg/homework-help-bot) - A telegram bot to facilitate communication between tutors and their students!
 * [Instagram Engagement Push bot](https://github.com/konichar/Engagement-Pushbot)  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/chukwudi_pushbot)— This is a Telegram Engagement Push bot designed to organize and pair members together in an Engagement Pod to help increase engagement on each other’s content.
 * [italy_coviddata](https://github.com/MCilento93/italy_coviddata) - A telegram bot providing data, plots and news about COVID-19 diffusion in Italy. Fully-written with python-telegram-bot wrapper. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/italycoviddataBot)
+* [Library Genesis Bot](https://github.com/adenosinetp10/Library-Genesis-Bot) - Search for Books and Articles from Library Genesis within Telegram. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/Lib_Genesis_bot)
 * [Lugodev Example Bot](https://github.com/lugodev/lugodev-example-bot) - YouTube video series teaching how to make a Telegram bot in Spanish
 * [LogBot](https://github.com/apiad/logbot) — A simple bot that accepts messages through a REST API and redirects them to Telegram, with optional actionable buttons. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/apiad_demo_logbot)
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
