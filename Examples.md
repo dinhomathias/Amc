@@ -38,6 +38,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Motivational Quotes Bot](https://github.com/SumitAgr/MotivationalQuotes-Bot) - A simple Telegram bot that generates a new motivational quote with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/MotivationalQuotes_Bot)
 * [Motivator bot](https://github.com/SabaunT/bot-motivator) - Telegram bot (with celery engine) that will motivate you to do something good or stop doing something bad. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/PersuaderBot)
+* [MusicToolBot](https://github.com/amirhoseinsalimi/music-tool-bot) - A bot to edit, convert, and cut music files and MP3s. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/MusicToolBot)
 * [MVC sample](https://github.com/mmdaz/mvc_model_bot_developing) -- This is a great sample for bot developing using python-telegram-bot and based on MVC model. I will be happy if I get comments and pull requests for improving it.
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
@@ -52,6 +53,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commands based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
+* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [Simple Stock Bot](https://gitlab.com/simple-stock-bots/simple-telegram-stock-bot) - A simple bot for getting stock market information. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SimpleStockBot)
 * [Slovodel Bot](https://github.com/weiss-d/slovodel-bot) — Generates non-existent Russian words of different types. Another example of the MVC approach.[ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/slovodel_bot)
 * [Smokey Bot](https://github.com/udit-001/smokey-bot) - A telegram bot that provides real-time worldwide air pollution data [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/smokey_bot)
@@ -79,8 +81,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [WordArtBot](https://github.com/mrfelipenoronha/WordArtBot) - Generate WordArts in Telegram.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
-* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
-* [MusicToolBot](https://github.com/amirhoseinsalimi/music-tool-bot) - A bot to edit, convert, and cut music files and MP3s. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/MusicToolBot)
+
  
 # API
 Bots using the raw API.
