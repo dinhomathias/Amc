@@ -117,7 +117,7 @@ The user now starts *both* conversations and sees *two* such keyboards. Now, whi
 In order to clear this issue up, if you set `per_message=True`, the `ConversationHandler` will use the `message_id` of the message with the keyboard.
 Note that this approach can only work, if all the handlers in the conversation are `CallbackQueryHandler`s. This is useful for building interactive menus.
 
-**Note:** If you have a `CallbackQueryHandler` in your `ConversationHandler`, you will see a warning `If 'per_message=True/Fales', …`. It is a *warning*, not an error. If you're sure that you set `per_message` to the correct value, you can just ignore it.
+**Note:** If you have a `CallbackQueryHandler` in your `ConversationHandler`, you will see a warning `If 'per_message=True/False', …`. It is a *warning*, not an error. If you're sure that you set `per_message` to the correct value, you can just ignore it.
 
 ### Can I check, if a `ConversationHandler` is currently active for a user?
 
