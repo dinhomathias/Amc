@@ -146,6 +146,8 @@ bot.send_message(chat_id=chat_id,
 ...                  reply_markup=reply_markup)
 ```
 
+To catch the incoming message with the location/contact, use `MessageHandler` with `Filters.location` and `Filters.contact`, respectively.
+
 ### Message Formatting (bold, italic, code, ...)
 
 #### Post a text message with Markdown formatting
