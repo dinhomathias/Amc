@@ -59,7 +59,7 @@ To solve this problem, you can use a reverse proxy like *nginx* or *haproxy*.
 
 In this model, a single server application listening on the public IP, the *reverse proxy*, accepts all webhook requests and forwards them to the correct instance of locally running *integrated webhook servers.* It also performs the *SSL termination*, meaning it decrypts the HTTPS connection, so the webhook servers receive the already decrypted traffic. These servers can run on *any* port, not just the four ports allowed by Telegram, because Telegram only connects to the reverse proxy directly. 
 
-**Note:** In this server model, you have to call `set_webhook` yourself.
+**Note:** In this server model, you have to call `set_webhook` yourself, if you are on PTB version <13.4.
 
 Depending on the reverse proxy application you (or your hosting provider) is using, the implementation will look a bit different. In the following, there are a few possible setups listed.
 
@@ -76,8 +76,8 @@ updater = Updater(TOKEN)
 # add handlers
 updater.start_webhook(listen="0.0.0.0",
                       port=PORT,
-                      url_path=TOKEN)
-updater.bot.set_webhook("https://<appname>.herokuapp.com/" + TOKEN)
+                      url_path=TOKEN,
+                      webhook_url="https://<appname>.herokuapp.com/" + TOKEN)
 updater.idle()
 ```
 
@@ -89,9 +89,13 @@ This is similar to the Heroku approach, just that you set up the reverse proxy y
 
 Example code to start the bot:
 ```python
-updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN1')
-updater.bot.set_webhook(url='https://example.com/TOKEN1',
-                        certificate=open('cert.pem', 'rb'))
+updater.start_webhook(
+    listen='127.0.0.1',
+    port=5000,
+    url_path='TOKEN1',
+    webhook_url='https://example.com/TOKEN1',
+    cert=open('cert.pem', 'rb')
+)
 ```
 
 Example configuration for `nginx` (reduced to important parts) with two bots configured:
@@ -119,9 +123,13 @@ In this approach, each bot is assigned their own *subdomain*. If your server has
 
 Example code to start the bot:
 ```python
-updater.start_webhook(listen='127.0.0.1', port=5000, url_path='TOKEN')
-updater.bot.set_webhook(url='https://bot1.example.com/TOKEN',
-                        certificate=open('cert_bot1.pem', 'rb'))
+updater.start_webhook(
+    listen='127.0.0.1',
+    port=5000,
+    url_path='TOKEN',
+    webhook_url='https://bot1.example.com/TOKEN,
+    cert=open('cert_bot1.pem', 'rb')
+)
 ```
 
 Example configuration for `haproxy` (reduced to important parts) with two bots configured. Again: The FQDN of both certificates must match the value in `ssl_fc_sni`. Also, the `.pem` files are the `private.key` file and `cert.pem` files concatenated:
