@@ -16,6 +16,7 @@
 - [Rich Comparison](#rich-comparison)
   * [Special note on `Message`](#special-note-on--message-)
 - [Refactoring of Filters](#refactoring-of-filters)
+- [Special Note on `Updater.start_webhook`](#special-note-on-updaterstart_webhook)
 
 # Deprecations
 
@@ -153,3 +154,16 @@ and
 both inheriting from `BaseFilter`.
 
 If you have custom filters inheriting from `BaseFilter`, you will need to change their parent class to `MessageFilter` or, if you're currently setting `update_filter = True`, to `UpdateFilter`. In that case, you can remove the `update_filter = True`.
+
+# Special Note on `Updater.start_webhook`
+
+If you're upgrading directly to v13.4+ and use something like
+
+```python
+updater.start_webhook(…)
+updater.bot.set_webhook(my_url)
+```
+you will have to change that to
+```python
+updater.start_webhook(…, webhook_url=my_url)
+```
