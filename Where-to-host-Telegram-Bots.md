@@ -13,7 +13,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
 * [Heroku](https://www.heroku.com/)
     * **[Heroku getting started with Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)**
     * **[Webhooks on Heroku](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks#heroku)**
-    * **[Skeleton repository](https://github.com/Eldinnie/ptb-heroku-skeleton)**
+    * **[Skeleton repository](https://github.com/Bibo-Joshi/ptb-heroku-skeleton)**
 * [OpenShift](https://www.openshift.com/)
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
     * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
