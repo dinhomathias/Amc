@@ -21,6 +21,7 @@
 - [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
 - [Is there a limit on the number of buttons in an inline keyboard?](#is-there-a-limit-on-the-number-of-buttons-in-an-inline-keyboard)
+- [How do I access info about the message by bot sent?](#how-do-I-access-info-about-the-message-by-bot-sent)
 
 ### What messages can my Bot see?
 
@@ -170,3 +171,15 @@ There are three easy ways to do this. Two work from the command line: `pip show 
 * max. 8 buttons per row
 
 Note that this is undocumented and may be changed by Telegram.
+
+
+### How do I access info about the message by bot sent?
+
+All bot methods have a return value. For example to get the `message_id` of a text message sent by your bot, you can do
+
+```python
+message = bot.send_message(…)
+message_id = message.message_id
+```
+
+Please check the docs for details about the return value of each bot method.
