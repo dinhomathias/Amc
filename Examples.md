@@ -25,6 +25,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [GoIP Configurator](https://github.com/dangoriaynov/goip-configurator) - A specialised telegram bot and application to monitor and adjust the GoIP-1 VoIP gateway.
 * [Hera](https://github.com/xlanor/SIM-UoW-Timetable-bot) - A specialised telegram bot to scrape students' timetables from the SIMConnect portal. I'm adding it here because I couldn't find any examples of bots using celery to delegate tasks.
 * [HomeworkHelp](https://github.com/leeweiminsg/homework-help-bot) - A telegram bot to facilitate communication between tutors and their students!
+* [Hey bot](https://github.com/HassanHeydariNasab/heybot) - I'm Hey and I repeat what I learn. You can teach me in Regex! [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/hooybot) 
 * [Instagram Engagement Push bot](https://github.com/konichar/Engagement-Pushbot)  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/chukwudi_pushbot)— This is a Telegram Engagement Push bot designed to organize and pair members together in an Engagement Pod to help increase engagement on each other’s content.
 * [italy_coviddata](https://github.com/MCilento93/italy_coviddata) - A telegram bot providing data, plots and news about COVID-19 diffusion in Italy. Fully-written with python-telegram-bot wrapper. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/italycoviddataBot)
 * [Library Genesis Bot](https://github.com/adenosinetp10/Library-Genesis-Bot) - Search for Books and Articles from Library Genesis within Telegram. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/Lib_Genesis_bot)
