@@ -48,6 +48,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
       - [Usage](#usage-3)
     + [Save and load jobs using pickle](#save-and-load-jobs-using-pickle)
     + [An (good) error handler](#an-good-error-handler)
+    + [Telegram web login widget](#verify-data-from-telegram-web-login-widget)
 - [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -842,6 +843,51 @@ def error(update, context):
     # we raise the error again, so the logger module catches it. If you don't use the logger module, use it.
     raise
 ``` 
+---
+#### Verify data from [Telegram Web Login Widget](https://core.telegram.org/widgets/login). 
 
+##### On Button click, pop-up looks like :- 
+![Sample Usage](https://telegra.ph/file/7ce2b958c81fb8b874cfa.jpg)
+
+
+This data will be from Telegram when someone clicks the Auth Button and visits the web app.
+
+```
+"id": XXXXXXXXX
+"first_name": "XXX"
+"last_name": "XXX"
+"username": "XXXXX"
+"photo_url": "https://t.meXXXXXX.jpg"
+"auth_date": XXXXXXXXXX
+"hash": "XXXXXXXXXXXXXXXXXXXXXX....."
+ ```    
+To verify it, the following snippet will be helpful.
+
+```
+import hashlib
+import hmac
+
+BOT_TOKEN = 'YOUR BOT TOKEN'
+
+request_data = request_data.copy()
+tg_hash = request_data['hash']
+request_data.pop('hash', None)
+request_data_alphabetical_order = sorted(request_data.items(), key=lambda x: x[0])
+data_check_string = []
+for data_pair in request_data_alphabetical_order:
+    key, value = data_pair[0], data_pair[1]
+    data_check_string.append(f"{key}={value}")
+data_check_string = '\n'.join(data_check_string)
+secret_key = hashlib.sha256(BOT_TOKEN.encode()).digest()
+received_hash = hmac.new(secret_key, msg=data_check_string.encode(), digestmod=hashlib.sha256).hexdigest()
+if received_hash == tg_hash:
+    print('User Logged in.') # The user clicked to the Auth Button and data is verified.
+else:
+    print('User data mis-matched.') # The data was not verified.
+    # Optional Can use if-else block for auth_date also to prevent the old data being verified.
+```
+
+#### Full sample of Flask app can be found [here.](https://gist.github.com/jainamoswal/279e5259a5c24f37cd44ea446c373ac4)
+---
 ## What to read next?
 If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
