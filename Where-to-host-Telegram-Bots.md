@@ -18,6 +18,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
     * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
 * [Joyent Triton](https://www.joyent.com/triton)
+* [Vercel serverless functions](https://vercel.com/docs/serverless-functions/supported-languages#python)
 * [PythonAnywhere](https://www.pythonanywhere.com)
 * [Oracle Cloud](https://www.oracle.com/cloud/free/) an AlwaysFree feature for a decent instance.
 
