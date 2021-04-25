@@ -1,3 +1,6 @@
+# Deprecation Notice
+`MessageQueue` in its current form is deprecated and will be reinvented in a future release. See [#2139](https://github.com/python-telegram-bot/python-telegram-bot/issues/2139) for a list of known bugs.
+
 ## What the spam limits are and why you should avoid hitting them
 Considering [Telegram's Bot documentation](https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this), currently the maximum amount of messages being sent by bots is limited to 30&#160;messages/second for all ordinary messages and 20&#160;messages/minute for group messages. According to [@BotSupport](https://t.me/BotSupport) the limit for group also applies to channels (this is not confirmed by Telegram in their documentation however). When your bot hits spam limits, it starts to get 429 errors from Telegram API. And assuming that error handling in such case usually is coded as simple retrials, the running machine would spend a lot of CPU time retrying (or got locked down, depending on bot implementation details). And constantly retrying to send messages while ignoring API errors could result in your bot being banned for some time.
 
@@ -25,7 +28,7 @@ If you need more details on MQ implementation, [follow its docs](http://python-t
 
 ## MessageQueue from user perspective
 ### Current status
-For now, it's still under development and has some bugs (see [#2139](https://github.com/python-telegram-bot/python-telegram-bot/issues/2139) for details), but **could be already used**. More detailed, now it's detached from other Python-Telegram-Bot lib components and therefore you should do a little extra work to use it. We plan to tightly couple it with [`telegram.Bot`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html) so that it could be used more conveniently (and even implicitly unless other specified). But anyway, **the future releases would be backwards compatible with current [`MessageQueue`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) class and `queuedmessage` decorator**.
+**`MessageQueue` in its current form is deprecated and will be reinvented in a future release. See [#2139](https://github.com/python-telegram-bot/python-telegram-bot/issues/2139) for a list of known bugs.**
 
 ### Using MQ with @queuedmessage decorator
 [`MessageQueue`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) module includes a convenient `@queuedmessage` decorator, which allows to delegate the required send method calls to MQ. However, it requires you to do a little work by hand, mainly create a [`telegram.Bot`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html) subclass and decorate those methods. 

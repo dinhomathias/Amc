@@ -32,7 +32,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
   * [Other useful stuff](#other-useful-stuff)
     + [Generate flag emojis from country codes](#generate-flag-emojis-from-country-codes)
     + [Map a Slot Machine Dice value to the corresponding symbols](#map-a-slot-machine-dice-value-to-the-corresponding-symbols)
-    + [Get the add group message](#get-the-add-group-message)
+    + [Get the new members group message](#get-the-new-members-message)
     + [Exclude forwarded channel posts in discussion groups from MessageHandlers](#exclude-forwarded-channel-posts-in-discussion-groups-from-messagehandlers)
     + [Exclude messages from anonymous admins](#exclude-messages-from-anonymous-admins)
 - [Advanced snippets](#advanced-snippets)
@@ -47,7 +47,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Store ConversationHandler States](#store-conversationhandler-states)
       - [Usage](#usage-3)
     + [Save and load jobs using pickle](#save-and-load-jobs-using-pickle)
-    + [An (good) error handler](#an-good-error-handler)
+    + [Telegram web login widget](#verify-data-from-telegram-web-login-widget)
 - [What to read next?](#what-to-read-next)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
@@ -145,6 +145,8 @@ bot.send_message(chat_id=chat_id,
 ...                  text="Would you mind sharing your location and contact with me?", 
 ...                  reply_markup=reply_markup)
 ```
+
+To catch the incoming message with the location/contact, use `MessageHandler` with `Filters.location` and `Filters.contact`, respectively.
 
 ### Message Formatting (bold, italic, code, ...)
 
@@ -472,11 +474,11 @@ slot_machine_value = {
 }
 ```
 
-#### Get the add group message
+#### Get the new members message
 ```python
-def add_group(update, context):
+def add_group(update: Update, context: CallbackContext):
     for member in update.message.new_chat_members:
-        update.message.reply_text("{username} add group".format(username=member.username))
+        update.message.reply_text(f"{member.full_name} just joined the group")
 
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatcher.add_handler(add_group_handle)
@@ -792,54 +794,56 @@ if __name__ == '__main__':
     main()
 ```
 
-#### An (good) error handler
-The following snippet is an example of an error handler. It notifies the user when an error happens and notifies the dev(s) of the error, including the traceback and where it happend. The comments in the code try to explain exactly what happens when and why, so editing it to fit your special needs should be a breeze.
+---
+#### Verify data from [Telegram Web Login Widget](https://core.telegram.org/widgets/login). 
+
+When using a [`LoginUrl`](https://core.telegram.org/bots/api#loginurl) in an [`InlineKeyboardButton`](https://core.telegram.org/bots/api#inlinekeyboardbutton) to authorize a user on your website via Telegram, you'll have to to check the hash of the received data to verify the data of the integrity as described [here](https://core.telegram.org/widgets/login#checking-authorization)
+
+The data JSON data will have the following form:
+```python
+{
+    "id": XXXXXXXXX
+    "first_name": "XXX"
+    "last_name": "XXX"
+    "username": "XXXXX"
+    "photo_url": "https://t.meXXXXXX.jpg"
+    "auth_date": XXXXXXXXXX
+    "hash": "XXXXXXXXXXXXXXXXXXXXXX....."
+}
+ ```    
+The following is an example implementation in Python:
 
 ```python
-from telegram import ParseMode
-from telegram.utils.helpers import mention_html
-import sys
-import traceback
+import hashlib
+import hmac
 
-# this is a general error handler function. If you need more information about specific type of update, add it to the
-# payload in the respective if clause
-def error(update, context):
-    # add all the dev user_ids in this list. You can also add ids of channels or groups.
-    devs = [208589966]
-    # we want to notify the user of this problem. This will always work, but not notify users if the update is an 
-    # callback or inline query, or a poll update. In case you want this, keep in mind that sending the message 
-    # could fail
-    if update.effective_message:
-        text = "Hey. I'm sorry to inform you that an error happened while I tried to handle your update. " \
-               "My developer(s) will be notified."
-        update.effective_message.reply_text(text)
-    # This traceback is created with accessing the traceback object from the sys.exc_info, which is returned as the
-    # third value of the returned tuple. Then we use the traceback.format_tb to get the traceback as a string, which
-    # for a weird reason separates the line breaks in a list, but keeps the linebreaks itself. So just joining an
-    # empty string works fine.
-    trace = "".join(traceback.format_tb(sys.exc_info()[2]))
-    # lets try to get as much information from the telegram update as possible
-    payload = ""
-    # normally, we always have an user. If not, its either a channel or a poll update.
-    if update.effective_user:
-        payload += f' with the user {mention_html(update.effective_user.id, update.effective_user.first_name)}'
-    # there are more situations when you don't get a chat
-    if update.effective_chat:
-        payload += f' within the chat <i>{update.effective_chat.title}</i>'
-        if update.effective_chat.username:
-            payload += f' (@{update.effective_chat.username})'
-    # but only one where you have an empty payload by now: A poll (buuuh)
-    if update.poll:
-        payload += f' with the poll id {update.poll.id}.'
-    # lets put this in a "well" formatted text
-    text = f"Hey.\n The error <code>{context.error}</code> happened{payload}. The full traceback:\n\n<code>{trace}" \
-           f"</code>"
-    # and send it to the dev(s)
-    for dev_id in devs:
-        context.bot.send_message(dev_id, text, parse_mode=ParseMode.HTML)
-    # we raise the error again, so the logger module catches it. If you don't use the logger module, use it.
-    raise
-``` 
+BOT_TOKEN = 'YOUR BOT TOKEN'
 
-## What to read next?
-If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
+def verify(request_data):
+    request_data = request_data.copy()
+    tg_hash = request_data['hash']
+    request_data.pop('hash', None)
+    request_data_alphabetical_order = sorted(request_data.items(), key=lambda x: x[0])
+
+    data_check_string = []
+    for data_pair in request_data_alphabetical_order:
+        key, value = data_pair[0], data_pair[1]
+        data_check_string.append(f"{key}={value}")
+    data_check_string = '\n'.join(data_check_string)
+
+    secret_key = hashlib.sha256(BOT_TOKEN.encode()).digest()
+    received_hash = hmac.new(secret_key, msg=data_check_string.encode(), digestmod=hashlib.sha256).hexdigest()
+
+    if received_hash == tg_hash:
+        # The user clicked to the Auth Button and data is verified.
+        print('User Logged in.')
+        return True
+    else:
+        # The data is not valid
+        print('User data mis-matched.')
+        return False
+
+    # Optionally use another if-else block to check the auth_date in order to prevent outdated data from being verified.
+```
+
+A sample of Flask app can be found [here.](https://gist.github.com/jainamoswal/279e5259a5c24f37cd44ea446c373ac4)

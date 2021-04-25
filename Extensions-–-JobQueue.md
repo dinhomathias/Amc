@@ -10,7 +10,7 @@ The extension class `telegram.ext.JobQueue` allows you to perform tasks with a d
 
 ## Example
 
-In addition to the tuorial below there is also the `timerbot.py` example at the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
+In addition to the tutorial below there is also the `timerbot.py` example at the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
 
 # Usage
 The `JobQueue` class is tightly integrated with other `telegram.ext` classes. Similar to `Updater` and `Dispatcher`, it runs asynchronously in a separate thread.

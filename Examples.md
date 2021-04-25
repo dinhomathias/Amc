@@ -2,9 +2,9 @@ A non-exhaustive list of open-source bots built on `python-telegram-bot` in the 
 
 # Updater
 Bots built using the `telegram.ext.Updater` class.
-
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
 * [AmbroBot](https://github.com/Ambro17/AmbroBot) — This bot can search series or movies by name and lets you download them, it can also list latest yts movies, lets you set reminders, solve linear equations and a few other neat things [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CuervoBot)
+* [BibTeXBot](https://gitlab.com/-/snippets/2069000) — This bot can convert bibliography identifiers to BibTeX entries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/BibTexBot)
 * [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/blackjackbot)
 * [BotAgainstHumanity](https://gitlab.com/OctoNezd/bot_against_humanity) - a clone of "Cards Against Humanity" for telegram [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/humanity_against_bot)
 * [BotListBot](https://github.com/JosXa/BotListBot) — Large project, maintains the [@BotList channel](https://t.me/botlist). Simplifies navigation, allows submitting and editing bots by the [@BotListChat community](https://t.me/botlistchat) community. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/botlistbot)
@@ -25,8 +25,11 @@ Bots built using the `telegram.ext.Updater` class.
 * [GoIP Configurator](https://github.com/dangoriaynov/goip-configurator) - A specialised telegram bot and application to monitor and adjust the GoIP-1 VoIP gateway.
 * [Hera](https://github.com/xlanor/SIM-UoW-Timetable-bot) - A specialised telegram bot to scrape students' timetables from the SIMConnect portal. I'm adding it here because I couldn't find any examples of bots using celery to delegate tasks.
 * [HomeworkHelp](https://github.com/leeweiminsg/homework-help-bot) - A telegram bot to facilitate communication between tutors and their students!
+* [Hey bot](https://github.com/HassanHeydariNasab/heybot) - I'm Hey and I repeat what I learn. You can teach me in Regex! [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/hooybot) 
 * [Instagram Engagement Push bot](https://github.com/konichar/Engagement-Pushbot)  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/chukwudi_pushbot)— This is a Telegram Engagement Push bot designed to organize and pair members together in an Engagement Pod to help increase engagement on each other’s content.
 * [italy_coviddata](https://github.com/MCilento93/italy_coviddata) - A telegram bot providing data, plots and news about COVID-19 diffusion in Italy. Fully-written with python-telegram-bot wrapper. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/italycoviddataBot)
+* [Library Genesis Bot](https://github.com/adenosinetp10/Library-Genesis-Bot) - Search for Books and Articles from Library Genesis within Telegram. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/Lib_Genesis_bot)
+* [Lugodev Example Bot](https://github.com/lugodev/lugodev-example-bot) - YouTube video series teaching how to make a Telegram bot in Spanish
 * [LogBot](https://github.com/apiad/logbot) — A simple bot that accepts messages through a REST API and redirects them to Telegram, with optional actionable buttons. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/apiad_demo_logbot)
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
@@ -36,6 +39,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [moodify](https://github.com/samsontmr/moodify) — Takes your selfie and recommends a playlist for your mood.  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/moodifybot)
 * [Motivational Quotes Bot](https://github.com/SumitAgr/MotivationalQuotes-Bot) - A simple Telegram bot that generates a new motivational quote with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/MotivationalQuotes_Bot)
 * [Motivator bot](https://github.com/SabaunT/bot-motivator) - Telegram bot (with celery engine) that will motivate you to do something good or stop doing something bad. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/PersuaderBot)
+* [MusicToolBot](https://github.com/amirhoseinsalimi/music-tool-bot) - A bot to edit, convert, and cut music files and MP3s. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/MusicToolBot)
 * [MVC sample](https://github.com/mmdaz/mvc_model_bot_developing) -- This is a great sample for bot developing using python-telegram-bot and based on MVC model. I will be happy if I get comments and pull requests for improving it.
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
@@ -45,12 +49,14 @@ Bots built using the `telegram.ext.Updater` class.
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
 * [privibot](https://github.com/pawamoy/privibot) - A Python library to add a privilege/permission system to your Telegram bot.
 * [reactor](https://github.com/vanyakosmos/reactor) - like @like but with a dynamic number of buttons. Users can add their own reactions to messages, similarly to slack/discord reactions. [try it out](https://t.me/emojinator_bot)
-* [Reddit2Telegram](https://gitlab.com/tea-project/reddit2telegram) - A simple and effective solution to create Telegram channels out of subreddits. 
+* [Reddit1Telegram](https://gitlab.com/tea-project/reddit1telegram) - A simple and effective solution to create Telegram channels out of subreddits. 
 * [RemindMeBot](https://github.com/dmakeienko/remind_me_bot) - create reminders, check it's statuses, update/delete them. [try it out](https://t.me/how_to_find_name_for_bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commands based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
+* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
+* [Simple Stock Bot](https://gitlab.com/simple-stock-bots/simple-telegram-stock-bot) - A simple bot for getting stock market information. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SimpleStockBot)
 * [Slovodel Bot](https://github.com/weiss-d/slovodel-bot) — Generates non-existent Russian words of different types. Another example of the MVC approach.[ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/slovodel_bot)
 * [Smokey Bot](https://github.com/udit-001/smokey-bot) - A telegram bot that provides real-time worldwide air pollution data [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/smokey_bot)
 * [@someone bot](https://github.com/zeroone2numeral2/someone-bot) — Bot that randomly mentions people when @someone is used [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/randmentionbot)
@@ -60,6 +66,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organize a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
+* [SurfSpot Bot](https://github.com/ereid7/surfspot-bot-telegram) - Bot which retrieves the surf report for a given surf spot
 * [teleGit Bot](https://github.com/HeavenH/teleGit) — A bot to list the GitHub repositories, show users information.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) — Lets you pick a timezone. This bot also uses a class for its design pattern.
 * [Telegram-Facebook-bot](https://github.com/MorenK1/telegram-facebook-bot/blob/master/README.md) - a bot to load content from Facebok pages and send it to Telegram channels
@@ -79,6 +86,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
+
  
 # API
 Bots using the raw API.

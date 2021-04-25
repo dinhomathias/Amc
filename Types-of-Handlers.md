@@ -19,7 +19,7 @@ For different kinds of user input, the received `telegram.Update` will have diff
 
 The special thing about `MessageHandler` is that there is such a vast variety of message types (text, gif, image, document, sticker, …) that it's infeasible to provide a different `Handler` for each type. Instead `MessageHandler` is coupled with so called [filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html) that allow to make fine-grained distinctions: `MessageHandler(Filters.all, callback)` will handle all updates that contain
 
-* `updat.message`
+* `update.message`
 * `update.edited_message`
 * `update.channel_post`
 * `update.edited_channel_post`

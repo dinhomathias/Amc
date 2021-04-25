@@ -8,14 +8,17 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
     * **[How to create a Bot on Google App Engine](https://github.com/sooyhwang/Simple-Echo-Telegram-Bot)** by [sooyhwang](https://github.com/sooyhwang) (NOTE: This might be obsolete)
 * [Google Cloud Functions](https://cloud.google.com/functions/) 
     * **[Building a serverless Telegram bot](https://seminar.io/2018/09/03/building-serverless-telegram-bot/)** by [pabluk](https://github.com/pabluk)
+* [Google Cloud Run](https://cloud.google.com/run/) 
+    * **[Hosting Telegram bots on Cloud Run for free](https://nullonerror.org/2021/01/08/hosting-telegram-bots-on-google-cloud-run/)** by [skhaz](https://github.com/skhaz/)
 * [Heroku](https://www.heroku.com/)
     * **[Heroku getting started with Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)**
     * **[Webhooks on Heroku](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks#heroku)**
-    * **[Skeleton repository](https://github.com/Eldinnie/ptb-heroku-skeleton)**
+    * **[Skeleton repository](https://github.com/Bibo-Joshi/ptb-heroku-skeleton)**
 * [OpenShift](https://www.openshift.com/)
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
     * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
 * [Joyent Triton](https://www.joyent.com/triton)
+* [Vercel serverless functions](https://vercel.com/docs/serverless-functions/supported-languages#python)
 * [PythonAnywhere](https://www.pythonanywhere.com)
 * [Oracle Cloud](https://www.oracle.com/cloud/free/) an AlwaysFree feature for a decent instance.
 
@@ -41,6 +44,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
     * **[How to create a Bot on Codenvy](https://github.com/p92camcj/Tutorial-telegram-bot)** by [p92camcj](https://github.com/p92camcj/Tutorial-telegram-bot)
 * [Koding](https://koding.com/)
 * [Cloud9](https://c9.io/)
+* [Repl.it](https://repl.it/)
 
 ### Tunnels
 * [localtunnel](https://localtunnel.me/)

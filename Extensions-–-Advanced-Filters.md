@@ -1,4 +1,4 @@
-This page describes advanced use cases for the filters used with `MessageHandler` from `telegram.ext`.
+This page describes advanced use cases for the filters used with `MessageHandler` (also with `CommandHandler` and `PrefixHandler`) from `telegram.ext`.
 
 # Combining filters
 When using `MessageHandler` it is sometimes useful to have more than one filter. This can be done using so called bit-wise operators. In Python those operators are `&`, `|` and `~` meaning AND, OR and NOT respectively. Since version 13.1 filters support `^` for XOR.
@@ -64,7 +64,9 @@ awesome_handler = MessageHandler(filter_awesome, callback)
 You may have noticed that when using `Filters.regex`, the attributes `context.matches` and `context.match` are set to the corresponding matches. To achieve something like this for your custom filter, you can do the following:
 
 1. Set `self.data_filter=True` for your filter.
-2. If the update should be handled return a dictionary of the form `{attributen_name: value}`. This dict will be merged with the internal dict of the `context` argument making `value` available as `context.attribute_name`. This currently works with `MessageHandler`, `CommandHandler` and `PrefixHandler`, which are the only handlers that accept filters.
+2. If the update should be handled return a dictionary of the form `{attribute_name: [values]}`. This dict will be merged with the internal dict of the `context` argument making `value` available as `context.attribute_name`. This currently works with `MessageHandler`, `CommandHandler` and `PrefixHandler`, which are the only handlers that accept filters.
+
+   **Note:** The values of the returned dict must be *lists*. This is necessary to make sure that multiple data filters can be merged meaningfully.
 
 If you want this to work with your custom handler, make sure that `YourHandler.collect_additional_context` does something like
 

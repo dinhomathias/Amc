@@ -10,16 +10,6 @@ text = "🌈⛈🎉🌹🐧😊"
 
 In the code you may see squares with numbers in them instead of the emoji themself. This means the font in your text editor does not have an image for that character, but it is still there.
 
-This will work without problems on Python 3. On Python 2 you need to declare the encoding of your source file, put this line at the top:
-```python 
-# -*- coding: utf-8 -*-
-```
-this tells Python that your source file is encoded in UTF8. Note that if you have a shebang at the top, the encoding line comes second:
-```python 
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-```
-
 Finally, test your emoji by sending it to yourself over Telegram. Know that Telegram does not support all the emoji.
 
 # The emoji module

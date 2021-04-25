@@ -10,7 +10,7 @@ from telegram.ext import Updater, CommandHandler
 
 def put(update, context):
     """Usage: /put value"""
-    # Generate ID and seperate value from command
+    # Generate ID and separate value from command
     key = str(uuid4())
     # We don't use context.args here, because the value may contain whitespaces
     value = update.message.text.partition(' ')[2]

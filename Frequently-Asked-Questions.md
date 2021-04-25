@@ -18,6 +18,10 @@
 - [How can I list all messages of a particular chat or search through them based on a search query?](#how-can-i-list-all-messages-of-a-particular-chat-or-search-through-them-based-on-a-search-query)
 - [How can I disable logging for the `APScheduler` module?](#how-can-i-disable-logging-for-the-apscheduler-module)
 - [How do I enforce users joining a specific channel before using my bot?](#how-do-i-enforce-users-joining-a-specific-channel-before-using-my-bot)
+- [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
+- [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
+- [Is there a limit on the number of buttons in an inline keyboard?](#is-there-a-limit-on-the-number-of-buttons-in-an-inline-keyboard)
+- [How do I access info about the message my bot sent?](#how-do-I-access-info-about-the-message-my-bot-sent)
 
 ### What messages can my Bot see?
 
@@ -41,6 +45,8 @@ From the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#what-mes
 > 
 > **Note that each particular message can only be available to one privacy-enabled bot at a time, i.e., a reply to bot A containing an explicit command for bot B or sent via bot C will only be available to bot A. Replies have the highest priority.**
 ***
+
+Note that turning off the privacy mode has no effect for groups the bot is already in (because obviously that would be a security issue). You need to re-add your bot to those groups.
 
 ### What about messages from other Bots?
 ***
@@ -113,7 +119,7 @@ The user now starts *both* conversations and sees *two* such keyboards. Now, whi
 In order to clear this issue up, if you set `per_message=True`, the `ConversationHandler` will use the `message_id` of the message with the keyboard.
 Note that this approach can only work, if all the handlers in the conversation are `CallbackQueryHandler`s. This is useful for building interactive menus.
 
-**Note:** If you have a `CallbackQueryHandler` in your `ConversationHandler`, you will see a warning `If 'per_message=True/Fales', …`. It is a *warning*, not an error. If you're sure that you set `per_message` to the correct value, you can just ignore it.
+**Note:** If you have a `CallbackQueryHandler` in your `ConversationHandler`, you will see a warning `If 'per_message=True/False', …`. It is a *warning*, not an error. If you're sure that you set `per_message` to the correct value, you can just ignore it.
 
 ### Can I check, if a `ConversationHandler` is currently active for a user?
 
@@ -145,6 +151,35 @@ Note that:
 * the bot needs to be admin in that channel
 * the user must have started the bot for this approach to work. If you try to run `get_chat_member` for a user that has not started the bot, the bot can not find the user in a chat, even if it is a member of it.
 
-Otherwise the method call will fail with an error.
+Otherwise depending on whether the user in the channel, has joind and left again, has been banned, ... (there are multiple situations possible), the method may
+* raise an exception and in this case the error message will probably be helpful
+* return a `ChatMember` instance. In that case make sure to check the [`ChatMember.status`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmember.html#telegram.ChatMember.status) attribute
 
 If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is to add at [`TypeHandler(telegram.Update, callback)`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html) to a low group and have the `callback` raise [`DispatcherHandlerStop`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) if the user did not join yet. See the docs of [`Dispatcher.add_handler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) for more info on handler groups and `DispatcherHandlerStop`.
+
+### Why am I getting an error `The following arguments have not been supplied`?
+
+The `callback` method you pass to `JobQueue.run_*` only takes *one* argument of type `CallbackContext`. This is, because jobs are triggered by a schedule and not by an update from Telegram. If you want to access data in the callback that changes at runtime (e.g. because you schedule jobs on demand), you can either access `context.bot_data` or pass the data to `run_*` as `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. Note that `context.{user, chat}_data` will be `None`, as those can only be present, when the `context` object is related to an update, which is not the case for jobs.
+
+### How can I check the version of PTB I am using?
+
+There are three easy ways to do this. Two work from the command line: `pip show python-telegram-bot` or `python -m telegram`. One you run inside a python script (or the python console): `import telegram`, then call `print(telegram.__version__)`.
+
+### Is there a limit on the number of buttons in an inline keyboard?
+
+* max. 100 buttons in total
+* max. 8 buttons per row
+
+Note that this is undocumented and may be changed by Telegram.
+
+
+### How do I access info about the message my bot sent?
+
+All bot methods have a return value. For example to get the `message_id` of a text message sent by your bot, you can do
+
+```python
+message = bot.send_message(…)
+message_id = message.message_id
+```
+
+Please check the docs for details about the return value of each bot method.
