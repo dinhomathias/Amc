@@ -49,11 +49,13 @@ Bots built using the `telegram.ext.Updater` class.
 * [RemindMeBot](https://github.com/dmakeienko/remind_me_bot) - create reminders, check it's statuses, update/delete them. [try it out](https://t.me/how_to_find_name_for_bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
+* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commands based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
 * [Slovodel Bot](https://github.com/weiss-d/slovodel-bot) — Generates non-existent Russian words of different types. Another example of the MVC approach.[ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/slovodel_bot)
 * [Smokey Bot](https://github.com/udit-001/smokey-bot) - A telegram bot that provides real-time worldwide air pollution data [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/smokey_bot)
 * [@someone bot](https://github.com/zeroone2numeral2/someone-bot) — Bot that randomly mentions people when @someone is used [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/randmentionbot)
 * [Sourukorekuta](https://github.com/Mojurasu/sourukorekuta) — Collects stats and kicks lurkers (inactive members)
+* [SphinxDocBot](https://gitlab.com/HirschHeissIch/sphinx-doc-bot/) - A Telegram bot that lets your search Sphinx based documentation. The instance at [@PythonDocBot](https://t.me/PythonDocBot) lets you search the docs of Python 3. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/PythonDocBot)
 * [SplitwizeBot](https://github.com/krnbatra/SplitwiseTelegramBot) - A telegram bot for managing expenses in Splitwise application. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SplitwizeBot)
 * [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organize a subscription for a news web site
@@ -68,14 +70,15 @@ Bots built using the `telegram.ext.Updater` class.
 * [Travis CI Telegram Notification](https://github.com/vanyakosmos/travis-tg-notifier) - helps to setup notifications about builds.
 * [Trading-Analysis-Bot](https://github.com/trinhvv/trading-analysis-bot) — Telegram chatbot for data-driven analytics of cryptocurrencies market, particularly Binance, providing standard technical indicators as well as modern statistical metrics for blockchain network [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/trading_analysis_bot)
 * [Twitter-lists-bot](https://github.com/lytves/twitter-lists-bot) - a bot to resend your twitter list notifications
+* [Twitter Status Bot](https://gitlab.com/HirschHeissIch/twitter-status-bot/) - A simple Telegram Bot that let’s you create stickers looking like Tweets on the fly. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/TwitterStatusBot)
 * [Url-Shortener-Bot](https://github.com/paradox70/url-shortener-goo.gl) — Shortens any URL and reports the total number of clicks on shortened link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/shortenMyUrlBot)
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [VorpalRobot](https://github.com/Tronikart/VorpalRobot) - an inline dice rolling bot [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/VorpalRobot)
 * [Watermaker-bot](https://github.com/alistvt/watermarker-bot) - A bot to watermark your files by your logo.
 * [WordArtBot](https://github.com/mrfelipenoronha/WordArtBot) - Generate WordArts in Telegram.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
+* [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
-* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
  
 # API
 Bots using the raw API.
