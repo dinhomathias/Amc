@@ -846,7 +846,4 @@ def verify(request_data):
     # Optionally use another if-else block to check the auth_date in order to prevent outdated data from being verified.
 ```
 
-#### A sample of Flask app can be found [here.](https://gist.github.com/jainamoswal/279e5259a5c24f37cd44ea446c373ac4)
----
-## What to read next?
-If you haven't read the tutorial "[Extensions – Your first Bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot)" yet, you might want to do it now.
+A sample of Flask app can be found [here.](https://gist.github.com/jainamoswal/279e5259a5c24f37cd44ea446c373ac4)
