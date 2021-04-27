@@ -17,15 +17,10 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Message entities](#message-entities)
     + [Telegram formatting to BBCode](#telegram-formatting-to-bbcode)
   * [Working with files and media](#working-with-files-and-media)
-    + [Post an image file from disk](#post-an-image-file-from-disk)
-    + [Post a voice file from disk](#post-a-voice-file-from-disk)
-    + [Post a photo from a URL](#post-a-photo-from-a-url)
-    + [Post an audio from disk](#post-an-audio-from-disk)
-    + [Post a file from disk](#post-a-file-from-disk)
-    + [Post an image from memory](#post-an-image-from-memory)
-    + [Post a media group from a URL](#post-a-media-group-from-a-url)
-    + [Get image with dimensions closest to a desired size](#get-image-with-dimensions-closest-to-a-desired-size)
-    + [Download a file](#download-a-file)
+    + [Posting files](#posting-files)
+    + [Sending files via inline mode](#sending-files-via-inline-mode)
+    + [Editing a file](#editing-a-file)
+    + [Downloading a file](#downloading-a-file)
   * [Keyboard Menus](#keyboard-menus)
     + [Custom Keyboards](#custom-keyboards)
     + [Remove a custom keyboard](#remove-a-custom-keyboard)
@@ -52,8 +47,6 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-
-
 ## Pure API
 
 #### Fetch updates
@@ -65,7 +58,7 @@ To fetch messages sent to your Bot, you can use the [getUpdates](https://core.te
 updates = bot.get_updates()
 print([u.message.text for u in updates])
 ```
-
+---
 #### Fetch images sent to your Bot
 
 ```python
@@ -73,6 +66,7 @@ updates = bot.get_updates()
 print([u.message.photo for u in updates if u.message.photo])
 ```
 
+---
 #### Reply to messages
 You'll always need the `chat_id`
 
@@ -80,14 +74,14 @@ You'll always need the `chat_id`
 chat_id = bot.get_updates()[-1].message.chat_id
 ```
 
+---
 ## General code snippets
 These snippets usually apply to both ways of fetching updates. If you're using `telegram.ext`, you can get the `chat_id` in your handler callback with `update.message.chat_id`.
 
 **Note:** In general, you can send messages to users by passing their user id as the `chat_id`. 
 If the bot has a chat with the user, it will send the message to that chat.
 
-
-
+---
 #### Post a text message
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
@@ -97,6 +91,7 @@ bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do tha
 
 **Note:** `send_message` method (as any of `send_*` methods of `Bot` class) returns the instance of `Message` class, so it can be used in code later.
 
+---
 #### Reply to a message
 
 This is a shortcut to `bot.send_message` with sane defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
@@ -105,8 +100,9 @@ This is a shortcut to `bot.send_message` with sane defaults. Read more about it 
 update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
 ```
 
-**Note:** There are equivalents of this method for replying with photos, audio etc., and similar shortcuts exist throughout the library. Related PRs: [#362](https://github.com/python-telegram-bot/python-telegram-bot/pull/362), [#420](https://github.com/python-telegram-bot/python-telegram-bot/pull/420), [#423](https://github.com/python-telegram-bot/python-telegram-bot/pull/423)
+**Note:** There are equivalents of this method for replying with photos, audio etc., and similar shortcuts exist throughout the library.
 
+---
 #### Send a chat action
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendchataction)
 Use this to tell the user that something is happening on the bot's side:
@@ -134,6 +130,7 @@ def my_handler(update, context):
     pass # Will send 'typing' action while processing the request.
 ```
 
+---
 #### Requesting location and contact from user
 
 ```python
@@ -148,6 +145,7 @@ bot.send_message(chat_id=chat_id,
 
 To catch the incoming message with the location/contact, use `MessageHandler` with `Filters.location` and `Filters.contact`, respectively.
 
+---
 ### Message Formatting (bold, italic, code, ...)
 
 #### Post a text message with Markdown formatting
@@ -161,6 +159,7 @@ bot.send_message(chat_id=chat_id,
                  parse_mode=telegram.ParseMode.MARKDOWN_V2)
 ```
 
+---
 #### Post a text message with HTML formatting
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
@@ -170,6 +169,7 @@ bot.send_message(chat_id=chat_id,
                  parse_mode=telegram.ParseMode.HTML)
 ```
 
+---
 #### Message entities
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#messageentity)
 To use MessageEntity, extract the entities and their respective text from a Message object using `parse_entities`.  
@@ -180,10 +180,14 @@ To use MessageEntity, extract the entities and their respective text from a Mess
 entities = message.parse_entities()
 ```
 
+---
 #### Telegram formatting to BBCode
 This is an example how to use entities to convert Telegram formatting to BBCode. In the current version it does *not* support nested entities.
 
 Define parsing function:
+
+<details><summary>Click to expand</summary><p>
+
 ```python
 import sys
 
@@ -232,7 +236,12 @@ def parse_bbcode(message_text, entities, urled=False):
     else:
         bbcode_text += message_text[last_offset * 2:].decode('utf-16-le')
     return bbcode_text
+
 ```
+
+</p></details>
+
+
 Call it with:
 ```python
 entities = update.message.parse_entities()
@@ -246,114 +255,123 @@ bbcode = parse_bbcode(caption, entities, urled=True)
 ```
 `bbcode` will contain message/caption text formatted in BBCode. `urled` parameter determines if URLs in text are to be processed as links or left as text.
 
-There are many more API methods. To read the full API documentation, visit the [Telegram API documentation](https://core.telegram.org/bots/api) or the [library documentation of telegram.Bot](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html)
-
+---
 ### Working with files and media
 
-#### Post an image file from disk
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendphoto)
+#### Posting files
+
+If you want to send a file, e.g. send a photo with the bot, you have three options:
+
+* Upload the file
+* Send an HTTP-link that leads to the file
+* Send a `file_id` of a file that has already been sent.
+
+Note that not every method is supported everywhere (e.g. for thumbnails you can't pass a `file_id`). Make sure to check out the documentation of the corresponding bot method for details.
+
+Please also check out the [official docs](https://core.telegram.org/bots/api#sending-files) on sending files.
+
+Let's have a look hat how sending a document can be done.
+
+1. Uploading a file:
+
+    ```python
+    bot.send_document(chat_id=chat_id, document=open('tests/test.png', 'rb'))
+    ```
+
+2. Sending an HTTP-link
+
+    ```python
+    bot.send_document(chat_id=chat_id, document='https://python-telegram-bot.org/static/testfiles/telegram.gif'))
+    ```
+
+3. Sending by `file_id`:
+
+    ```python
+    bot.send_document(chat_id=chat_id, document=file_id))
+    ```
+    
+    Two further notes on this:
+    
+    1. Each bot has its own `file_ids`, i.e. you can't use a `file_id` from a different bot to send a photo
+    2. How do you get a `file_id` of a photo you sent? Read it from the return value of `bot.send_document` (or any other `Message` object you get your hands on):
+    
+        ```python
+        message = bot.send_document(...)
+        file_id = message.document.file_id
+        ```
+       
+This pretty much works the same way for all the other `send_<media_type>` methods like `send_photo`, `send_video` etc. There is one exception, though: `send_media_group`. A call to `send_media_group` looks like this:
 
 ```python
-bot.send_photo(chat_id=chat_id, photo=open('tests/test.png', 'rb'))
+bot.send_media_group(chat_id=chat_id, media=[media_1, media_2, ...])
 ```
 
-#### Post a voice file from disk
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendvoice)
+The items in the `media` list must be instances of `InputMediaAudio`, `InputMediaDocument`, `InputMediaPhoto` or `InputMediaVideo`. The media comes into play like so:
 
 ```python
-bot.send_voice(chat_id=chat_id, voice=open('tests/telegram.ogg', 'rb'))
+media_1 = InputMediaDocument(media=open('tests/test.png', 'rb'), ...)
+media_1 = InputMediaDocument(media='https://python-telegram-bot.org/static/testfiles/telegram.gif', ...)
+media_1 = InputMediaDocument(media=file_id, ...)
 ```
 
-#### Post a photo from a URL
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendphoto)
+Please check out the documentation of `InputMediaAudio`, `InputMediaDocument`, `InputMediaPhoto` and `InputMediaVideo` for the details on required and optional arguments.
+
+---
+#### Sending files via inline mode
+
+You may want to allow users to send media via your bots inline mode. This works a little bit different than posting media via `send_*`. Most notable, you can't upload files for inline mode! You must provide either an HTTP-URL or a `file_id`.
+
+Let's stick to example of sending a document. Then you have to provide an `InlineQueryResult` to `bot.answer_inline_query` that represents that document and here are the two options:
+
+1. HTTP-URL:
+
+    ```python
+    result = InlineQueryResultDocument(doucment_url='https://python-telegram-bot.org/static/testfiles/telegram.gif', ...)
+    ```
+   
+2. `file_id`:
+
+    ```python
+    result = InlineQueryResultCachedDocument(doucment_file_id=file_id, ...)
+    ```
+
+The scheme `InlineQueryResult<media_type>` vs `InlineQueryResultCached<media_type>` is similar for the other media types.
+Again, please check out the docs for details on required and optional arguments. 
+
+---
+#### Editing a file
+
+When you have sent a file, you may want edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example:
 
 ```python
-bot.send_photo(chat_id=chat_id, photo='https://telegram.org/img/t_logo.png')
+bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=InputMediaDocument(media=open('tests/test.png'), ...))
 ```
 
-#### Post a gif from a URL (send_animation)
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendanimation)
+Please check out the restrictions on editing media in the docs of [`send_media_group`](https://core.telegram.org/bots/api#editmessagemedia).
+
+---
+#### Downloading a file
+
+When you receive files from a user, you sometimes want to download and save them. If it's a document, that could look like this:
 
 ```python
-bot.send_animation(chat_id, animation, duration=None, width=None, height=None, thumb=None, caption=None, parse_mode=None, disable_notification=False, reply_to_message_id=None, reply_markup=None, timeout=20, **kwargs)
-```
-See the [online documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_animation)
-
-#### Post a media group from a URL
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmediagroup)
-
-```python
-from telegram import InputMediaPhoto
-
-list_of_urls = [
-    'https://upload.wikimedia.org/wikipedia/commons/c/c7/Gigantic_galapagos_turtle_on_the_island_of_santa_cruz.JPG',
-    'https://upload.wikimedia.org/wikipedia/commons/9/99/T.h._hermanni_con_speroni_5.JPG',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Sheldonbasking.JPG/1280px-Sheldonbasking.JPG' 
-]
-
-media_group = list()
-
-for number, url in enumerate(list_of_urls):
-    media_group.append(InputMediaPhoto(media=url, caption="Turtle" + number))
-
-bot.send_media_group(chat_id=chat_id, media=media_group)
-```
-See the [online documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_media_group)
-
-#### Post an audio from disk
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendaudio)
-
-```python
-bot.send_audio(chat_id=chat_id, audio=open('tests/test.mp3', 'rb'))
-```
-
-#### Post a file from disk
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#senddocument)
-
-```python
-bot.send_document(chat_id=chat_id, document=open('tests/test.zip', 'rb'))
-```
-
-#### Post an image from memory
-In this example, `image` is a PIL (or Pillow) `Image` object, but it works the same with all media types.
-
-```python
-from io import BytesIO
-bio = BytesIO()
-bio.name = 'image.jpeg'
-image.save(bio, 'JPEG')
-bio.seek(0)
-bot.send_photo(chat_id, photo=bio)
-```
-
-#### Get image with dimensions closest to a desired size
-Where `photos` is a list of `PhotoSize` objects and `desired_size` is a tuple containing the desired size.
-
-```python
-def get_closest(photos, desired_size):
-    def diff(p): return p.width - desired_size[0], p.height - desired_size[1]
-    def norm(t): return abs(t[0] + t[1] * 1j)
-    return min(photos, key=lambda p:  norm(diff(p)))
-```
-
-#### Download a file
-[ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#getfile)
-
-```python
-file_id = message.voice.file_id
+file_id = message.document.file_id
 newFile = bot.get_file(file_id)
-newFile.download('voice.ogg')
+newFile.download()
 ```
 
-Or using the shorcuts:
+For a received video/voice/... change `message.document` to `message.video/voice/...`. However, there is one exception: `message.photo` is a *list* of `PhotoSize` objects, which represent different sizes of the same photo. Use `message.photo[-1].file_id` to get the largest size.
+
+Moreover, the above snippet can be shortened by using PTBs built-in utility shortcuts:
 
 ```python
 newFile = message.effective_attachment.get_file()
 newFile.download('file_name')
 ```
 
-**Note:** For downloading photos, keep in mind that `update.message.photo` is an array of different photo sizes. Use `update.message.photo[-1]` to get the biggest size.
+`message.effect_attachment` automatically contains whichever media attachment the message has - in case of a photo, you'll again have to use e.g. `message.effective_attachment[-1].get_file()`
 
+---
 ### Keyboard Menus
 
 #### Custom Keyboards
@@ -371,6 +389,7 @@ bot.send_message(chat_id=chat_id,
 See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
 
 
+---
 #### Remove a custom keyboard
 
 ```python
@@ -378,6 +397,7 @@ reply_markup = telegram.ReplyKeyboardRemove()
 bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
 ```
 
+---
 ### Other useful stuff
 
 #### Generate flag emojis from country codes
@@ -399,11 +419,14 @@ def flag(code):
 '🇷🇺'
 ```
 
+---
 #### Map a Slot Machine Dice value to the corresponding symbols
 
 The 🎰 dice can take the values 1-64. Here is a dictionary that maps each value to the unique combination of symbols that produce that value:
 
 (Source: This [Gist](https://gist.github.com/Chase22/300bad79154ffd5d8fbf0aedd5ddc4d4) by [@Chase22](https://github.com/Chase22))
+
+<details><summary>Click to expand</summary><p>
 
 ```python
 slot_machine_value = {
@@ -474,6 +497,9 @@ slot_machine_value = {
 }
 ```
 
+</p></details>
+
+---
 #### Get the new members message
 ```python
 def add_group(update: Update, context: CallbackContext):
@@ -484,18 +510,21 @@ add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_gr
 dispatcher.add_handler(add_group_handle)
 ```
 
+---
 #### Exclude forwarded channel posts in discussion groups from MessageHandlers	
 If you're using `MessageHandlers` and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your `MessageHandler`:
 ```python	
 ~ Filters.sender_chat.channel
 ```
 
+---
 #### Exclude Messages from anonymous Admins	
 If you're using `MessageHandlers` and do not want them to respond to messages from anonymous admins, you can use this filter in your `MessageHandler`:
 ```python	
 ~ Filters.sender_chat.super_group
 ```
 
+---
 ## Advanced snippets
 
 #### Restrict access to a handler (decorator)
@@ -530,8 +559,8 @@ Add a `@restricted` decorator on top of your handler declaration:
 def my_handler(update, context):
     pass  # only accessible if `user_id` is in `LIST_OF_ADMINS`.
 ```
----
 
+---
 #### Send action while handling command (decorator)
 This parametrized decorator allows you to signal different actions depending on the type of response of your bot. This way users will have similar feedback from your bot as they would from a real human. 
 ```python
@@ -572,9 +601,6 @@ def my_handler(update, context):
 All possible actions are documented [here](https://core.telegram.org/bots/api#sendchataction).
 
 ---
-
-
-
 #### Build a menu with Buttons
 
 Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of a list of `buttons`.
@@ -621,6 +647,7 @@ This is especially useful if put inside a helper method like `get_data_buttons` 
 
 To handle the `callback_data`, you need to set a `CallbackQueryHandler`.
 
+---
 #### Cached Telegram group administrator check
 If you want to limit certain bot functions to group administrators, you have to test if a user is an administrator in the group in question. This however requires an extra API request, which is why it can make sense to cache this information for a certain time, especially if your bot is very busy.
 
@@ -647,19 +674,21 @@ if update.effective_user.id in get_admin_ids(context.bot, update.message.chat_id
 
 **Note:** Private chats and groups with `all_members_are_administrator` flag, are not covered by this snippet. Make sure you handle them.
 
-
-
+---
 #### Simple way of restarting the bot
 
 The following example allows you to restart the bot from within a handler. It goes without saying that you should protect this method from access by unauthorized users, which is why we are using a `Filters.user` filter. If you want multiple users to have access the restart command, you can pass a list of usernames as well. You can also filter by user IDs which is arguably a bit safer since they can't change. See the [docs](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.filters.html#telegram.ext.filters.Filters.user) for more information.
 
 This example is using closures so it has access to the `updater` variable. Alternatively, you could make it global.
 
+<details><summary>Click to expand</summary><p>
+
 ```python
 import os
 import sys
 from threading import Thread
 
+---
 # Other code
 
 def main():
@@ -691,10 +720,14 @@ if __name__ == '__main__':
     main()
 ```
 
+</p></details>
+
+---
 #### Store ConversationHandler States
 
 Version 12 and up includes tools for [making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent).
 
+---
 #### Save and load jobs using pickle
 
 **WARNING:** This snippet was written for v12.x and can't be used with v13+.
@@ -702,6 +735,8 @@ Version 12 and up includes tools for [making your bot persistent](https://github
 The following snippet pickles the jobs in the job queue periodically and on bot shutdown, and unpickles and queues them again on startup. Since pickle doesn't support threading primitives, therefore their values and states are extracted (this information may change in the future, always check the `Job` documentation).
 
 **Note:** `Job` is not yet safe for threads so eventually some special condition may occur. In a previous example, the content of `Job` was modified which resulted in some asynchronous processing errors; now the content of `Job` is extracted without modifying it which is much more safe.
+
+<details><summary>Click to expand</summary><p>
 
 ```python
 import pickle
@@ -713,6 +748,7 @@ from telegram.ext import Updater, Job
 
 JOBS_PICKLE = 'job_tuples.pickle'
 
+---
 # WARNING: This information may change in future versions (changes are planned)
 JOB_DATA = ('callback', 'interval', 'repeat', 'context', 'days', 'name', 'tzinfo')
 JOB_STATE = ('_remove', '_enabled')
@@ -794,6 +830,8 @@ if __name__ == '__main__':
     main()
 ```
 
+</p></details>
+
 ---
 #### Verify data from [Telegram Web Login Widget](https://core.telegram.org/widgets/login). 
 
@@ -812,6 +850,8 @@ The data JSON data will have the following form:
 }
  ```    
 The following is an example implementation in Python:
+
+<details><summary>Click to expand</summary><p>
 
 ```python
 import hashlib
@@ -845,5 +885,7 @@ def verify(request_data):
 
     # Optionally use another if-else block to check the auth_date in order to prevent outdated data from being verified.
 ```
+
+</p></details>
 
 A sample of Flask app can be found [here.](https://gist.github.com/jainamoswal/279e5259a5c24f37cd44ea446c373ac4)
