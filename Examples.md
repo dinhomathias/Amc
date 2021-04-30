@@ -7,6 +7,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [BibTeXBot](https://gitlab.com/-/snippets/2069000) — This bot can convert bibliography identifiers to BibTeX entries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/BibTexBot)
 * [BlackJackBot](https://github.com/d-Rickyy-b/Python-BlackJackBot) for a nice round of BlackJack - alone or in a group. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/blackjackbot)
 * [BotAgainstHumanity](https://gitlab.com/OctoNezd/bot_against_humanity) - a clone of "Cards Against Humanity" for telegram [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/humanity_against_bot)
+* [Botline](https://github.com/beothorn/botline) — A bot that can command line commands, print documents and browse the file system using the inline keyboard.
 * [BotListBot](https://github.com/JosXa/BotListBot) — Large project, maintains the [@BotList channel](https://t.me/botlist). Simplifies navigation, allows submitting and editing bots by the [@BotListChat community](https://t.me/botlistchat) community. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/botlistbot)
 * [CatifyMyFaceBot](https://github.com/Gondolav/catify-my-face-bot) - A bot that replaces human faces with cats. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CatifyMyFaceBot)
 * [CMSysBot](https://github.com/oddworldng/cmsysbot-telegram) — A bot for managing computers on a local network in a centralized way, allowing to, for example, send and execute custom scripts to all the computers in parallel.
