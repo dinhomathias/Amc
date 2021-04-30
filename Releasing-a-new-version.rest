@@ -31,7 +31,7 @@ Process
 
 * Run tests, fix any error & commit::
   
-  $ make test
+  $ pytest -v
 
 * Bump version:
 
