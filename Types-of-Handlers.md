@@ -14,7 +14,7 @@ dispatcher.add_handler(CommandHandler("start", start_callback))
 
 For different kinds of user input, the received `telegram.Update` will have different attributes set. For example an incoming message will result in `update.message` containing the sent message. The pressing an inline button will result in `update.callback_query` being set. To differentiate between all those updates, `telegram.ext` provides
 
-1) [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.messagehandler.html) for all updates for all message updates
+1) [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.messagehandler.html) for all message updates
 2) multiple handlers for all the other different types of updates, e.g. [`telegram.ext.CallbackQueryhandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackqueryhandler.html) for `update.callback_query` and [`telegram.ext.InlineQueryHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.inlinequeryhandler.html) for `update.inline_query`
 
 The special thing about `MessageHandler` is that there is such a vast variety of message types (text, gif, image, document, sticker, …) that it's infeasible to provide a different `Handler` for each type. Instead `MessageHandler` is coupled with so called [filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html) that allow to make fine-grained distinctions: `MessageHandler(Filters.all, callback)` will handle all updates that contain
