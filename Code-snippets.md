@@ -606,12 +606,15 @@ All possible actions are documented [here](https://core.telegram.org/bots/api#se
 Often times you will find yourself in need for a menu with dynamic content. Use the following `build_menu` method to create a button layout with `n_cols` columns out of a list of `buttons`.
 
 ```python
+from typing import Union, List
+from telegram import InlineKeyboardButton
+
 def build_menu(
     buttons: List[InlineKeyboardButton],
     n_cols: int,
     header_buttons: Union[InlineKeyboardButton, List[InlineKeyboardButton]]=None,
     footer_buttons: Union[InlineKeyboardButton, List[InlineKeyboardButton]]=None
-):
+) -> List[List[InlineKeyboardButton]]:
     menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
     if header_buttons:
         menu.insert(0, header_buttons if isinstance(header_buttons, list) else [header_buttons])
