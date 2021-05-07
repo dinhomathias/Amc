@@ -32,6 +32,10 @@ An effort to make the [examples](https://github.com/python-telegram-bot/python-t
 
 Articles about advanced networking questions.
 
+### Other resources
+
+More interesting & helpful stuff that didn't fint in any of the above sections.
+
 ### Transition Guides
 
 Major versions usually come with breaking changes, i.e. changes that lead to code failing after upgrading. Those guides help to ease the transition.
