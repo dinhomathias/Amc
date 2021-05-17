@@ -70,7 +70,7 @@ Give it a try! Start a chat with your bot and issue the `/start` command - if al
 But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo all text messages:
 
 ```python
-def echo(context, update):
+def echo(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
 from telegram.ext import MessageHandler, Filters
