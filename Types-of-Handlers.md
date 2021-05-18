@@ -15,7 +15,9 @@ dispatcher.add_handler(CommandHandler("start", start_callback))
 For different kinds of user input, the received `telegram.Update` will have different attributes set. For example an incoming message will result in `update.message` containing the sent message. The pressing an inline button will result in `update.callback_query` being set. To differentiate between all those updates, `telegram.ext` provides
 
 1) [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.messagehandler.html) for all message updates
-2) multiple handlers for all the other different types of updates, e.g. [`telegram.ext.CallbackQueryhandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackqueryhandler.html) for `update.callback_query` and [`telegram.ext.InlineQueryHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.inlinequeryhandler.html) for `update.inline_query`
+2) [`telegram.ext.CommandHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.commandhandler.html) for messages with bot commands
+3) multiple handlers for all the other different types of updates, e.g. [`telegram.ext.CallbackQueryhandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackqueryhandler.html) for `update.callback_query` and [`telegram.ext.InlineQueryHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.inlinequeryhandler.html) for `update.inline_query`
+4) A few more handlers for more advanced use cases
 
 The special thing about `MessageHandler` is that there is such a vast variety of message types (text, gif, image, document, sticker, …) that it's infeasible to provide a different `Handler` for each type. Instead `MessageHandler` is coupled with so called [filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html) that allow to make fine-grained distinctions: `MessageHandler(Filters.all, callback)` will handle all updates that contain
 
@@ -25,6 +27,8 @@ The special thing about `MessageHandler` is that there is such a vast variety of
 * `update.edited_channel_post`
 
 You can use the different filters to narrow down which updates your `MessageHandler` will handle. See also [this article](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Advanced-Filters) for advanced usage of filters.
+
+Because bot commands are another special part of the user interface of bots, there is the dedicated `CommandHandler`, which allows you to easily handle messages like `/start` or `/help`. Of course those messages can also be handled with `MessageHandler`, if needed.
 
 ## CommandHandlers with arguments
 
