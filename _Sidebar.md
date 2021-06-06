@@ -34,10 +34,11 @@
 1. [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
 2. [How to host your bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Hosting-your-bot)
 3. [Local API Server](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Local-Bot-API-Server)
-4. [Press](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Press)
-5. [Notes on GAE](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Notes-about-GAE---Google-App-Engine)
-6. [Related Projects](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Related-Projects)
-7. [Emoji](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Emoji)
+4. [Type Checking with PTB](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Type-Checking)
+5. [Press](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Press)
+6. [Notes on GAE](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Notes-about-GAE---Google-App-Engine)
+7. [Related Projects](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Related-Projects)
+8. [Emoji](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Emoji)
 
 ## Transition Guides
 - [Version 4](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Transition-guide-to-Version-4.0)
