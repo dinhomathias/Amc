@@ -12,7 +12,8 @@
 5. [Adding Defaults](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Adding-defaults-to-your-bot)
 6. [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling)
 7. [Job Queue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)
-8. [Avoiding flood limits](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits)
+8. [Arbitrary `callback_data`](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Arbitrary-callback_data)
+9. [Avoiding flood limits](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits)
 
 ## Code Resources
 1. [Code snippets](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets)
