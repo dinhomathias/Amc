@@ -2,6 +2,12 @@
 
 Since Python 3.6, static type hinting is established in Python and PTB makes use of it (since v13.0). Static type checking helps to avoid and find errors both in PTBs source code and in your bot code. If you want to take advantage of this, you should use a type checker to check your code. As type checking in general is not PTB specific and a big topic, we can't explain everything about it in this wiki. There are however some things that are specific to PTBs type checking and that advanced users might want to keep in mind. More precisely, some classes in `telegram.ext` are `Generics`. Below we detail, how to specify the corresponding types to get proper type checking.
 
+### ℹ️ Note
+
+While static type hints *are* of great value and we try our best to make them as precise as possible, they usually don't have any implications on runtime behavior. It therefore may happen that some type hints are not perfect or outright wrong and we may change & fix them between minor versions without announcement. This may lead to your type checker reporting errors after an upgrade, but it won't introduce bugs into your code.
+
+Of course, you are always welcome to report any type hinting erros through the bug tracker.
+
 ## Custom Handlers
 
 ```python
