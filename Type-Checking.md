@@ -6,6 +6,8 @@ Since Python 3.6, static type hinting is established in Python and PTB makes use
 
 While static type hints *are* of great value and we try our best to make them as precise as possible, they usually don't have any implications on runtime behavior. It therefore may happen that some type hints are not perfect or outright wrong and we may change & fix them between minor versions without announcement. This may lead to your type checker reporting errors after an upgrade, but it won't introduce bugs into your code.
 
+Please also note that type hinting in Python does not cover all edge cases, so there might be situations where PTB just can't do better.
+
 Of course, you are always welcome to report any type hinting erros through the bug tracker.
 
 ## Custom Handlers
