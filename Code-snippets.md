@@ -332,7 +332,7 @@ Let's stick to example of sending a document. Then you have to provide an `Inlin
 2. `file_id`:
 
     ```python
-    result = InlineQueryResultCachedDocument(doucment_file_id=file_id, ...)
+    result = InlineQueryResultCachedDocument(document_file_id=file_id, ...)
     ```
 
 The scheme `InlineQueryResult<media_type>` vs `InlineQueryResultCached<media_type>` is similar for the other media types.
