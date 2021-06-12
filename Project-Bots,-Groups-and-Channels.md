@@ -7,7 +7,6 @@
 Besides the test bots, the developers team maintains a few helper bots:
 
 * [@roolsbot](https://t.me/roolsbot) Is admin in both the on-topic and the off-topic usergroup and runs on [this source](https://github.com/python-telegram-bot/rules-bot).
-* [@ptb_irc_bridge_bot](https://t.me/ptb_irc_bridge_bot) is a bridge to an IRC allowing users with restricted TG access to participate in the on-topic user group. It runs on [this source](https://github.com/FruitieX/teleirc). Currently owned by @jh0ker
 * [@PythonTelegramBot](https://t.me/PythonTelegramBot) is owned by the PTB test user account and currently does nothing but blocking the name.
 
 Moreover [@python_telegram_bot](https://t.me/python_telegram_bot) is *not* owned by any of the developers and we don't know who it belongs to.
