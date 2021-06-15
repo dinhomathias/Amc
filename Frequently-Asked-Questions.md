@@ -72,7 +72,7 @@ No. Those service messages are available only in groups.
 
 ### My bot doesn't receive messages from groups. Why?
 
-See [here](#what-messages-can-my-bot-see). TL;DR: Disable group privacy with [@BotFather](https://t.me/BotFather)
+See [here](#what-messages-can-my-bot-see). TL;DR: Disable group privacy with [@BotFather](https://t.me/BotFather) ⚠️🚨 *and re-add your bot to the group* 🚨⚠️
 
 ### Can you add [feature] to PTB? Can I do [thing] with my bot?
 
