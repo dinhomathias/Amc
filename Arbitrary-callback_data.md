@@ -2,7 +2,7 @@
 
 The Telegrams Bot API only accepts strings with length up to 64 bytes as `callback_data` for `InlineKeyboardButtons`, which sometimes is quite a limitation.
 
-With PTB you are able, to pass *any* object as `callback_data`. This is achieved by storing the object in a cache and passing a unique identifier for that object to Telegram. When a `CallbackQuery` is received, the id in the `callback_data` is replaced with the stored object. To use this feature, set the parameter `arbitrary_callback_data` for your `Updater` or `ext.Bot` instance to `True`. The cache that holds the stored data has limited size (more details on memory usage below). If the cache is full and objects from a new `lnlineKeyboardMarkup` need to be stored, it will discard the data for the least recently used keyboard.
+With PTB, you are able to pass *any* object as `callback_data`. This is achieved by storing the object in a cache and passing a unique identifier for that object to Telegram. When a `CallbackQuery` is received, the id in the `callback_data` is replaced with the stored object. To use this feature, set the parameter `arbitrary_callback_data` for your `Updater` or `ext.Bot` instance to `True`. The cache that holds the stored data has limited size (more details on memory usage below). If the cache is full and objects from a new `lnlineKeyboardMarkup` need to be stored, it will discard the data for the least recently used keyboard.
 
 This means two things for you:
 
