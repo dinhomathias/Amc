@@ -33,6 +33,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Lugodev Example Bot](https://github.com/lugodev/lugodev-example-bot) - YouTube video series teaching how to make a Telegram bot in Spanish
 * [LogBot](https://github.com/apiad/logbot) — A simple bot that accepts messages through a REST API and redirects them to Telegram, with optional actionable buttons. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/apiad_demo_logbot)
 * [Marie](https://github.com/PaulSonOfLars/tgbot) — A sassy group administration bot, with some fun extra features.
+* [MasterBot](https://github.com/GauthamramRavichandran/MasterBot) — A bot to control other bots in the server.
 * [Matilda](https://github.com/xlanor/matilda) — A news scraping bot for Straits Times and ChannelNewsAsia.
 * [Mau Mau bot](https://github.com/jh0ker/mau_mau_bot) — Allows you to play the popular card game UNO via inline queries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/unobot)
 * [memes-reposter](https://github.com/vaniakosmos/memes-reposter) — Bot for automatic broadcasting content from different sources (such as reddit or imgur) into telegram channels.
