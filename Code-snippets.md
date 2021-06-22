@@ -369,7 +369,7 @@ newFile = message.effective_attachment.get_file()
 newFile.download('file_name')
 ```
 
-`message.effect_attachment` automatically contains whichever media attachment the message has - in case of a photo, you'll again have to use e.g. `message.effective_attachment[-1].get_file()`
+`message.effective_attachment` automatically contains whichever media attachment the message has - in case of a photo, you'll again have to use e.g. `message.effective_attachment[-1].get_file()`
 
 ---
 ### Keyboard Menus
