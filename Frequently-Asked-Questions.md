@@ -161,7 +161,7 @@ If the user has not yet joined the channel, you can ignore incoming updates from
 
 ### Why am I getting an error `The following arguments have not been supplied`?
 
-The `callback` method you pass to `JobQueue.run_*` only takes *one* argument of type `CallbackContext`. This is, because jobs are triggered by a schedule and not by an update from Telegram. If you want to access data in the callback that changes at runtime (e.g. because you schedule jobs on demand), you can either access `context.bot_data` or pass the data to `run_*` as `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. Note that `context.{user, chat}_data` will be `None`, as those can only be present, when the `context` object is related to an update, which is not the case for jobs.
+The `callback` method you pass to `JobQueue.run_*` takes exactly *one* argument, which is of type `CallbackContext`. This is, because jobs are triggered by a schedule and not by an update from Telegram. If you want to access data in the callback that changes at runtime (e.g. because you schedule jobs on demand), you can either access `context.bot_data` or pass the data to `run_*` as `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. Note that `context.{user, chat}_data` will be `None`, as those can only be present, when the `context` object is related to an update, which is not the case for jobs.
 
 ### How can I check the version of PTB I am using?
 
