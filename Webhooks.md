@@ -94,7 +94,7 @@ updater.start_webhook(
     port=5000,
     url_path='TOKEN1',
     webhook_url='https://example.com/TOKEN1',
-    cert=open('cert.pem', 'rb')
+    cert='cert.pem')
 )
 ```
 
@@ -128,7 +128,7 @@ updater.start_webhook(
     port=5000,
     url_path='TOKEN',
     webhook_url='https://bot1.example.com/TOKEN,
-    cert=open('cert_bot1.pem', 'rb')
+    cert='cert_bot1.pem')
 )
 ```
 
