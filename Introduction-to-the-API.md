@@ -24,8 +24,24 @@ To check if your credentials are correct, call the [getMe](https://core.telegram
 {"first_name": "Toledo's Palace Bot", "username": "ToledosPalaceBot"}
 ```
 
+Now we can try and actually do something - let's send a message.
+
 **Note:** Bots can't initiate conversations with users. A user must either add them to a group or send them a message first. People can use ``telegram.me/<bot_username>`` links or username search to find your bot.
+
+Because of above note, we'll have to first send a message to the bot. If we've done that, we can fetch the update as follows (we abbreviated the output a bit):
+
+```python
+>>> updates = bot.get_updates()
+>>> print(updates[0])
+{'update_id': 218946040, 'message': {'message_id': 23833, 'date': 1626017436, 'text': 'Hi!', 'chat': {'type': 'private', 'last_name': 'Doe', 'username': 'JohnDoe', 'id': 1234567890, 'first_name': 'John'}, 'from': {'last_name': 'Doe', 'username': 'JohnDoe', 'id': 1234567890, 'is_bot': False, 'language_code': 'de', 'first_name': 'John'}, ...}}
+```
+
+We copy the chat id, here `1234567890`. Note that you can access it also as `updates[0].message.from_user.id`, because `updates[0]` is an instance of the `Update` class. We can now send a message to this chat id:
+
+```python
+bot.send_message(text='Hi John!', chat_id=1234567890)
+```
 
 ## Beyond the pure API
 
-That's all very nice, but usually you want your bot to actually react to some user input. That is, you want to build a chat-bot. `python-telegram-bot` offers a powerful extension module called `telegram.ext` that takes a lot of work of your shoulders. You can find an introduction at the [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
+That's all very nice, but usually you want your bot to actually react to more complex user input. That is, you want to build a chat-bot. `python-telegram-bot` offers a powerful extension module called `telegram.ext` that takes a lot of work of your shoulders. You can find an introduction at the [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
