@@ -16,4 +16,5 @@ Please try to keep this page up-to-date.
 | [telegram-send](https://github.com/rahiel/telegram-send) | Send messages and files over Telegram from the command-line | >=2.9 | Beta |
 | [telegram.bot](https://github.com/ebeneditos/telegram.bot) | Develop a Telegram Bot with R | >=6.0.0 | Stable |
 | [flexget](https://github.com/Flexget/Flexget)| Use telegram as a notifier | 3.4 | Stable
-| [ptb-django-cookiecutter](https://github.com/lugodev/ptb-django-cookiecutter)| A simple cookiecutter to create Python Telegram bots, wrapped with Django. | 0.1.0 | Beta
+| [ptb-django-cookiecutter](https://github.com/lugodev/ptb-django-cookiecutter)| A simple cookiecutter to create Python Telegram bots, wrapped with Django. | 0.1.0 | Beta |
+[Video Tutorial](https://youtu.be/fQo_327-AZA) | How to create a simple Telegram bot using PTB and then hosting it on Heroku|13.7|-|
