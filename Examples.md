@@ -56,8 +56,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [RemindMeBot](https://github.com/dmakeienko/remind_me_bot) - create reminders, check it's statuses, update/delete them. [try it out](https://t.me/how_to_find_name_for_bot)
 * [RRemindersBot](https://github.com/Ambro17/RemindersBot) — Set reminders for your tasks. With support for custom timezones and smart date parsing. Never forget your tasks again [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/RRemindersBot)
 * [RSS_Feedbot](https://github.com/Dextroz/RSS_Feederbot/) - A Telegram bot for reading RSS feeds.
-* [SnoopDogg bot]
-(https://github.com/pascalmaximus/snoopdoggbot) - A chatbot/translator which converts text to gangsta(snoop dogg's slang) [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SnoopDoggbot)
+* [SnoopDogg bot](https://github.com/pascalmaximus/snoopdoggbot) - A chatbot/translator which converts text to gangsta(snoop dogg's slang) [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SnoopDoggbot)
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commands based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
