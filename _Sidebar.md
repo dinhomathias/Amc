@@ -20,7 +20,7 @@
 2. [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations)
 3. [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks)
 4. [Telegram Passport](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Telegram-Passport)
-5. [Bots built with PTB](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Examples)
+5. [Bots built with PTB](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Bots-built-with-PTB)
 6. [Automated Bot Tests](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Writing-Tests)
 
 ## Examples explained
