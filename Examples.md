@@ -1,0 +1,1 @@
+This page has been moved to [Bots built with PTB](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Bots-built-with-PTB).
