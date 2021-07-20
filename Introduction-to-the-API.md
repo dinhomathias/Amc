@@ -44,4 +44,4 @@ bot.send_message(text='Hi John!', chat_id=1234567890)
 
 ## Beyond the pure API
 
-That's all very nice, but usually you want your bot to actually react to more complex user input. That is, you want to build a chat-bot. `python-telegram-bot` offers a powerful extension module called `telegram.ext` that takes a lot of work of your shoulders. You can find an introduction at the [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
+That's all very nice, but usually you want your bot to actually react to more complex user input. That is, you want to build a chat-bot. `python-telegram-bot` offers a powerful extension module called `telegram.ext` that takes a lot of work off your shoulders. You can find an introduction at the [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Your-first-Bot).
