@@ -127,7 +127,7 @@ updater.start_webhook(
     listen='127.0.0.1',
     port=5000,
     url_path='TOKEN',
-    webhook_url='https://bot1.example.com/TOKEN,
+    webhook_url='https://bot1.example.com/TOKEN',
     cert='cert_bot1.pem')
 )
 ```
