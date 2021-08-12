@@ -326,7 +326,7 @@ Let's stick to example of sending a document. Then you have to provide an `Inlin
 1. HTTP-URL:
 
     ```python
-    result = InlineQueryResultDocument(doucment_url='https://python-telegram-bot.org/static/testfiles/telegram.gif', ...)
+    result = InlineQueryResultDocument(document_url='https://python-telegram-bot.org/static/testfiles/telegram.gif', ...)
     ```
    
 2. `file_id`:
