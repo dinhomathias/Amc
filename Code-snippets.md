@@ -551,7 +551,7 @@ def hello(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Hello world!")
 ```
 
-**Note**: You can modify this decorator in order to register any type of handler (see [Types Of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)).
+**Note**: You can modify this decorator in order to register any type of handler (see [Types Of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)). Please also note that PTB deliberately does not provide such functionality out of the box due to the reasons mentioned in [#899](https://github.com/python-telegram-bot/python-telegram-bot/issues/899).
 
 ---
 #### Restrict access to a handler (decorator)
