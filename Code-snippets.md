@@ -31,16 +31,17 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
     + [Exclude forwarded channel posts in discussion groups from MessageHandlers](#exclude-forwarded-channel-posts-in-discussion-groups-from-messagehandlers)
     + [Exclude messages from anonymous admins](#exclude-messages-from-anonymous-admins)
 - [Advanced snippets](#advanced-snippets)
-    + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
+    + [Register a function as a command handler (decorator)](#register-a-function-as-a-command-handler-decorator)
       - [Usage](#usage)
-    + [Send action while handling command (decorator)](#send-action-while-handling-command-decorator)
+    + [Restrict access to a handler (decorator)](#restrict-access-to-a-handler-decorator)
       - [Usage](#usage-1)
-    + [Build a menu with Buttons](#build-a-menu-with-buttons)
+    + [Send action while handling command (decorator)](#send-action-while-handling-command-decorator)
       - [Usage](#usage-2)
+    + [Build a menu with Buttons](#build-a-menu-with-buttons)
+      - [Usage](#usage-3)
     + [Cached Telegram group administrator check](#cached-telegram-group-administrator-check)
     + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
     + [Store ConversationHandler States](#store-conversationhandler-states)
-      - [Usage](#usage-3)
     + [Save and load jobs using pickle](#save-and-load-jobs-using-pickle)
     + [Telegram web login widget](#verify-data-from-telegram-web-login-widget)
 - [What to read next?](#what-to-read-next)
@@ -527,6 +528,32 @@ If you're using `MessageHandlers` and do not want them to respond to messages fr
 ---
 ## Advanced snippets
 
+#### Register a function as a command handler (decorator)
+
+This decorator allows you to register a function as a command handler in a _Flask_ like manner.
+
+```python
+def command_handler(command):
+    def decorator(func):
+        handler = CommandHandler(command, func)
+        dispatcher.add_handler(handler)
+        return func
+    return decorator
+```
+
+##### Usage
+
+Add the `@command_handler(command)` decorator on top of your handler function:
+
+```python
+@command_handler("hello")
+def hello(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Hello world!")
+```
+
+**Note**: You can modify this decorator in order to register any type of handler (see [Types Of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)).
+
+---
 #### Restrict access to a handler (decorator)
 
 <!--- The extraction of the user_id is going to be built in on python-telegram-bot version 6.0.
