@@ -8,6 +8,7 @@ Please try to keep this page up-to-date.
 
 | Project | Description | `python-telegram-bot` version | Development Status |
 | ------- | ----------- | ----------------------------- | ------------------ |
+| [autoconv](https://github.com/Mortafix/AutoConv-Telegram-Python) | A module to build automatic and simple to manage conversation | >=13 | Stable |
 | [django-telegrambot](https://github.com/JungDev/django-telegrambot) | A simple app to develop Telegram bots with Django | >=6.0.1 | Stable |
 | [jackfruit](https://github.com/zzzzlzzzz/jackfruit) | A menus and forms for Telegram bots | >=12.0 | Alpha |
 | [ownbot](https://github.com/michaelimfeld/ownbot) | Ownbot provides some cool decorators to protect your command handler functions from unauthorized users! | 5.1.1 | Beta |
