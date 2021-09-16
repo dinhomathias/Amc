@@ -1,12 +1,12 @@
 # Groups
 
-* [@pythontelegrambotgroup](https://t.me/pythontelegrambotgroup) is the on-topic user group for questions about PTB. It's owned by the test user account
+* [@pythontelegrambotgroup](https://t.me/pythontelegrambotgroup) is the on-topic user group for questions about PTB. It's owned by the test user account.
 * [@pythontelegrambottalk](https://t.me/pythontelegrambottalk) is the off-topic user group were we can redirect people who have off-topic questions about e.g. python in general and where meta-discussions can happen. It's owned by the test user account.
 
 # Bots
 Besides the test bots, the developers team maintains a few helper bots:
 
-* [@roolsbot](https://t.me/roolsbot) Is admin in both the on-topic and the off-topic usergroup and runs on [this source](https://github.com/python-telegram-bot/rules-bot).
+* [@roolsbot](https://t.me/roolsbot) Is admin in both the on-topic and the off-topic usergroup and runs on [this source](https://github.com/python-telegram-bot/rules-bot). It's owned by the test user account.
 * [@PythonTelegramBot](https://t.me/PythonTelegramBot) is owned by the PTB test user account and currently does nothing but blocking the name.
 
 Moreover [@python_telegram_bot](https://t.me/python_telegram_bot) is *not* owned by any of the developers and we don't know who it belongs to.
