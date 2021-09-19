@@ -3,6 +3,7 @@
 2. [Tutorial: Your first bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot)
 3. [FAQ](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions)
 4. [How to ask good questions](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Ask-Right)
+5. [How to write an MWE](https://github.com/python-telegram-bot/python-telegram-bot/wiki/MWE)
 
 ## PTB Features
 1. [Types of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)
