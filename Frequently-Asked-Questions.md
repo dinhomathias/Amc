@@ -105,7 +105,10 @@ To actually do something with the update, you can register a [`TypeHandler`](htt
 
 ### Why am I getting `ImportError: cannot import name 'XY' from 'telegram'`?
 
-You probably have a file named `telegram.py` or a directory/module named `telegram` in your working directory. This leads to namespace issues.
+There are two common reasons for this kind of exception:
+
+1. You installed `pip install telegram` instead of `pip install python-telegram-bot`. Run `pip uninstall telegram` to uninstall the [telegram library](https://pypi.org/project/telegram/) and then run `pip install python-telegram-bot` again.
+2. You have a file named `telegram.py` or a directory/module named `telegram` in your working directory. This leads to namespace issues.
 Rename them to something else.
 
 ### What do the `per_*` settings in `ConversationHandler` do?
