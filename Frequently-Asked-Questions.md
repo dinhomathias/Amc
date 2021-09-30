@@ -5,7 +5,7 @@
 - [What messages can my Bot see?](#what-messages-can-my-bot-see)
 - [What about messages from other Bots?](#what-about-messages-from-other-bots)
 - [Can my bot delete messages from the user in a private chat?](#can-my-bot-delete-messages-from-the-user-in-a-private-chat)
-- [How can I get a list of all chats/users/channels by bot is interacting with?](#how-can-i-get-a-list-of-all-chatsuserschannels-by-bot-is-interacting-with)
+- [How can I get a list of all chats/users/channels my bot is interacting with?](#how-can-i-get-a-list-of-all-chatsuserschannels-my-bot-is-interacting-with)
 - [How do I send messages to all my bots users?](#how-do-i-send-messages-to-all-my-bots-users)
 - [Does my bot get an update, when someone joins my channel?](#does-my-bot-get-an-update-when-someone-joins-my-channel)
 - [My bot doesn't receive messages from groups. Why?](#my-bot-doesnt-receive-messages-from-groups-why)
@@ -59,9 +59,9 @@ From the official [Telegram Bot FAQ](https://core.telegram.org/bots/faq#why-does
 
 Yes, but only within the first 48 hours.
 
-### How can I get a list of all chats/users/channels by bot is interacting with?
+### How can I get a list of all chats/users/channels my bot is interacting with?
 
-There is no method for that. You'll need to keep track.
+There is no method for that. You'll need to keep track. See e.g. the [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) example.
 
 ### How do I send messages to all my bots users?
 
