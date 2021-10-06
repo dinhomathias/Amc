@@ -81,7 +81,7 @@ Please note that python-telegram-bot is only a *wrapper* for the Telegram Bot AP
 You can find a full list of all available methods in the [official docs](https://core.telegram.org/bots/api#available-methods).
 Anything *not* listed there can not be done with bots. Here is a short list of frequently requested tasks, that can *not* be done with the Bot API:
 
-* Getting a list of all members of a group
+* Getting a list of all members of a group. You'll need to keep track, e.g. using approaches displayed in [chatmemberbot.py](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy)
 * Adding members to a group/channel (note that you can just send an invite link, which is also less likely to be seen as spam)
 * Clearing the chat history for a user
 * Getting a message by its `message_id` (For the interested reader: see [here](https://github.com/tdlib/telegram-bot-api/issues/62))
