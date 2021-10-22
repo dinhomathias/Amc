@@ -6,7 +6,6 @@
 - [What about messages from other Bots?](#what-about-messages-from-other-bots)
 - [Can my bot delete messages from the user in a private chat?](#can-my-bot-delete-messages-from-the-user-in-a-private-chat)
 - [How can I get a list of all chats/users/channels my bot is interacting with?](#how-can-i-get-a-list-of-all-chatsuserschannels-my-bot-is-interacting-with)
-- [How do I send messages to all my bots users?](#how-do-i-send-messages-to-all-my-bots-users)
 - [Does my bot get an update, when someone joins my channel?](#does-my-bot-get-an-update-when-someone-joins-my-channel)
 - [My bot doesn't receive messages from groups. Why?](#my-bot-doesnt-receive-messages-from-groups-why)
 - [Can you add [feature] to PTB? Can I do [thing] with my bot?](#can-you-add-feature-to-ptb-can-i-do-thing-with-my-bot)
@@ -62,10 +61,6 @@ Yes, but only within the first 48 hours.
 ### How can I get a list of all chats/users/channels my bot is interacting with?
 
 There is no method for that. You'll need to keep track. See e.g. the [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) example.
-
-### How do I send messages to all my bots users?
-
-Broadcasting to your users is a common use case. Please have a look at this short [article](https://telegra.ph/Sending-notifications-to-all-users-07-17).
 
 ### Does my bot get an update, when someone joins my channel?
 
