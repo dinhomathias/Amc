@@ -149,7 +149,8 @@ To catch the incoming message with the location/contact, use `MessageHandler` wi
 ---
 ### Message Formatting (bold, italic, code, ...)
 
-Telegram supports some formatting options for text. All the details about what is supported can be found [here](https://core.telegram.org/bots/api#formatting-options).
+Telegram supports some formatting options for text. All the details about what is supported can be found [here](https://core.telegram.org/bots/api#formatting-options). Please keep in mind that you will have to escape the special characters as detailed in the documentation. PTB also offers a [helper function](https://python-telegram-bot.readthedocs.io/en/stable/telegram.utils.helpers.html#telegram.utils.helpers.escape_markdown) for escaping of Markdown text. For escaping of HTML text, you can use [`html.escape`](https://docs.python.org/3/library/html.html?#html.escape) from the standard library.
+
 You can format text with every API method/type that has a `parse_mode` parameter. In addition to editing your text as described in the link above, pass one of the parse modes available through [`telegram.ParseMode`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.parsemode.html) to the `parse_mode` parameter. Since th `5.0` update of the Bot API (version `13.1+` of PTB), you can alternatively pass a list of [`telegram.MessageEntities`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.messageentity.html) to the `entities` parameter.
 
 *Note:* In the API 4.5 update, Telegram introduced MarkdownV2, which supports nested entities and needs other escaping than v1. Markdown V1 is referred as legacy mode by the official API docs, and you should prefer MarkdownV2. Make sure to also use `reply_markdown_v2` instead of `reply_markdown` etc.
