@@ -50,7 +50,7 @@ Again, please try to be precise and include all relevant information. This means
   * What kind of handler did you set up to handle this? What is it supposed to do?
 2. What is actually happening?
   * If you're encountering an exception, please provide the full [traceback](https://realpython.com/python-traceback/)
-  * Make sure that you activate [logging](https://github.com/python-telegram-bot/python-telegram-bot/#logging) or an [[error handler|Exception-Handling]] so that you can actually see the traceback!
+  * Make sure that you activate [logging](https://github.com/python-telegram-bot/python-telegram-bot/#logging) or an [[error handler|Exceptions,-Warnings-and-Logging]] so that you can actually see the traceback!
 3. Where exactly are things going south? If you can locate the line/s of code that are misbehaving, please include them in your question.
   
 If you have a hard time laying your finger on where exactly things go south, it might be helpful to provide a [minimal working example](https://telegra.ph/Minimal-Working-Example-for-PTB-07-18).

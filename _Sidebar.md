@@ -11,7 +11,7 @@
 3. [[Storing data|Storing-bot,-user-and-chat-related-data]]
 4. [[Making your bot persistent|Making-your-bot-persistent]]
 5. [[Adding Defaults|Adding-defaults-to-your-bot]]
-6. [[Exception Handling|Exception-Handling]]
+6. [[Exceptions, Warnings and Logging|Exceptions, Warnings and Logging]]
 7. [[Job Queue|Extensions-–-JobQueue]]
 8. [Arbitrary `callback_data`](Arbitrary-callback_data)
 9. [[Avoiding flood limits|Avoiding-flood-limits]]

@@ -39,7 +39,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                      level=logging.INFO)
 ```
 
-**Note:** Read the article on [[Exception Handling|Exception-Handling]] if you want to learn more.
+**Note:** Read the article on [[Exceptions, Warnings and Logging|Exceptions,-Warnings-and-Logging]] if you want to learn more.
 
 Now, you can define a function that should process a specific type of update:
 
@@ -149,6 +149,6 @@ updater.stop()
 #### What to read next?
 Have a look at the ready-to-run [examples](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
 
-Learn about the library exceptions and best practices in [[Exception Handling|Exception-Handling]].
+Learn about the library exceptions and best practices in [[Exceptions, Warnings and Logging|Exceptions,-Warnings-and-Logging]].
 
 You want *more features*? Check out [[Extensions – JobQueue|Extensions-–-JobQueue]]!

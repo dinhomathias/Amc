@@ -2,6 +2,12 @@
 
 Add this in the end …
 
+# New functionality
+
+Apart from all the refactorings & deprecations explained below, v14 also contains some new functionality. Notable are
+
+* `Filters.update.edited` provides a shortcut for `(Filters.update.edited_message | Filters.update.edited_channel_post)`
+
 # Structural changes & Deprecations
 
 ## Removed features
@@ -19,6 +25,19 @@ We've made an effort to make it more clear which parts of `python-telegram-bot` 
 
 We introduced the usage of `__slots__` in v13.6, which can reduce memory usage and improve performance. In v14 we removed the ability to set custom attributes on all objects except for `ext.CallbackContext`. To store data, we recommend to use PTBs built-in mechanism for [storing data](Storing-bot,-user-and-chat-related-data) instead. If you want to add additional functionality to some class, we suggest to subclass it.
 
+## Instantiation of `Updater` and `Dispatcher`
+
+`Updater` and `Dispatcher` had a large number of arguments many of which were mutually exclusive, and it was not always clear which argument was e.g. intended for the `Updater` and which was passed along to the `Dispatcher` or even the `Bot`.
+In an effort to make the instantiation of `Updater` and `Dispatcher` more clear, we adopted the so-called [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern).
+This means that instead of passing arguments directly to `Updater`/`Dispatcher`, one now creates a builder via `Updater/Dispatcher.builder()` and then specifies all required arguments via that builder.
+Finally, the `Updater/Dispatcher` is created by calling `builder.build()`. A simple example is
+```python
+from telegram.ext import Updater
+updater = Updater.builder().token('TOKEN').build()
+```
+
+We hope that this change makes it easier for you to understand what goes where and also simplifies setups of customized solutions, e.g. if you want to use a custom webhook.  
+
 # Changes for specific modules, classes & functions
 
 ## `telegram`
@@ -35,9 +54,18 @@ Previously some parts of `telegram.{error, constants}` where available directly 
 
 The argument `hash` is now the second positional argument as specified by the Bot API.
 
+### `telegram.File`
+
+* The `custom_path` parameter now also accepts `pathlib.Path` objects.
+* Instead of returning the file path as string, it's now returned as `pathlib.Path` object.
+
 ### `telegram.ForceReply`
 
 The argument `force_reply` was removed, since it *always* must be `True` anyway.
+
+### `telegram.InlineQuery.answer`
+
+If both parameters `current_offset` and `auto_pagination` are supplied, the method now raises a `ValueError` rather than a `TypeError`.
 
 ### `telegram.PassportFile`
 
@@ -61,6 +89,23 @@ There parameters & attributes `store_{user,chat,bot}_data` were removed. Instead
 
 Note that `callback_data` is now persisted by default.
 
+### `CallbackContext`
+
+* `CallbackContext.from_error` has a new optional argument `job`. When an exception happens inside a `ext.Job` callback, this parameter will be passed.
+* Accordingly, the attribute `CallbackContext.job` will now also be present in error handlers if the error was caused by a `ext.Job`. 
+
 ### `JobQueue.run_monthly`
 
 Unfortunately, the `day_is_strict` argument was not working correctly (see [#2627](../issues/2627)) and was therefore removed. Instead, you cann now pass `day='last'` to make the job run on the last day of the month. 
+
+### `PicklePersistence`
+
+* The argument `filename` was renamed to `filepath` and now also accepts a `pathlib.Path` object
+* [Changes to `BasePersistence`](#basepersistence) also affect this class.
+
+### `Updater`
+
+In addition to the changes described [above](#instantiation-of-updater-and-dispatcher)
+
+* the attribute `user_sig_handler` was renamed to `user_signal_handler`
+* the attributes `job_queue` and `persistence` were removed. Instead, you can access them via `updater.dispatcher.{job_queue, persistence}`.

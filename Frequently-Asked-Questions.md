@@ -15,8 +15,6 @@
 - [What do the `per_*` settings in `ConversationHandler` do?](#what-do-the-per_-settings-in-conversationhandler-do)
 - [Can I check, if a `ConversationHandler` is currently active for a user?](#can-i-check-if-a-conversationhandler-is-currently-active-for-a-user)
 - [How can I list all messages of a particular chat or search through them based on a search query?](#how-can-i-list-all-messages-of-a-particular-chat-or-search-through-them-based-on-a-search-query)
-- [How can I disable logging for the `APScheduler` module?](#how-can-i-disable-logging-for-the-apscheduler-module)
-- [How do I enforce users joining a specific channel before using my bot?](#how-do-i-enforce-users-joining-a-specific-channel-before-using-my-bot)
 - [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
 - [Is there a limit on the number of buttons in an inline keyboard?](#is-there-a-limit-on-the-number-of-buttons-in-an-inline-keyboard)
@@ -131,17 +129,6 @@ There is no API method for that (see [here](#can-you-add-feature-to-ptb-can-i-do
 1. In group chats your bot doesn't receive all messages, if privacy mode is enabled (see [here](#what-messages-can-my-bot-see))
 2. Messages may be edited (in which case your bot will receive a corresponding update)
 3. Messages may be deleted (and there are no updates for "message deleted"!)
-
-### How can I disable logging for the `APScheduler` module?
-
-You can specify the logging level of `APScheduler` as follows:
-
-```python
-import logging
-
-aps_logger = logging.getLogger('apscheduler')
-aps_logger.setLevel(logging.WARNING)
-```
 
 ### How do I enforce users joining a specific channel before using my bot?
 
