@@ -33,7 +33,7 @@ If you need more details on MQ implementation, [follow its docs](http://python-t
 ### Using MQ with @queuedmessage decorator
 [`MessageQueue`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) module includes a convenient `@queuedmessage` decorator, which allows to delegate the required send method calls to MQ. However, it requires you to do a little work by hand, mainly create a [`telegram.Bot`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html) subclass and decorate those methods. 
 
-Below is listed the example of its usage, which is based on echo bot from our [[Tutorial|Extensions-%E2%80%93-Your-first-Bot#your-first-bot-step-by-step]]. Trace through it (it's self-explanatory enough) and try experimenting with it on your own. Don't forget to look at the [`MessageQueue` docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) at the same time to clarify the dark corners. It's important that you properly understand how MQ works before using it.
+Below is listed the example of its usage, which is based on echo bot from our [[Tutorial|Extensions-–-Your-first-Bot#your-first-bot-step-by-step]]. Trace through it (it's self-explanatory enough) and try experimenting with it on your own. Don't forget to look at the [`MessageQueue` docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagequeue.html) at the same time to clarify the dark corners. It's important that you properly understand how MQ works before using it.
 
 ```python
 #!/usr/bin/env python3

@@ -83,7 +83,7 @@ From now on, your bot should echo all non-command messages it receives.
 
 **Note:** As soon as you add new handlers to `dispatcher`, they are in effect.
 
-**Note:** The `Filters` class contains a number of so called filters that filter incoming messages for text, images, status updates and more. Any message that returns `True` for at least one of the filters passed to `MessageHandler` will be accepted. You can also write your own filters if you want. See more in [[Advanced Filters|Extensions-%E2%80%93-Advanced-Filters]].
+**Note:** The `Filters` class contains a number of so called filters that filter incoming messages for text, images, status updates and more. Any message that returns `True` for at least one of the filters passed to `MessageHandler` will be accepted. You can also write your own filters if you want. See more in [[Advanced Filters|Extensions-–-Advanced-Filters]].
 
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS. To make things easy, you can receive the arguments (as a `list`, split on spaces) that were passed to a command in the callback function:
 
@@ -151,4 +151,4 @@ Have a look at the ready-to-run [examples](https://github.com/python-telegram-bo
 
 Learn about the library exceptions and best practices in [[Exception Handling|Exception-Handling]].
 
-You want *more features*? Check out [[Extensions – JobQueue|Extensions-%E2%80%93-JobQueue]]!
+You want *more features*? Check out [[Extensions – JobQueue|Extensions-–-JobQueue]]!

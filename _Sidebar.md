@@ -1,19 +1,19 @@
 ## Must read
 1. [[Introduction to the API|Introduction-to-the-API]]
-2. [[Tutorial: Your first bot|Extensions-%E2%80%93-Your-first-Bot]]
+2. [[Tutorial: Your first bot|Extensions-–-Your-first-Bot]]
 3. [[FAQ|Frequently-Asked-Questions]]
 4. [[How to ask good questions|Ask-Right]]
 5. [[How to write an MWE|MWE]]
 
 ## PTB Features
 1. [[Types of Handlers|Types-Of-Handlers]]
-2. [[Advanced Filters|Extensions-%E2%80%93-Advanced-Filters]]
+2. [[Advanced Filters|Extensions-–-Advanced-Filters]]
 3. [[Storing data|Storing-bot,-user-and-chat-related-data]]
 4. [[Making your bot persistent|Making-your-bot-persistent]]
 5. [[Adding Defaults|Adding-defaults-to-your-bot]]
 6. [[Exception Handling|Exception-Handling]]
-7. [[Job Queue|Extensions-%E2%80%93-JobQueue]]
-8. [[Arbitrary `callback_data`|Arbitrary-callback_data]]
+7. [[Job Queue|Extensions-–-JobQueue]]
+8. [Arbitrary `callback_data`](Arbitrary-callback_data)
 9. [[Avoiding flood limits|Avoiding-flood-limits]]
 
 ## Code Resources
