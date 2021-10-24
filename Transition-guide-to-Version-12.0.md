@@ -190,7 +190,7 @@ As of **version 12.4**, `Filters.command` checks for `MessageEntity.BOT_COMMAND`
 
 ***
 # Persistence
-In version 12 we introduce persistence to the bot's mechanics. If you want to use this please read the [wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent) dedicated to persistence.
+In version 12 we introduce persistence to the bot's mechanics. If you want to use this please read the [[wiki page|Making-your-bot-persistent]] dedicated to persistence.
 ***
 # Return UTC from from_timestamp()
 

@@ -1,6 +1,6 @@
 This page can be read on its own to find the code snippet you need right now. 
 
-It is also a follow-up to the page [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API). If you come from there, you can leave your command line open and just try out a few of these snippets.
+It is also a follow-up to the page [[Introduction to the API|Introduction-to-the-API]]. If you come from there, you can leave your command line open and just try out a few of these snippets.
 
 - [Pure API](#pure-api)
     + [Fetch updates](#fetch-updates)
@@ -53,7 +53,7 @@ It is also a follow-up to the page [Introduction to the API](https://github.com/
 #### Fetch updates
 To fetch messages sent to your Bot, you can use the [getUpdates](https://core.telegram.org/bots/api#getupdates) API method.
 
-**Note:** You don't have to use `get_updates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [here](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Your-first-Bot).
+**Note:** You don't have to use `get_updates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [[here|Extensions-%E2%80%93-Your-first-Bot]].
 
 ```python
 updates = bot.get_updates()
@@ -555,7 +555,7 @@ def hello(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Hello world!")
 ```
 
-**Note**: You can modify this decorator in order to register any type of handler (see [Types Of Handlers](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-Of-Handlers)). Please also note that PTB deliberately does not provide such functionality out of the box due to the reasons mentioned in [#899](https://github.com/python-telegram-bot/python-telegram-bot/issues/899).
+**Note**: You can modify this decorator in order to register any type of handler (see [[Types Of Handlers|Types-Of-Handlers]]). Please also note that PTB deliberately does not provide such functionality out of the box due to the reasons mentioned in [#899](https://github.com/python-telegram-bot/python-telegram-bot/issues/899).
 
 ---
 #### Restrict access to a handler (decorator)
@@ -761,7 +761,7 @@ if __name__ == '__main__':
 ---
 #### Store ConversationHandler States
 
-Version 12 and up includes tools for [making your bot persistent](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Making-your-bot-persistent).
+Version 12 and up includes tools for [[making your bot persistent|Making-your-bot-persistent]].
 
 ---
 #### Save and load jobs using pickle

@@ -80,7 +80,7 @@ Anything *not* listed there can not be done with bots. Here is a short list of f
 * Adding members to a group/channel (note that you can just send an invite link, which is also less likely to be seen as spam)
 * Clearing the chat history for a user
 * Getting a message by its `message_id` (For the interested reader: see [here](https://github.com/tdlib/telegram-bot-api/issues/62))
-* Getting the last sent message in a chat (you can keep track of that by using [`chat_data`](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Storing-bot,-user-and-chat-related-data))
+* Getting the last sent message in a chat (you can keep track of that by using [[`chat_data`|Storing-bot,-user-and-chat-related-data]])
 
 In some cases, using a userbot can help overcome restrictions of the Bot API. Please have a look at this [article](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) about userbots.
 Note that userbots are not what python-telegram-bot is for.
@@ -92,7 +92,7 @@ If your handlers callback returns `None` instead of the next state, you will sta
 ### I want to handle updates from an external service in addition to the Telegram updates. How do I do that?
 
 Receiving updates from an external service, e.g. updates about your GitHub repo, is a common use case.
-How exactly you get them sadly is beyond the scope of PTB, as that depends on the service. For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-JobQueue) for that.
+How exactly you get them sadly is beyond the scope of PTB, as that depends on the service. For many cases a simple approach is to check for updates every x seconds. You can use the [[`JobQueue`|Extensions-–-JobQueue]] for that.
 
 If you have a setup for getting the updates, you can put them in your bots update queue via `updater.update_queue.put(your_update)`. The `update_queue` is also available as `dispatcher.update_queue` and `context.update_queue`.
 Note that `your_update` does *not* need to be an instance of `telegram.Update` - on the contrary! You can e.g. write your own custom class to represent an update from your external service.
@@ -197,4 +197,4 @@ If you didn't keep track of your users from the beginning, you may have a chance
 
 Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for `telegram.error.Unauthorized` errors.
 
-Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [`JobQueue`](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-JobQueue).
+Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [[`JobQueue`|Extensions-–-JobQueue]].

@@ -13,7 +13,7 @@ The general difference between polling and a webhook is:
 There's a number of things you need to retrieve updates via a webhook.
 
 ### A public IP address or domain
-Usually this means you have to run your bot on a server, either a dedicated server or a VPS. Read [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots) to find a list of options. 
+Usually this means you have to run your bot on a server, either a dedicated server or a VPS. Read [[Where to host Telegram Bots|Where-to-host-Telegram-Bots]] to find a list of options. 
 
 Make sure you can connect to your server from the **public internet**, either by IP or domain name. If `ping` works, you're good to go.
 

@@ -7,9 +7,9 @@ The `Updater` class continuously fetches new updates from telegram and passes th
 If you create an `Updater` object, it will create a `Dispatcher` for you and link them together with a `Queue`. 
 You can then register handlers of different types in the `Dispatcher`, which will sort the updates fetched by the `Updater` according to the handlers you registered, and deliver them to a callback function that you defined.
 
-Every handler is an instance of any subclass of the [`telegram.ext.Handler`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.handler.html#telegram.ext.Handler) class. The library provides [handler classes for almost all use cases](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Types-of-Handlers), but if you need something very specific, you can also subclass `Handler` yourself.
+Every handler is an instance of any subclass of the [`telegram.ext.Handler`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.handler.html#telegram.ext.Handler) class. The library provides [[handler classes for almost all use cases|Types-of-Handlers]], but if you need something very specific, you can also subclass `Handler` yourself.
 
-To begin, you'll need an Access Token. If you have already read and followed [Introduction to the API](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Introduction-to-the-API), you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
+To begin, you'll need an Access Token. If you have already read and followed [[Introduction to the API|Introduction-to-the-API]], you can use the one you generated then. If not: To generate an Access Token, you have to talk to [@BotFather](https://telegram.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)). You should really read the introduction first, though.
 
 
 ## Your first Bot, step-by-step
@@ -39,7 +39,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                      level=logging.INFO)
 ```
 
-**Note:** Read the article on [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling) if you want to learn more.
+**Note:** Read the article on [[Exception Handling|Exception-Handling]] if you want to learn more.
 
 Now, you can define a function that should process a specific type of update:
 
@@ -83,7 +83,7 @@ From now on, your bot should echo all non-command messages it receives.
 
 **Note:** As soon as you add new handlers to `dispatcher`, they are in effect.
 
-**Note:** The `Filters` class contains a number of so called filters that filter incoming messages for text, images, status updates and more. Any message that returns `True` for at least one of the filters passed to `MessageHandler` will be accepted. You can also write your own filters if you want. See more in [Advanced Filters](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-Advanced-Filters).
+**Note:** The `Filters` class contains a number of so called filters that filter incoming messages for text, images, status updates and more. Any message that returns `True` for at least one of the filters passed to `MessageHandler` will be accepted. You can also write your own filters if you want. See more in [[Advanced Filters|Extensions-%E2%80%93-Advanced-Filters]].
 
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS. To make things easy, you can receive the arguments (as a `list`, split on spaces) that were passed to a command in the callback function:
 
@@ -149,6 +149,6 @@ updater.stop()
 #### What to read next?
 Have a look at the ready-to-run [examples](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
 
-Learn about the library exceptions and best practices in [Exception Handling](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Exception-Handling).
+Learn about the library exceptions and best practices in [[Exception Handling|Exception-Handling]].
 
-You want *more features*? Check out [Extensions – JobQueue](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-%E2%80%93-JobQueue)!
+You want *more features*? Check out [[Extensions – JobQueue|Extensions-%E2%80%93-JobQueue]]!

@@ -6,7 +6,7 @@ So here is what that means:
 
 ##Example
 
-When trying to help you with a problem, it's often helpful to see your code instead of a vague description of the issue. Of course, a better description often also helps (see [this article](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Ask-Right) on asking good technical questions).
+When trying to help you with a problem, it's often helpful to see your code instead of a vague description of the issue. Of course, a better description often also helps (see [[this article|Ask-Right]] on asking good technical questions).
 
 ## Working
 In order for the example to actually be helpful, it must work. This means that it:

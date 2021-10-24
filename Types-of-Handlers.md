@@ -26,7 +26,7 @@ The special thing about `MessageHandler` is that there is such a vast variety of
 * `update.channel_post`
 * `update.edited_channel_post`
 
-You can use the different filters to narrow down which updates your `MessageHandler` will handle. See also [this article](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Extensions-–-Advanced-Filters) for advanced usage of filters.
+You can use the different filters to narrow down which updates your `MessageHandler` will handle. See also [[this article|Extensions-–-Advanced-Filters]] for advanced usage of filters.
 
 Because bot commands are another special part of the user interface of bots, there is the dedicated `CommandHandler`, which allows you to easily handle messages like `/start` or `/help`. Of course those messages can also be handled with `MessageHandler`, if needed.
 
@@ -63,7 +63,7 @@ Also, since this is an URL parameter, you have to pay attention on how to correc
 
 For more complex inputs you can employ the [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.messagehandler.html) with [`telegram.ext.Filters.regex`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.regex), which internally uses the `re`-module to match textual user input with a supplied pattern.
 
-Keep in mind that for extracting URLs, #Hashtags, @Mentions, and other Telegram entities, there's no need to parse them with a regex filter because the Bot API already sends them to us with every update. Refer to [this snippet](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#message-entities) to learn how to work with entities instead.
+Keep in mind that for extracting URLs, #Hashtags, @Mentions, and other Telegram entities, there's no need to parse them with a regex filter because the Bot API already sends them to us with every update. Refer to [[this snippet|Code-snippets#message-entities]] to learn how to work with entities instead.
 
 This tutorial only covers some of the available handlers (for now). Refer to the documentation for all other types: https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.html#handlers
 

@@ -1,4 +1,4 @@
-Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Hosting-your-bot) if you've decided to get a server.
+Look at [[Hosting your bot|Hosting-your-bot]] if you've decided to get a server.
 
 ### Cloud
 * [Amazon Web Services](https://aws.amazon.com/)
@@ -12,7 +12,7 @@ Look at [Hosting your bot](https://github.com/python-telegram-bot/python-telegra
     * **[Hosting Telegram bots on Cloud Run for free](https://nullonerror.org/2021/01/08/hosting-telegram-bots-on-google-cloud-run/)** by [skhaz](https://github.com/skhaz/)
 * [Heroku](https://www.heroku.com/)
     * **[Heroku getting started with Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)**
-    * **[Webhooks on Heroku](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks#heroku)**
+    * **[[Webhooks on Heroku|Webhooks#heroku]]**
     * **[Skeleton repository](https://github.com/Bibo-Joshi/ptb-heroku-skeleton)**
 * [OpenShift](https://www.openshift.com/)
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**

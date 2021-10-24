@@ -1,5 +1,5 @@
 ### Introduction
-You will need a VPS (or dedicated server) first. Check out the list at [Where to host Telegram Bots](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots#vps) if you don't have one already.
+You will need a VPS (or dedicated server) first. Check out the list at [[Where to host Telegram Bots|Where-to-host-Telegram-Bots#vps]] if you don't have one already.
 
 ### First login
 Your login details should contain
@@ -82,6 +82,6 @@ screen -d -r mybot
 ## What to read next?
 If you plan on hosting multiple bots on your server, it's recommended to use `virtualenv`. It allows you to install and upgrade Python modules via `pip` for one project, without worrying how it affects other projects on the server. Read [this external article](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for more information.
 
-Learn about how to use a webhook for your bot in [this article](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks).
+Learn about how to use a webhook for your bot in [[this article|Webhooks]].
 
-You might also read the article on [Performance Optimizations](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Performance-Optimizations) if you didn't read it yet.
+You might also read the article on [[Performance Optimizations|Performance-Optimizations]] if you didn't read it yet.

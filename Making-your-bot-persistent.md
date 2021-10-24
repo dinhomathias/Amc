@@ -44,7 +44,7 @@ If your persistence reads the data from an external database, the entries in thi
 
 As of v13, persistence will automatically try to replace `telegram.Bot` instances by [`REPLACED_BOT`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.REPLACED_BOT) and
 insert the bot set with [`set_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.set_bot) upon loading of the data. This is to ensure that
-changes to the bot apply to the saved objects, too. For example, you might change the [default values](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Adding-defaults-to-your-bot) used by the bot. If you change the bots token, this may
+changes to the bot apply to the saved objects, too. For example, you might change the [[default values|Adding-defaults-to-your-bot]] used by the bot. If you change the bots token, this may
 lead to e.g. `Chat not found` errors. For the limitations on replacing bots see
 [`replace_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.replace_bot) and [`insert_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.insert_bot).
 
