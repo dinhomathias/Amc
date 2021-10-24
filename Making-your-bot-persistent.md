@@ -7,7 +7,7 @@ In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is
 - [Storing Bots](#storing-bots)
 
 ## What can become persistent?
-* The persistence structure is designed to make `bot_data`, `chat_data`, `user_data` and `ConversationHandler`'s states persistent.
+* The persistence structure is designed to make `bot_data`, `chat_data`, `user_data`, `ConversationHandler`'s states and `ExtBot.callback_data_cache` persistent.
 * `Job`'s and the `job_queue` is not supported because the serialization of callbacks is too unstable to reliably make persistent for broad user-cases. However, the current `JobQueue` backend [APScheduler](https://apscheduler.readthedocs.io/en/stable/) has its own persistence logic that you can leverage.
 * For a special note about `Bot` instances, see [below](#storing-bots)
 
@@ -31,14 +31,14 @@ To make your bot persistent you need to do the following.
 - Create a persistence object (e.g. `my_persistence = PicklePersistence(filename='my_file')`)
 - Construct `Updater` with the persistence (`Updater('TOKEN', persistence=my_persistence, use_context=True)`). If you don't use the `Updater` class, you can pass the persistence directly to the `Dispatcher`.
 
-This is enough to make `user_data`, `bot_data` and `chat_data` persistent.
+This is enough to make `user_data`, `bot_data`, `chat_data` and `ExtBot.callback_data_cache` persistent.
 To make a conversation handler persistent (save states between bot restarts) you **must name it** and set `persistent` to `True`.
 Like `ConversationHandler(<no change>, persistent=True, name='my_name')`. `persistent` is `False` by default.
 Adding these arguments and adding the conversation handler to a persistence-aware updater/dispatcher will make it persistent.
 
 ## Refreshing at runtime
 
-If your persistence reads the data from an external database, the entries in this database could change at runtime. This is the case in particular, if the entries in the database are created by a 3rd party service independently of your bot. If you want to make sure that the data in `context.user/chat/bot_data` are always up to date, your persistence class should implement the methods `refresh_bot/chat/user_data`. Those will be called when in update comes in, before any of your callbacks are called.
+If your persistence reads the data from an external database, the entries in this database could change at runtime. This is the case in particular, if the entries in the database are created by a 3rd party service independently of your bot. If you want to make sure that the data in `context.user/chat/bot_data` are always up-to-date, your persistence class should implement the methods `refresh_bot/chat/user_data`. Those will be called when in update comes in, before any of your callbacks are called.
 
 ## Storing Bots
 
