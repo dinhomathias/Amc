@@ -12,14 +12,14 @@ Apart from all the refactorings & deprecations explained below, v14 also contain
 
 ## Removed features
 
-We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which as deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]]. 
+We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]]. 
 
 ##  Refinement of the public API
 
-We've made an effort to make it more clear which parts of `python-telegram-bot` can be considered to be part of the public interface that users are allowed to use. Or to phrase it the other way around: Which parts are internals of `python-telegram-bot` or implementation details that might change without notice. Notably this means:
+We've made an effort to make it more clear which parts of `python-telegram-bot` can be considered to be part of the public interface that users are allowed to use. To phrase it the other way around: Which parts are internals of `python-telegram-bot` or implementation details that might change without notice. Notably this means:
 
 1. Only non-private modules are part of the public API and you should import classes & functions the way they are described in the docs. E.g. `from telegram.error import TelegramError` is fine, but `from telegram._message import Message` is strongly discouraged - use `from telegram import Message` instead.
-2. We have removed the module `telegram.utils`. The parts of this module that we consider to be part of the public API have been moved into the modules `telegram.{helpers, request, warnings}`
+2. We have removed the module `telegram.utils`. The parts of this module that we consider to be part of the public API have been moved into the modules `telegram.{helpers, request, warnings}`.
 
 ## `__slots__`
 
@@ -31,6 +31,7 @@ We introduced the usage of `__slots__` in v13.6, which can reduce memory usage a
 In an effort to make the instantiation of `Updater` and `Dispatcher` more clear, we adopted the so-called [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern).
 This means that instead of passing arguments directly to `Updater`/`Dispatcher`, one now creates a builder via `Updater/Dispatcher.builder()` and then specifies all required arguments via that builder.
 Finally, the `Updater/Dispatcher` is created by calling `builder.build()`. A simple example is
+
 ```python
 from telegram.ext import Updater
 updater = Updater.builder().token('TOKEN').build()
@@ -85,7 +86,7 @@ The argument `users` is now optional as specified by the Bot API.
 
 #### `store_*_data`
 
-There parameters & attributes `store_{user,chat,bot}_data` were removed. Instead, these settings were combined into the argument/attribute `store_data`, which accepts an instance of the new helper class `telegram.ext.PersistenceInput`.
+The parameters & attributes `store_{user,chat,bot}_data` were removed. Instead, these settings were combined into the argument/attribute `store_data`, which accepts an instance of the new helper class `telegram.ext.PersistenceInput`.
 
 Note that `callback_data` is now persisted by default.
 
@@ -93,6 +94,10 @@ Note that `callback_data` is now persisted by default.
 
 * `CallbackContext.from_error` has a new optional argument `job`. When an exception happens inside a `ext.Job` callback, this parameter will be passed.
 * Accordingly, the attribute `CallbackContext.job` will now also be present in error handlers if the error was caused by a `ext.Job`. 
+
+### `ConversationHandler`
+
+ConversationHandler now raises warnings for more handlers which are added in the wrong context/shouldn't be in the handler at all.
 
 ### `JobQueue.run_monthly`
 
