@@ -125,8 +125,9 @@ They are generated with the [warnings](https://docs.python.org/3/library/warning
 
 ```python
 from warnings import filterwarnings
+from telegram.warnings import PTBUserWarning
 
-filterwarnings(action="ignore", message=r".*CallbackQueryHandler")
+filterwarnings(action="ignore", message=r".*CallbackQueryHandler", category=PTBUserWarning)
 ```
 
 Depending on your use case, you might have to change the message, but all other warnings shouldn't be raised without a reason, don't say we didn't do our best to warn you.
