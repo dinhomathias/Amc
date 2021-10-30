@@ -13,6 +13,7 @@
 - [I want to handle updates from an external service in addition to the Telegram updates. How do I do that?](#i-want-to-handle-updates-from-an-external-service-in-addition-to-the-telegram-updates-how-do-i-do-that)
 - [Why am I getting `ImportError: cannot import name 'XY' from 'telegram'`?](#why-am-i-getting-importerror-cannot-import-name-xy-from-telegram)
 - [What do the `per_*` settings in `ConversationHandler` do?](#what-do-the-per_-settings-in-conversationhandler-do)
+- [How can I disable the `per_*` settings warnings?](#how-can-i-disable-these-warnings-though)
 - [Can I check, if a `ConversationHandler` is currently active for a user?](#can-i-check-if-a-conversationhandler-is-currently-active-for-a-user)
 - [How can I list all messages of a particular chat or search through them based on a search query?](#how-can-i-list-all-messages-of-a-particular-chat-or-search-through-them-based-on-a-search-query)
 - [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
@@ -117,6 +118,18 @@ In order to clear this issue up, if you set `per_message=True`, the `Conversatio
 Note that this approach can only work, if all the handlers in the conversation are `CallbackQueryHandler`s. This is useful for building interactive menus.
 
 **Note:** If you have a `CallbackQueryHandler` in your `ConversationHandler`, you will see a warning `If 'per_message=True/False', …`. It is a *warning*, not an error. If you're sure that you set `per_message` to the correct value, you can just ignore it.
+
+### How can I disable these warnings though
+
+They are generated with the [warnings](https://docs.python.org/3/library/warnings.html) module, so we can disable them using the module as well. For this example, we will use the [filterwarnings](https://docs.python.org/3/library/warnings.html#warnings.filterwarnings) method. So in your code, before you initiate the `ConversationHandler`, do the following:
+
+```python
+from warnings import filterwarnings
+
+filterwarnings(action="ignore", message=r".*CallbackQueryHandler")
+```
+
+Depending on your use case, you might have to change the message, but all other warnings shouldn't be raised without a reason, don't say we didn't do our best to warn you.
 
 ### Can I check, if a `ConversationHandler` is currently active for a user?
 
