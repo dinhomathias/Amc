@@ -25,6 +25,9 @@ If you want to create your own persistence class, please carefully read the docs
 
 If you've written a persistence class that could benefit others (e.g., a general one covering all types of data), it would be great if you linked it here or even better made it available in [ptbcontrib](https://github.com/python-telegram-bot/ptbcontrib).
 
+These 3rd party packages contain persistence classes (the list is incomplete):
+* [python-telegram-bot-django-persistence](https://github.com/GamePad64/python-telegram-bot-django-persistence) - Uses Django ORM to store persistence data. It is most useful for projects, that use PTB and Django.
+
 ## What do I need to change?
 To make your bot persistent you need to do the following.
 
