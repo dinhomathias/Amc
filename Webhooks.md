@@ -63,9 +63,6 @@ In this model, a single server application listening on the public IP, the *reve
 
 Depending on the reverse proxy application you (or your hosting provider) is using, the implementation will look a bit different. In the following, there are a few possible setups listed.
 
-#### AWS
-There are multiple ways to run on AWS, using both polling or webhook. For webhook, you can run your bot on [AWS Lambda](https://aws.amazon.com/lambda/), and only pay when the bot is actually invoked. [AWS API Gateway](https://aws.amazon.com/api-gateway/) will provide you with an HTTPS endpoint for the webhook, that will [invoke your code on AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html) ([check this for a working example](https://github.com/jojo786/TelegramTasweerBot)). For polling, you can run your bot as a container on [AWS Fargate](https://aws.amazon.com/fargate/).
-
 #### Heroku
 On Heroku using webhook can be beneficial on the free-plan because it will automatically manage the downtime required.
 The reverse proxy is set up for you and an environment is created. From this environment you will have to extract the port the bot is supposed to listen on. Heroku manages the SSL on the proxy side, so you don't have provide the certificate yourself.
