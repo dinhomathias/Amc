@@ -10,6 +10,7 @@ Please try to keep this page up-to-date.
 | ------- | ----------- | ----------------------------- | ------------------ |
 | [autoconv](https://github.com/Mortafix/AutoConv-Telegram-Python) | A module to build automatic and simple to manage conversation | >=13 | Alpha |
 | [django-telegrambot](https://github.com/JungDev/django-telegrambot) | A simple app to develop Telegram bots with Django | >=6.0.1 | Stable |
+| [python-telegram-bot-django-persistence](https://github.com/GamePad64/python-telegram-bot-django-persistence) | A persistence engine, that uses Django ORM as storage. No separate infrastructure needed! | >=13.7 | Beta |
 | [jackfruit](https://github.com/zzzzlzzzz/jackfruit) | A menus and forms for Telegram bots | >=12.0 | Alpha |
 | [ownbot](https://github.com/michaelimfeld/ownbot) | Ownbot provides some cool decorators to protect your command handler functions from unauthorized users! | 5.1.1 | Beta |
 | [permabots](https://github.com/jlmadurga/permabots) | Connect instant messaging bots to your APIs. https://permabots.readthedocs.org | 4.2.0 | Beta |

@@ -95,7 +95,7 @@ bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do tha
 ---
 #### Reply to a message
 
-This is a shortcut to `bot.send_message` with sane defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
+This is a shortcut to `bot.send_message` with same defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
 
 ```python
 update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")

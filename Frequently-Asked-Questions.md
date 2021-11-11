@@ -90,7 +90,7 @@ If your handlers callback returns `None` instead of the next state, you will sta
 ### I want to handle updates from an external service in addition to the Telegram updates. How do I do that?
 
 Receiving updates from an external service, e.g. updates about your GitHub repo, is a common use case.
-How exactly you get them sadly is beyond the scope of PTB, as that depends on the service. For many cases a simple approach is to check for updates every x seconds. You can use the [[`JobQueue`|Extensions-–-JobQueue]] for that.
+How exactly you get them sadly is beyond the scope of PTB, as that depends on the service. For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](Extensions-–-JobQueue) for that.
 
 If you have a setup for getting the updates, you can put them in your bots update queue via `updater.update_queue.put(your_update)`. The `update_queue` is also available as `dispatcher.update_queue` and `context.update_queue`.
 Note that `your_update` does *not* need to be an instance of `telegram.Update` - on the contrary! You can e.g. write your own custom class to represent an update from your external service.

@@ -4,7 +4,7 @@ If you read this, you probably were asked to provide a minimal working example (
 
 So here is what that means:
 
-##Example
+## Example
 
 When trying to help you with a problem, it's often helpful to see your code instead of a vague description of the issue. Of course, a better description often also helps (see [[this article|Ask-Right]] on asking good technical questions).
 
