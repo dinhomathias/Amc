@@ -15,7 +15,7 @@ In the sidebar to the right you find all important pages of this wiki. They are 
 
 Introductory articles and frequently referenced pages.
 
-### PTB Features
+### PTB Features & Concepts
 
 Introductions & explanations of the different components the powerful `telegram.ext` offers.
 

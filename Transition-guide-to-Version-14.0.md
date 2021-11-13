@@ -37,7 +37,9 @@ from telegram.ext import Updater
 updater = Updater.builder().token('TOKEN').build()
 ```
 
-We hope that this change makes it easier for you to understand what goes where and also simplifies setups of customized solutions, e.g. if you want to use a custom webhook.  
+We hope that this change makes it easier for you to understand what goes where and also simplifies setups of customized solutions, e.g. if you want to use a custom webhook.
+
+There is also a [[standalone wiki page|Builder-Pattern]] just about this topic.
 
 # Changes for specific modules, classes & functions
 

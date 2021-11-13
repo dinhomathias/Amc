@@ -5,16 +5,17 @@
 4. [[How to ask good questions|Ask-Right]]
 5. [[How to write an MWE|MWE]]
 
-## PTB Features
-1. [[Types of Handlers|Types-Of-Handlers]]
-2. [[Advanced Filters|Extensions-–-Advanced-Filters]]
-3. [[Storing data|Storing-bot,-user-and-chat-related-data]]
-4. [[Making your bot persistent|Making-your-bot-persistent]]
-5. [[Adding Defaults|Adding-defaults-to-your-bot]]
-6. [[Exceptions, Warnings and Logging|Exceptions, Warnings and Logging]]
-7. [[Job Queue|Extensions-–-JobQueue]]
-8. [Arbitrary `callback_data`](Arbitrary-callback_data)
-9. [[Avoiding flood limits|Avoiding-flood-limits]]
+## PTB Features & Concepts
+1. [[Builder Pattern|Builder-Pattern]]
+2. [[Types of Handlers|Types-Of-Handlers]]
+3. [[Advanced Filters|Extensions-–-Advanced-Filters]]
+4. [[Storing data|Storing-bot,-user-and-chat-related-data]]
+5. [[Making your bot persistent|Making-your-bot-persistent]]
+6. [[Adding Defaults|Adding-defaults-to-your-bot]]
+7. [[Exceptions, Warnings and Logging|Exceptions, Warnings and Logging]]
+8. [[Job Queue|Extensions-–-JobQueue]]
+9. [Arbitrary `callback_data`](Arbitrary-callback_data)
+10. [[Avoiding flood limits|Avoiding-flood-limits]]
 
 ## Code Resources
 1. [[Code snippets|Code-snippets]]
