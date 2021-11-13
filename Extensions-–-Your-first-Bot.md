@@ -44,10 +44,13 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 Now, you can define a function that should process a specific type of update:
 
 ```python
-def start(update, context):
+from telegram import Update
+from telegram.ext import CallbackContext
+
+def start(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 ```
-**Related docs:** [`send_message`](https://core.telegram.org/bots/api#sendmessage), [`telegram.ext.CallbackContext` (the type of the context argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html)
+**Related docs:** [`send_message`](https://core.telegram.org/bots/api#sendmessage), [`telegram.ext.CallbackContext` (the type of the context argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html), [`telegram.Update` (the type of update argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.update.html)
 
 The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command. To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` subclasses) and register it in the dispatcher:
 
@@ -70,10 +73,11 @@ Give it a try! Start a chat with your bot and issue the `/start` command - if al
 But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo all text messages:
 
 ```python
-def echo(update, context):
+from telegram.ext import MessageHandler, Filters
+
+def echo(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
-from telegram.ext import MessageHandler, Filters
 echo_handler = MessageHandler(Filters.text & (~Filters.command), echo)
 dispatcher.add_handler(echo_handler)
 ```
@@ -88,7 +92,7 @@ From now on, your bot should echo all non-command messages it receives.
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS. To make things easy, you can receive the arguments (as a `list`, split on spaces) that were passed to a command in the callback function:
 
 ```python
-def caps(update, context):
+def caps(update: Update, context: CallbackContext):
     text_caps = ' '.join(context.args).upper()
     context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
 
@@ -104,11 +108,11 @@ As your bot is obviously a very loud one, let's continue with this theme for inl
 
 ```python
 from telegram import InlineQueryResultArticle, InputTextMessageContent
-def inline_caps(update, context):
+def inline_caps(update: Update, context: CallbackContext):
     query = update.inline_query.query
     if not query:
         return
-    results = list()
+    results = []
     results.append(
         InlineQueryResultArticle(
             id=query.upper(),
@@ -129,7 +133,7 @@ Not bad! Your Bot can now yell on command (ha!) and via inline mode.
 Some confused users might try to send commands to the bot that it doesn't understand, so you can use a `MessageHandler` with a `command` filter to reply to all commands that were not recognized by the previous handlers. 
 
 ```python
-def unknown(update, context):
+def unknown(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
 unknown_handler = MessageHandler(Filters.command, unknown)
