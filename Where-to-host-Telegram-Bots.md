@@ -14,6 +14,8 @@ Look at [[Hosting your bot|Hosting-your-bot]] if you've decided to get a server.
     * **[Heroku getting started with Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)**
     * **[[Webhooks on Heroku|Webhooks#heroku]]**
     * **[Skeleton repository](https://github.com/Bibo-Joshi/ptb-heroku-skeleton)**
+* [Code Capsules](https://codecapsules.io)
+    * **[Host a Telegram Bot on Code Capsules](https://codecapsules.io/docs/tutorials/create-and-host-telegram-bot/)**
 * [OpenShift](https://www.openshift.com/)
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
     * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
