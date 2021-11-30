@@ -9,7 +9,7 @@ If you stumble upon a part of the wiki that is unclear or missing important poin
 
 ## Structure of this Wiki
 
-In the sidebar to the right you find all important pages of this wiki. They are roughly organized by the following logic:
+In the sidebar to the right, you can find all important pages of this wiki. They are roughly organized by the following logic:
 
 ### Must read
 
@@ -34,7 +34,7 @@ Articles about advanced networking questions.
 
 ### Other resources
 
-More interesting & helpful stuff that didn't fint in any of the above sections.
+More interesting & helpful stuff that can't be found in any of the above sections.
 
 ### Transition Guides
 
