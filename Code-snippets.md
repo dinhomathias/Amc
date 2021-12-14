@@ -517,9 +517,9 @@ dispatcher.add_handler(add_group_handle)
 
 ---
 #### Exclude forwarded channel posts in discussion groups from MessageHandlers	
-If you're using `MessageHandlers` and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your `MessageHandler`:
+If you're using `MessageHandlers` and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your `MessageHandler` (requires PTB v13.9+):
 ```python	
-~ Filters.sender_chat.channel
+~ Filters.is_automatic_forward
 ```
 
 ---
