@@ -514,6 +514,7 @@ def add_group(update: Update, context: CallbackContext):
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatcher.add_handler(add_group_handle)
 ```
+Note that service messages about non-bot users joining the chat are removed from large groups. You can get the new members message by following the [chatmemberbot.py example](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy).
 
 ---
 #### Exclude forwarded channel posts in discussion groups from MessageHandlers	
