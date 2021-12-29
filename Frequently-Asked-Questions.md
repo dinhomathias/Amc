@@ -21,7 +21,6 @@
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
 - [Is there a limit on the number of buttons in an inline keyboard?](#is-there-a-limit-on-the-number-of-buttons-in-an-inline-keyboard)
 - [How do I access info about the message my bot sent?](#how-do-I-access-info-about-the-message-my-bot-sent)
-- [How do I send a message to all users of the bot?](#how-do-i-send-a-message-to-all-users-of-the-bot)
 
 ### What messages can my Bot see?
 
@@ -181,17 +180,3 @@ message_id = message.message_id
 ```
 
 Please check the docs for details about the return value of each bot method.
-
-### How do I send a message to all users of the bot?
-
-Let's first point out an easy alternative solution: Instead of sending the messages directly through your bot, you can instead set up a channel to publish the announcements. You can link your users to the channel in a welcome message.
-
-If that doesn't work for you, here we go:
-
-To send a message to all users, you of course need the IDs of all the users. You'll have to keep track of those yourself. The most reliable way for that are the `my_chat_member` updates. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example on how to use them.
-
-If you didn't keep track of your users from the beginning, you may have a chance to get the IDs anyway, if you're using persistence. Please have a look at [this issue](https://github.com/python-telegram-bot/python-telegram-bot/issues/1836) in that case.
-
-Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for `telegram.error.Unauthorized` errors.
-
-Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [[`JobQueue`|Extensions-–-JobQueue]].
