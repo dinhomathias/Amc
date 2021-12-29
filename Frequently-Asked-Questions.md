@@ -17,7 +17,6 @@
 - [Can I check, if a `ConversationHandler` is currently active for a user?](#can-i-check-if-a-conversationhandler-is-currently-active-for-a-user)
 - [How can I list all messages of a particular chat or search through them based on a search query?](#how-can-i-list-all-messages-of-a-particular-chat-or-search-through-them-based-on-a-search-query)
 - [How can I disable logging for the `APScheduler` module?](#how-can-i-disable-logging-for-the-apscheduler-module)
-- [How do I enforce users joining a specific channel before using my bot?](#how-do-i-enforce-users-joining-a-specific-channel-before-using-my-bot)
 - [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
 - [Is there a limit on the number of buttons in an inline keyboard?](#is-there-a-limit-on-the-number-of-buttons-in-an-inline-keyboard)
@@ -155,21 +154,6 @@ import logging
 aps_logger = logging.getLogger('apscheduler')
 aps_logger.setLevel(logging.WARNING)
 ```
-
-### How do I enforce users joining a specific channel before using my bot?
-
-After sending an (invite) link to the channel to the user, you can use [`Bot.get_chat_member`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.get_chat_member) to check if the user is an that channel. 
-Note that:
-* the bot needs to be admin in that channel
-* the user must have started the bot for this approach to work. If you try to run `get_chat_member` for a user that has not started the bot, the bot can not find the user in a chat, even if it is a member of it.
-
-Otherwise depending on whether the user in the channel, has joined and left again, has been banned, ... (there are multiple situations possible), the method may
-* raise an exception and in this case the error message will probably be helpful
-* return a `ChatMember` instance. In that case make sure to check the [`ChatMember.status`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmember.html#telegram.ChatMember.status) attribute
-
-Since API 5.1 (PTB v13.4+) you can alternatively use the `ChatMember` updates to keep track of users in channels. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example.
-
-If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is to add at [`TypeHandler(telegram.Update, callback)`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html) to a low group and have the `callback` raise [`DispatcherHandlerStop`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) if the user did not join yet. See the docs of [`Dispatcher.add_handler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) for more info on handler groups and `DispatcherHandlerStop`.
 
 ### Why am I getting an error `The following arguments have not been supplied`?
 
