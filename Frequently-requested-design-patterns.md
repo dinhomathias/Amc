@@ -2,12 +2,11 @@ This page is a collection of sorts, dedicated to showcase design patterns we get
 
 - [Requirements](#requirements)
 - [How to handle updates in several handlers](#how-to-handle-updates-in-several-handlers)
-  - [Type Handler and Low Group](#type-handler-and-low-group)
+  - [Type Handler and Groups](#type-handler-and-groups)
   - [Boilerplate Code](#boilerplate-code)
     - [But I do not want a handler to stop other handlers](#but-i-do-not-want-a-handler-to-stop-other-handlers)
-  - [How do I limit who can use my bot?](#how-do-i-limit-who-can-use-my-bot-)
-  - [How do control flooding of my bot?](#how-do-control-flooding-of-my-bot-)
-  - [How do I do process a update in several handlers?](#how-do-i-process-an-update-in-several-handlers-)
+  - [How do I limit who can use my bot?](#how-do-i-limit-who-can-use-my-bot)
+  - [How do I rate limit users of my bot?](#how-do-i-rate-limit-users-of-my-bot)
   - [Conclusion](#conclusion)
 - [How do I enforce users joining a specific channel before using my bot?](#how-do-i-enforce-users-joining-a-specific-channel-before-using-my-bot)
 - [How do I send a message to all users of the bot?](#how-do-i-send-a-message-to-all-users-of-the-bot)
@@ -105,7 +104,7 @@ Here, it should be noted that this approach blocks your bot entirely for a set o
 Don't forget that you can also use [decorators](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator) or a simple `if-else` check.
 If you want a more streamlined style of managing permissions (like superuser, admin, users) then [ptbcontrib/roles](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/roles) is worth checking out.
 
-### How do rate limit users of my bot?
+### How do I rate limit users of my bot?
 
 The exact definition of _rate limit_ depends on your point of view. You typically should keep record of previous usage of the user and warn them when they cross a limit. Here, for demonstration, we use a method that restricts the usage of the bot for 5 minutes.
 
