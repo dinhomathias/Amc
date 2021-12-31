@@ -18,12 +18,13 @@
 10. [[Avoiding flood limits|Avoiding-flood-limits]]
 
 ## Code Resources
-1. [[Code snippets|Code-snippets]]
-2. [[Performance Optimizations|Performance-Optimizations]]
-3. [[Webhooks|Webhooks]]
-4. [[Telegram Passport|Telegram-Passport]]
-5. [[Bots built with PTB|Bots-built-with-PTB]]
-6. [[Automated Bot Tests|Writing-Tests]]
+1. [[Frequently requested design patterns|Frequently-requested-design-patterns]]
+2. [[Code snippets|Code-snippets]]
+3. [[Performance Optimizations|Performance-Optimizations]]
+4. [[Webhooks|Webhooks]]
+5. [[Telegram Passport|Telegram-Passport]]
+6. [[Bots built with PTB|Bots-built-with-PTB]]
+7. [[Automated Bot Tests|Writing-Tests]]
 
 ## Examples explained
 1. [[InlineKeyboard Example|InlineKeyboard-Example]]

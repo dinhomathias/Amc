@@ -514,12 +514,13 @@ def add_group(update: Update, context: CallbackContext):
 add_group_handle = MessageHandler(Filters.status_update.new_chat_members, add_group)
 dispatcher.add_handler(add_group_handle)
 ```
+Note that service messages about non-bot users joining the chat are removed from large groups. You can get the new members message by following the [chatmemberbot.py example](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy).
 
 ---
 #### Exclude forwarded channel posts in discussion groups from MessageHandlers	
-If you're using `MessageHandlers` and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your `MessageHandler`:
+If you're using `MessageHandlers` and do not want them to respond to the channel posts automatically forwarded to the discussion group linked to your channel, you can use this filter in your `MessageHandler` (requires PTB v13.9+):
 ```python	
-~ Filters.sender_chat.channel
+~ Filters.is_automatic_forward
 ```
 
 ---

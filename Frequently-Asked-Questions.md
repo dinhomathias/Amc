@@ -19,7 +19,6 @@
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
 - [Is there a limit on the number of buttons in an inline keyboard?](#is-there-a-limit-on-the-number-of-buttons-in-an-inline-keyboard)
 - [How do I access info about the message my bot sent?](#how-do-I-access-info-about-the-message-my-bot-sent)
-- [How do I send a message to all users of the bot?](#how-do-i-send-a-message-to-all-users-of-the-bot)
 
 ### What messages can my Bot see?
 
@@ -130,21 +129,6 @@ There is no API method for that (see [here](#can-you-add-feature-to-ptb-can-i-do
 2. Messages may be edited (in which case your bot will receive a corresponding update)
 3. Messages may be deleted (and there are no updates for "message deleted"!)
 
-### How do I enforce users joining a specific channel before using my bot?
-
-After sending an (invite) link to the channel to the user, you can use [`Bot.get_chat_member`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.get_chat_member) to check if the user is an that channel. 
-Note that:
-* the bot needs to be admin in that channel
-* the user must have started the bot for this approach to work. If you try to run `get_chat_member` for a user that has not started the bot, the bot can not find the user in a chat, even if it is a member of it.
-
-Otherwise depending on whether the user in the channel, has joined and left again, has been banned, ... (there are multiple situations possible), the method may
-* raise an exception and in this case the error message will probably be helpful
-* return a `ChatMember` instance. In that case make sure to check the [`ChatMember.status`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmember.html#telegram.ChatMember.status) attribute
-
-Since API 5.1 (PTB v13.4+) you can alternatively use the `ChatMember` updates to keep track of users in channels. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example.
-
-If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is to add at [`TypeHandler(telegram.Update, callback)`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html) to a low group and have the `callback` raise [`DispatcherHandlerStop`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) if the user did not join yet. See the docs of [`Dispatcher.add_handler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html) for more info on handler groups and `DispatcherHandlerStop`.
-
 ### Why am I getting an error `The following arguments have not been supplied`?
 
 The `callback` method you pass to `JobQueue.run_*` takes exactly *one* argument, which is of type `CallbackContext`. This is, because jobs are triggered by a schedule and not by an update from Telegram. If you want to access data in the callback that changes at runtime (e.g. because you schedule jobs on demand), you can either access `context.bot_data` or pass the data to `run_*` as `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. Note that `context.{user, chat}_data` will be `None`, as those can only be present, when the `context` object is related to an update, which is not the case for jobs.
@@ -171,17 +155,3 @@ message_id = message.message_id
 ```
 
 Please check the docs for details about the return value of each bot method.
-
-### How do I send a message to all users of the bot?
-
-Let's first point out an easy alternative solution: Instead of sending the messages directly through your bot, you can instead set up a channel to publish the announcements. You can link your users to the channel in a welcome message.
-
-If that doesn't work for you, here we go:
-
-To send a message to all users, you of course need the IDs of all the users. You'll have to keep track of those yourself. The most reliable way for that are the `my_chat_member` updates. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example on how to use them.
-
-If you didn't keep track of your users from the beginning, you may have a chance to get the IDs anyway, if you're using persistence. Please have a look at [this issue](https://github.com/python-telegram-bot/python-telegram-bot/issues/1836) in that case.
-
-Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for `telegram.error.Unauthorized` errors.
-
-Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [[`JobQueue`|Extensions-–-JobQueue]].
