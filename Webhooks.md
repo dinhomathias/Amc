@@ -94,6 +94,7 @@ updater.start_webhook(
     port=5000,
     url_path='TOKEN1',
     webhook_url='https://example.com/TOKEN1',
+    # Reason why you can get "tls_process_server_certificate:certificate verify failed" error from telegram getWebhook
     cert='cert.pem')
 )
 ```
