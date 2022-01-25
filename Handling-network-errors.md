@@ -76,7 +76,7 @@ If you can suggest similar options suitable for other OSes (MS-Windows, MacOS) w
 Another community contribution we'll be happy for is fine grained control on the socket options.
 
 ## Stabilizing your app
-When a network error occurs, be prepared to catch the raised exception and handle it according to your policy (do you want to retry? ignore? other?).
+When a network error occurs, be prepared to catch the [raised exception](https://python-telegram-bot.readthedocs.io/en/stable/telegram.error.html) and handle it according to your policy (do you want to retry? ignore? other?).
 
 ## ptb
 If you think of another way to improve stability from within ptb, please contact us (the maintainers).
