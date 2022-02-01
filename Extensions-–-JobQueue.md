@@ -10,7 +10,7 @@ The extension class `telegram.ext.JobQueue` allows you to perform tasks with a d
 
 ## Example
 
-In addition to the tutorial below there is also the `timerbot.py` example at the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
+In addition to the tutorial below, there is also the `timerbot.py` example at the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
 
 # Usage
 The `JobQueue` class is tightly integrated with other `telegram.ext` classes. Similar to `Updater` and `Dispatcher`, it runs asynchronously in a separate thread.
@@ -55,7 +55,7 @@ def callback_30(context: telegram.ext.CallbackContext):
 j.run_once(callback_30, 30)
 ```
 
-In thirty seconds you should receive the message from `callback_30`. 
+In thirty seconds, you should receive the message from `callback_30`. 
 
 If you are tired of receiving a message every minute, you can temporarily disable a job or even completely remove it from the queue:
 
@@ -96,3 +96,6 @@ Of course, you can instead also stop the job queue by itself:
 ```python
 j.stop()
 ```
+
+## Persistent Job Queues
+Check out [ptbcontrib/ptb_sqlalchemy_jobstore](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/ptb_sqlalchemy_jobstore)
