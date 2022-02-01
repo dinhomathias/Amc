@@ -120,3 +120,7 @@ with open(animated_sticker, 'rb') as f:
     assert bot.create_new_sticker_set(me.id, animated_sticker_set_name, animated_sticker_set_title,
                                       f, sticker_emoji)
 ```
+
+### Create a video sticker set for the bot
+
+Similar to above
