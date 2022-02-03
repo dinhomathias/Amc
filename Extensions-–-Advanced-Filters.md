@@ -57,6 +57,7 @@ The class can of course be named however you want, the only important things are
 The filter can then be used as:
 ```python
 awesome_handler = MessageHandler(filter_awesome, callback)
+dispatcher.add_handler(awesome_handler)
 ```
 
 ## `Filters` and `CallbackContext`
