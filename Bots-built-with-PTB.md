@@ -87,6 +87,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [VorpalRobot](https://github.com/Tronikart/VorpalRobot) - an inline dice rolling bot [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/VorpalRobot)
 * [Watermaker-bot](https://github.com/alistvt/watermarker-bot) - A bot to watermark your files by your logo.
+* [Word Bot](https://github.com/bluec/telegram-word-bot) - A simple Telegram bot that analyses a given word.
 * [WordArtBot](https://github.com/mrfelipenoronha/WordArtBot) - Generate WordArts in Telegram.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
