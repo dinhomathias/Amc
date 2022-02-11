@@ -184,7 +184,7 @@ This basic problem has two basic approaches for handling it, without requiring a
 
 ### Timer based approach
 
-[Real life code example.](https://github.com/Poolitzer/channelforwarder/blob/master/main.py#L19-L46)
+[Real life code example.](https://github.com/Poolitzer/channelforwarder/blob/589104b8a808199ba46d620736bd8bea1dc187d9/main.py#L19-L46)
 
 This approach has the upside of looking seamless to the user. The downside is that there is a (low) possibilty that one part of the media group is missed.
 
