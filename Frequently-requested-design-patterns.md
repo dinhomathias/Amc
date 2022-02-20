@@ -160,7 +160,7 @@ Otherwise depending on whether the user in the channel, has joined and left agai
 
 Since API 5.1 (PTB v13.4+) you can alternatively use the [`ChatMember`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmemberupdated.html) updates to keep track of users in channels. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example.
 
-If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is by using [TypeHandler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html). Read this [section](#how-do-i-limit-who-can-use-my-bot-) to learn how to do it.
+If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is by using [TypeHandler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html). Read this [section](#how-do-i-limit-who-can-use-my-bot) to learn how to do it.
 
 ## How do I send a message to all users of the bot?
 
