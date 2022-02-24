@@ -9,6 +9,7 @@ The general difference between polling and a webhook is:
 - Polling (via `get_updates`) periodically connects to Telegram's servers to check for new updates
 - A Webhook is a URL you transmit to Telegram once. Whenever a new update for your bot arrives, Telegram sends that update to the specified URL.
 
+## Requirements
 ### A public IP address or domain
 Usually this means you have to run your bot on a server, either a dedicated server or a VPS. Read [[Where to host Telegram Bots|Where-to-host-Telegram-Bots]] to find a list of options. 
 
