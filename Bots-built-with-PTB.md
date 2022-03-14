@@ -60,7 +60,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [SnoopDogg bot](https://github.com/pascalmaximus/snoopdoggbot) - A chatbot/translator which converts text to gangsta(snoop dogg's slang) [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SnoopDoggbot)
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commands based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
-* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [Simple Stock Bot](https://gitlab.com/simple-stock-bots/simple-telegram-stock-bot) - A simple bot for getting stock market information. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SimpleStockBot)
 * [Slovodel Bot](https://github.com/weiss-d/slovodel-bot) — Generates non-existent Russian words of different types. Another example of the MVC approach.[ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/slovodel_bot)
 * [Smokey Bot](https://github.com/udit-001/smokey-bot) - A telegram bot that provides real-time worldwide air pollution data [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/smokey_bot)
