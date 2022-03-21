@@ -44,10 +44,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 Now, you can define a function that should process a specific type of update:
 
 ```python
-from telegram import Update
+from telegram.ext import Updater
 from telegram.ext import CallbackContext
 
-def start(update: Update, context: CallbackContext):
+def start(update: updater, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 ```
 **Related docs:** [`send_message`](https://core.telegram.org/bots/api#sendmessage), [`telegram.ext.CallbackContext` (the type of the context argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html), [`telegram.Update` (the type of update argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.update.html)
