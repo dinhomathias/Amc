@@ -70,6 +70,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organize a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
+* [SUMS MD 1400 Bot](https://github.com/AlirezaChinian/SUMS-1400-Telegram-Bot) - Official telegram bot of SUMS MD 1400
 * [SurfSpot Bot](https://github.com/ereid7/surfspot-bot-telegram) - Bot which retrieves the surf report for a given surf spot
 * [teleGit Bot](https://github.com/HeavenH/teleGit) — A bot to list the GitHub repositories, show users information.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) — Lets you pick a timezone. This bot also uses a class for its design pattern.
@@ -91,7 +92,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
-* [SUMS MD 1400 Bot](https://github.com/AlirezaChinian/SUMS-1400-Telegram-Bot) - Official telegram bot of SUMS MD 1400
 
  
 # API
