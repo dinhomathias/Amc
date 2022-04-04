@@ -416,12 +416,10 @@ def flag(code):
     code = code.upper()
     return chr(ord(code[0]) + OFFSET) + chr(ord(code[1]) + OFFSET)
 
->>> flag('de')
-'🇩🇪'
->>> flag('us')
-'🇺🇸'
->>> flag('ua')
-'🇺🇦'
+>>> flag('un')
+'🇺🇳'
+>>> flag('eu')
+'🇪🇺'
 ```
 
 ---
