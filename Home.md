@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://standwithukraine.pp.ua)
+
 [![Logo](https://github.com/python-telegram-bot/logos/raw/master/logo-text/png/ptb-logo-text_768.png)](https://python-telegram-bot.org/)
 
 ## About this Wiki
