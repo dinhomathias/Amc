@@ -9,6 +9,11 @@
 - [ ] webhooks
 - [ ] proxy
 
+Other todo:
+
+- [ ] new page on general architecture overview
+- [ ] Link to the architecture diagram once that's contained in the v14/master branch
+
 
 [![Logo](https://github.com/python-telegram-bot/logos/raw/master/logo-text/png/ptb-logo-text_768.png)](https://python-telegram-bot.org/)
 
