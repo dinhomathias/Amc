@@ -6,9 +6,9 @@ The `telegram.ext` framework provides a built-in solution for this common task. 
 
 ```python
 from uuid import uuid4
-from telegram.ext import Updater, CommandHandler
+from telegram.ext import Application, CommandHandler
 
-def put(update, context):
+async def put(update, context):
     """Usage: /put value"""
     # Generate ID and separate value from command
     key = str(uuid4())
@@ -20,7 +20,7 @@ def put(update, context):
     # Send the key to the user
     update.message.reply_text(key)
 
-def get(update, context):
+async def get(update, context):
     """Usage: /get uuid"""
     # Seperate ID from command
     key = context.args[0]
@@ -30,14 +30,11 @@ def get(update, context):
     update.message.reply_text(value)
 
 if __name__ == '__main__':
-    updater = Updater('TOKEN', use_context=True)
-    dp = updater.dispatcher
+    application = Application.builder().token('TOKEN').build()
 
-    dp.add_handler(CommandHandler('put', put))
-    dp.add_handler(CommandHandler('get', get))
-
-    updater.start_polling()
-    updater.idle()
+    application.add_handler(CommandHandler('put', put))
+    application.add_handler(CommandHandler('get', get))
+    application.run_polling()
 ```
 
 ## Explanation
@@ -61,26 +58,28 @@ If a group chat migrates to supergroup, its chat id will change. Since the `chat
 When a group migrates, Telegram will send an update that just states the new info. In order to catch those, simply define a corresponding handler:
 
 ```python
-def chat_migration(update, context):
-    m = update.message
-    dp = context.dispatcher # available since version 12.4
+async def chat_migration(update, context):
+    message = update.message
+    application = context.application
 
     # Get old and new chat ids
-    old_id = m.migrate_from_chat_id or m.chat_id
-    new_id = m.migrate_to_chat_id or m.chat_id
+    old_id = message.migrate_from_chat_id or message.chat_id
+    new_id = message.migrate_to_chat_id or message.chat_id
 
-    # transfer data, if old data is still present
-    if old_id in dp.chat_data:
-        dp.chat_data[new_id].update(dp.chat_data.get(old_id))
-        del dp.chat_data[old_id]
+    # transfer data, only if old data is still present
+    if old_id in application.chat_data:
+        application.migrate_chat_data(
+            old_chat_id=old_id,
+            new_chat_id=new_id
+        )
 
 ...
 
 def main():
-    updater = Updater("TOKEN", use_context=True)
-    dp = updater.dispatcher # available since version 12.4
-
-    dp.add_handler(MessageHandler(Filters.status_update.migrate, chat_migration))
+    application = Application.builder().token('TOKEN').build()
+    application.add_handler(
+        MessageHandler(filters.StatusUpdate.MIGRATE, chat_migration)
+    )
 
 ...
 ```
@@ -91,7 +90,7 @@ To be entirely sure that the update will be processed by this handler, either ad
 If you try e.g. sending a message to the old chat id, Telegram will respond by a Bad Request including the new chat id. You can access it using an error handler:
 
 ```python
-def error(update, context):
+async def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
@@ -101,23 +100,23 @@ def error(update, context):
 Unfortunately, Telegram does *not* pass along the old chat id, so there is currently no simple way to perform a data transfer like above within the error handler. So make sure, that you catch the status updates! Still, you can wrap your requests into a `try-except`-clause:
 
 ```python
-def my_callback(update, context):
-    dp = context.dispatcher # available since version 12.4
-
+async def my_callback(update, context):
+    applcation = context.applcation
     ...
 
     try:
-        context.bot.send_message(chat_id, text)
-    except ChatMigrated as e:
-        new_id = e.new_chat_id
+        await context.bot.send_message(chat_id, text)
+    except ChatMigrated as exc:
+        new_id = exc.new_chat_id
 
         # Resend to new chat id
-        context.bot.send_message(new_id, text)
+        await context.bot.send_message(new_id, text)
 
         # Transfer data
-        if chat_id in dp.chat_data:
-            dp.chat_data[new_id].update(dp.chat_data.get(chat_id))
-            del dp.chat_data[chat_id]
-
+        if chat_id in application.chat_data:
+            applcation.migrate_chat_data(
+                old_chat_id=chat_id,
+                new_chat_id=new_id
+            )
     ...
 ```
