@@ -56,14 +56,14 @@ To fetch messages sent to your Bot, you can use the [getUpdates](https://core.te
 **Note:** You don't have to use `get_updates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [[here|Extensions-–-Your-first-Bot]].
 
 ```python
-updates = bot.get_updates()
+updates = await bot.get_updates()
 print([u.message.text for u in updates])
 ```
 ---
 #### Fetch images sent to your Bot
 
 ```python
-updates = bot.get_updates()
+updates = await bot.get_updates()
 print([u.message.photo for u in updates if u.message.photo])
 ```
 
@@ -72,7 +72,7 @@ print([u.message.photo for u in updates if u.message.photo])
 You'll always need the `chat_id`
 
 ```python
-chat_id = bot.get_updates()[-1].message.chat_id
+chat_id = (await bot.get_updates())[-1].message.chat_id
 ```
 
 ---
@@ -87,7 +87,7 @@ If the bot has a chat with the user, it will send the message to that chat.
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
-bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
+await bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do that.")
 ```
 
 **Note:** `send_message` method (as any of `send_*` methods of `Bot` class) returns the instance of `Message` class, so it can be used in code later.
@@ -98,7 +98,7 @@ bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't do tha
 This is a shortcut to `bot.send_message` with same defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
 
 ```python
-update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
+await update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
 ```
 
 **Note:** There are equivalents of this method for replying with photos, audio etc., and similar shortcuts exist throughout the library.
@@ -109,25 +109,26 @@ update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
 Use this to tell the user that something is happening on the bot's side:
 
 ```python
-bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+await bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
 ```
 Alternatively, if you have several commands and don't want to repeat the above code snippet inside all commands, you can copy the snippet below and just decorate the callback functions with `@send_typing_action`.
 
 ```python
 from functools import wraps
+from telegram.constants import ChatAction
 
 def send_typing_action(func):
     """Sends typing action while processing func command."""
 
     @wraps(func)
-    def command_func(update, context, *args, **kwargs):
-        context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
-        return func(update, context,  *args, **kwargs)
+    async def command_func(update, context, *args, **kwargs):
+        await context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
+        return await func(update, context,  *args, **kwargs)
 
     return command_func
 
 @send_typing_action
-def my_handler(update, context):
+async def my_handler(update, context):
     pass # Will send 'typing' action while processing the request.
 ```
 
@@ -139,7 +140,7 @@ location_keyboard = telegram.KeyboardButton(text="send_location", request_locati
 contact_keyboard = telegram.KeyboardButton(text="send_contact", request_contact=True)
 custom_keyboard = [[ location_keyboard, contact_keyboard ]]
 reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
-bot.send_message(chat_id=chat_id, 
+await bot.send_message(chat_id=chat_id, 
 ...                  text="Would you mind sharing your location and contact with me?", 
 ...                  reply_markup=reply_markup)
 ```
@@ -159,9 +160,9 @@ You can format text with every API method/type that has a `parse_mode` parameter
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
-bot.send_message(chat_id=chat_id, 
+await bot.send_message(chat_id=chat_id, 
                  text="*bold* _italic_ `fixed width font` [link](http://google.com)\.", 
-                 parse_mode=telegram.ParseMode.MARKDOWN_V2)
+                 parse_mode=telegram.constants.ParseMode.MARKDOWN_V2)
 ```
 
 ---
@@ -169,9 +170,9 @@ bot.send_message(chat_id=chat_id,
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#sendmessage)
 
 ```python
-bot.send_message(chat_id=chat_id, 
+await bot.send_message(chat_id=chat_id, 
                  text='<b>bold</b> <i>italic</i> <a href="http://google.com">link</a>.', 
-                 parse_mode=telegram.ParseMode.HTML)
+                 parse_mode=telegram.constants.ParseMode.HTML)
 ```
 
 ---
@@ -280,19 +281,19 @@ Let's have a look hat how sending a document can be done.
 1. Uploading a file:
 
     ```python
-    bot.send_document(chat_id=chat_id, document=open('tests/test.png', 'rb'))
+    await bot.send_document(chat_id=chat_id, document=open('tests/test.png', 'rb'))
     ```
 
 2. Sending an HTTP-link
 
     ```python
-    bot.send_document(chat_id=chat_id, document='https://python-telegram-bot.org/static/testfiles/telegram.gif'))
+    await bot.send_document(chat_id=chat_id, document='https://python-telegram-bot.org/static/testfiles/telegram.gif'))
     ```
 
 3. Sending by `file_id`:
 
     ```python
-    bot.send_document(chat_id=chat_id, document=file_id))
+    await bot.send_document(chat_id=chat_id, document=file_id))
     ```
     
     Two further notes on this:
@@ -301,14 +302,14 @@ Let's have a look hat how sending a document can be done.
     2. How do you get a `file_id` of a photo you sent? Read it from the return value of `bot.send_document` (or any other `Message` object you get your hands on):
     
         ```python
-        message = bot.send_document(...)
+        message = await bot.send_document(...)
         file_id = message.document.file_id
         ```
        
 This pretty much works the same way for all the other `send_<media_type>` methods like `send_photo`, `send_video` etc. There is one exception, though: `send_media_group`. A call to `send_media_group` looks like this:
 
 ```python
-bot.send_media_group(chat_id=chat_id, media=[media_1, media_2, ...])
+await bot.send_media_group(chat_id=chat_id, media=[media_1, media_2, ...])
 ```
 
 The items in the `media` list must be instances of `InputMediaAudio`, `InputMediaDocument`, `InputMediaPhoto` or `InputMediaVideo`. The media comes into play like so:
@@ -349,7 +350,7 @@ Again, please check out the docs for details on required and optional arguments.
 When you have sent a file, you may want edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example:
 
 ```python
-bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=InputMediaDocument(media=open('tests/test.png'), ...))
+await bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=InputMediaDocument(media=open('tests/test.png'), ...))
 ```
 
 Please check out the restrictions on editing media in the docs of [`send_media_group`](https://core.telegram.org/bots/api#editmessagemedia).
@@ -361,8 +362,8 @@ When you receive files from a user, you sometimes want to download and save them
 
 ```python
 file_id = message.document.file_id
-newFile = bot.get_file(file_id)
-newFile.download()
+newFile = await bot.get_file(file_id)
+await newFile.download()
 ```
 
 For a received video/voice/... change `message.document` to `message.video/voice/...`. However, there is one exception: `message.photo` is a *list* of `PhotoSize` objects, which represent different sizes of the same photo. Use `message.photo[-1].file_id` to get the largest size.
@@ -370,8 +371,8 @@ For a received video/voice/... change `message.document` to `message.video/voice
 Moreover, the above snippet can be shortened by using PTBs built-in utility shortcuts:
 
 ```python
-newFile = message.effective_attachment.get_file()
-newFile.download('file_name')
+newFile = await message.effective_attachment.get_file()
+await newFile.download('file_name')
 ```
 
 `message.effective_attachment` automatically contains whichever media attachment the message has - in case of a photo, you'll again have to use e.g. `message.effective_attachment[-1].get_file()`
@@ -386,9 +387,11 @@ newFile.download('file_name')
 custom_keyboard = [['top-left', 'top-right'], 
                    ['bottom-left', 'bottom-right']]
 reply_markup = telegram.ReplyKeyboardMarkup(custom_keyboard)
-bot.send_message(chat_id=chat_id, 
-                 text="Custom Keyboard Test", 
-                 reply_markup=reply_markup)
+await bot.send_message(
+    chat_id=chat_id, 
+    text="Custom Keyboard Test", 
+    reply_markup=reply_markup
+)
 ```
 
 See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
@@ -399,7 +402,9 @@ See also: [Build a menu with Buttons](#build-a-menu-with-buttons)
 
 ```python
 reply_markup = telegram.ReplyKeyboardRemove()
-bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
+await bot.send_message(
+    chat_id=chat_id, text="I'm back.", reply_markup=reply_markup
+)
 ```
 
 ---
