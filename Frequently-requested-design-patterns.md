@@ -45,7 +45,7 @@ For example, Type Handlers are used in bots to handle "updates" from Github or o
 
 To add any handler, we use [Dispatcher.add_handler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcher.html#telegram.ext.Dispatcher.add_handler). Apart from the handler itself, it takes an optional argument called `group`. We can understand groups as numbers which indicate the priority of handlers. A lower group means a higher priority. An update can be processed by (at most) one handler in each group.
 
-Stopping handlers in higher groups from processing an update is achieved using [DispatcherHandlerStop](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcherhandlerstop.html#telegram.ext.DispatcherHandlerStop). When raising this exception, the Dispatcher is asked to stop sending the updates to handlers in higher groups. Depending on your use case, you may not need to raise it. But it is useful if you want to enable flood handling or limit who can use the bot.
+Stopping handlers in higher groups from processing an update is achieved using [ApplicationHandlerStop](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.ApplicationHandlerStop.html#telegram.ext.ApplicationHandlerStop). When raising this exception, the Dispatcher is asked to stop sending the updates to handlers in higher groups. Depending on your use case, you may not need to raise it. But it is useful if you want to enable flood handling or limit who can use the bot.
 
 That's it. With these three knowledge nuggets, we can solve the question given in the introduction.
 
@@ -55,13 +55,13 @@ Before working on the problems, we will provide you with a template of code that
 
 ```python
 from telegram import Update
-from telegram.ext import CallbackContext, DispatcherHandlerStop, TypeHandler, Updater
+from telegram.ext import CallbackContext, ApplicationHandlerStop, TypeHandler, Updater
 
 
-def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: CallbackContext):
     """Handle the update"""
-    do_something_with_this_update(update, context)
-    raise DispatcherHandlerStop # Only if you DON'T want other handlers to handle this update
+    await do_something_with_this_update(update, context)
+    raise ApplicationHandlerStop # Only if you DON'T want other handlers to handle this update
 
 
 updater = Updater(TOKEN)
@@ -79,12 +79,12 @@ In case you don't want to stop other handlers from processing the update, then y
 This is a generic use case often used for analytics purpose. For example, if you need to add every user who uses your bot to a database, you can use this method. Simply put, this sort of approach is used to keep track of every update.
 
 ```python
-def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: CallbackContext):
     add_message_to_my_analytics(update.effective_message)
     add_user_to_my_database(update.effective_user)
 ```
 
-Note the difference in this example compared to the previous ones. Here we don't raise `DispatcherHandlerStop`. This type of handlers is known as _shallow handler_ or _silent handler_. These type of handlers handle the update and also allow it to be handled by other common handlers like `CommandHandler` or `MessageHandler`. In other words, they don't block the other handlers.
+Note the difference in this example compared to the previous ones. Here we don't raise `ApplicationHandlerStop`. This type of handlers is known as _shallow handler_ or _silent handler_. These type of handlers handle the update and also allow it to be handled by other common handlers like `CommandHandler` or `MessageHandler`. In other words, they don't block the other handlers.
 
 Now let us solve the specific use cases. All you need to do is modify your `callback` as required. 😉
 
@@ -95,12 +95,12 @@ To restrict your bot to a set of users or if you don't want it to be available f
 ```python
 SPECIAL_USERS = [127376448, 172380183, 1827979793] # Allows users
 
-def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: CallbackContext):
     if update.effective_user.user_id in SPECIAL_USERS:
         pass
     else:
-        update.effective_message.reply_text("Hey! You are not allowed to use me!")
-        raise DispatcherHandlerStop
+        await update.effective_message.reply_text("Hey! You are not allowed to use me!")
+        raise ApplicationHandlerStop
 ```
 
 Here, it should be noted that this approach blocks your bot entirely for a set of users. If all you need is to block a specific functionality, like a special command or privilege, then it will be wise to use [Filters.chat](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.chat), [Filters.user](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.user).
@@ -117,7 +117,7 @@ from time import time
 MAX_USAGE = 5
 
 
-def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: CallbackContext):
     count = context.user_data.get("usageCount", 0)
     restrict_since = context.user_data.get("restrictSince", 0)
 
@@ -125,15 +125,15 @@ def callback(update: Update, context: CallbackContext):
         if (time() - restrict_since) >= 60 * 5: # 5 minutes
             del context.user_data["restrictSince"]
             del context.user_data["usageCount"]
-            update.effective_message.reply_text("I have unrestricted you. Please behave well.")
+            await update.effective_message.reply_text("I have unrestricted you. Please behave well.")
         else:
             update.effective_message.reply_text("Back off! Wait for your restriction to expire...")
-            raise DispatcherHandlerStop
+            raise ApplicationHandlerStop
     else:
         if count == MAX_USAGE:
             context.user_data["restrictSince"] = time()
             update.effective_message.reply_text("Stop flooding! Don't bother me for 5 minutes...")
-            raise DispatcherHandlerStop
+            raise ApplicationHandlerStop
         else:
             context.user_data["usageCount"] = count + 1
 ```
