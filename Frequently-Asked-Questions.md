@@ -17,7 +17,6 @@
 - [How can I list all messages of a particular chat or search through them based on a search query?](#how-can-i-list-all-messages-of-a-particular-chat-or-search-through-them-based-on-a-search-query)
 - [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
-- [Is there a limit on the number of buttons in an inline keyboard?](#is-there-a-limit-on-the-number-of-buttons-in-an-inline-keyboard)
 - [How do I access info about the message my bot sent?](#how-do-I-access-info-about-the-message-my-bot-sent)
 
 ### What messages can my Bot see?
@@ -136,13 +135,6 @@ The `callback` method you pass to `JobQueue.run_*` takes exactly *one* argument,
 ### How can I check the version of PTB I am using?
 
 There are three easy ways to do this. Two work from the command line: `pip show python-telegram-bot` or `python -m telegram`. One you run inside a python script (or the python console): `import telegram`, then call `print(telegram.__version__)`.
-
-### Is there a limit on the number of buttons in an inline keyboard?
-
-* max. 100 buttons in total
-* max. 8 buttons per row
-
-Note that this is undocumented and may be changed by Telegram.
 
 
 ### How do I access info about the message my bot sent?
