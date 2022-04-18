@@ -10,6 +10,9 @@ This page is a collection of sorts, dedicated to showcase design patterns we get
   - [Conclusion](#conclusion)
 - [How do I enforce users joining a specific channel before using my bot?](#how-do-i-enforce-users-joining-a-specific-channel-before-using-my-bot)
 - [How do I send a message to all users of the bot?](#how-do-i-send-a-message-to-all-users-of-the-bot)
+- [How do I deal with a media group?](#how-do-i-deal-with-a-media-group)
+  - [Timer based approach](#timer-based-approach)
+  - [Manual approach](#manual-approach)
 
 ## Requirements
 
@@ -157,7 +160,7 @@ Otherwise depending on whether the user in the channel, has joined and left agai
 
 Since API 5.1 (PTB v13.4+) you can alternatively use the [`ChatMember`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmemberupdated.html) updates to keep track of users in channels. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example.
 
-If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is by using [TypeHandler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html). Read this [section](#how-do-i-limit-who-can-use-my-bot-) to learn how to do it.
+If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is by using [TypeHandler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html). Read this [section](#how-do-i-limit-who-can-use-my-bot) to learn how to do it.
 
 ## How do I send a message to all users of the bot?
 
@@ -172,3 +175,29 @@ If you didn't keep track of your users from the beginning, you may have a chance
 Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for [`telegram.error.Unauthorized`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.error.html#telegram.error.Unauthorized) errors.
 
 Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [`JobQueue`](Extensions-–-JobQueue).
+
+## How do I deal with a media group?
+
+The basic problem behind this question is simple. For the end user, it looks like one message, consisting of several medias, are send to the receiver. For the bot API/bot developer, this is not the case however: Every media is send as one unique message, only linked via the unique [Message.media_group_id](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html#telegram.Message.media_group_id) attribute. So you need some way of determining when to start and to end collecting the media messages.
+
+This basic problem has two basic approaches for handling it, without requiring a more eloberate setup involving databases.
+
+### Timer based approach
+
+[Real life code example.](https://github.com/Poolitzer/channelforwarder/blob/589104b8a808199ba46d620736bd8bea1dc187d9/main.py#L19-L46)
+
+This approach has the upside of looking seamless to the user. The downside is that there is a (low) possibilty that one part of the media group is missed.
+
+The idea behind this approach is to start a timer (and an array with the message object/id in it) when receiving the first media_group message. Until the timer runs out, every incoming message with the same media id will be added to the array. Once the timer runs out, the media group is considered done and can be dealt with according to your situation.
+
+There is a possibilty that a part of the media group is received after the timer ran out. This could be because the network was too slow to deliver the updates to you (more likely with a webhook setup since long polling can receive multiple updates at once) or your server took to long to deal with the update (or a combination of both). The result of this happening need to be determined by you.
+
+### Manual approach
+
+```diff
+- Real life code example TBD
+```
+
+This approach has two upsides: You don't force users to use media groups (so they can e.g. send more media then fits in one group) and you will not miss a media. The downside is that it requires manual interaction from users, and we all know how special users can be :)
+
+The idea behind this approach is to start a upload segement in your code. Either in a `ConversationHandler` or with a `CommandHandler`. Ask the user then to send all medias. Once they send the first (or the first media group, this doesn't matter in your code), you store the information you need in an array. Then you ask them to send either more or send a command like `/finish` / a specific text message you intercept with a [MessageHandler + regex Filter](../Types-of-Handlers#pattern-matching-filtersregex). The point behind this is to have the user finish the addition of media on their own terms. Once they triggered the second handler, you can consider the array finished.

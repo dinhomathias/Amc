@@ -60,7 +60,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [SnoopDogg bot](https://github.com/pascalmaximus/snoopdoggbot) - A chatbot/translator which converts text to gangsta(snoop dogg's slang) [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SnoopDoggbot)
 * [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [sed/regex bot](https://github.com/zeroone2numeral2/regex-bot) — Provides sed-like pattern-replacement commands based on Python's regexp module [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/sedbbot)
-* [Sierra Death Generator](https://github.com/skhaz/telegram-sierradeathgenerator) - Generate images using https://deathgenerator.com/
 * [Simple Stock Bot](https://gitlab.com/simple-stock-bots/simple-telegram-stock-bot) - A simple bot for getting stock market information. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/SimpleStockBot)
 * [Slovodel Bot](https://github.com/weiss-d/slovodel-bot) — Generates non-existent Russian words of different types. Another example of the MVC approach.[ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/slovodel_bot)
 * [Smokey Bot](https://github.com/udit-001/smokey-bot) - A telegram bot that provides real-time worldwide air pollution data [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/smokey_bot)
@@ -71,6 +70,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Sticker thief](https://github.com/zeroone2numeral2/sticker-thief) — Let people create custom sticker packs from existing stickers
 * [Subscription bot](https://github.com/AlexLoushkin/TelegramSubscriptionBot) — Helps organize a subscription for a news web site
 * [sudobot](https://github.com/bvanrijn/sudobot) — Runs commands on your server and lets you easily share the output
+* [SUMS MD 1400 Bot](https://github.com/AlirezaChinian/SUMS-1400-Telegram-Bot) - Official telegram bot of SUMS MD 1400
 * [SurfSpot Bot](https://github.com/ereid7/surfspot-bot-telegram) - Bot which retrieves the surf report for a given surf spot
 * [teleGit Bot](https://github.com/HeavenH/teleGit) — A bot to list the GitHub repositories, show users information.
 * [TimeZone Bot](https://gist.github.com/guysoft/4f220fe407a9bff37e3feff9f60f83a7) — Lets you pick a timezone. This bot also uses a class for its design pattern.
@@ -87,6 +87,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [VorpalRobot](https://github.com/Tronikart/VorpalRobot) - an inline dice rolling bot [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/VorpalRobot)
 * [Watermaker-bot](https://github.com/alistvt/watermarker-bot) - A bot to watermark your files by your logo.
+* [Word Bot](https://github.com/bluec/telegram-word-bot) - A simple Telegram bot that analyses a given word.
 * [WordArtBot](https://github.com/mrfelipenoronha/WordArtBot) - Generate WordArts in Telegram.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
