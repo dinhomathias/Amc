@@ -103,9 +103,14 @@ The argument `users` is now optional as specified by the Bot API.
 
 ### `BasePersistence`
 
+#### Data must be copyable
+
+Any data passed to persistence will be copied with [`copy.deepcopy`](https://docs.python.org/3/library/copy.html#copy.deepcopy).
+This requirement is in place to avoid race conditions.
+
 #### Persisting `telegram.Bot` instances.
 
-In [[Version 13|Transition-guide-to-Version-13.0]], we introduced a mechanism that replaces any `telegram.Bot` instance with a placeholder automatically *before* `update_*_data` was called and inserts the instance back into the return value of `get_*_data`. Unfortunately, this mechanism has proven to be instable and also slow.
+In [[Version 13|Transition-guide-to-Version-13.0]], we introduced a mechanism that replaces any `telegram.Bot` instance with a placeholder automatically *before* `update_*_data` was called and inserts the instance back into the return value of `get_*_data`. Unfortunately, this mechanism has proven to be unstable and also slow.
 
 We have therefore decided to remove this functionality. `Bot` instances should still not be serialized, but handling this is now the responsibility of the specific implementation of `BasePersistence`. For example, `ext.PicklePersistence` uses the built-in functionality of the `pickle` module to achieve the same effect in a more reliable way.
 
