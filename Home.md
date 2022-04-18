@@ -1,3 +1,15 @@
+# Pages to update
+
+- [ ] `JobQueue`
+- [ ] Tutorial your first bot
+- [ ] inline keyboard example
+- [ ] performance optimization - extract the asyncio related things to a standalone page
+- [ ] Type checking
+- [ ] types of handlers
+- [ ] webhooks
+- [ ] proxy
+
+
 [![Logo](https://github.com/python-telegram-bot/logos/raw/master/logo-text/png/ptb-logo-text_768.png)](https://python-telegram-bot.org/)
 
 ## About this Wiki
