@@ -1,5 +1,5 @@
-If you still have problems with **this** library, feel free to join the [official group chat on Telegram](https://t.me/pythontelegrambotgroup).
+If you still have problems with *this* library, the prefered way to get help is to join the [official group chat on Telegram](https://t.me/pythontelegrambotgroup).
 
-If your country is limited and you cannot send messages to public groups, you can make use of our [IRC Bridge to the group](https://webchat.freenode.net/?channels=#%23python-telegram-bot). You will need a nick (without spaces), and you can omit the password (it is optional).
+Alternatively, you can also als a question in the [Discussions section](https://github.com/python-telegram-bot/python-telegram-bot/discussions) on GitHub.
 
-You may also ask on [StackOverflow](https://stackoverflow.com/), if you prefer.
+Finally, there is also a `python-telegram-bot` tag on [StackOverflow](https://stackoverflow.com/questions/tagged/python-telegram-bot), though the development team of this library doesn't actively follow those questions.
