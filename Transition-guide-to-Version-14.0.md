@@ -142,6 +142,8 @@ The `ext.filters` module was rewritten almost from scratch and uses a new namesp
 2. Already instantiated filters that don't need arguments are now in `SCREAMING_SNAKE_CASE`, e.g. `filters.TEXT`. Filter *classes* that do need arguments to be used are now in `CamelCase`, e.g. `filters.User`.
 3. For filters that are closely related, we now use a namespace class to group them. For example, `filters.Document` can not be used in `MessageHandler`. To filter for messages with *any* document attached, use `filters.Document.ALL` instead.
 
+Moreover, filters are no longer callable. To check if a filter accepts an update, use the new syntax `my_filter.check_update(update)` instead.
+
 ### `JobQueue`
 
 #### New arguments `{chat, user}_id`
