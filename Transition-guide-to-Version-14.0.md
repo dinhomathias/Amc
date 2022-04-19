@@ -8,6 +8,36 @@ Add this in the end …
 
 We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]]. 
 
+## `asyncio`
+
+The deepest structural change is introducing the `asyncio` module into `python-telegram-bot`.
+
+> [`asyncio`](https://docs.python.org/3/library/asyncio.html) asyncio is a library to write concurrent code using the `async`/`await` syntax.
+
+What does this mean and why do we care?
+
+`python-telegram-bot` is a library with the main purpose of communicating with the Telegram Bot API via web requests.
+When making web requests, your code usually spends a *lot* of time with - waiting.
+Namely, waiting for a response from Telegram.
+The same holds for many so-called input-output (I/O) tasks.
+Instead of sitting around, your program could already do other stuff in that time.
+
+So far, PTB has build on the [`threading`](https://docs.python.org/3/library/threading.html) library to overcome this issue.
+
+`asyncio` is a modern alternative to `threading` that comes with multiple advantages.
+Covering those or an introduction to how using `asyncio` works, is sadly beyond the scope of this transition guide or the PTB resources in general.
+Searching for `python asyncio introduction` or `python asyncio vs threading` in your favorite search engine will yield numerous results that will help you get up to speed.
+
+The main points of what `asyncio` changed in PTB are:
+
+* PTB doesn't use threads anymore. It is also not thread safe!
+* All API methods of `telegram.Bot` are now coroutine functions, i.e. you have to `await` them
+* All handler & job callbacks must be coroutine functions, i.e. you need to change `def callback(update, context)` to `async def callback(update, context)`.
+* the `run_async` parameter of the handlers was replaced by the `block` parameter, which has a similar functionality. More details on this can be found on [[this page|here be link]].
+* The method `Dipsatcher.run_async` doesn't exist anymore. Something that comes close to its functionality is `Application.create_task` (more on `Application` below). More details on this can be found on [[this page|here be link]].
+* All methods that make calls coroutines or preform any I/O bound tasks are now coroutine functions.
+This includes all abstract methods of `BasePersistence`. Listing them all here would be too long. When in doubt, please consult the documentation at [ReadTheDocs](https://python-telegram-bot.readthedocs.io).
+
 ##  Refinement of the public API
 
 We've made an effort to make it more clear which parts of `python-telegram-bot` can be considered to be part of the public interface that users are allowed to use. To phrase it the other way around: Which parts are internals of `python-telegram-bot` are implementation details that might change without notice. Notably this means:
@@ -102,6 +132,10 @@ The argument `users` is now optional as specified by the Bot API.
 ## `telegram.ext`
 
 ### `BasePersistence`
+
+#### `asyncio`
+
+All abstract methods are now coroutine functions as implementations should be able to perform I/O tasks in a non-blocking way.
 
 #### Data must be copyable
 
