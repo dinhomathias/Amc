@@ -103,11 +103,17 @@ async def my_callback(update, context):
         # Resend to new chat id
         await context.bot.send_message(new_id, text)
 
-        # Transfer data
-        if chat_id in application.chat_data:
-            application.migrate_chat_data(
-                old_chat_id=chat_id,
-                new_chat_id=new_id
-            )
+        # Get old and new chat ids
+        old_id = message.migrate_from_chat_id or message.chat_id
+        new_id = message.migrate_to_chat_id or message.chat_id
+
+        # transfer data, only if old data is still present
+        # this step is important, as Telegram sends *two* updates
+        # about the migration
+        if old_id in application.chat_data:
+        application.migrate_chat_data(
+            old_chat_id=old_id,
+            new_chat_id=new_id
+        )
     ...
 ```
