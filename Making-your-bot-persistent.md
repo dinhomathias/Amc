@@ -22,7 +22,7 @@ See e.g. [`ptbcontrib/ptb_sqlalchemy_jobstore`](https://github.com/python-telegr
 ## Included persistence classes
 Three classes concerning persistence in bots have been added.  
 * [BasePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.basepersistence.html) - Is an interface class for persistence classes.
-If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence` and ipmlement all abstract methods
+If you create your own persistence classes to maintain a database-connection for example, you must inherit from `BasePersistence` and implement all abstract methods
 * [PicklePersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.picklepersistence.html) - Uses pickle files to make the bot persistent.  
 * [DictPersistence](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.dictpersistence.html) - Uses in memory dicts and easy conversion to and from JSON to make the bot persistent.
 Note that this class is mainly intended as starting point for custom persistence classes that need to JSON-serialize the stored data before writing them to file/database and does *not* actually write any data to file/database.
@@ -50,13 +50,13 @@ For example `ConversationHandler(..., persistent=True, name='my_name')`. `persis
 Adding these arguments and adding the conversation handler to a persistence-aware `Application` will make it persistent.
 
 When starting the `Application` with `Application.start()` or `Application.run_{polling, webhook}`, it will automatically update the persistence in regular intervals.
-You can customize the interval via the corresponding argument of `Base/Pickle/Dict/…Persistence`.
+You can customize the interval via the [`update_interval`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.params.update_interval) argument of `Base/Pickle/Dict/…Persistence`.
 
 ## Refreshing at runtime
 
 If your persistence reads the data from an external database, the entries in this database could change at runtime.
 This is the case in particular, if the entries in the database are created by a 3rd party service independently of your bot.
-If you want to make sure that the data in `context.user/chat/bot_data` are always up-to-date, your persistence class should implement the methods `refresh_bot/chat/user_data`.
+If you want to make sure that the data in `context.user/chat/bot_data` are always up-to-date, your persistence class should implement the methods [`refresh_bot/chat/user_data`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.refresh_chat_data).
 Those will be called when in update comes in, before any of your callbacks are called.
 
 These methods can also be useful to implement a lazy-loading strategy.
@@ -67,12 +67,13 @@ Instances of `telegram.Bot` should not be serialized, because changes to the bot
 
 For example, you might change the [[default values|Adding-defaults-to-your-bot]] used by the bot.
 Or if you change the bots token, this may lead to e.g. `Chat not found` errors.
-This is relevant e.g., if you store Telegram objects like `Message` in `bot/user/chat_data`, as some of them hold a reference to `Apllication.bot` (which is how the shortcuts like `Message.reply_text` work).
+This is relevant e.g., if you store Telegram objects like `Message` in `bot/user/chat_data`, as some of them hold a reference to `Application.bot` (which is how the shortcuts like `Message.reply_text` work).
 
-The interface class `BaseRequest` does not question what kind of data you supply to its methods.
+The interface class `BasePersistence` does not question what kind of data you supply to its methods.
 Hence, each implementation should take care that it does not try to serialize `telegram.Bot` instances.
 For example, it can check if the data equals the attribute `BasePersistence.bot` (which will be the bot object used by the `Application`) and instead store a placeholder.
 When loading the data, the `BasePersistence.bot` can be reinserted instead of the placeholder.
 Indeed, this is basically what the built-in `PicklePersistence` does.
 
-For more technical details, please refer to the documentation of `{Base, Pickle}Persistence`.
+For more technical details, please refer to the documentation of [`BasePersistence`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram-ext-basepersistence), 
+[`PicklePersistence`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.picklepersistence.html#telegram-ext-picklepersistence)
