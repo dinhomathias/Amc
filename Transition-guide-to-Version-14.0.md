@@ -70,6 +70,12 @@ This module was rewritten from scratch. The constants are now grouped with the h
 
 The argument `hash` is now the second positional argument as specified by the Bot API.
 
+### `telegram.error`
+
+`telegram.error.Unauthorized` was replaced by `telegram.error.Forbidden`.
+Moreover, `telegram.error.Forbidden` is now only raised if your bot tries to perform actions that it doesn't have enough rights for.
+In case your bot token is invalid, `telegram.error.InvalidToken` is raised.
+
 ### `telegram.File`
 
 * The `custom_path` parameter now also accepts `pathlib.Path` objects.
