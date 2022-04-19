@@ -24,28 +24,27 @@ from telegram.constants import ParseMode
 from telegram.ext import MessageHandler, filters, Defaults, Application
 
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
 )
 
 
 async def job(context):
     chat_id = context.job.chat_id
-    local_now = dtm.datetime.now(context.bot.defaults.tzinfo)
+    timezone = context.bot.defaults.tzinfo
+    local_now = dtm.datetime.now(timezone)
     utc_now = dtm.datetime.utcnow()
-    text = 'Running job at {} in timezone {}, which equals {} UTC.'.format(
-        local_now, context.bot.defaults.tzinfo, utc_now
-    )
+    text = f'Running job at {local_now} in timezone {timezone}, which equals {utc_now} UTC.'
     await context.bot.send_message(chat_id=chat_id, text=text)
 
 
 async def echo(update, context):
+    text = update.message.text
     # Send with default parse mode
-    await update.message.reply_text('<b>{}</b>'.format(update.message.text))
+    await update.message.reply_text(f'<b>{text}</b>')
     # Override default parse mode locally
-    await update.message.reply_text(
-        '*{}*'.format(update.message.text), parse_mode=ParseMode.MARKDOWN
-    )
-    await update.message.reply_text('*{}*'.format(update.message.text), parse_mode=None)
+    await update.message.reply_text(f'*{text}*', parse_mode=ParseMode.MARKDOWN)
+    # Send with no parse mode
+    await update.message.reply_text(f'*{text}*', parse_mode=None)
 
     # Schedule job
     context.job_queue.run_once(
