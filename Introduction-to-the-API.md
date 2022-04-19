@@ -12,7 +12,7 @@ For full details see the official Telegram documentation at [Bots: An introducti
 
 #### Hello, Telegram!
 
-To get a feeling for the API and how to use it with `python-telegram-bot`, please a new Python file.
+To get a feeling for the API and how to use it with `python-telegram-bot`, please create a new Python file.
 
 We first want to create an instance of the `telegram.Bot` and check that the credentials are correct.
 Please paste the following code into your file.
@@ -68,9 +68,7 @@ The output should now look something like this (we abbreviated the output a bit)
 
 We copy the chat id, here `1234567890`.
 Note that you can access it also as `updates[0].message.from_user.id`, because `updates[0]` is an instance of the `Update` class.
-Now that we have the chat ID, we can send a message by again adjust the `main`:
-
-```python
+Now that we have the chat ID, we can send a message by again adjusting the `main()`:
 
 ```python
 async def main():

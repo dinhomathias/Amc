@@ -12,14 +12,15 @@ In addition to those four, there are several other components, which are not as 
 All of those components have different parameters. Some of them are optional. Some are required. Some are mutually exclusive.
 That's a lot to take in and when coding your bot and setting this all up by yourself would be tiresome.
 
-That's why `python-telegram-bot` makes an effort to make the setup easy with reasonable defaults. E.g. with
+That's why `python-telegram-bot` makes an effort to make the setup easy with reasonable defaults.
+For example, after running
 
 ```python
 from telegram.ext import Application
 application = Application.builder().token('TOKEN').build()
 ```
 
-`python-telegram-bot` you will automatically have
+you will automatically have
 
 * the `Updater` available as `application.dispatcher`
 * the `Bot` available as `application.(updater.)bot`
@@ -28,7 +29,7 @@ application = Application.builder().token('TOKEN').build()
 
 But what if you want to customize some arguments that `Application`, `Updater`, `Bot`, `BaseRequest` or other components accept? Do you have to build all those objects yourself and glue them together? No! (Well, you can, but you don't have to.)
 
-This is, where the [builder patter](https://en.wikipedia.org/wiki/Builder_pattern) comes into play. The idea is roughly as follows: You went shopping and have all the ingredients for a nice stew, but you don't want to cook yourself. So you hand everything to a chef. The chef will tell you that some of your ingredients don't match and will discard them. Afterwards, he'll cook a nice stew for you and you never need to worry about how exactly that's done.
+This is, where the [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) comes into play. The idea is roughly as follows: You went shopping and have all the ingredients for a nice stew, but you don't want to cook yourself. So you hand everything to a chef. The chef will tell you that some of your ingredients don't match and will discard them. Afterwards, he'll cook a nice stew for you and you never need to worry about how exactly that's done.
 
 Let's get a bit more technical. First, we need the cook:
 

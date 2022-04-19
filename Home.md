@@ -1,7 +1,7 @@
 # Pages to update
 
 - [ ] `JobQueue`
-- [ ] Tutorial your first bot
+- [x] Tutorial your first bot
 - [ ] inline keyboard example
 - [ ] performance optimization - extract the asyncio related things to a standalone page
 - [ ] Type checking

@@ -18,7 +18,7 @@ async def put(update, context):
     # Store value
     context.user_data[key] = value
     # Send the key to the user
-    update.message.reply_text(key)
+    await update.message.reply_text(key)
 
 async def get(update, context):
     """Usage: /get uuid"""
@@ -27,7 +27,7 @@ async def get(update, context):
 
     # Load value and send it to the user
     value = context.user_data.get(key, 'Not found')
-    update.message.reply_text(value)
+    await update.message.reply_text(value)
 
 if __name__ == '__main__':
     application = Application.builder().token('TOKEN').build()
@@ -61,18 +61,7 @@ When a group migrates, Telegram will send an update that just states the new inf
 async def chat_migration(update, context):
     message = update.message
     application = context.application
-
-    # Get old and new chat ids
-    old_id = message.migrate_from_chat_id or message.chat_id
-    new_id = message.migrate_to_chat_id or message.chat_id
-
-    # transfer data, only if old data is still present
-    if old_id in application.chat_data:
-        application.migrate_chat_data(
-            old_chat_id=old_id,
-            new_chat_id=new_id
-        )
-
+    application.migrate_chat_data(message=message)
 ...
 
 def main():
@@ -83,11 +72,13 @@ def main():
 
 ...
 ```
+See also: [`migrate_chat_data`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.application.html#telegram.ext.Application.migrate_chat_data)
+
 To be entirely sure that the update will be processed by this handler, either add it first or put it in its own group.
 
 ### ChatMigrated Errors
 
-If you try e.g. sending a message to the old chat id, Telegram will respond by a Bad Request including the new chat id. You can access it using an error handler:
+If you try e.g. sending a message to the old chat id, Telegram will respond by a `BadRequest` including the new chat id. You can access it using an error handler:
 
 ```python
 async def error(update, context):
@@ -101,7 +92,7 @@ Unfortunately, Telegram does *not* pass along the old chat id, so there is curre
 
 ```python
 async def my_callback(update, context):
-    applcation = context.applcation
+    application = context.application
     ...
 
     try:
@@ -112,11 +103,17 @@ async def my_callback(update, context):
         # Resend to new chat id
         await context.bot.send_message(new_id, text)
 
-        # Transfer data
-        if chat_id in application.chat_data:
-            applcation.migrate_chat_data(
-                old_chat_id=chat_id,
-                new_chat_id=new_id
-            )
+        # Get old and new chat ids
+        old_id = message.migrate_from_chat_id or message.chat_id
+        new_id = message.migrate_to_chat_id or message.chat_id
+
+        # transfer data, only if old data is still present
+        # this step is important, as Telegram sends *two* updates
+        # about the migration
+        if old_id in application.chat_data:
+        application.migrate_chat_data(
+            old_chat_id=old_id,
+            new_chat_id=new_id
+        )
     ...
 ```

@@ -8,7 +8,7 @@ When using `MessageHandler` it is sometimes useful to have more than one filter.
 from telegram.ext import MessageHandler, filters
 
 handler = MessageHandler(
-   filters.VIDEO | filters.PHOTO | filters.DOCUMET.ALL, 
+   filters.VIDEO | filters.PHOTO | filters.Document.ALL, 
    callback
 )
 ```
@@ -24,8 +24,8 @@ from telegram import MessageEntity
 
 handler = MessageHandler(
    filters.TEXT & (
-      filters.entity(MessageEntity.URL) |
-      filters.entity(MessageEntity.TEXT_LINK)
+      filters.Entity(MessageEntity.URL) |
+      filters.Entity(MessageEntity.TEXT_LINK)
    ),
    callback
 )
@@ -65,15 +65,15 @@ The class can of course be named however you want, the only important things are
 The filter can then be used as:
 ```python
 awesome_handler = MessageHandler(filter_awesome, callback)
-dispatcher.add_handler(awesome_handler)
+application.add_handler(awesome_handler)
 ```
 
 ## `Filters` and `CallbackContext`
 
-You may have noticed that when using `filters.regex`, the attributes `context.matches` and `context.match` are set to the corresponding matches. To achieve something like this for your custom filter, you can do the following:
+You may have noticed that when using [`filters.Regex`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Regex), the attributes [`context.matches`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.matches) and [`context.match`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.match) are set to the corresponding matches. To achieve something like this for your custom filter, you can do the following:
 
 1. Set `self.data_filter=True` for your filter.
-2. If the update should be handled return a dictionary of the form `{attribute_name: [values]}`. This dict will be merged with the internal dict of the `context` argument making `value` available as `context.attribute_name`. This currently works with `MessageHandler`, `CommandHandler` and `PrefixHandler`, which are the only handlers that accept filters.
+2. If the update should be handled, return a dictionary of the form `{attribute_name: [values]}`. This dict will be merged with the internal dict of the `context` argument making `value` available as `context.attribute_name`. This currently works with `MessageHandler`, `CommandHandler` and `PrefixHandler`, which are the only handlers that accept filters.
 
    **Note:** The values of the returned dict must be *lists*. This is necessary to make sure that multiple data filters can be merged meaningfully.
 

@@ -100,6 +100,12 @@ This module was rewritten from scratch. The constants are now grouped with the h
 
 The argument `hash` is now the second positional argument as specified by the Bot API.
 
+### `telegram.error`
+
+`telegram.error.Unauthorized` was replaced by `telegram.error.Forbidden`.
+Moreover, `telegram.error.Forbidden` is now only raised if your bot tries to perform actions that it doesn't have enough rights for.
+In case your bot token is invalid, `telegram.error.InvalidToken` is raised.
+
 ### `telegram.File`
 
 * The `custom_path` parameter now also accepts `pathlib.Path` objects.
@@ -160,7 +166,7 @@ More detailed information on this can be found in the documentation of `{Base, P
 
 #### `store_*_data`
 
-The parameters & attributes `store_{user,chat,bot}_data` were removed. Instead, these settings were combined into the argument/attribute `store_data`, which accepts an instance of the new helper class `telegram.ext.PersistenceInput`.
+The parameters & attributes `store_{user,chat,bot}_data` were removed. Instead, these settings were combined into the argument/attribute `store_data`, which accepts an instance of the new helper class [`telegram.ext.PersistenceInput`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.persistenceinput.html#telegram-ext-persistenceinput).
 
 Note that `callback_data` is now persisted by default.
 
@@ -195,6 +201,12 @@ Moreover, `context.{char, user}_data` will be available. This has some subtile a
 
 Unfortunately, the `day_is_strict` argument was not working correctly (see [#2627](../issues/2627)) and was therefore removed. Instead, you cann now pass `day='last'` to make the job run on the last day of the month.
 
+### `Job`
+
+#### Removed the attribute `job_queue`
+
+This was removed because if you have access to a job, then you also have access to either the `JobQueue` directly or at least a `CallbackContext` instance, which already contains the `job_queue`.
+
 ### `PicklePersistence`
 
 * The argument `filename` was renamed to `filepath` and now also accepts a `pathlib.Path` object
@@ -203,3 +215,9 @@ Unfortunately, the `day_is_strict` argument was not working correctly (see [#262
 ### `Updater`
 
 The sole purpose of this class now is to fetch updates from Telegram. It now only accepts the arguments `bot` and `update_queue` and only has those attributes.
+
+### `Application`/`Dispatcher`
+
+#### `user/chat_data`
+
+If you were modifying the `user/chat_data` of `Dispatcher` directly e.g. by doing `context.dispatcher.chat_data[id] = ...`, then this will now not work. [`Application.user/chat_data`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application.chat_data) is now read only. Note that `context.chat/user_data[key] = ...` will still work.
