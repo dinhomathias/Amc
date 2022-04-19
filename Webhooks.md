@@ -9,6 +9,14 @@ The general difference between polling and a webhook is:
 - Polling (via `get_updates`) periodically connects to Telegram's servers to check for new updates
 - A Webhook is a URL you transmit to Telegram once. Whenever a new update for your bot arrives, Telegram sends that update to the specified URL.
 
+Let's explain this with a metapher.
+Imagine you want to check if you have mail.
+
+With (long) polling, you have a post office box and need to check yourself if you have new mail.
+So you rush to the post office and wait in front of your box all day to see if the post man puts something in there - you only go home for small pee breaks.
+
+With a webhook, you have a mailbox right at your home and the post man delivers the mail right to that mailbox. However, that only works if the post man knows your address (the URL).
+
 ## Requirements
 ### A public IP address or domain
 Usually this means you have to run your bot on a server, either a dedicated server or a VPS. Read [[Where to host Telegram Bots|Where-to-host-Telegram-Bots]] to find a list of options. 
@@ -37,48 +45,47 @@ The `openssl` utility will ask you a few details. **Make sure you enter the corr
 There actually is a third requirement: a HTTP server to listen for webhook connections. At this point, there are several things to consider, depending on your needs. 
 
 ### The integrated webhook server
-The `python-telegram-bot` library ships a custom HTTP server, based on the CPython `BaseHTTPServer.HTTPServer` implementation, that is tightly integrated in the `telegram.ext` module and can be started using `Updater.start_webhook`. This webserver also takes care of decrypting the HTTPS traffic. It is probably the easiest way to set up a webhook.
+The `python-telegram-bot` library ships a custom HTTP server, that is tightly integrated in the `telegram.ext` module and can be started using `Updater.start_webhook`/`Application.run_webhook`. This webserver also takes care of decrypting the HTTPS traffic. It is probably the easiest way to set up a webhook.
 
 However, there is a limitation with this solution. Telegram currently only supports four ports for webhooks: *443, 80, 88* and *8443.* As a result, you can only run a **maximum of four bots** on one domain/IP address. 
 
 If that's not a problem for you (yet), you can use the code below (or similar) to start your bot with a webhook. The `listen` address should either be `'0.0.0.0'` or, if you don't have permission for that, the public IP address of your server. The port can be one of `443`, `80`, `88` or `8443`. For the `url_path`, it is recommended to use your Bot's token, so no one can send fake updates to your bot. `key` and `cert` should contain the path to the files you generated [earlier](#creating-a-self-signed-certificate-using-openssl). The `webhook_url` should be the actual URL of your webhook. Include the `https://` protocol in the beginning, use the domain or IP address you set as the FQDN of your certificate and the correct port and URL path.
 
 ```python
-updater.start_webhook(listen='0.0.0.0',
-                      port=8443,
-                      url_path='TOKEN',
-                      key='private.key',
-                      cert='cert.pem',
-                      webhook_url='https://example.com:8443/TOKEN')
+application.run_webhook(
+    listen='0.0.0.0',
+    port=8443,
+    url_path='TOKEN',
+    key='private.key',
+    cert='cert.pem',
+    webhook_url='https://example.com:8443/TOKEN'
+)
 ```
 
 ### Reverse proxy + integrated webhook server
-To solve this problem, you can use a reverse proxy like *nginx* or *haproxy*.
+To overcome the port limitation, you can use a reverse proxy like *nginx* or *haproxy*.
 
 In this model, a single server application listening on the public IP, the *reverse proxy*, accepts all webhook requests and forwards them to the correct instance of locally running *integrated webhook servers.* It also performs the *SSL termination*, meaning it decrypts the HTTPS connection, so the webhook servers receive the already decrypted traffic. These servers can run on *any* port, not just the four ports allowed by Telegram, because Telegram only connects to the reverse proxy directly. 
-
-**Note:** In this server model, you have to call `set_webhook` yourself, if you are on PTB version <13.4.
 
 Depending on the reverse proxy application you (or your hosting provider) is using, the implementation will look a bit different. In the following, there are a few possible setups listed.
 
 #### Heroku
 On Heroku using webhook can be beneficial on the free-plan because it will automatically manage the downtime required.
-The reverse proxy is set up for you and an environment is created. From this environment you will have to extract the port the bot is supposed to listen on. Heroku manages the SSL on the proxy side, so you don't have provide the certificate yourself.
+The reverse proxy is set up for you and an environment is created. From this environment you will have to extract the port the bot is supposed to listen on. Heroku manages the SSL on the proxy side, so you don't have to provide the certificate yourself.
 
 ```python
 import os
 
 TOKEN = "TOKEN"
 PORT = int(os.environ.get('PORT', '8443'))
-updater = Updater(TOKEN)
 # add handlers
-updater.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=TOKEN,
-                      webhook_url="https://<appname>.herokuapp.com/" + TOKEN)
-updater.idle()
+application.run_webhook(
+    listen="0.0.0.0",
+    port=PORT,
+    url_path=TOKEN,
+    webhook_url="https://<appname>.herokuapp.com/" + TOKEN
+)
 ```
-
 
 #### Using nginx with one domain/port for all bots
 This is similar to the Heroku approach, just that you set up the reverse proxy yourself. All bots set their `url` to the same domain and port, but with a different `url_path`. The integrated server should usually be started on the `localhost` or `127.0.0.1` address, the port can be any port you choose.
@@ -87,12 +94,12 @@ This is similar to the Heroku approach, just that you set up the reverse proxy y
 
 Example code to start the bot:
 ```python
-updater.start_webhook(
+application.run_webhook(
     listen='127.0.0.1',
     port=5000,
     url_path='TOKEN1',
     webhook_url='https://example.com/TOKEN1',
-    cert='cert.pem')
+    cert='cert.pem'
 )
 ```
 
@@ -121,7 +128,7 @@ In this approach, each bot is assigned their own *subdomain*. If your server has
 
 Example code to start the bot:
 ```python
-updater.start_webhook(
+application.run_webhook(
     listen='127.0.0.1',
     port=5000,
     url_path='TOKEN',
@@ -151,67 +158,33 @@ backend bot2
 ```
 
 ### Custom solution
-You don't necessarily have to use the integrated webserver *at all*. If you choose to go this way, **you should not use the `Updater` class.** The `telegram.ext` module was designed with this option in mind, so you can still use the `Dispatcher` class to profit from the message filtering/sorting it provides. You will have to do some work by hand, though.
+You don't necessarily have to use the integrated webserver *at all*. If you choose to go this way, **you should not use the `Updater` class.** The `telegram.ext` module was designed with this option in mind, so you can still use the `Application` class to profit from the message filtering/sorting it provides. You will have to do some work by hand, though.
 
-A general skeleton code can be found below.
-
-**Setup part, called once:**
-
-```python
-from queue import Queue  # in python 2 it should be "from Queue"
-from threading import Thread
-
-from telegram import Bot
-from telegram.ext import Dispatcher
-
-def setup(token):
-    # Create bot, update queue and dispatcher instances
-    bot = Bot(token)
-    update_queue = Queue()
-    
-    dispatcher = Dispatcher(bot, update_queue)
-    
-    ##### Register handlers here #####
-    
-    
-    # Start the thread
-    thread = Thread(target=dispatcher.start, name='dispatcher')
-    thread.start()
-    
-    return update_queue
-    # you might want to return dispatcher as well, 
-    # to stop it at server shutdown, or to register more handlers:
-    # return (update_queue, dispatcher)
-```
-
-**Called on webhook** with the decoded `Update` object (use `Update.de_json(json.loads(text), bot)` to decode the update):
-
-```python
-def webhook(update):
-    update_queue.put(update)
-```
-
-#### Alternative (no threading)
-**Setup part, called once:**
+The general idea is outlined below.
 
 ```python
 from telegram import Bot
-from telegram.ext import Dispatcher
+from telegram.ext import Application
 
-def setup(token):
-    # Create bot, update queue and dispatcher instances
-    bot = Bot(token)
+application = Application.builder().token('TOKEN').build()
     
-    dispatcher = Dispatcher(bot, None, workers=0)
-    
-    ##### Register handlers here #####
-    
-    return dispatcher
+# Register handlers here
+
+# Get the update_queue from which the application fetches the updates to handle
+update_queue = application.update_queue
+start_fetching_updates(update_queue)
+
+# Start and run the application
+async with application:
+    application.start()
+    # when some shutdown mechanism is triggered:
+    application.stop()
 ```
 
-**Called on webhook** with the decoded `Update` object (use `Update.de_json(json.loads(text), bot)` to decode the update):
+Here, `start_fetching_updates` is a placeholder for whichever method you use to set up a webhook.
+The important part is that you enqueue the received updates into the `update_queue`.
+That is, call `await update_queue.put(update)`, where `update` is the decoded `Update` object (use `Update.de_json(json.loads(text), bot)` to decode the update from the received JSON data).
 
-```python
-def webhook(update):
-    dispatcher.process_update(update)
-```
+#### Alternative: No long running tasks
+If you don't want to use the long running tasks started by `application.start()`, you don't have to!
+Instead of putting the updates into the `update_queue`, you can directly process them via `application.process_update(update)`.

@@ -5,8 +5,8 @@
 - [ ] inline keyboard example
 - [ ] performance optimization - extract the asyncio related things to a standalone page
 - [ ] Type checking
-- [ ] types of handlers
-- [ ] webhooks
+- [x] types of handlers
+- [x] webhooks
 - [ ] proxy
 
 Other todo:
