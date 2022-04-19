@@ -13,13 +13,14 @@ All of those components have different parameters. Some of them are optional. So
 That's a lot to take in and when coding your bot and setting this all up by yourself would be tiresome.
 
 That's why `python-telegram-bot` makes an effort to make the setup easy with reasonable defaults.
+For example, after running
 
 ```python
 from telegram.ext import Application
 application = Application.builder().token('TOKEN').build()
 ```
 
-E.g. with `python-telegram-bot` you will automatically have
+you will automatically have
 
 * the `Updater` available as `application.dispatcher`
 * the `Bot` available as `application.(updater.)bot`
