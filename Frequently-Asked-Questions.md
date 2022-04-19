@@ -90,7 +90,7 @@ If your handlers callback returns `None` instead of the next state, you will sta
 Receiving updates from an external service, e.g. updates about your GitHub repo, is a common use case.
 How exactly you get them sadly is beyond the scope of PTB, as that depends on the service. For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](Extensions-–-JobQueue) for that.
 
-If you have a setup for getting the updates, you can put them in your bots update queue via `updater.update_queue.put(your_update)`. The `update_queue` is also available as `dispatcher.update_queue` and `context.update_queue`.
+If you have a setup for getting the updates, you can put them in your bots update queue via `await application.update_queue.put(your_update)`. The `update_queue` is also available as `context.update_queue`.
 Note that `your_update` does *not* need to be an instance of `telegram.Update` - on the contrary! You can e.g. write your own custom class to represent an update from your external service.
 To actually do something with the update, you can register a [`TypeHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html). [`StringCommandHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.stringcommandhandler.html) and [`StringRegexHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.stringregexhandler.html) might also be interesting for some use cases. 
 
@@ -130,7 +130,13 @@ There is no API method for that (see [here](#can-you-add-feature-to-ptb-can-i-do
 
 ### Why am I getting an error `The following arguments have not been supplied`?
 
-The `callback` method you pass to `JobQueue.run_*` takes exactly *one* argument, which is of type `CallbackContext`. This is, because jobs are triggered by a schedule and not by an update from Telegram. If you want to access data in the callback that changes at runtime (e.g. because you schedule jobs on demand), you can either access `context.bot_data` or pass the data to `run_*` as `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. Note that `context.{user, chat}_data` will be `None`, as those can only be present, when the `context` object is related to an update, which is not the case for jobs.
+The `callback` method you pass to `JobQueue.run_*` takes exactly *one* argument, which is of type [`CallbackContext`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html#telegram-ext-callbackcontext). This is, because jobs are triggered by a schedule and not by an update from Telegram. If you want to access data in the callback that changes at runtime (e.g. because you schedule jobs on demand), you can:
+
+1. Access `context.bot_data`.
+2. Pass [`{user, chat}_id`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.jobqueue.html#telegram.ext.JobQueue.run_once.params.chat_id) to any of the `run_*(...)` methods so you can access them in your `callback` as `context.{user, chat}_data`
+3. Use `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. 
+
+Note that `context.{user, chat}_data` will be `None`, if you don't pass the arguments `{user, chat}_id` to any of the `run_*(...)` methods.
 
 ### How can I check the version of PTB I am using?
 
@@ -142,7 +148,7 @@ There are three easy ways to do this. Two work from the command line: `pip show 
 All bot methods have a return value. For example to get the `message_id` of a text message sent by your bot, you can do
 
 ```python
-message = bot.send_message(…)
+message = await bot.send_message(…)
 message_id = message.message_id
 ```
 
