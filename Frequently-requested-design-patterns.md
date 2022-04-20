@@ -43,9 +43,9 @@ PTB comes with a powerful handler known as [TypeHandler](https://python-telegram
 You can understand it as a generic handler. You can use it to handle any class put through the Updater.
 For example, Type Handlers are used in bots to handle "updates" from Github or other external services.
 
-To add any handler, we use [Dispatcher.add_handler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.dispatcher.html#telegram.ext.Dispatcher.add_handler). Apart from the handler itself, it takes an optional argument called `group`. We can understand groups as numbers which indicate the priority of handlers. A lower group means a higher priority. An update can be processed by (at most) one handler in each group.
+To add any handler, we use [Application.add_handler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.application.html#telegram.ext.Application.add_handler). Apart from the handler itself, it takes an optional argument called `group`. We can understand groups as numbers which indicate the priority of handlers. A lower group means a higher priority. An update can be processed by (at most) one handler in each group.
 
-Stopping handlers in higher groups from processing an update is achieved using [ApplicationHandlerStop](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.ApplicationHandlerStop.html#telegram.ext.ApplicationHandlerStop). When raising this exception, the Dispatcher is asked to stop sending the updates to handlers in higher groups. Depending on your use case, you may not need to raise it. But it is useful if you want to enable flood handling or limit who can use the bot.
+Stopping handlers in higher groups from processing an update is achieved using [ApplicationHandlerStop](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.ApplicationHandlerStop.html#telegram.ext.ApplicationHandlerStop). When raising this exception, the Application is asked to stop sending the updates to handlers in higher groups. Depending on your use case, you may not need to raise it. But it is useful if you want to enable flood handling or limit who can use the bot.
 
 That's it. With these three knowledge nuggets, we can solve the question given in the introduction.
 
@@ -55,7 +55,7 @@ Before working on the problems, we will provide you with a template of code that
 
 ```python
 from telegram import Update
-from telegram.ext import CallbackContext, ApplicationHandlerStop, TypeHandler, Updater
+from telegram.ext import CallbackContext, ApplicationHandlerStop, TypeHandler, Application
 
 
 async def callback(update: Update, context: CallbackContext):
@@ -64,10 +64,9 @@ async def callback(update: Update, context: CallbackContext):
     raise ApplicationHandlerStop # Only if you DON'T want other handlers to handle this update
 
 
-updater = Updater(TOKEN)
-dispatcher = updater.dispatcher
+app = Application.builder().token("TOKEN").build()
 handler = TypeHandler(Update, callback) # Making a handler for the type Update
-dispatcher.add_handler(handler, -1) # Default is 0, so we are giving it a number below 0
+app.add_handler(handler, -1) # Default is 0, so we are giving it a number below 0
 # Add other handlers and start your bot.
 ```
 
@@ -84,7 +83,7 @@ async def callback(update: Update, context: CallbackContext):
     add_user_to_my_database(update.effective_user)
 ```
 
-Note the difference in this example compared to the previous ones. Here we don't raise `ApplicationHandlerStop`. This type of handlers is known as _shallow handler_ or _silent handler_. These type of handlers handle the update and also allow it to be handled by other common handlers like `CommandHandler` or `MessageHandler`. In other words, they don't block the other handlers.
+Note the difference in this example compared to the previous ones. Here we don't raise `ApplicationHandlerStop`. These type of handlers are known as _shallow handlers_ or _silent handlers_. These type of handlers handle the update and also allow it to be handled by other common handlers like `CommandHandler` or `MessageHandler`. In other words, they don't block the other handlers.
 
 Now let us solve the specific use cases. All you need to do is modify your `callback` as required. 😉
 
@@ -93,7 +92,7 @@ Now let us solve the specific use cases. All you need to do is modify your `call
 To restrict your bot to a set of users or if you don't want it to be available for a specific group of people, you can use a `callback` similar to the following. Remember, the process is same if you want to enable/disable the bot for groups or channels.
 
 ```python
-SPECIAL_USERS = [127376448, 172380183, 1827979793] # Allows users
+SPECIAL_USERS = [127376448, 172380183, 1827979793]  # Allows users
 
 async def callback(update: Update, context: CallbackContext):
     if update.effective_user.user_id in SPECIAL_USERS:
@@ -103,7 +102,7 @@ async def callback(update: Update, context: CallbackContext):
         raise ApplicationHandlerStop
 ```
 
-Here, it should be noted that this approach blocks your bot entirely for a set of users. If all you need is to block a specific functionality, like a special command or privilege, then it will be wise to use [Filters.chat](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.chat), [Filters.user](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Filters.user).
+Here, it should be noted that this approach blocks your bot entirely for a set of users. If all you need is to block a specific functionality, like a special command or privilege, then it will be wise to use [filters.Chat](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Chat), [filters.User](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.user).
 Don't forget that you can also use [decorators](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator) or a simple `if-else` check.
 If you want a more streamlined style of managing permissions (like superuser, admin, users) then [ptbcontrib/roles](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/roles) is worth checking out.
 
@@ -127,12 +126,12 @@ async def callback(update: Update, context: CallbackContext):
             del context.user_data["usageCount"]
             await update.effective_message.reply_text("I have unrestricted you. Please behave well.")
         else:
-            update.effective_message.reply_text("Back off! Wait for your restriction to expire...")
+            await update.effective_message.reply_text("Back off! Wait for your restriction to expire...")
             raise ApplicationHandlerStop
     else:
         if count == MAX_USAGE:
             context.user_data["restrictSince"] = time()
-            update.effective_message.reply_text("Stop flooding! Don't bother me for 5 minutes...")
+            await update.effective_message.reply_text("Stop flooding! Don't bother me for 5 minutes...")
             raise ApplicationHandlerStop
         else:
             context.user_data["usageCount"] = count + 1
@@ -178,19 +177,19 @@ Finally, note that Telegram imposes some limits that restrict you to send ~30 Me
 
 ## How do I deal with a media group?
 
-The basic problem behind this question is simple. For the end user, it looks like one message, consisting of several medias, are send to the receiver. For the bot API/bot developer, this is not the case however: Every media is send as one unique message, only linked via the unique [Message.media_group_id](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html#telegram.Message.media_group_id) attribute. So you need some way of determining when to start and to end collecting the media messages.
+The basic problem behind this question is simple. For the end user, it looks like one message, consisting of several medias, are sent to the receiver. For the bot API/bot developer, this is not the case however: Every media is send as one unique message, only linked via the unique [Message.media_group_id](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html#telegram.Message.media_group_id) attribute. So you need some way of determining when to start and to end collecting the media messages.
 
-This basic problem has two basic approaches for handling it, without requiring a more eloberate setup involving databases.
+This basic problem has two basic approaches for handling it, without requiring a more elaborate setup involving databases.
 
 ### Timer based approach
 
 [Real life code example.](https://github.com/Poolitzer/channelforwarder/blob/589104b8a808199ba46d620736bd8bea1dc187d9/main.py#L19-L46)
 
-This approach has the upside of looking seamless to the user. The downside is that there is a (low) possibilty that one part of the media group is missed.
+This approach has the upside of looking seamless to the user. The downside is that there is a (low) possibility that one part of the media group is missed.
 
 The idea behind this approach is to start a timer (and an array with the message object/id in it) when receiving the first media_group message. Until the timer runs out, every incoming message with the same media id will be added to the array. Once the timer runs out, the media group is considered done and can be dealt with according to your situation.
 
-There is a possibilty that a part of the media group is received after the timer ran out. This could be because the network was too slow to deliver the updates to you (more likely with a webhook setup since long polling can receive multiple updates at once) or your server took to long to deal with the update (or a combination of both). The result of this happening need to be determined by you.
+There is a possibility that a part of the media group is received after the timer ran out. This could be because the network was too slow to deliver the updates to you (more likely with a webhook setup since long polling can receive multiple updates at once) or your server took to long to deal with the update (or a combination of both). The result of this happening need to be determined by you.
 
 ### Manual approach
 
@@ -200,4 +199,4 @@ There is a possibilty that a part of the media group is received after the timer
 
 This approach has two upsides: You don't force users to use media groups (so they can e.g. send more media then fits in one group) and you will not miss a media. The downside is that it requires manual interaction from users, and we all know how special users can be :)
 
-The idea behind this approach is to start a upload segement in your code. Either in a `ConversationHandler` or with a `CommandHandler`. Ask the user then to send all medias. Once they send the first (or the first media group, this doesn't matter in your code), you store the information you need in an array. Then you ask them to send either more or send a command like `/finish` / a specific text message you intercept with a [MessageHandler + regex Filter](../Types-of-Handlers#pattern-matching-filtersregex). The point behind this is to have the user finish the addition of media on their own terms. Once they triggered the second handler, you can consider the array finished.
+The idea behind this approach is to start a upload segment in your code. Either in a `ConversationHandler` or with a `CommandHandler`. Ask the user then to send all medias. Once they send the first (or the first media group, this doesn't matter in your code), you store the information you need in an array. Then you ask them to send either more or send a command like `/finish` / a specific text message you intercept with a [MessageHandler + regex Filter](../Types-of-Handlers#pattern-matching-filtersregex). The point behind this is to have the user finish the addition of media on their own terms. Once they triggered the second handler, you can consider the array finished.
