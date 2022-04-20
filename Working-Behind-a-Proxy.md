@@ -1,4 +1,4 @@
-# How is a Proxy Server is Chosen?
+# How is a Proxy Server Chosen?
 PTB will obtain its proxy configuration in the following order (the first to be found will be used):
 1. Programmatic.
 2. Using `HTTP_PROXY` environment variable.
