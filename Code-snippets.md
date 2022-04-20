@@ -39,10 +39,6 @@ It is also a follow-up to the page [[Introduction to the API|Introduction-to-the
       - [Usage](#usage-2)
     + [Build a menu with Buttons](#build-a-menu-with-buttons)
       - [Usage](#usage-3)
-    + [Cached Telegram group administrator check](#cached-telegram-group-administrator-check)
-    + [Simple way of restarting the bot](#simple-way-of-restarting-the-bot)
-    + [Store ConversationHandler States](#store-conversationhandler-states)
-    + [Save and load jobs using pickle](#save-and-load-jobs-using-pickle)
     + [Telegram web login widget](#verify-data-from-telegram-web-login-widget)
 - [What to read next?](#what-to-read-next)
 
