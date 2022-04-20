@@ -110,7 +110,7 @@ await update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
 Use this to tell the user that something is happening on the bot's side:
 
 ```python
-await bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+await bot.send_chat_action(chat_id=chat_id, action=telegram.constants.ChatAction.TYPING)
 ```
 Alternatively, if you have several commands and don't want to repeat the above code snippet inside all commands, you can copy the snippet below and just decorate the callback functions with `@send_typing_action`.
 
@@ -146,14 +146,14 @@ await bot.send_message(chat_id=chat_id,
 ...                  reply_markup=reply_markup)
 ```
 
-To catch the incoming message with the location/contact, use `MessageHandler` with `Filters.location` and `Filters.contact`, respectively.
+To catch the incoming message with the location/contact, use `MessageHandler` with `filters.LOCATION` and `filters.CONTACT`, respectively.
 
 ---
 ### Message Formatting (bold, italic, code, ...)
 
 Telegram supports some formatting options for text. All the details about what is supported can be found [here](https://core.telegram.org/bots/api#formatting-options). Please keep in mind that you will have to escape the special characters as detailed in the documentation. PTB also offers a [helper function](https://python-telegram-bot.readthedocs.io/en/stable/telegram.utils.helpers.html#telegram.utils.helpers.escape_markdown) for escaping of Markdown text. For escaping of HTML text, you can use [`html.escape`](https://docs.python.org/3/library/html.html?#html.escape) from the standard library.
 
-You can format text with every API method/type that has a `parse_mode` parameter. In addition to editing your text as described in the link above, pass one of the parse modes available through [`telegram.ParseMode`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.parsemode.html) to the `parse_mode` parameter. Since th `5.0` update of the Bot API (version `13.1+` of PTB), you can alternatively pass a list of [`telegram.MessageEntities`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.messageentity.html) to the `entities` parameter.
+You can format text with every API method/type that has a `parse_mode` parameter. In addition to editing your text as described in the link above, pass one of the parse modes available through [`telegram.constants.ParseMode`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.constants.html#telegram.constants.ParseMode) to the `parse_mode` parameter. Since the `5.0` update of the Bot API (version `13.1+` of PTB), you can alternatively pass a list of [`telegram.MessageEntities`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.messageentity.html) to the `entities` parameter.
 
 *Note:* In the API 4.5 update, Telegram introduced MarkdownV2, which supports nested entities and needs other escaping than v1. Markdown V1 is referred as legacy mode by the official API docs, and you should prefer MarkdownV2. Make sure to also use `reply_markdown_v2` instead of `reply_markdown` etc.
 
@@ -179,7 +179,7 @@ await bot.send_message(chat_id=chat_id,
 ---
 #### Message entities
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#messageentity)
-To use `MessageEntity`, extract the entities and their respective text from a `Message` object using `parse_entities`.  
+To use `MessageEntity`, extract the entities and their respective text from a `Message` object using [`parse_entities`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html#telegram.Message.parse_entities).  
 
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
 
@@ -277,7 +277,7 @@ Note that not every method is supported everywhere (e.g. for thumbnails you can'
 
 Please also check out the [official docs](https://core.telegram.org/bots/api#sending-files) on sending files.
 
-Let's have a look hat how sending a document can be done.
+Let's have a look at how sending a document can be done.
 
 1. Uploading a file:
 
@@ -321,7 +321,7 @@ media_1 = InputMediaDocument(media='https://python-telegram-bot.org/static/testf
 media_1 = InputMediaDocument(media=file_id, ...)
 ```
 
-Please check out the documentation of `InputMediaAudio`, `InputMediaDocument`, `InputMediaPhoto` and `InputMediaVideo` for the details on required and optional arguments.
+Please check out the documentation of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediaaudio.html), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediadocument.html), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediaphoto.html#telegram.InputMediaPhoto) and [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediavideo.html#telegram.InputMediaVideo) for the details on required and optional arguments.
 
 ---
 #### Sending files via inline mode
@@ -354,7 +354,7 @@ When you have sent a file, you may want edit it. This works similarly as `send_m
 await bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=InputMediaDocument(media=open('tests/test.png'), ...))
 ```
 
-Please check out the restrictions on editing media in the docs of [`send_media_group`](https://core.telegram.org/bots/api#editmessagemedia).
+Please check out the restrictions on editing media in the docs of [`edit_message_media`](https://core.telegram.org/bots/api#editmessagemedia).
 
 ---
 #### Downloading a file
@@ -519,7 +519,7 @@ async def add_group(update: Update, context: CallbackContext):
         for member in update.message.new_chat_members
     )
 
-add_group_handle = MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS , add_group)
+add_group_handle = MessageHandler(filters.StatusUpdate.NEW_CHAT_MEMBERS, add_group)
 application.add_handler(add_group_handle)
 ```
 Note that service messages about non-bot users joining the chat are removed from large groups. You can get the new members message by following the [chatmemberbot.py example](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy).
@@ -581,7 +581,7 @@ def restricted(func):
     async def wrapped(update, context, *args, **kwargs):
         user_id = update.effective_user.id
         if user_id not in LIST_OF_ADMINS:
-            print("Unauthorized access denied for {}.".format(user_id))
+            print(f"Unauthorized access denied for {user_id}.")
             return
         return await func(update, context, *args, **kwargs)
     return wrapped
