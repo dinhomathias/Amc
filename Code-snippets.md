@@ -112,26 +112,7 @@ Use this to tell the user that something is happening on the bot's side:
 ```python
 await bot.send_chat_action(chat_id=chat_id, action=telegram.constants.ChatAction.TYPING)
 ```
-Alternatively, if you have several commands and don't want to repeat the above code snippet inside all commands, you can copy the snippet below and just decorate the callback functions with `@send_typing_action`.
-
-```python
-from functools import wraps
-from telegram.constants import ChatAction
-
-def send_typing_action(func):
-    """Sends typing action while processing func command."""
-
-    @wraps(func)
-    async def command_func(update, context, *args, **kwargs):
-        await context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=ChatAction.TYPING)
-        return await func(update, context,  *args, **kwargs)
-
-    return command_func
-
-@send_typing_action
-async def my_handler(update, context):
-    pass # Will send 'typing' action while processing the request.
-```
+Alternatively, if you have several commands and don't want to repeat the above code snippet inside all commands see [this wiki section](#send-action-while-handling-command-decorator) on how to do that.
 
 ---
 #### Requesting location and contact from user
