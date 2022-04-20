@@ -1,4 +1,9 @@
+PTBs default networking backend `HTTPXRequest` comes with built-in support for proxies.
+Note that the details below only apply to `HTTPXRequest`.
+If you use a different implementation of `BaseRequest`, you'll have to configure proxies yourself.
+
 # How is a Proxy Server Chosen?
+
 PTB will obtain its proxy configuration in the following order (the first to be found will be used):
 1. Programmatic.
 2. Using `HTTP_PROXY` environment variable.
@@ -7,7 +12,8 @@ PTB will obtain its proxy configuration in the following order (the first to be 
 
 # Setting a HTTP(S) Proxy Server Programmatically
 
-If you're using the library which comes installed with PTB for making requests, i.e. `httpx`, then this is how you can setup proxies:
+Proxies can be setup like this:
+
 ```python
 from telegram.ext import ApplicationBuilder
 
