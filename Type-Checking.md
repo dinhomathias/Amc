@@ -1,6 +1,6 @@
 # Using Type Checkers with PTB
 
-Since Python 3.6, static type hinting is established in Python and PTB makes use of it (since v13.0). Static type checking helps to avoid and find errors both in PTBs source code and in your bot code. If you want to take advantage of this, you should use a type checker to check your code. As type checking in general is not PTB specific and a big topic, we can't explain everything about it in this wiki. There are however some things that are specific to PTBs type checking and that advanced users might want to keep in mind. More precisely, some classes in `telegram.ext` are `Generics`. Below we detail, how to specify the corresponding types to get proper type checking.
+Since Python 3.6, static type hinting is established in Python and PTB makes use of it (since v13.0). Static type checking helps to avoid and find errors both in PTBs source code and in your bot code. If you want to take advantage of this, you should use a type checker to check your code. As type checking in general is not PTB specific and a big topic, an introduction to type hinting is beyond the scope of this wiki.
 
 ### ℹ️ Note
 
@@ -8,46 +8,12 @@ While static type hints *are* of great value and we try our best to make them as
 
 Please also note that type hinting in Python does not cover all edge cases, so there might be situations where PTB just can't do better.
 
-Of course, you are always welcome to report any type hinting erros through the bug tracker.
+Of course, you are always welcome to report any type hinting errors through the bug tracker.
 
-## Custom Handlers
+## Generic classes in PTB
 
-```python
-class MyHandler(Handler[UpdateClass, CallbackContextClass]):
-    ...
-```
+> 🚧 This section is not complete
+> We're currently looking into improving the documentation for generic classes.
+> See also [#2633](https://github.com/python-telegram-bot/python-telegram-bot/issues/2633).
 
-Here `UpdateClass` should the type of the updates that this handler will handle. In most cases, this will just be `telegram.Update`. However, the handler setup is designed to be able to also handle other objects (e.g., to integrate 3rd party updates into your bot), so this could also be `GitHubUpdateClass` or some other thing.
-
-`CallbackContextClass` is tha type of the `context` argument. In most cases, this will just be `CallbackContext`, but in case you're using a custom type for the `context` argument (see also below), you should pass that instead.
-
-## Custom `CallbackContext` classes
-
-```python
-class CustomContext(CallbackContext[UserDataClass, ChatDataClass, BotDataClass]):
-    ...
-```
-The default type for all three is `dict`, which you can use if you don't specify `user/chat/bot_data` for your `ContextTypes` instance.
-
-## Custom persistence classes
-
-```python
-class CustomPersistence(BasePersistence[UserDataClass, ChatDataClass, BotDataClass]):
-   ...
-```
-Pretty much the same as for `CallbackContext`
-
-
-## Custom `Updater`/`Dispatcher`
-
-Depending on whether you use a custom `CallbackContext` class or not, you have two options here:
-
-```python
-class CustomUpdaterOrDispatcher(Updater/Dispatcher[CallbackContext[UserDataClass, ChatDataClass, BotDataClass], UserDataClass, ChatDataClass, BotDataClass]):
-    ...
-```
-or
-```python
-class CustomUpdaterOrDispatcher(Updater/Dispatcher[CustomContext, UserDataClass, ChatDataClass, BotDataClass]):
-    ...
-```
+Some of the classes in `telegram.ext` are generic classes, i.e. subclasses of [`typing.Generic`](https://docs.python.org/3/library/typing.html#typing.Generic).
