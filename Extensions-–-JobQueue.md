@@ -20,16 +20,16 @@ To use the `JobQueue`, you don't have to do much. When you build the `Applicatio
 ```python
 from telegram.ext import Application
 
-app = Application.builder().token('TOKEN').build()
-
-with app:
-    app.run_polling()
-    j = app.job_queue
+application = Application.builder().token('TOKEN').build()
+job_queue = application.job_queue
 ```
 
 Just know that unless you have a good reason to do so, you should not instantiate `JobQueue` yourself.
 
-Tasks in the job queue are encapsulated by the [`Job`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram-ext-job) class. It takes a [callback function as a parameter](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram.ext.Job.params.callback), which will be executed when the time comes. This callback function always takes one parameter: `context`, a [`telegram.ext.CallbackContext`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackcontext.html). Like in the case of handler callbacks used by the `Application`, through this object you can access `context.bot`, the `Application`'s `telegram.Bot` instance; and for this particular case you can also access `context.job`, which is the `Job` instance of the task that triggered the callback (more on that later). 
+Tasks in the job queue are encapsulated by the [`Job`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram-ext-job) class. It takes a [callback function as a parameter](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram.ext.Job.params.callback), which will be executed when the time comes. This callback function always takes exactly one parameter: `context`, a [`telegram.ext.CallbackContext`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackcontext.html). Like in the case of handler callbacks used by the `Application`, through this object you can access 
+* `context.bot`, the `Application`'s `telegram.Bot` instance
+* `context.job_queue`, the same object as `application.job_queue` above
+* and for this particular case you can also access `context.job`, which is the `Job` instance of the task that triggered the callback (more on that later). 
 
 You can use the following methods to create jobs with different frequency and time: `job_queue.run_once`, `job_queue.run_repeating`, `job_queue.run_daily` and `job_queue.run_monthly`. (As before, you do not usually need to instantiate the `Job` class directly.)
 
@@ -38,14 +38,17 @@ You can use the following methods to create jobs with different frequency and ti
 Add your first job to the queue by defining a callback function and adding it to the job queue. For this tutorial, you can replace `'@examplechannel'` with a channel where your bot is an admin, or by your user id (use [@userinfobot](https://telegram.me/userinfobot) to find out your user id):
 
 ```python
-from telegram.ext import CallbackContext
-
+from telegram.ext import CallbackContext, Application
 
 async def callback_minute(context: CallbackContext):
     await context.bot.send_message(chat_id='@examplechannel', text='One message every minute')
 
-...
-    job_minute = j.run_repeating(callback_minute, interval=60, first=10)
+application = Application.builder().token('TOKEN').build()
+job_queue = application.job_queue
+
+job_minute = job_queue.run_repeating(callback_minute, interval=60, first=10)
+
+application.run_polling()
 ```
 
 The `callback_minute` function will be executed every `60.0` seconds, the first time being after 10 seconds (because of `first=10`). The `interval` and `first` parameters are in seconds if they are `int` or `float`. They can also be `datetime` objects. See the [docs](http://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) for detailed explanation.
@@ -54,11 +57,17 @@ The return value of these functions are the `Job` objects being created. You don
 You can also add a job that will be executed only once, with a delay:
 
 ```python
+from telegram.ext import CallbackContext, Application
+
 async def callback_30(context: CallbackContext):
     await context.bot.send_message(chat_id='@examplechannel', text='A single message with 30s delay')
 
-...
-    j.run_once(callback_30, 30)
+application = Application.builder().token('TOKEN').build()
+job_queue = application.job_queue
+
+job_queue.run_once(callback_30, 30)
+
+application.run_polling()
 ```
 
 In thirty seconds, you should receive the message from `callback_30`. 
@@ -76,7 +85,7 @@ You might want to add jobs in response to certain user input, and there is a con
 
 ```python
 from telegram import Update
-from telegram.ext import CommandHandler
+from telegram.ext import CommandHandler, Application
 
 async def callback_alarm(context: CallbackContext):
     # Beep the person who called this alarm:
@@ -90,26 +99,18 @@ async def callback_timer(update: Update, context: CallbackContext):
     # Set the alarm:
     await context.job_queue.run_once(callback_alarm, 60, context=name, chat_id=chat_id)
 
-...
-    timer_handler = CommandHandler('timer', callback_timer)
-    app.add_handler(timer_handler)
+application = Application.builder().token('TOKEN').build()
+timer_handler = CommandHandler('timer', callback_timer)
+application.add_handler(timer_handler)
+application.run_polling()
 ```
 
 By placing the `chat_id` in the `Job` object, the callback function knows where it should send the message.
 
-All good things must come to an end, so when you stop the Application, the related job queue will be stopped as well:
-
-```python
-...
-    await app.stop()
-```
-
-Of course, you can instead also stop the job queue by itself:
-
-```python
-...
-    await j.stop()
-```
+All good things must come to an end, so when you stop the Application, the related job queue will be stopped as well.
 
 ## Persistent Job Queues
-Check out [ptbcontrib/ptb_sqlalchemy_jobstore](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/ptb_sqlalchemy_jobstore)
+
+PTBs [[Persistence Setup|Making-your-bot-persistent]] currently does not support serialization of jobs.
+However, the current backend of the `JobQueue`, namely the `APScheduler` library has a mechanism for that, which you can leverage.
+Check out e.g. [ptbcontrib/ptb_sqlalchemy_jobstore](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/ptb_sqlalchemy_jobstore) for an example implementation.

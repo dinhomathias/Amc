@@ -1,6 +1,6 @@
 # Pages to update
 
-- [ ] `JobQueue`
+- [x] `JobQueue`
 - [x] Tutorial your first bot
 - [ ] inline keyboard example
 - [ ] performance optimization - extract the asyncio related things to a standalone page
