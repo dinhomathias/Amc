@@ -7,7 +7,7 @@
 - [x] Type checking
 - [x] types of handlers
 - [x] webhooks
-- [ ] proxy
+- [x] proxy
 
 Other todo:
 

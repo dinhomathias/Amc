@@ -13,34 +13,68 @@ To begin, you'll need an Access Token. If you have already read and followed [[I
 
 
 ## Your first Bot, step-by-step
-So, *let's get started!* Again, please create a new file if you want to follow this tutorial.
+Please create a new file if you want to follow this tutorial.
+We will add new content to the file several times during the tutorial.
+For the sake of brevity, we will not repeat everything every time we add something.
 
-First, you have to create an `Application` object. Replace `'TOKEN'` with your Bot's API token.
-
-```python
-from telegram.ext import ApplicationBuilder
-app = ApplicationBuilder().token('TOKEN').build()
-```
-**Related docs:** [`telegram.ext.ApplicationBuilder`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.applicationbuilder.html#telegram-ext-applicationbuilder), [`telegram.ext.Application`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application)
-
-This is a good time to set up the `logging` module, so you will know when (and why) things don't work as expected:
+So, *let's get started!*.
+Paste the following into your file:
 
 ```python
 import logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.INFO)
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CallbackContext
+
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+async def start(update: Update, context: CallbackContext.DEFAULT_TYPE):
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
+
+if __name__ == '__main__':
+    application = ApplicationBuilder().token('TOKEN').build()
+    
+    start_handler = CommandHandler('start', start)
+    application.add_handler(start_handler)
+    
+    application.run_polling()
 ```
+
+Now this is a lot to digest, so let's go through it step by step.
+
+```python
+import logging
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+```
+
+This part is for setting up `logging` module, so you will know when (and why) things don't work as expected:
 
 **Note:** Read the article on [[Exceptions, Warnings and Logging|Exceptions,-Warnings-and-Logging]] if you want to learn more.
 
-Now, you can define a function that should process a specific type of update:
+```python
+application = ApplicationBuilder().token('TOKEN').build()
+```
+
+Here the first real magic happens: You have to create an `Application` object. Replace `'TOKEN'` with your Bot's API token.
+For more details on how this works, see [[this page|Builder-Pattern]].
+
+**Related docs:** [`telegram.ext.ApplicationBuilder`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.applicationbuilder.html#telegram-ext-applicationbuilder), [`telegram.ext.Application`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application)
+
+The application alone doesn't do anthing.
+To add functionality, we do two things.
+First, we define a function that should process a specific type of update:
 
 ```python
-from telegram import Update
-from telegram.ext import CallbackContext
-
-async def start(update: Update, context: CallbackContext):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
+async def start(update: Update, context: CallbackContext.DEFAULT_TYPE):
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="I'm a bot, please talk to me!"
+    )
 ```
 **Related docs:** [`send_message`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.send_message), [`telegram.ext.CallbackContext` (the type of the context argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html), [`telegram.Update` (the type of update argument)](https://python-telegram-bot.readthedocs.io/en/latest/telegram.update.html)
 
@@ -49,37 +83,46 @@ The goal is to have this function called every time the Bot receives a Telegram 
 ```python
 from telegram.ext import CommandHandler
 start_handler = CommandHandler('start', start)
-app.add_handler(start_handler)
+application.add_handler(start_handler)
 ```
 **Related docs:** [`telegram.ext.CommandHandler`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.commandhandler.html), [`telegram.ext.Application.add_handler`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application.add_handler)
 
-And that's all you need. To start the bot, run:
+And that's all you need.
+Finally, the line `application.run_polling()` runs the bot until you hit `CTRL+C`.
 
-```python
-app.run_polling()
-```
 **Related docs:** [`telegram.ext.Application.run_polling`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application.run_polling)
 
 Give it a try! Start a chat with your bot and issue the `/start` command - if all went right, it will reply.
 
-But our Bot can now only answer to the `/start` command. Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo all text messages:
+But our Bot can now only answer to the `/start` command.
+Let's add another handler that listens for regular messages. Use the `MessageHandler`, another `Handler` subclass, to echo all text messages.
+First stop your bot by hitting `CTRL+C`.
+Now define a new function and add a corresponding handler:
 
 ```python
-from telegram.ext import filters, MessageHandler
+from telegram import Update
+from telegram.ext import filters, MessageHandler, ApplicationBuilder, CommandHandler, CallbackContext
 
-async def echo(update: Update, context: CallbackContext):
+...
+
+async def echo(update: Update, context: CallbackContext.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
-echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
-app.add_handler(echo_handler)
+    
+if __name__ == '__main__':
+    ...
+    echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
+    
+    application.add_handler(start_handler)
+    application.add_handler(echo_handler)
+
+    application.run_polling()
 ```
 **Related docs:** [`telegram.ext.MessageHandler`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagehandler.html), [`telegram.ext.filters`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html)
 
 From now on, your bot should echo all non-command messages it receives.
 
-**Note:** As soon as you add new handlers to `Application`, they are in effect.
-
-**Note:** The `filters` module contains a number of so called filters that filter incoming messages for text, images, status updates and more. Any message that returns `True` for at least one of the filters passed to `MessageHandler` will be accepted. You can also write your own filters if you want. See more in [[Advanced Filters|Extensions-–-Advanced-Filters]].
+**Note:** The `filters` module contains a number of so-called filters that filter incoming messages for text, images, status updates and more. Any message that returns `True` for at least one of the filters passed to `MessageHandler` will be accepted. You can also write your own filters if you want. See more in [[Advanced Filters|Extensions-–-Advanced-Filters]].
 
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS. To make things easy, you can receive the arguments (as a `list`, split on spaces) that were passed to a command in the callback function:
 
@@ -87,12 +130,19 @@ Let's add some actual functionality to your bot. We want to implement a `/caps` 
 async def caps(update: Update, context: CallbackContext):
     text_caps = ' '.join(context.args).upper()
     await context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
+    
+if __name__ == '__main__':
+    ...
+    caps_handler = CommandHandler('caps', caps)
+    
+    application.add_handler(start_handler)
+    application.add_handler(echo_handler)
+    application.add_handler(caps_handler)
 
-caps_handler = CommandHandler('caps', caps)
-app.add_handler(caps_handler)
+    application.run_polling()
 ```
 
-**Note:** Take a look at the usage of [`context.args`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.args). The `CallbackContext` will have many different attributes, depending on which handler is used.
+**Note:** Take a look at the usage of [`context.args`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.args). The `CallbackContext` will have several attributes, depending on which handler is used.
 
 Another cool feature of the Telegram Bot API is the [inline mode](https://core.telegram.org/bots/inline). If you want to implement inline functionality for your bot, please first talk to [@BotFather](https://telegram.me/botfather) and enable inline mode using `/setinline`. It sometimes takes a while until your Bot registers as an inline bot on your client. You might be able to speed up the process by restarting your Telegram App (or sometimes, you just have to wait for a while).
 
@@ -102,7 +152,9 @@ As your bot is obviously a very loud one, let's continue with this theme for inl
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import InlineQueryHandler
 
-async def inline_caps(update: Update, context: CallbackContext):
+...
+
+async def inline_caps(update: Update, context: CallbackContext.DEFAULT_TYPE):
     query = update.inline_query.query
     if not query:
         return
@@ -116,8 +168,12 @@ async def inline_caps(update: Update, context: CallbackContext):
     )
     await context.bot.answer_inline_query(update.inline_query.id, results)
 
-inline_caps_handler = InlineQueryHandler(inline_caps)
-app.add_handler(inline_caps_handler)
+if __name__ == '__main__':
+    ...
+    inline_caps_handler = InlineQueryHandler(inline_caps)
+    application.add_handler(inline_caps_handler)
+
+    application.run_polling()
 ```
 **Related docs:** [telegram.ext.InlineQueryHandler](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.inlinequeryhandler.html), [answer_inline_query](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.answer_inline_query)
 
@@ -126,16 +182,28 @@ Not bad! Your Bot can now yell on command (ha!) and via inline mode.
 Some confused users might try to send commands to the bot that it doesn't understand, so you can use a `MessageHandler` with a `COMMAND` filter to reply to all commands that were not recognized by the previous handlers. 
 
 ```python
-async def unknown(update: Update, context: CallbackContext):
+...
+
+async def unknown(update: Update, context: CallbackContext.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
-unknown_handler = MessageHandler(filters.COMMAND, unknown)
-app.add_handler(unknown_handler)
+if __name__ == '__main__':
+    ...
+    
+    # Other handlers
+    unknown_handler = MessageHandler(filters.COMMAND, unknown)
+    application.add_handler(unknown_handler)
+
+    application.run_polling()
 ```
 
-**Note:** This handler *must* be added last. If you added it sooner, it would be triggered before the `CommandHandlers` had a chance to look at the update. Once an update is handled, all further handlers are ignored. To circumvent this, you can pass the keyword argument `group (int)` to `add_handler` with a value other than 0. See [`telegram.ext.Application.add_handler`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application.add_handler) for details.
+**Note:** This handler *must* be added last.
+If you added it before the other handlers, it would be triggered before the `CommandHandlers` had a chance to look at the update.
+Once an update is handled, all further handlers are ignored.
+To circumvent this, you can pass the keyword argument `group (int)` to `add_handler` with a value other than 0.
+See [`telegram.ext.Application.add_handler`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application.add_handler) and [[this wiki page|Frequently-requested-design-patterns#how-to-handle-updates-in-several-handlers]] for details.
 
-If you're done playing around, stop the bot by pressing `Ctrl + C`.
+If you're done playing around, stop the bot by pressing `CTRL+C`.
 
 #### What to read next?
 Have a look at the ready-to-run [examples](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
