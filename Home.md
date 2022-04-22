@@ -3,7 +3,7 @@
 - [x] `JobQueue`
 - [x] Tutorial your first bot
 - [x] inline keyboard example
-- [ ] performance optimization - extract the asyncio related things to a standalone page
+- [x] performance optimizationstandalone page
 - [x] Type checking
 - [x] types of handlers
 - [x] webhooks
@@ -13,12 +13,10 @@ Other todo:
 
 - [ ] new page on general architecture overview
 - [ ] Link to the architecture diagram once that's contained in the v14/master branch
+- [ ] new write up for the `Concurrency` page - for now I just copied the `multithreading` stuff from the v13 Performance Optimizations page
 
 
 [![Logo](https://github.com/python-telegram-bot/logos/raw/master/logo-text/png/ptb-logo-text_768.png)](https://python-telegram-bot.org/)
-
-## About this Wiki
-For a long time, our documentation consisted of our [API documentation](http://python-telegram-bot.readthedocs.io/) and README. As a result, the README became simply too big to be useful. In an effort to change that, we moved large parts of our README into different Wiki articles. In the process, we improved the texts with additional information, clearer wording and some cross-references. 
 
 
 ## Contributing to this Wiki
@@ -32,9 +30,13 @@ In the sidebar to the right, you can find all important pages of this wiki. They
 
 Introductory articles and frequently referenced pages.
 
-### PTB Features & Concepts
+### Concepts & Important Elements
 
-Introductions & explanations of the different components the powerful `telegram.ext` offers.
+Introductions & explanations of how the components of `telegram.ext` work and interact with each other.
+
+### Notable Features
+
+Elaborate explanation to more advanced features of `telegram.ext`.
 
 ### Code Resources
 
