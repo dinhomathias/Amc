@@ -2,7 +2,7 @@
 
 - [x] `JobQueue`
 - [x] Tutorial your first bot
-- [ ] inline keyboard example
+- [x] inline keyboard example
 - [ ] performance optimization - extract the asyncio related things to a standalone page
 - [x] Type checking
 - [x] types of handlers
