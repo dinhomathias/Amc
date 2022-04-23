@@ -55,7 +55,11 @@ We introduced the usage of `__slots__` in v13.6, which can reduce memory usage a
 
 The `Application` is the new entry point to a PTB program and binds all its components together. The following diagram gives you an overview.
 
-> Here be picture
+<details><summary>Click to show the diagram</summary>
+
+![PTB v20 Architecture](https://gcdnb.pbrd.co/images/VYfQoTJBY1Mo.png?o=1)
+
+</details>
 
 When initializing an `Application`, many settings can be configured for the inidividual components.
 In an effort to make this instantiation both clear and clean, we adopted the so-called [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern).
