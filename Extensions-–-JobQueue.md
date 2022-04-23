@@ -85,11 +85,6 @@ u.dispatcher.add_handler(timer_handler)
 
 By placing the `chat_id` in the `Job` object, the callback function knows where it should send the message.
 
-To start the Job, use:
-
-```python
-j.start()
-```
 
 All good things must come to an end, so when you stop the Updater, the related job queue will be stopped as well:
 
