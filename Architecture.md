@@ -4,7 +4,10 @@ The `telegram` and `telegram.ext` packages contain several classes that make wri
 You have met most of them in the [[tutorial|Extensions-–-Your-first-Bot]].
 Because all of that can be a bit overwhelming, the below diagram gives you an overview of how the different components interact with each other.
 
-![PTB Architecture](https://gcdnb.pbrd.co/images/VYfQoTJBY1Mo.png?o=1)
+[[/assets/ptb_architecture.png]]
+[`LaTeX` + `TikZ` source of this diagram](/assets/ptb_architecture.tex)
+
+---
 
 `python-telegram-bot` is designed such that you can adjust it to many use cases.
 In particular, many components/features are optional and some can even be fully customized.
