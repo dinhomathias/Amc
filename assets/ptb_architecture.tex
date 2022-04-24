@@ -1,0 +1,182 @@
+% !TeX program = lualatex
+
+\documentclass[
+    tikz,
+    margin=0.5cm,
+    convert,
+]{standalone}
+
+% Arrow heads
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary {graphs}
+\usetikzlibrary{quotes}
+\usetikzlibrary{positioning}
+\usetikzlibrary{graphdrawing}
+\usegdlibrary{layered}
+
+% Font
+\usepackage{roboto-mono}
+\usepackage{roboto}
+
+\newcommand{\class}[1]{\texttt{\textbf{#1}}}
+
+\begin{document}
+    \begin{tikzpicture}[
+        font=\sffamily
+        ]
+        \graph [
+            layered layout,
+            level distance=5cm,
+            sibling distance=5cm,
+            simple,
+            edge quotes={
+                anchor=center,
+                fill=black!15,
+                outer sep=-1.5ex,
+                rounded corners=0.25em,
+                left/.append style={align=right},
+                right/.append style={align=left},
+                align=center,
+                inner sep=0.5em,
+            },
+            nodes={
+                rectangle,
+                draw=black,
+                fill=black!20,
+                inner sep=1em,
+                align=center,
+                rounded corners=0.25em,
+            }
+        ] {
+            Bot[
+                as={
+                    \class{(ext.Ext)Bot}\\
+                    Bot API client\\
+                    used to make requests\\
+                    to the API
+                }
+            ] -> {
+                BaseRequest[
+                    as={
+                        \class{request.BaseRequest}\\
+                        Inferface for handling the\\
+                        networking backend
+                    },
+                    >"dispatches requests\\to the API",
+                ],
+                Defaults[
+                    as={
+                        \class{ext.Defaults}\\
+                        Gathers default values for frequently\\
+                        used parameters of \class{(ext.Ext)Bot},\\ \class{ext.JobQueue} and \class{ext.Handler}
+                    },
+                    >"gets default values\\for parameters",
+                ],
+                CallbackDataCache[
+                    as={
+                        \class{ext.CallbackDataCache}\\
+                        In-Memory LRU-cache for\\
+                        arbitrary \texttt{callback\_data}
+                    },
+                ]
+            };
+            Bot ->[bend right] BaseRequest;
+            Bot[
+                <"stores arbitrary\\\texttt{callback\_data}"
+            ] ->[bend left] CallbackDataCache;
+            Application[
+                text width=60ex,
+                as={
+                    \class{ext.Application}
+                    \begin{itemize}
+                        \item entry point for the whole application
+                        \item provides convenience methods for running the whole app via \texttt{run\_polling/webhook()}
+                        \item administers handlers and error handlers
+                        \item administers \texttt{user/chat/bot\_data}
+                        \item Very similar to the previous \texttt{Dispatcher}
+                    \end{itemize}
+                },
+                level post sep=3cm,
+            ] -> {
+                Updater[
+                    as={
+                        \class{ext.Updater}\\
+                        fetches updates from Telegram\\
+                        and puts them into the \texttt{update\_queue}
+                    },
+                    >"fetches updates from\\the \texttt{update\_queue}"
+                ],
+                Handler[
+                    as={
+                        \class{ext.Handler}\\
+                        Specifies if and how\\it handles updates
+                    },
+                    >"provides arguments for\\handler callbacks,\\processes exceptions\\raised in handler callbacks",
+                ],
+                BasePersistence[
+                    as={
+                        \class{ext.BasePersistence}\\
+                        Interface for persisting\\
+                        data from \class{ext.Application}\\
+                        across restarts
+                    },
+                    >"updates in\\regular intervals",
+                ],
+                ContextTypes[
+                    as={
+                        \class{ext.ContextTypes}\\
+                        Specifies types of\\
+                        the \texttt{context} argument
+                    },
+                    >"accesses to\\build \texttt{context}",
+                ],
+                JobQueue[
+                    as={
+                        \class{ext.JobQueue}\\
+                        Schedules tasks to run\\
+                        at specified times
+                    },
+                    >"processes exceptions\\raised in jobs",
+                ], 
+                CallbackDataCache[
+                    >"Fetches data and\\passes it to\\\class{ext.BasePersistence}"
+                ]
+            };
+            Application ->[pos=0.3] Updater;
+            Application ->[near end] BasePersistence;
+            Application ->[pos=-0.25] CallbackDataCache;
+            Application ->[bend left, near end] JobQueue;
+            Application ->[bend left=60] ContextTypes;
+            Application ->[pos=0.55, bend right] Defaults;
+            ApplicationBuilder[
+                as={
+                    \class{ext.ApplicationBuilder}\\
+                    builder pattern for\\
+                    \class{ext.Application}
+                },
+                <"builds",
+            ] -> Application;
+            Updater[
+                <"calls \texttt{get\_updates}\\
+                \& \texttt{set/delete\_webhook}"
+            ] -> Bot;
+            BasePersistence[
+                <"holds a\\reference"
+            ] -> Bot;
+            JobQueue -> ContextTypes;
+            ContextTypes -> CallbackContext[
+                as={
+                    \class{ext.CallbackContext}\\
+                    Convenience class for unified\\
+                    access to different objects within\\
+                    handler/job/error callbacks
+                },
+                >"specifies types"
+            ]
+        };
+
+
+        % Title
+        \node[above=2.5em of current bounding box.north,font=\huge\bfseries\sffamily] {Overview of the architecture of \texttt{python-telegram-bot}};
+    \end{tikzpicture}
+\end{document}
