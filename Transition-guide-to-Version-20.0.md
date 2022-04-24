@@ -57,7 +57,7 @@ The `Application` is the new entry point to a PTB program and binds all its comp
 
 <details><summary>Click to show the diagram</summary>
 
-![PTB v20 Architecture](https://gcdnb.pbrd.co/images/VYfQoTJBY1Mo.png?o=1)
+[[/assets/ptb_architecture.png]]
 
 </details>
 
