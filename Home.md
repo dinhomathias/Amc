@@ -12,7 +12,7 @@
 Other todo:
 
 - [ ] new page on general architecture overview
-- [ ] Link to the architecture diagram once that's contained in the v14/master branch
+- [ ] Link to the architecture diagram once that's contained in the v20/master branch
 - [ ] new write up for the `Concurrency` page - for now I just copied the `multithreading` stuff from the v13 Performance Optimizations page
 
 

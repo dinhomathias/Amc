@@ -1,7 +1,7 @@
 # Introduction
 Hey, this wiki page will walk you through the inline keyboard example found [here](../blob/master/examples/inlinekeyboard.py). We will start with how python starts with the example, then follow through the code in the same way we expect updates from the user would go through it. Let's do it.
 
-> ⚠️ This page has not yet been updated to v14.
+> ⚠️ This page has not yet been updated to v20.
 
 _Disclaimer: We will conveniently ignore the imports._
 ## Startup

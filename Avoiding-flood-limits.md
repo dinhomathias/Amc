@@ -5,6 +5,6 @@ That means, if you're making a production-ready bot, which should serve numerous
 
 ## Available tools and their implementation details
 
-Currently PTB has no built-in mechanism to avoid flood limits. The previously used `MessageQueue` was removed in v14 as it had a number of bugs and was not well integrated with the library.
+Currently, PTB has no built-in mechanism to avoid flood limits. The previously used `MessageQueue` was removed in v20 as it had a number of bugs and was not well integrated with the library.
 
 Adding a new mechanism is on the roadmap.

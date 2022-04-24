@@ -47,7 +47,7 @@ We've made an effort to make it more clear which parts of `python-telegram-bot` 
 
 ## `__slots__`
 
-We introduced the usage of `__slots__` in v13.6, which can reduce memory usage and improve performance. In v14 we removed the ability to set custom attributes on all objects except for `ext.CallbackContext`. To store data, we recommend to use PTBs built-in mechanism for [storing data](Storing-bot,-user-and-chat-related-data) instead. If you want to add additional functionality to some class, we suggest to subclass it.
+We introduced the usage of `__slots__` in v13.6, which can reduce memory usage and improve performance. In v20 we removed the ability to set custom attributes on all objects except for `ext.CallbackContext`. To store data, we recommend to use PTBs built-in mechanism for [storing data](Storing-bot,-user-and-chat-related-data) instead. If you want to add additional functionality to some class, we suggest to subclass it.
 
 ## Overall architecture
 
