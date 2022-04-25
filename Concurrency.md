@@ -1,45 +1,143 @@
 # Concurrency in PTB
 
+## Table of contents
 
-### Multithreading
+- [Default behavior](#default-behavior)
+- [Using concurrency](#using-concurrency)
+  - [`Handler.block`](#handlerblock)
+  - [`Application.concurrent_updates`](#applicationconcurrent_updates)
+  - [`Application.create_task`](#applicationcreate_task)
+- [Tailor-made Concurrency](#tailor-made-concurrency)
 
-#### How does it work?
-The first thing you should know is that the `telegram.ext` submodule uses multithreading for the different tasks it carries out. `Updater`, `Dispatcher` and `JobQueue` each run in their own thread, separate from the main thread. This is mostly hidden from you, but not completely. For example, the `Updater.start_polling` and `start_webhook` methods are non-blocking, meaning that the execution of your script resumes after calling them (that's why you have to call `Updater.idle`).
+> ⚠️ Please make sure to read this page in its entirety and in particular the section on [tailor-made concurrency](#tailor-made-concurrency)
 
-**Note:** This library uses the [`threading`](https://docs.python.org/3/library/threading.html) module for all concurrency. Because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) (you don't need to know what that is), **this does not actually make your code run faster**. The real advantage is that I/O operations like network communication (eg. sending a message to a user) or reading/writing on your hard drive can run concurrently. These usually take very long, compared to the rest of your code (I'm talking >95% here), and especially with networking there's a lot of waiting involved. 
+PTB is build on top of Pythons [`asyncio`](https://docs.python.org/3/library/asyncio.html), which allows writing concurrent code using the `async`/`await` syntax.
+This greatly helps to design code that efficiently uses the wait time during I/O operations like network communication (e.g. sending a message to a user) or reading/writing on the hard drive.
 
-Still, when it comes to handling individual requests, no multithreading is used **by default**. All handler callback functions you register in the Dispatcher are executed in the `dispatcher` thread, one after another. So, if one callback function takes some time to execute, all other requests have to wait for it. 
+**Note:**
+`asyncio` code is usually single-threaded and hence PTB currently does not aim to be thread safe (see the readme for more info.)
 
-**Example:** You're running the [Echobot](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/echobot2.py) and two users (*User A* and *User B*) send a message to the bot at the same time. Maybe *User A* was a bit quicker, so his request arrives first, in the form of an `Update` object (*Update A*). The Dispatcher checks the Update and decides it should be handled by the handler with the callback function named `echo`. At the same time, the `Update` of *User B* arrives (*Update B*). But the Dispatcher is not finished with *Update A*. It calls the `echo` function with *Update A*, which sends a reply to *User A*. Sending a reply takes some time (see [Server location](#server-location)), and *Update B* remains untouched during that time. Only after the `echo` function finishes for *Update A*, the Dispatcher repeats the same process for *Update B*.
+## Default behavior
 
-So, how do you get around that? Note that I said **by default**. To solve this kind of problem, the library provides a way to explicitly run a callback function (or any other function) in a separate thread. Before I show you how that looks, let's see how that affects the situation in our example. After you read this article, you marked the `echo` callback function to run in its own thread. Now, when the Dispatcher determined that the `echo` function should handle *Update A*, it creates a new thread with it as the target and *Update A* as an argument and starts the thread. Immediately after starting the thread, it repeats the process for *Update B* without any further delay. Both replies are sent **concurrently**. 
+By default, incoming updates and handler callbacks are processed sequentially, i.e. one after the other.
+So, if one callback function takes some time to execute, all other updates have to wait for it.
 
-#### How to use it
-I don't want to bore you with *words* any further, so let's see some code! Sticking with the Echobot example, this is how you can mark the `echo` function to run in a thread:
+**Example:**
+You're running the [Echobot](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/echobot.py) and two users (*User A* and *User B*) send a message to the bot at the same time.
+Maybe *User A* was a bit quicker, so their request arrives first, in the form of an `Update` object (*Update A*).
+The `Application` checks the `Update` and decides it should be handled by the handler with the callback function named `echo`.
+At the same time, the `Update` of *User B* arrives (*Update B*).
+But the `Application` is not finished with *Update A*.
+It calls the `echo` function with *Update A*, which sends a reply to *User A*. Sending a reply takes some time, and *Update B* remains untouched during that time.
+Only after the `echo` function finishes for *Update A*, the `Application` repeats the same process for *Update B*.
+
+If you have handlers in multiple groups, it gets a tiny bit more complicated.
+The following pseudocode explains how `Application.process_update` roughly works in the default case, i.e. sequential processing (we simplified a bit by e.g. skipping some arguments of the involved methods):
 
 ```python
-dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, echo, run_async=True))
+async def process_update(self, update):
+    # self is the `Application` instance
+    for group_number, handlers in self.handlers.items():
+        # `handlers` is the list of handlers in group `group_number`
+        for handler in handlers:
+            if handler.check_update(update):
+                # Here we `await`, i.e. we only continue after the callback is done!
+                await handler.handle_update(update)
+                continue  # at most one handler per group handles the update
 ```
 
-Simple and straightforward, right? So, why did I bore you with all that stuff before?
+## Using concurrency
 
-#### Common Pitfalls
-Sadly, programming with threads is rarely simple. There are lots of traps to fall into, and I'll try to give you a few hints on how to spot them. However, this wiki article does not replace ~~your psychiatrist~~ a university lecture on concurrency.
+We want to reply to both *User A* and *User B* as fast as possible and while sending the reply to user *User A* we'd like to already get started on handling *Update B*.
+PTB comes with three built-in mechanism that can help with that.
 
-##### Shared state
-This is probably the biggest cause of issues with threading, and those issues are hard to fix. So instead of showing you how to fix them, I'll show you how to avoid them altogether. More about that later. 
+### `Handler.block`
 
-**A fair warning:** In this section, I'll try to give you a simple talk (if that's possible) on a very complex topic. Many have written about it before, and I'm certainly less qualified than most. As usual, I'll use an example to complement the text, and try to stay in the realm of what's important to you. Please bear with me here.
-
-An example that is often used to illustrate this is that of a bank. Let's say you have been hired by a bank to write a Telegram bot to manage bank accounts. The bot has the command `/transaction <amount> <recipient>`, and because many people will be using this command, you think it's a good idea to make this command asynchronous. ~~You~~ Some unpaid intern wrote the following (**BAD AND DANGEROUS**) callback function:
+Via the `block` parameter of `Handler` you can specify that `Application.process_update` should not wait for the callback to finish:
 
 ```python
-def transaction(update, context):
+application.add_handler(
+  MessageHandler(filters.TEXT & ~filters.COMMAND, echo, block=False)
+)
+```
+
+Instead, it will run the callback as [`asyncio.Task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.Task) via [`asyncio.create_task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.create_task).
+Now, when the `Application` determined that the `echo` function should handle *Update A*, it creates a new task from `echo(Update A)`.
+Immediately after that, it calls `Application.process_update(Update B)` and repeats the process for *Update B* without any further delay.
+Both replies are sent **concurrently**.
+
+Again, let's have a look at pseudocode:
+
+```python
+async def process_update(self, update):
+    # self is the `Application` instance
+    for group_number, handlers in self.handlers.items():
+        # `handlers` is the list of handlers in group `group_number`
+        for handler in handlers:
+            if handler.check_update(update):
+                # Here we *don't* `await`, such that the loop immediately continues
+                asyncio.create_task(handler.handle_update(update))
+                continue  # at most one handler per group handles the update
+```
+
+This already helps for many use cases.
+However, by using `block=False` in a handler, you can no longer rely on handlers in different groups being called one after the other.
+Depending on your use case, this can be an issue.
+Hence, PTB comes with a second option.
+
+### `Application.concurrent_updates`
+
+Instead of running single handlers in a non-blocking way, we can tell the `Application` to run the whole call of `Application.process_update` concurrently:
+
+```python
+Application.builder().token('TOKEN').concurrent_updates(True).build()
+```
+
+Now the `Application` will start `Application.process_update(Update A)` via `asyncio.create_task` and immediately afterwards do the same with *Update B*.
+Again, pseudocode:
+
+```python
+while not application.update_queue.empy():
+  update = await application.update_queue.get()
+  asyncio.create_task(application.process_update(update))
+```
+
+**Note:** The number of concurrently processed updates is limited (the limit defaults to 4096 updates at a time).
+This is a simple measure to avoid e.g. DDOS attacks
+
+### `Application.create_task`
+
+`Handler.block` and `Application.concurrent_updates` allow running handler callbacks or the entirety of handling an update concurrently.
+In addition to that, PTB offers `Application.create_task` to run specific coroutine function concurrently.
+`Application.create_task` is a very thin wrapper around [`asyncio.create_task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.create_task) that adds some book-keeping that comes in handy for using it in PTB.
+Please consult the documentation of `Application.create_task` for more details.
+
+This wrapper gives you fine-grained control about how you use concurrency in PTB.
+The next section gives you in idea about why that is helpful.
+
+## Tailor-made Concurrency
+
+Even though `asyncio` is usually single-threaded, concurrent programming comes with a number of traps to fall into, and we'll try to give you a few hints on how to spot them.
+However, this wiki article does not replace ~~your psychiatrist~~ a university lecture on concurrency.
+
+Probably the biggest cause of issues of concurrency are shared states, and those issues are hard to fix.
+So instead of showing you how to fix them, we'll show you how to avoid them altogether. More about that later. 
+
+**A fair warning:** In this section, we'll try to give you a simple talk (if that's possible) on a very complex topic.
+Many have written about it before, and we're certainly less qualified than most.
+As usual, we'll use an example to complement the text, and try to stay in the realm of what's important to you.
+
+An example that is often used to illustrate this is that of a bank.
+Let's say you have been hired by a bank to write a Telegram bot to manage bank accounts. The bot has the command `/transaction <amount> <recipient>`, and because many people will be using this command, you think it's a good idea to make this command run concurrently.
+~~You~~ Some unpaid intern wrote the following (**BAD AND DANGEROUS**) callback function:
+
+```python
+async def transaction(update, context):
   bot = context.bot
-  chat_id = update.message.chat_id
+  chat_id = update.effective_user.id
   source_id, target_id, amount = parse_update(update)
 
-  bot.send_message(chat_id, 'Preparing...')
+  await bot.send_message(chat_id, 'Preparing...')
   bank.log(BEGINNING_TRANSACTION, amount, source_id, target_id)
 
   source = bank.read_account(source_id)
@@ -48,19 +146,21 @@ def transaction(update, context):
   source.balance -= amount
   target.balance += amount
 
-  bot.send_message(chat_id, 'Transferring money...')
+  await bot.send_message(chat_id, 'Transferring money...')
   bank.log(CALCULATED_TRANSACTION, amount, source_id, target_id)
 
   bank.write_account(source)
+  await bot.send_message(chat_id, 'Source account updated...')
+  await bot.send_message(chat_id, 'Target account updated...')
   bank.write_account(target)
   
-  bot.send_message(chat_id, 'Done!')
+  await bot.send_message(chat_id, 'Done!')
   bank.log(FINISHED_TRANSACTION, amount, source_id, target_id)
 
-dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=True))
+application.add_handler(CommandHandler('transaction', transaction, block=False))
 ```
 
-I skipped some of the implementation details, so here's a short explanation:
+We skipped some of the implementation details, so here's a short explanation:
 
 - `parse_update` extracts the user id's of the sender (`source_id`) and receiver (`target_id`) from the message
 - `bank` is a globally accessible object that exposes the Python API of the banks operations
@@ -68,45 +168,64 @@ I skipped some of the implementation details, so here's a short explanation:
   - `bank.write_account` writes a bank account back to the bank's database
   - `bank.log` must be used to keep a log of all changes to make sure no money is lost
 
-Sadly, ~~you~~ that damn intern fell right into the trap. Let's say there are two morally corrupt customers, *Customer A* with *Account A* and *Customer B* with *Account B*, who both make a transaction simultaneously. *Customer A* sends *Transaction AB* of *$10* to *Customer B*. At the same time, *Customer B* sends a *Transaction BA* of *$100* to *Customer A*.
+Sadly, ~~you~~ that damn intern fell right into the trap.
+Let's say there are two morally corrupt customers, *Customer A* with *Account A* and *Customer B* with *Account B*, who both make a transaction simultaneously.
+*Customer A* sends *Transaction AB* of *$10* to *Customer B*.
+At the same time, *Customer B* sends a *Transaction BA* of *$100* to *Customer A*.
 
-Now the Dispatcher starts two threads, *Thread AB* and *Thread BA*, almost simultaneously. Both threads read the accounts from the database with the **same** balance and calculate a new balance for both of them. In most cases, one of the two transactions will simply overwrite the other. That's not too bad, but will at least be confusing to the customers. But threads are quite unpredictable and can be [suspended and resumed by the operating system](https://en.wikipedia.org/wiki/Scheduling_(computing)) at *any* point in the code, so the following order of execution can occur:
+Now the `Application` starts two tasks, *Task AB* and *Task BA*, almost simultaneously.
+Both tasks read the accounts from the database with the **same** balance and calculate a new balance for both of them.
+In most cases, one of the two transactions will simply overwrite the other.
+That's not too bad, but will at least be confusing to the customers.
+However, each `await` gives control back to the event loop which may then continue another task.
+Hence, the following may occur:
 
-1. *Thread AB* executes `bank.write_account(source)` and updates *Account A* with *-$10*
-2. Before updating *Account B*, *Thread AB* is put to sleep by the operating system
-3. *Thread BA* is resumed by the operating system
-4. *Thread BA* executes `bank.write_account(source)` and updates *Account B* with *-$100*
-5. *Thread BA* also executes `bank.write_account(target)` and updates *Account A* with *+$100*
-6. When *Thread AB* is resumed again, it executes `bank.write_account(target)` and updates *Account B* with *+$10*
+1. *Task AB* executes `bank.write_account(source)` and updates *Account A* with *-$10*
+2. Before updating *Account B*, *Task AB* sends two messages and during that time, the event loop continues *Task BA*
+3*Task BA* executes `bank.write_account(source)` and updates *Account B* with *-$100*
+3. Before updating *Account B*, *Task AB* sends two messages and during that time, the event loop continues *Task AB*
+5. *Task AB* executes `bank.write_account(target)` and updates *Account B* with *+$100*
+6. When *Task AB* is resumed again, it executes `bank.write_account(target)` and updates *Account B* with *+$10*
 
-In the end, *Account A* is at *+$100* and *Account B* is at *+$10*. Of course, this won't happen very often. And that's what makes this bug so critical. It will probably be missed by your tests and end up in production, potentially causing a lot of financial damage.
+In the end, *Account A* is at *+$100* and *Account B* is at *+$10*.
+Of course, this won't happen very often.
+And that's what makes this bug so critical.
+It will probably be missed by your tests and end up in production, potentially causing a lot of financial damage.
 
-**Note:** This kind of bug is called a [race condition](https://en.wikipedia.org/wiki/Race_condition) and has been the source of many, many security vulnerabilities. It's also one of the reasons why banking software is not written by unpaid interns.
+**Note:** This kind of bug is called a [race condition](https://en.wikipedia.org/wiki/Race_condition) and has been the source of many, many security vulnerabilities.
+It's also one of the reasons why banking software is not written by unpaid interns.
 
-To be fair, you probably don't write software for banks (if you do, you should already know about this), but this kind of bug can occur in any piece of code that shares *state* across threads. While in this case, the shared state is the `bank` object, it can take many forms. A database, a `dict`, a `list` or any other kind of object that is modified by more than one thread. Depending on the situation, race conditions are more or less likely to occur, and the damage they do is bigger or smaller, but as a rule of thumb, they're bad.
+To be fair, you probably don't write software for banks (if you do, you should already know about this), but this kind of bug can occur in much simpler situations.
+While in this case, the shared state is the `bank` object, it can take many forms.
+A database, a `dict`, a `list` or any other kind of object that is modified by more than one task.
+Depending on the situation, race conditions are more or less likely to occur, and the damage they do is bigger or smaller, but as a rule of thumb, they're bad.
 
-There are many ways to fix race conditions in a multithreaded environment, but I won't explain any of them here. Mostly because it probably isn't worth the work; partly because it's cumbersome and I feel lazy. Instead, as promised in the first paragraph, I'll show you how to avoid them completely. That's not always as easy as it is in this case, but we're lucky:
+As promised in the first paragraph, let's discuss how to avoid such situations.
+That's not always as easy as it is in this case, but we're lucky:
 
-1. Our set of tools is very limited - `Dispatcher.run_async` is the only thread-related tool we're using
+1. Our set of tools is very limited - `Application.create_task` is the only `asyncio` tool we're using
 2. Our goals are not very ambitious - we only want to speed up our I/O
 
-There are two relatively simple steps you have to follow. First, identify those parts of the code that **must** run sequentially (the opposite of *in parallel* or *asynchronously*). Usually, that is code that fits **at least one** of these criteria:
+There are two relatively simple steps you have to follow.
+First, identify those parts of the code that **must** run sequentially (the opposite of *in parallel* or *concurrently*).
+Usually, that is code that fits **at least one** of these criteria:
 
 1. *Modifies* shared state
 2. *Reads* shared state and *relies on* it being correct
-3. *Modifies* local state (eg. a variable used later in the same function)
+3. *Modifies* local state (e.g. a variable used later in the same function)
 
-Make sure you have a good idea what *shared state* means. Don't hesitate to do a quick Google search on it. 
+Make sure you have a good idea what *shared state* means
+Don't hesitate to do a quick Google search on it. 
 
-I went through our bank example line by line and noted which of the criteria it matches, here's the result:
+Let's go through our bank example line by line and note which of the criteria it matches:
 
 ```python
-def transaction(update, context):
+async def transaction(update, context):
   bot = context.bot
-  chat_id = update.message.chat_id  # 3
+  chat_id = update.effective_user.id  # 3
   source_id, target_id, amount = parse_update(update)  # 3
 
-  bot.send_message(chat_id, 'Preparing...')  # None
+  await bot.send_message(chat_id, 'Preparing...')  # None
   bank.log(BEGINNING_TRANSACTION, amount, source_id, target_id)  # None
 
   source = bank.read_account(source_id)  # 2, 3
@@ -115,41 +234,52 @@ def transaction(update, context):
   source.balance -= amount  # 3
   target.balance += amount  # 3
 
-  bot.send_message(chat_id, 'Transferring money...')  # None
+  await bot.send_message(chat_id, 'Transferring money...')  # None
   bank.log(CALCULATED_TRANSACTION, amount, source_id, target_id)  # None
 
   bank.write_account(source)  # 1
+  await bot.send_message(chat_id, 'Source account updated...')  # None
+  await bot.send_message(chat_id, 'Target account updated...')  # None
   bank.write_account(target)  # 1
   
-  bot.send_message(chat_id, 'Done!')  # None
+  await bot.send_message(chat_id, 'Done!')  # None
   bank.log(FINISHED_TRANSACTION, amount, source_id, target_id)  # None
 
-dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=True))
+application.add_handler(CommandHandler('transaction', transaction, block=False))
 ```
 
-**Note:** One could argue that `bank.log` modifies shared state. However, logging libraries are usually thread-safe and it's unlikely that the log has a critical functional role. It's not being read from in this function, and I assume it's not being read from anywhere else in the code, so maybe consider this an exception to the rule. Also, for the sake of this example, it'd be boring if only `bot.sendMessage` would be safe to run in parallel. However, we will keep this in mind for the next step.
+**Note:**
+One could argue that `bank.log` modifies shared state.
+However, logging libraries are usually thread-safe and it's unlikely that the log has a critical functional role.
+It's not being read from in this function, and let's assume it's not being read from anywhere else in the code, so maybe consider this an exception to the rule.
+Also, for the sake of this example, it'd be boring if only `bot.sendMessage` would be safe to run in parallel.
+However, we will keep this in mind for the next step.
 
-As you can see, there's a pretty obvious pattern here: `bot.sendMessage` and `bank.log` are not matching any criteria we have set for strictly sequential code. That means we can run this code asynchronously without risk. Therefore, the second step is to extract that code to separate functions and run only them asynchronously. Since our async code parts are all very similar, they can be replaced by a single function. We could have done that before, but then this moment would've been less cool. 
-
-**Note:** Not only handler callbacks can be run asynchronously. The `Dispatcher` has a `run_async` function that let's you run custom functions asynchronously. You can and should use this to your advantage.
+As you can see, there's a pretty obvious pattern here:
+`bot.send_message` and `bank.log` are not matching any criteria we have set for strictly sequential code.
+That means we can run this code asynchronously without risk.
+Therefore, the second step is to extract that code to separate functions and run only them concurrently.
+Since our async code parts are all very similar, they can be replaced by a single function.
+We could have done that before, but then this moment would've been less cool. 
 
 ```python
-def log_and_notify(action, amount, source_id, target_id, chat_id, message):
+async def log_and_notify(action, amount, source_id, target_id, chat_id, message):
   bank.log(action, amount, source_id, target_id)
-  bot.send_message(chat_id, message)
+  await bot.send_message(chat_id, message)
 
-def transaction(update, context):
+async def transaction(update, context):
   chat_id = update.message.chat_id  # 3
   source_id, target_id, amount = parse_update(update)  # 3
 
-  context.dispatcher.run_async(
-    log_and_notify,
-    BEGINNING_TRANSACTION,
-    amount,
-    source_id,
-    target_id,
-    chat_id,
-    'Preparing...',
+  context.application.create_task(
+    log_and_notify(
+      BEGINNING_TRANSACTION,
+      amount,
+      source_id,
+      target_id,
+      chat_id,
+      'Preparing...',
+    ),
     update=update
   )
 
@@ -159,14 +289,15 @@ def transaction(update, context):
   source.balance -= amount  # 3
   target.balance += amount  # 3
 
-  context.dispatcher.run_async(
-    log_and_notify,
-    CALCULATED_TRANSACTION,
-    amount,
-    source_id,
-    target_id,
-    chat_id,
-    'Transferring money...',
+  context.application.create_task(
+    log_and_notify(
+      CALCULATED_TRANSACTION,
+      amount,
+      source_id,
+      target_id,
+      chat_id,
+      'Transferring money...'
+    ),
     update=update
   )
 
@@ -185,47 +316,20 @@ def transaction(update, context):
     update=update
   )
 
-dispatcher.add_handler(CommandHandler('transaction', transaction, run_async=False))
+application.add_handler(CommandHandler('transaction', transaction, block=True))
 ```
 
-**Note:** You might have noticed that I moved `bank.log` before `bot.send_message`, so the log entries will be in order *most of the time*, assuming the database operations take long enough for the log to complete.
+**Note:** You might have noticed that we moved `bank.log` before `bot.send_message`, so the log entries will be in order *most of the time*, assuming the database operations take long enough for the log to complete.
 
-**Note:** It's likely that `bank.read_account` and `bank.write_account` require some I/O operations to interact with the banks database. You see that it's not always possible to write code asynchronously, at least with this simplified method. Read about [Transactions](https://en.wikipedia.org/wiki/Database_transaction) to learn how databases solve this in "real life".
+**Note:** It's likely that `bank.read_account` and `bank.write_account` require some I/O operations to interact with the banks database.
+You see that it's not always possible to write code concurrently, at least with this simplified method. Read about [Transactions](https://en.wikipedia.org/wiki/Database_transaction) to learn how databases solve this in "real life".
 
-By separating the strictly sequential code from the asynchronous code, we made sure that no race conditions can occur. The `transaction` function won't be executed concurrently anymore, but we still managed to gain some substantial performance boost over completely sequential code, because the logging and user notification is now run in parallel.
+By separating the strictly sequential code from the concurrent code, we made sure that no race conditions can occur.
+The `transaction` function won't be executed concurrently anymore, but we still managed to gain some substantial performance boost over completely sequential code, because the logging and user notification is now run in parallel.
 
-At this point, let me say: **Congratulations!** :tada: and thank you for reading :grin: If you got this far without giving up, please consider a CompSci-related major at university, if you have that opportunity. If I left you with a question or two, post a message in our [Telegram Group](https://telegram.me/pythontelegrambotgroup) and mention @jh0ker. If you found this easy to grasp and/or are eager to learn more about all that threading stuff, consider reading the [documentation of the threading module](https://docs.python.org/3/library/threading.html) or learn about [asyncio](https://docs.python.org/3/library/asyncio.html), a modern and arguably better approach to asynchronous I/O that does not use multithreading.
-
-As you may now have learned, writing good, thread-safe code is no exact science. A few last helpful guidelines for threaded code:
+That's basically it for now.
+For the very end, here are a few helpful guidelines for writing concurrent code:
 
 - Avoid using shared state whenever possible
 - Write self-contained ([pure](https://en.wikipedia.org/wiki/Pure_function)) functions
 - When in doubt, make it sequential
-- Asynchronous functions return values encapsulated in a [`Promise`](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/telegram/utils/promise.py)
-
-##### Limits
-The maximum of concurrent threads is limited. This limit is 4 by default. To increase this limit, you can pass the keyword argument `workers` to the `Updater` initialization:
-
-```python
-updater = Updater(TOKEN, workers=32)
-```
-
-If an asynchronous function is called from anywhere, including the Dispatcher, and the limit of concurrent threads is reached, the calling thread will block until one of the threads is done and a slot is free. **Note:** In version 4.3 and later, the calling thread will not block. The following is here for historic reasons.
-
-This can lead to a so-called [deadlock](https://en.wikipedia.org/wiki/Deadlock), especially with nested function calls:
-
-```python
-def grandchild():
-  pass
-
-def child():
-  dispatcher.run_async(grandchild)
-
-def parent():
-  dispatcher.run_async(child)
-  dispatcher.run_async(child)
-
-dispatcher.run_async(parent)
-```
-
-If you limited the maximum amount of threads to 2 and call the `parent` function, you start a thread. This thread calls the `child` function and starts another thread, so the amount of concurrent threads is 2. It now tries to call the `child` function a second time, but has to wait until the just started `child` thread ended. The `child` thread tries to call `grandchild`, but it has to wait until the `parent` thread ended. Now both threads are waiting for each other and blocking all other code that tries to run an asynchronous function. The calling thread (usually the Dispatcher) is effectively dead, hence the term *deadlock*.

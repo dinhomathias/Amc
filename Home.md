@@ -1,21 +1,3 @@
-# Pages to update
-
-- [x] `JobQueue`
-- [x] Tutorial your first bot
-- [x] inline keyboard example
-- [x] performance optimizationstandalone page
-- [x] Type checking
-- [x] types of handlers
-- [x] webhooks
-- [x] proxy
-
-Other todo:
-
-- [ ] new page on general architecture overview
-- [x] ~~Link to the architecture diagram once that's contained in the v20/master branch~~ Was added to the wiki instead
-- [ ] new write up for the `Concurrency` page - for now I just copied the `multithreading` stuff from the v13 Performance Optimizations page
-
-
 [![Logo](https://github.com/python-telegram-bot/logos/raw/master/logo-text/png/ptb-logo-text_768.png)](https://python-telegram-bot.org/)
 
 
