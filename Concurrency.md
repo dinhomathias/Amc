@@ -182,10 +182,10 @@ Hence, the following may occur:
 
 1. *Task AB* executes `bank.write_account(source)` and updates *Account A* with *-$10*
 2. Before updating *Account B*, *Task AB* sends two messages and during that time, the event loop continues *Task BA*
-3*Task BA* executes `bank.write_account(source)` and updates *Account B* with *-$100*
-3. Before updating *Account B*, *Task AB* sends two messages and during that time, the event loop continues *Task AB*
+3 *Task BA* executes `bank.write_account(source)` and updates *Account B* with *-$100*
+3. Before updating *Account A*, *Task BA* sends two messages and during that time, the event loop continues *Task AB*
 5. *Task AB* executes `bank.write_account(target)` and updates *Account B* with *+$100*
-6. When *Task AB* is resumed again, it executes `bank.write_account(target)` and updates *Account B* with *+$10*
+6. When *Task BA* is resumed again, it executes `bank.write_account(target)` and updates *Account A* with *+$10*
 
 In the end, *Account A* is at *+$100* and *Account B* is at *+$10*.
 Of course, this won't happen very often.
