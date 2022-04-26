@@ -97,7 +97,7 @@ Now the `Application` will start `Application.process_update(Update A)` via `asy
 Again, pseudocode:
 
 ```python
-while not application.update_queue.empy():
+while not application.update_queue.empty():
   update = await application.update_queue.get()
   asyncio.create_task(application.process_update(update))
 ```
@@ -110,7 +110,7 @@ This is a simple measure to avoid e.g. DDOS attacks
 `Handler.block` and `Application.concurrent_updates` allow running handler callbacks or the entirety of handling an update concurrently.
 In addition to that, PTB offers `Application.create_task` to run specific coroutine function concurrently.
 `Application.create_task` is a very thin wrapper around [`asyncio.create_task`](https://docs.python.org/3/library/asyncio-task.html#asyncio.create_task) that adds some book-keeping that comes in handy for using it in PTB.
-Please consult the documentation of `Application.create_task` for more details.
+Please consult the documentation of [`Application.create_task`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application.create_task) for more details.
 
 This wrapper gives you fine-grained control about how you use concurrency in PTB.
 The next section gives you in idea about why that is helpful.
