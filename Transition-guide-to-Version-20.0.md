@@ -3,6 +3,9 @@
 This transition guide is subject to changes as long as v20.0 is in pre-release mode.
 Individual pre-releases for v20.0 will not get standalone transition guides.
 
+Moreover, it's important to note that this transition guide will almost surely not cover every last one of the many smaller changes that came along with the bigger structural changes.
+If you notice that something is missing in here, feel free to add it.
+
 ## Table of contents
 
 - [Structural changes & Deprecations](#structural-changes---deprecations)
@@ -14,6 +17,7 @@ Individual pre-releases for v20.0 will not get standalone transition guides.
 - [Changes for specific modules, classes & functions](#changes-for-specific-modules--classes---functions)
   * [`telegram`](#-telegram-)
     + [Several classes](#several-classes)
+    + [Networking Backend](#networking-backend)
     + [`telegram.ChatAction`](#-telegramchataction-)
     + [`telegram.constants`](#-telegramconstants-)
     + [`telegram.Bot`](#-telegrambot-)
@@ -25,7 +29,7 @@ Individual pre-releases for v20.0 will not get standalone transition guides.
     + [`telegram.ParseMode`](#-telegramparsemode-)
     + [`telegram.PassportFile`](#-telegrampassportfile-)
     + [`telegram.ReplyMarkup`](#-telegramreplymarkup-)
-    + [`telegram.VoiceChat`](#-telegramvoicechat-)
+    + [`telegram.VideoChat`](#-telegramvideochat-)
   * [`telegram.ext`](#-telegramext-)
     + [`BasePersistence`](#-basepersistence-)
       - [`asyncio`](#-asyncio--1)
@@ -132,6 +136,15 @@ Previously some parts of `telegram.{error, constants}` where available directly 
 Previously, some classes (like `telegram.{Message, User, Chat}`) had an attribute `bot` that was used for the shortcuts (e.g. `Message.reply_text`). This attribute was removed.
 Instead, the new method `TelegramObject.{set, get}_bot()` are used.
 
+### Networking backend
+
+Previously, the class `telegram.utils.request.Request` formed the networking backend of PTB.
+This class has been removed.
+Instead, there is the new module `telegram.request`, which contains an interface class `BaseRequest` as well as an implementation `HTTPXRequest` of that class via the `httpx` library.
+By default, the `HTTPXRequest` class is used for the networking backend.
+Advanced users may use a custom backend by implementing a custom subclass of `BaseRequest`.
+See [[this page|Architecture]] for more information on that.
+
 ### `telegram.ChatAction`
 
 This class was removed as it is not part of the official Bot API. Use `telegram.constants.ChatAction` instead.
@@ -142,6 +155,7 @@ This module was rewritten from scratch. The constants are now grouped with the h
 
 ### `telegram.Bot`
 
+* The class has a new argument `get_updates_request` in addition to `request` and the corresponding request instance will be used exclusively for calling `getUpdates`.
 * The argument `media` of `Bot.edit_message_media` is now the first positional argument as specified by the Bot API.
 * The argument `url` of `Bot.set_webhook` is now required as specified by the Bot API.
 * The argument `description` of `Bot.set_chat_description` is now optional as specified by the Bot API.
@@ -181,7 +195,7 @@ The argument `file_size` is now optional as specified by the Bot API.
 
 This class was removed as it is not part of the official Bot API.
 
-### `telegram.VoiceChat`
+### `telegram.VideoChat`
 
 The argument `users` is now optional as specified by the Bot API.
 
