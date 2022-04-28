@@ -115,6 +115,15 @@ In order to clear this issue up, if you set `per_message=True`, the `Conversatio
 Note that this approach can only work, if all the handlers in the conversation are `CallbackQueryHandler`s. This is useful for building interactive menus.
 
 **Note:** If you have a `CallbackQueryHandler` in your `ConversationHandler`, you will see a warning `If 'per_message=True/False', …`. It is a *warning*, not an error. If you're sure that you set `per_message` to the correct value, you can just ignore it.
+If you like it better, you can even mute with something like
+
+```python
+from warnings import filterwarnings
+from telegram.warnings import PTBUserWarning
+
+filterwarnings(action="ignore", message=r".*CallbackQueryHandler", category=PTBUserWarning)
+```
+See [[this page|Exceptions,-Warnings-and-Logging]] for more info.
 
 ### Can I check, if a `ConversationHandler` is currently active for a user?
 
