@@ -1,6 +1,52 @@
+## ⚠️ Note
+
+This transition guide is subject to changes as long as v20.0 is in pre-release mode.
+Individual pre-releases for v20.0 will not get standalone transition guides.
+
 ## Table of contents
 
-Add this in the end …
+- [Structural changes & Deprecations](#structural-changes---deprecations)
+  * [Removed features](#removed-features)
+  * [`asyncio`](#-asyncio-)
+  * [Refinement of the public API](#refinement-of-the-public-api)
+  * [`__slots__`](#---slots---)
+  * [Overall architecture](#overall-architecture)
+- [Changes for specific modules, classes & functions](#changes-for-specific-modules--classes---functions)
+  * [`telegram`](#-telegram-)
+    + [Several classes](#several-classes)
+    + [`telegram.ChatAction`](#-telegramchataction-)
+    + [`telegram.constants`](#-telegramconstants-)
+    + [`telegram.Bot`](#-telegrambot-)
+    + [`telegram.EncryptedPassportElement`](#-telegramencryptedpassportelement-)
+    + [`telegram.error`](#-telegramerror-)
+    + [`telegram.File`](#-telegramfile-)
+    + [`telegram.ForceReply`](#-telegramforcereply-)
+    + [`telegram.InlineQuery.answer`](#-telegraminlinequeryanswer-)
+    + [`telegram.ParseMode`](#-telegramparsemode-)
+    + [`telegram.PassportFile`](#-telegrampassportfile-)
+    + [`telegram.ReplyMarkup`](#-telegramreplymarkup-)
+    + [`telegram.VoiceChat`](#-telegramvoicechat-)
+  * [`telegram.ext`](#-telegramext-)
+    + [`BasePersistence`](#-basepersistence-)
+      - [`asyncio`](#-asyncio--1)
+      - [Data must be copyable](#data-must-be-copyable)
+      - [Persisting `telegram.Bot` instances.](#persisting--telegrambot--instances)
+      - [Return value of `get_{user, chat}_data`](#return-value-of--get--user--chat--data-)
+      - [Abstract methods](#abstract-methods)
+      - [`store_*_data`](#-store---data-)
+    + [`CallbackContext`](#-callbackcontext-)
+    + [`ConversationHandler`](#-conversationhandler-)
+    + [`filters`](#-filters-)
+    + [`JobQueue`](#-jobqueue-)
+      - [New arguments `{chat, user}_id`](#new-arguments---chat--user--id-)
+      - [`JobQueue.run_monthly`](#-jobqueuerun-monthly-)
+    + [`Job`](#-job-)
+      - [Removed the attribute `job_queue`](#removed-the-attribute--job-queue-)
+    + [`PicklePersistence`](#-picklepersistence-)
+    + [`Updater`](#-updater-)
+    + [`Application`/`Dispatcher`](#-application---dispatcher-)
+      - [`user/chat_data`](#-user-chat-data-)
+
 
 # Structural changes & Deprecations
 
