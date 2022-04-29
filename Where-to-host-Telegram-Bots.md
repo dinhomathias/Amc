@@ -2,6 +2,7 @@ Look at [[Hosting your bot|Hosting-your-bot]] if you've decided to get a server.
 
 ### Cloud
 * [Amazon Web Services](https://aws.amazon.com/)
+    * ** [Running a Python Telegram Bot on AWS Serverless](https://github.com/jojo786/Sample-Python-Telegram-Bot-AWS-Serverless)
 * [Microsoft Azure](https://azure.microsoft.com/)
 * [Google App Engine](https://cloud.google.com/appengine) 
     * [[Notes about GAE - Google App Engine]]
