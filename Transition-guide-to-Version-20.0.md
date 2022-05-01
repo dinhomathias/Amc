@@ -3,8 +3,8 @@
 This transition guide is subject to changes as long as v20.0 is in pre-release mode.
 Individual pre-releases for v20.0 will not get standalone transition guides.
 
-Moreover, it's important to note that this transition guide will almost surely not cover every last one of the many smaller changes that came along with the bigger structural changes.
-If you notice that something is missing in here, feel free to add it.
+Moreover, it's important to note that this transition guide will not cover every last one of the many smaller changes that came along with the bigger structural changes.
+If you notice that some non trivial change is missing in here, feel free to add it.
 
 ## Table of contents
 
@@ -56,13 +56,13 @@ If you notice that something is missing in here, feel free to add it.
 
 ## Removed features
 
-We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]]. 
+We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]], and the MessageQueue. 
 
 ## `asyncio`
 
 The deepest structural change is introducing the `asyncio` module into `python-telegram-bot`.
 
-> [`asyncio`](https://docs.python.org/3/library/asyncio.html) asyncio is a library to write concurrent code using the `async`/`await` syntax.
+> [`asyncio`](https://docs.python.org/3/library/asyncio.html) is a library to write concurrent code using the `async`/`await` syntax.
 
 What does this mean and why do we care?
 
