@@ -8,6 +8,7 @@ If you notice that some non trivial change is missing in here, feel free to add 
 
 ## Table of contents
 
+- [Transition Script](#transition-script)
 - [Structural changes & Deprecations](#structural-changes---deprecations)
   * [Removed features](#removed-features)
   * [`asyncio`](#asyncio)
@@ -26,7 +27,7 @@ If you notice that some non trivial change is missing in here, feel free to add 
     + [`telegram.File`](#telegramfile)
     + [`telegram.ForceReply`](#telegramforcereply)
     + [`telegram.InlineQuery.answer`](#telegraminlinequeryanswer)
-    + [`telegram.ParseMode`](#-telegramparsemode)
+    + [`telegram.ParseMode`](#telegramparsemode)
     + [`telegram.PassportFile`](#telegrampassportfile)
     + [`telegram.ReplyMarkup`](#telegramreplymarkup)
     + [`telegram.VideoChat`](#telegramvideochat)
@@ -46,11 +47,19 @@ If you notice that some non trivial change is missing in here, feel free to add 
       - [`JobQueue.run_monthly`](#-jobqueuerun-monthly-)
     + [`Job`](#job)
       - [Removed the attribute `job_queue`](#removed-the-attribute-job_queue)
-    + [`PicklePersistence`](#-picklepersistence-)
+    + [`PicklePersistence`](#picklepersistence)
     + [`Updater`](#updater)
     + [`Application`/`Dispatcher`](#applicationdispatcher)
       - [`user/chat_data`](#userchat_data)
 
+# Transition Script
+
+We have prepared a script that is aimed at easing the transition for you.
+Note that this script currently just does some regex-based search & replace take some of the transition work off your shoulders.
+It is no way a supplement for reading this transition guide and manually adjusting your code base.
+In addition to the script, we recommend using a language interpreter (e.g. `pylint`) and a static type checker (e.g. `mypy`) on your code base to minimize the trial-and-error time during transitioning at a minimum.
+
+> Here be details
 
 # Structural changes & Deprecations
 
@@ -275,6 +284,11 @@ This was removed because if you have access to a job, then you also have access 
 
 * The argument `filename` was renamed to `filepath` and now also accepts a `pathlib.Path` object
 * [Changes to `BasePersistence`](#basepersistence) also affect this class.
+
+We have prepared a script that will help you convert your v13 pickle-files into v20 pickle files.
+Note that this script is a best-effort solution for a conversion - for some special cases, a conversion may not be possible without adjusting the v13 data before.
+
+> Here be details
 
 ### `Updater`
 
