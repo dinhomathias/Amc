@@ -38,7 +38,8 @@ When asking how to build a specific functionality with PTB, please try to descri
 
 ### A Good Example:
 
-> When a new user enters a group, where my bot is an admin, I would like to verify that they are not spam bots by having them fill out some kind of captcha, preferably in the private chat with the bot. If the captcha is not filled out correctly within one day, they should be banned. How can I set up something like this?
+> When a new user enters a group, where my bot is an admin, I would like to verify that they are not spam bots by having them fill out some kind of captcha, preferably in the private chat with the bot. If the captcha is not filled out correctly within one day, they should be banned.
+I can already send a captcha message and also check if it was filled out correctly. What I can't figure out is how to catch users joining the group and how I can set up a delayed ban.
 
 ## Questions on PTB
 
