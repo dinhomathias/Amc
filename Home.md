@@ -1,5 +1,30 @@
 [![Logo](https://github.com/python-telegram-bot/logos/raw/master/logo-text/png/ptb-logo-text_768.png)](https://python-telegram-bot.org/)
 
+## PTB Resources
+
+PTB offers different resources that help you understand and use the features of the library.
+
+-   The [package documentation][] is the technical reference for
+    `python-telegram-bot`. It contains descriptions of all available
+    classes, modules, methods and arguments.
+-   This [wiki][] is home to number of more elaborate introductions of
+    the different features of `python-telegram-bot` and other useful
+    resources that go beyond the technical documentation.
+-   Our [examples directory][] contains several examples that showcase
+    the different features of both the Bot API and
+    `python-telegram-bot`. Even if it is not your approach for learning,
+    please take a look at `echobot.py`. It is the de facto base for most
+    of the bots out there. The code for these examples is released to
+    the public domain, so you can start by grabbing the code and
+    building on top of it.
+-   The [official Telegram Bot API documentation][] is of course always
+    worth a read.
+
+  [package documentation]: https://python-telegram-bot.readthedocs.io/
+  [wiki]: https://github.com/python-telegram-bot/python-telegram-bot/wiki/
+  [examples directory]: https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/README.md
+  [official Telegram Bot API documentation]: https://core.telegram.org/bots/api
+
 
 ## Contributing to this Wiki
 If you stumble upon a part of the wiki that is unclear or missing important points, please go ahead and drop us a message in our [Telegram Group](https://t.me/pythontelegrambotgroup), or just edit the part yourself (anyone can contribute). We'd like our wiki to be as complete as possible 🙂
