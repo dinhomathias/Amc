@@ -107,6 +107,7 @@ application.run_polling()
 
 By placing the `chat_id` in the `Job` object, the callback function knows where it should send the message.
 
+
 All good things must come to an end, so when you stop the Application, the related job queue will be stopped as well.
 
 ## Persistent Job Queues
