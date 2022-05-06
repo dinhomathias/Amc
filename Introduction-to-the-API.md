@@ -1,10 +1,10 @@
 ## Pure Telegram Bot API
 
-The Bot API is exposed via the [`telegram.Bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html) class.
+The Bot API is exposed via the [`telegram.Bot`](https://python-telegram-bot.readthedocs.io/telegram.bot.html) class.
 The methods are the `snake_case` equivalents of the methods described in the official [Telegram Bot API](https://core.telegram.org/bots/api).
 The exact `camelCase` method names as in the Telegram docs are also available for your convenience.
 For example, `telegram.Bot.send_message` is the same as `telegram.Bot.sendMessage`.
-All the classes of the Bot API can also be found in the `telegram` module, e.g. the `Message` class is available as [`telegram.Message`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html).
+All the classes of the Bot API can also be found in the `telegram` module, e.g. the `Message` class is available as [`telegram.Message`](https://python-telegram-bot.readthedocs.io/telegram.message.html).
 
 To generate an Access Token, you have to talk to [BotFather](https://t.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots#6-botfather)).
 

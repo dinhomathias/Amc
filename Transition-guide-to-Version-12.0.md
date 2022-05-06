@@ -186,7 +186,7 @@ Note that in the last case, the order is the order that the filters were execute
 Also note that `context.match` is a shortcut for `context.matches[0]`. Very useful when you are only interested in the first match.
 
 ### Special note about `Filters.command` and `Filters.text`:
-As of **version 12.4**, `Filters.command` checks for `MessageEntity.BOT_COMMAND` instead of a leading slash and accordingld, `Filters.text` accepts text with a leading slash. Use `Filters.text & (~Filters.command)` to filter for text messages that have no commands. For more details, please see the [changelog](https://python-telegram-bot.readthedocs.io/en/stable/changelog.html#version-12-4-0) and the documentation on filters.
+As of **version 12.4**, `Filters.command` checks for `MessageEntity.BOT_COMMAND` instead of a leading slash and accordingld, `Filters.text` accepts text with a leading slash. Use `Filters.text & (~Filters.command)` to filter for text messages that have no commands. For more details, please see the [changelog](https://python-telegram-bot.readthedocs.io/changelog.html#version-12-4-0) and the documentation on filters.
 
 ***
 # Persistence

@@ -84,7 +84,7 @@ A contribution in this direction would be greatly appreciated.
 
 ## Stabilizing your app
 
-When a network error occurs, be prepared to catch the [raised exception](https://python-telegram-bot.readthedocs.io/en/stable/telegram.error.html) and handle it according to your policy (do you want to retry? ignore? other?) or use PTBs built-in mechanism for [[exception handling|Exception-Handling]].
+When a network error occurs, be prepared to catch the [raised exception](https://python-telegram-bot.readthedocs.io/telegram.error.html) and handle it according to your policy (do you want to retry? ignore? other?) or use PTBs built-in mechanism for [[exception handling|Exception-Handling]].
 
 ## PTB
 If you think of another way to improve stability from within ptb, please contact us (the maintainers).

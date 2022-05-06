@@ -4,8 +4,8 @@ Bot API 5.0 (and therefore local API server) is supported by PTB since v13.1.
 
 ## How to use a local Bot API Server with PTB
 
-* Before you can move your bot from the official server cloud to a self hosted server, you need to call the [`log_out`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.log_out) method.
-* Before moving from one self hosted instance to another, you need to use the [`delete_webhook`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.delete_webhook) and [`close`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.close) methods.
+* Before you can move your bot from the official server cloud to a self hosted server, you need to call the [`log_out`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.log_out) method.
+* Before moving from one self hosted instance to another, you need to use the [`delete_webhook`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.delete_webhook) and [`close`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.close) methods.
 * To make PTB aware that you're not using the official server, pass the following to your [`Application`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.applicationbuilder.html#telegram.ext.ApplicationBuilder.base_file_url) (or [`Bot`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.bot.html#telegram.Bot.params.base_url)):
   * `base_url='your-bot-api-server.com/bot'`
 * If you are running a local bot API server without the `--local` flag, also pass:

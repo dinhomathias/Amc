@@ -1,5 +1,5 @@
 ## Introduction
-As of version 12.4, PTB supports passing default values for arguments such as `parse_mode` to reduce the need for repetition. For this purpose, the [Defaults](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.defaults.html) class was introduced. This makes it possible to set defaults for often used arguments. These are set at the creation of the bot and are _immutable_.
+As of version 12.4, PTB supports passing default values for arguments such as `parse_mode` to reduce the need for repetition. For this purpose, the [Defaults](https://python-telegram-bot.readthedocs.io/telegram.ext.defaults.html) class was introduced. This makes it possible to set defaults for often used arguments. These are set at the creation of the bot and are _immutable_.
 
 ## What can be set to a default
 * `parse_mode`

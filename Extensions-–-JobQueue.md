@@ -26,7 +26,7 @@ job_queue = application.job_queue
 
 Just know that unless you have a good reason to do so, you should not instantiate `JobQueue` yourself.
 
-Tasks in the job queue are encapsulated by the [`Job`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram-ext-job) class. It takes a [callback function as a parameter](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram.ext.Job.params.callback), which will be executed when the time comes. This callback function always takes exactly one parameter: `context`, a [`telegram.ext.CallbackContext`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackcontext.html). Like in the case of handler callbacks used by the `Application`, through this object you can access 
+Tasks in the job queue are encapsulated by the [`Job`](https://python-telegram-bot.readthedocs.io/telegram.ext.job.html#telegram-ext-job) class. It takes a [callback function as a parameter](https://python-telegram-bot.readthedocs.io/telegram.ext.job.html#telegram.ext.Job.params.callback), which will be executed when the time comes. This callback function always takes exactly one parameter: `context`, a [`telegram.ext.CallbackContext`](https://python-telegram-bot.readthedocs.io/telegram.ext.callbackcontext.html). Like in the case of handler callbacks used by the `Application`, through this object you can access 
 * `context.bot`, the `Application`'s `telegram.Bot` instance
 * `context.job_queue`, the same object as `application.job_queue` above
 * and for this particular case you can also access `context.job`, which is the `Job` instance of the task that triggered the callback (more on that later). 
@@ -51,7 +51,7 @@ job_minute = job_queue.run_repeating(callback_minute, interval=60, first=10)
 application.run_polling()
 ```
 
-The `callback_minute` function will be executed every `60.0` seconds, the first time being after 10 seconds (because of `first=10`). The `interval` and `first` parameters are in seconds if they are `int` or `float`. They can also be `datetime` objects. See the [docs](http://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) for detailed explanation.
+The `callback_minute` function will be executed every `60.0` seconds, the first time being after 10 seconds (because of `first=10`). The `interval` and `first` parameters are in seconds if they are `int` or `float`. They can also be `datetime` objects. See the [docs](http://python-telegram-bot.readthedocs.io/telegram.ext.jobqueue.html) for detailed explanation.
 The return value of these functions are the `Job` objects being created. You don't need to store the result of `run_repeating` (which is the newly instantiated `Job`) if you don't need it; we will make use of it later in this tutorial.
 
 You can also add a job that will be executed only once, with a delay:
@@ -79,9 +79,9 @@ job_minute.enabled = False  # Temporarily disable this job
 job_minute.schedule_removal()  # Remove this job completely
 ```
 
-**Note:** [`schedule_removal`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram.ext.Job.schedule_removal) does not immediately remove the job from the queue. Instead, it is marked for removal and will be removed as soon as its current interval is over (it will not run again after being marked for removal).
+**Note:** [`schedule_removal`](https://python-telegram-bot.readthedocs.io/telegram.ext.job.html#telegram.ext.Job.schedule_removal) does not immediately remove the job from the queue. Instead, it is marked for removal and will be removed as soon as its current interval is over (it will not run again after being marked for removal).
 
-You might want to add jobs in response to certain user input, and there is a convenient way to do that. The `context` argument of your `Handler` callbacks has the `JobQueue` attached as `context.job_queue` ready to be used. Another feature you can use here are the [`context`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram.ext.Job.params.context) and [`chat_id`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html#telegram.ext.Job.params.chat_id) keyword arguments of `Job`. You can pass any object as a `context` parameter when you launch a `Job` and retrieve it at a later stage as long as the `Job` exists. The `chat_id` parameter allows for an easy way to let the `Job` know which chat we're talking about. This way, we can access `context.chat_data` in the job's `callback`. Let's see how it looks in code:
+You might want to add jobs in response to certain user input, and there is a convenient way to do that. The `context` argument of your `Handler` callbacks has the `JobQueue` attached as `context.job_queue` ready to be used. Another feature you can use here are the [`context`](https://python-telegram-bot.readthedocs.io/telegram.ext.job.html#telegram.ext.Job.params.context) and [`chat_id`](https://python-telegram-bot.readthedocs.io/telegram.ext.job.html#telegram.ext.Job.params.chat_id) keyword arguments of `Job`. You can pass any object as a `context` parameter when you launch a `Job` and retrieve it at a later stage as long as the `Job` exists. The `chat_id` parameter allows for an easy way to let the `Job` know which chat we're talking about. This way, we can access `context.chat_data` in the job's `callback`. Let's see how it looks in code:
 
 ```python
 from telegram import Update

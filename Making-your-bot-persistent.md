@@ -15,7 +15,7 @@ In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is
   * `ExtBot.callback_data_cache` persistent.
 
 * `Job`'s and the `job_queue` is not supported.
-However, the current `JobQueue` backend [APScheduler](https://apscheduler.readthedocs.io/en/stable/) has its own persistence logic that you can leverage.
+However, the current `JobQueue` backend [APScheduler](https://apscheduler.readthedocs.io/) has its own persistence logic that you can leverage.
 See e.g. [`ptbcontrib/ptb_sqlalchemy_jobstore`](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/ptb_sqlalchemy_jobstore)
 * For a special note about `Bot` instances, see [below](#storing-bots)
 
@@ -50,13 +50,13 @@ For example `ConversationHandler(..., persistent=True, name='my_name')`. `persis
 Adding these arguments and adding the conversation handler to a persistence-aware `Application` will make it persistent.
 
 When starting the `Application` with `Application.start()` or `Application.run_{polling, webhook}`, it will automatically update the persistence in regular intervals.
-You can customize the interval via the [`update_interval`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.params.update_interval) argument of `Base/Pickle/Dict/…Persistence`.
+You can customize the interval via the [`update_interval`](https://python-telegram-bot.readthedocs.io/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.params.update_interval) argument of `Base/Pickle/Dict/…Persistence`.
 
 ## Refreshing at runtime
 
 If your persistence reads the data from an external database, the entries in this database could change at runtime.
 This is the case in particular, if the entries in the database are created by a 3rd party service independently of your bot.
-If you want to make sure that the data in `context.user/chat/bot_data` are always up-to-date, your persistence class should implement the methods [`refresh_bot/chat/user_data`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.refresh_chat_data).
+If you want to make sure that the data in `context.user/chat/bot_data` are always up-to-date, your persistence class should implement the methods [`refresh_bot/chat/user_data`](https://python-telegram-bot.readthedocs.io/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.refresh_chat_data).
 Those will be called when in update comes in, before any of your callbacks are called.
 
 These methods can also be useful to implement a lazy-loading strategy.
@@ -75,5 +75,5 @@ For example, it can check if the data equals the attribute `BasePersistence.bot`
 When loading the data, the `BasePersistence.bot` can be reinserted instead of the placeholder.
 Indeed, this is basically what the built-in `PicklePersistence` does.
 
-For more technical details, please refer to the documentation of [`BasePersistence`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram-ext-basepersistence), 
-[`PicklePersistence`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.picklepersistence.html#telegram-ext-picklepersistence)
+For more technical details, please refer to the documentation of [`BasePersistence`](https://python-telegram-bot.readthedocs.io/telegram.ext.basepersistence.html#telegram-ext-basepersistence), 
+[`PicklePersistence`](https://python-telegram-bot.readthedocs.io/telegram.ext.picklepersistence.html#telegram-ext-picklepersistence)

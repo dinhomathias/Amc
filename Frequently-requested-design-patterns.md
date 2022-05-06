@@ -39,13 +39,13 @@ The following sections will give you an idea how to tackle this problem, based o
 
 ### Type Handler and Groups
 
-PTB comes with a powerful handler known as [TypeHandler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html).
+PTB comes with a powerful handler known as [TypeHandler](https://python-telegram-bot.readthedocs.io/telegram.ext.typehandler.html).
 You can understand it as a generic handler. You can use it to handle any class put through the Updater.
 For example, Type Handlers are used in bots to handle "updates" from Github or other external services.
 
-To add any handler, we use [Application.add_handler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.application.html#telegram.ext.Application.add_handler). Apart from the handler itself, it takes an optional argument called `group`. We can understand groups as numbers which indicate the priority of handlers. A lower group means a higher priority. An update can be processed by (at most) one handler in each group.
+To add any handler, we use [Application.add_handler](https://python-telegram-bot.readthedocs.io/telegram.ext.application.html#telegram.ext.Application.add_handler). Apart from the handler itself, it takes an optional argument called `group`. We can understand groups as numbers which indicate the priority of handlers. A lower group means a higher priority. An update can be processed by (at most) one handler in each group.
 
-Stopping handlers in higher groups from processing an update is achieved using [ApplicationHandlerStop](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.ApplicationHandlerStop.html#telegram.ext.ApplicationHandlerStop). When raising this exception, the Application is asked to stop sending the updates to handlers in higher groups. Depending on your use case, you may not need to raise it. But it is useful if you want to enable flood handling or limit who can use the bot.
+Stopping handlers in higher groups from processing an update is achieved using [ApplicationHandlerStop](https://python-telegram-bot.readthedocs.io/telegram.ext.ApplicationHandlerStop.html#telegram.ext.ApplicationHandlerStop). When raising this exception, the Application is asked to stop sending the updates to handlers in higher groups. Depending on your use case, you may not need to raise it. But it is useful if you want to enable flood handling or limit who can use the bot.
 
 That's it. With these three knowledge nuggets, we can solve the question given in the introduction.
 
@@ -102,7 +102,7 @@ async def callback(update: Update, context: CallbackContext):
         raise ApplicationHandlerStop
 ```
 
-Here, it should be noted that this approach blocks your bot entirely for a set of users. If all you need is to block a specific functionality, like a special command or privilege, then it will be wise to use [filters.Chat](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Chat), [filters.User](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.user).
+Here, it should be noted that this approach blocks your bot entirely for a set of users. If all you need is to block a specific functionality, like a special command or privilege, then it will be wise to use [filters.Chat](https://python-telegram-bot.readthedocs.io/telegram.ext.filters.html#telegram.ext.filters.Chat), [filters.User](https://python-telegram-bot.readthedocs.io/telegram.ext.filters.html#telegram.ext.filters.user).
 Don't forget that you can also use [decorators](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator) or a simple `if-else` check.
 If you want a more streamlined style of managing permissions (like superuser, admin, users) then [ptbcontrib/roles](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/roles) is worth checking out.
 
@@ -146,7 +146,7 @@ If you feel like this approach is too much of trouble, you can use Python's inbu
 
 ## How do I enforce users joining a specific channel before using my bot?
 
-After sending an (invite) link to the channel to the user, you can use [`Bot.get_chat_member`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.bot.html#telegram.Bot.get_chat_member) to check if the user is an that channel.
+After sending an (invite) link to the channel to the user, you can use [`Bot.get_chat_member`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.get_chat_member) to check if the user is an that channel.
 Note that:
 
 - the bot needs to be admin in that channel
@@ -155,11 +155,11 @@ Note that:
 Otherwise depending on whether the user in the channel, has joined and left again, has been banned, ... (there are multiple situations possible), the method may
 
 - raise an exception and in this case the error message will probably be helpful
-- return a [`ChatMember`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmember.html#telegram.ChatMember) instance. In that case make sure to check the [`ChatMember.status`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmember.html#telegram.ChatMember.status) attribute
+- return a [`ChatMember`](https://python-telegram-bot.readthedocs.io/telegram.chatmember.html#telegram.ChatMember) instance. In that case make sure to check the [`ChatMember.status`](https://python-telegram-bot.readthedocs.io/telegram.chatmember.html#telegram.ChatMember.status) attribute
 
-Since API 5.1 (PTB v13.4+) you can alternatively use the [`ChatMember`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmemberupdated.html) updates to keep track of users in channels. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example.
+Since API 5.1 (PTB v13.4+) you can alternatively use the [`ChatMember`](https://python-telegram-bot.readthedocs.io/telegram.chatmemberupdated.html) updates to keep track of users in channels. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example.
 
-If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is by using [TypeHandler](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html). Read this [section](#how-do-i-limit-who-can-use-my-bot) to learn how to do it.
+If the user has not yet joined the channel, you can ignore incoming updates from that user or reply to them with a corresponding warning. A convenient way to do that is by using [TypeHandler](https://python-telegram-bot.readthedocs.io/telegram.ext.typehandler.html). Read this [section](#how-do-i-limit-who-can-use-my-bot) to learn how to do it.
 
 ## How do I send a message to all users of the bot?
 
@@ -167,17 +167,17 @@ Let's first point out an easy alternative solution: Instead of sending the messa
 
 If that doesn't work for you, here we go:
 
-To send a message to all users, you of course need the IDs of all the users. You'll have to keep track of those yourself. The most reliable way for that are the [`my_chat_member`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.chatmemberupdated.html) updates. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example on how to use them.
+To send a message to all users, you of course need the IDs of all the users. You'll have to keep track of those yourself. The most reliable way for that are the [`my_chat_member`](https://python-telegram-bot.readthedocs.io/telegram.chatmemberupdated.html) updates. See [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) for an example on how to use them.
 
 If you didn't keep track of your users from the beginning, you may have a chance to get the IDs anyway, if you're using persistence. Please have a look at [this issue](https://github.com/python-telegram-bot/python-telegram-bot/issues/1836) in that case.
 
-Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for [`telegram.error.Unauthorized`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.error.html#telegram.error.Unauthorized) errors.
+Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for [`telegram.error.Unauthorized`](https://python-telegram-bot.readthedocs.io/telegram.error.html#telegram.error.Unauthorized) errors.
 
 Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [`JobQueue`](Extensions-–-JobQueue).
 
 ## How do I deal with a media group?
 
-The basic problem behind this question is simple. For the end user, it looks like one message, consisting of several medias, are sent to the receiver. For the bot API/bot developer, this is not the case however: Every media is send as one unique message, only linked via the unique [Message.media_group_id](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html#telegram.Message.media_group_id) attribute. So you need some way of determining when to start and to end collecting the media messages.
+The basic problem behind this question is simple. For the end user, it looks like one message, consisting of several medias, are sent to the receiver. For the bot API/bot developer, this is not the case however: Every media is send as one unique message, only linked via the unique [Message.media_group_id](https://python-telegram-bot.readthedocs.io/telegram.message.html#telegram.Message.media_group_id) attribute. So you need some way of determining when to start and to end collecting the media messages.
 
 This basic problem has two basic approaches for handling it, without requiring a more elaborate setup involving databases.
 

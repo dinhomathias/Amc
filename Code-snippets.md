@@ -128,9 +128,9 @@ To catch the incoming message with the location/contact, use `MessageHandler` wi
 ---
 ### Message Formatting (bold, italic, code, ...)
 
-Telegram supports some formatting options for text. All the details about what is supported can be found [here](https://core.telegram.org/bots/api#formatting-options). Please keep in mind that you will have to escape the special characters as detailed in the documentation. PTB also offers a [helper function](https://python-telegram-bot.readthedocs.io/en/stable/telegram.utils.helpers.html#telegram.utils.helpers.escape_markdown) for escaping of Markdown text. For escaping of HTML text, you can use [`html.escape`](https://docs.python.org/3/library/html.html?#html.escape) from the standard library.
+Telegram supports some formatting options for text. All the details about what is supported can be found [here](https://core.telegram.org/bots/api#formatting-options). Please keep in mind that you will have to escape the special characters as detailed in the documentation. PTB also offers a [helper function](https://python-telegram-bot.readthedocs.io/telegram.utils.helpers.html#telegram.utils.helpers.escape_markdown) for escaping of Markdown text. For escaping of HTML text, you can use [`html.escape`](https://docs.python.org/3/library/html.html?#html.escape) from the standard library.
 
-You can format text with every API method/type that has a `parse_mode` parameter. In addition to editing your text as described in the link above, pass one of the parse modes available through [`telegram.constants.ParseMode`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.constants.html#telegram.constants.ParseMode) to the `parse_mode` parameter. Since the `5.0` update of the Bot API (version `13.1+` of PTB), you can alternatively pass a list of [`telegram.MessageEntities`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.messageentity.html) to the `entities` parameter.
+You can format text with every API method/type that has a `parse_mode` parameter. In addition to editing your text as described in the link above, pass one of the parse modes available through [`telegram.constants.ParseMode`](https://python-telegram-bot.readthedocs.io/telegram.constants.html#telegram.constants.ParseMode) to the `parse_mode` parameter. Since the `5.0` update of the Bot API (version `13.1+` of PTB), you can alternatively pass a list of [`telegram.MessageEntities`](https://python-telegram-bot.readthedocs.io/telegram.messageentity.html) to the `entities` parameter.
 
 *Note:* In the API 4.5 update, Telegram introduced MarkdownV2, which supports nested entities and needs other escaping than v1. Markdown V1 is referred as legacy mode by the official API docs, and you should prefer MarkdownV2. Make sure to also use `reply_markdown_v2` instead of `reply_markdown` etc.
 
@@ -156,7 +156,7 @@ await bot.send_message(chat_id=chat_id,
 ---
 #### Message entities
 [ᵀᴱᴸᴱᴳᴿᴬᴹ](https://core.telegram.org/bots/api#messageentity)
-To use `MessageEntity`, extract the entities and their respective text from a `Message` object using [`parse_entities`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.message.html#telegram.Message.parse_entities).  
+To use `MessageEntity`, extract the entities and their respective text from a `Message` object using [`parse_entities`](https://python-telegram-bot.readthedocs.io/telegram.message.html#telegram.Message.parse_entities).  
 
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
 
@@ -298,7 +298,7 @@ media_1 = InputMediaDocument(media='https://python-telegram-bot.org/static/testf
 media_1 = InputMediaDocument(media=file_id, ...)
 ```
 
-Please check out the documentation of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediaaudio.html), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediadocument.html), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediaphoto.html#telegram.InputMediaPhoto) and [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.inputmediavideo.html#telegram.InputMediaVideo) for the details on required and optional arguments.
+Please check out the documentation of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaaudio.html), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaphoto.html#telegram.InputMediaPhoto) and [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/telegram.inputmediavideo.html#telegram.InputMediaVideo) for the details on required and optional arguments.
 
 ---
 #### Sending files via inline mode

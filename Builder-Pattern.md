@@ -62,7 +62,7 @@ application = Application.builder().token(token).context_types(context_types).re
 
 And that's already it!
 
-The docs of [`ApplicationBuilder`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.applicationbuilder.html) have all the info about which "ingredients" it can handle, i.e. which methods it has. Each method will tell you
+The docs of [`ApplicationBuilder`](https://python-telegram-bot.readthedocs.io/telegram.ext.applicationbuilder.html) have all the info about which "ingredients" it can handle, i.e. which methods it has. Each method will tell you
 
 * how the parameters will be used (e.g. the token passed to `ApplicationBuilder.token` will be used for the `Bot` available as `Application.bot`)
 * What happens if you don't call this method. For most things, PTB will use reasonable defaults.

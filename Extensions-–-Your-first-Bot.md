@@ -118,7 +118,7 @@ if __name__ == '__main__':
 
     application.run_polling()
 ```
-**Related docs:** [`telegram.ext.MessageHandler`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagehandler.html), [`telegram.ext.filters`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html)
+**Related docs:** [`telegram.ext.MessageHandler`](http://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.messagehandler.html), [`telegram.ext.filters`](https://python-telegram-bot.readthedocs.io/telegram.ext.filters.html)
 
 From now on, your bot should echo all non-command messages it receives.
 

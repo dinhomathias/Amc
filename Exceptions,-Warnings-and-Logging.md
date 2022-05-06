@@ -2,7 +2,7 @@ While you program your bot and while the bot is running there can be several thi
 
 # Exceptions
 
-In `python-telegram-bot`, all Telegram-related errors are encapsulated in the `TelegramError` exception class and its subclasses, located in [`telegram.error`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.error.html) module.
+In `python-telegram-bot`, all Telegram-related errors are encapsulated in the `TelegramError` exception class and its subclasses, located in [`telegram.error`](https://python-telegram-bot.readthedocs.io/telegram.error.html) module.
 
 Any error, including `TelegramError`, that is raised in one of your handler or job callbacks (or while calling `get_updates` in the `Updater`), is forwarded to all registered error handlers, so you can react to them. You can register an error handler by calling `Application.add_error_handler(callback)`, where `callback` is a coroutine function that takes the `update` and `context`. `update` will be the update that caused the error (or `None` if the error wasn't caused by an update, e.g. for [[Jobs|Extensions-–-JobQueue]]) and `context.error` the error that was raised.
 
@@ -41,7 +41,7 @@ aps_logger.setLevel(logging.WARNING)
 # Warnings
 
 In contrast to exceptions, warnings usually don't indicate that something already did go wrong, but rather that something *could* go wrong or at least could be improved.
-Warnings issued by `python-telegram-bot` are encapsulated in `PTBUserWarnang` or one of the subclasses, located in the [`telegram.warnings` module](https://python-telegram-bot.readthedocs.io/en/stable/telegram.warnings.html).
+Warnings issued by `python-telegram-bot` are encapsulated in `PTBUserWarnang` or one of the subclasses, located in the [`telegram.warnings` module](https://python-telegram-bot.readthedocs.io/telegram.warnings.html).
 This allows you to easily handle the warnings using Pythons [`warnings` library](https://docs.python.org/3/library/warnings.html).
 For example, if you don't want to miss any deprecation warning during development, you can tell Python to turn every such warning issued by PTB into an exception via
 

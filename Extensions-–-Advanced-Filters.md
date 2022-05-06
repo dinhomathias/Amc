@@ -70,7 +70,7 @@ application.add_handler(awesome_handler)
 
 ## `Filters` and `CallbackContext`
 
-You may have noticed that when using [`filters.Regex`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Regex), the attributes [`context.matches`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.matches) and [`context.match`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.match) are set to the corresponding matches. To achieve something like this for your custom filter, you can do the following:
+You may have noticed that when using [`filters.Regex`](https://python-telegram-bot.readthedocs.io/telegram.ext.filters.html#telegram.ext.filters.Regex), the attributes [`context.matches`](https://python-telegram-bot.readthedocs.io/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.matches) and [`context.match`](https://python-telegram-bot.readthedocs.io/telegram.ext.callbackcontext.html#telegram.ext.CallbackContext.match) are set to the corresponding matches. To achieve something like this for your custom filter, you can do the following:
 
 1. Set `self.data_filter=True` for your filter.
 2. If the update should be handled, return a dictionary of the form `{attribute_name: [values]}`. This dict will be merged with the internal dict of the `context` argument making `value` available as `context.attribute_name`. This currently works with `MessageHandler`, `CommandHandler` and `PrefixHandler`, which are the only handlers that accept filters.

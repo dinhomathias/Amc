@@ -64,7 +64,7 @@ the new `Bot` instance will be inserted.
 
 Note that changing the used bot token may lead to e.g. `Chat not found` errors.
 
-*Alright, almost all instances. For the limitations, see [`replace_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.replace_bot) and [`insert_bot`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.insert_bot).
+*Alright, almost all instances. For the limitations, see [`replace_bot`](https://python-telegram-bot.readthedocs.io/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.replace_bot) and [`insert_bot`](https://python-telegram-bot.readthedocs.io/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.insert_bot).
 
 ## Converting existing pickle files
 
@@ -91,7 +91,7 @@ As PTB is currently up to date with the Telegram API, this shouldn't affect your
 
 # JobQueue Refactored
 
-Previously, PTB implemented the scheduling of tasks inside the `JobQueue` manually. As timing logic is not always straightforward, maintaining the `JobQueue` was not easy and new features were only reluctantly added. To decrease development effort in that area, we refactored the `JobQueue` in v13. Now, it relies on the third party library [APScheduler](https://apscheduler.readthedocs.io/en/stable/) behind the scenes.
+Previously, PTB implemented the scheduling of tasks inside the `JobQueue` manually. As timing logic is not always straightforward, maintaining the `JobQueue` was not easy and new features were only reluctantly added. To decrease development effort in that area, we refactored the `JobQueue` in v13. Now, it relies on the third party library [APScheduler](https://apscheduler.readthedocs.io/) behind the scenes.
 
 But what does this mean for you in detail? If you're scheduling tasks vanilla style as e.g.
 
@@ -119,15 +119,15 @@ That said, here are the perks and changes:
 ### New features
 
 * `run_repeating` now has a `last` parameter as originally proposed in #1333 
-* `JobQueue.run_custom` allows you to run a job with a custom scheduling logic. See the APS [User Guide](https://apscheduler.readthedocs.io/en/stable/userguide.html) and the page on [how to combine triggers](https://apscheduler.readthedocs.io/en/stable/modules/triggers/combining.html#module-apscheduler.triggers.combining) for more details.
-* All methods `JobQueue.run_*` now have a `job_kwargs` argument that accepts a dictionary. Use this to specify additional kwargs for [`JobQueue.scheduler.add_job()`](https://apscheduler.readthedocs.io/en/stable/modules/schedulers/base.html#apscheduler.schedulers.base.BaseScheduler.add_job).
-* Persistence of jobs: APScheduler has it's own logic of persisting jobs. Because of the aforementioned reasons, we decided to not integrate this logic with PTBs own persistence logic (at least for now). You may however set up persistence for jobs yourself. See the APS [User Guide](https://apscheduler.readthedocs.io/en/stable/userguide.html) for details.
+* `JobQueue.run_custom` allows you to run a job with a custom scheduling logic. See the APS [User Guide](https://apscheduler.readthedocs.io/userguide.html) and the page on [how to combine triggers](https://apscheduler.readthedocs.io/modules/triggers/combining.html#module-apscheduler.triggers.combining) for more details.
+* All methods `JobQueue.run_*` now have a `job_kwargs` argument that accepts a dictionary. Use this to specify additional kwargs for [`JobQueue.scheduler.add_job()`](https://apscheduler.readthedocs.io/modules/schedulers/base.html#apscheduler.schedulers.base.BaseScheduler.add_job).
+* Persistence of jobs: APScheduler has it's own logic of persisting jobs. Because of the aforementioned reasons, we decided to not integrate this logic with PTBs own persistence logic (at least for now). You may however set up persistence for jobs yourself. See the APS [User Guide](https://apscheduler.readthedocs.io/userguide.html) for details.
 
 ### Changes
 
-Most importantly, the `Job` class is now a wrapper for APSchedulers own `Job` class, i.e. `job.job` is an `apscheduler.job` (don't get confused here!). In particular, attributes like `days`, `interval` and `is_monthly` were removed. Some of those could previously be used to alter the scheduling of the job. You will now have to use `job.job.modify` for that. Please see the [APScheduler docs](https://apscheduler.readthedocs.io/en/stable/modules/job.html#apscheduler.job.Job.modify) for details.
+Most importantly, the `Job` class is now a wrapper for APSchedulers own `Job` class, i.e. `job.job` is an `apscheduler.job` (don't get confused here!). In particular, attributes like `days`, `interval` and `is_monthly` were removed. Some of those could previously be used to alter the scheduling of the job. You will now have to use `job.job.modify` for that. Please see the [APScheduler docs](https://apscheduler.readthedocs.io/modules/job.html#apscheduler.job.Job.modify) for details.
 
-There are some other minor changes, most of which will likely not affect you. For details, please see the documentation of [`JobQueue`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.jobqueue.html) and [`Job`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.job.html).
+There are some other minor changes, most of which will likely not affect you. For details, please see the documentation of [`JobQueue`](https://python-telegram-bot.readthedocs.io/telegram.ext.jobqueue.html) and [`Job`](https://python-telegram-bot.readthedocs.io/telegram.ext.job.html).
 
 ## Setting up a `JobQueue`
 

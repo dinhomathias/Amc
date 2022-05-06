@@ -72,7 +72,7 @@ def main():
 
 ...
 ```
-See also: [`migrate_chat_data`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.application.html#telegram.ext.Application.migrate_chat_data)
+See also: [`migrate_chat_data`](https://python-telegram-bot.readthedocs.io/telegram.ext.application.html#telegram.ext.Application.migrate_chat_data)
 
 To be entirely sure that the update will be processed by this handler, either add it first or put it in its own group.
 

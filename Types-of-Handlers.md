@@ -14,12 +14,12 @@ application.add_handler(CommandHandler("start", start_callback))
 
 For different kinds of user input, the received `telegram.Update` will have different attributes set. For example an incoming message will result in `update.message` containing the sent message. The pressing an inline button will result in `update.callback_query` being set. To differentiate between all those updates, `telegram.ext` provides
 
-1) [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.messagehandler.html) for all message updates
-2) [`telegram.ext.CommandHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.commandhandler.html) for messages with bot commands
-3) multiple handlers for all the other different types of updates, e.g. [`telegram.ext.CallbackQueryhandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.callbackqueryhandler.html) for `update.callback_query` and [`telegram.ext.InlineQueryHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.inlinequeryhandler.html) for `update.inline_query`
+1) [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.messagehandler.html) for all message updates
+2) [`telegram.ext.CommandHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.commandhandler.html) for messages with bot commands
+3) multiple handlers for all the other different types of updates, e.g. [`telegram.ext.CallbackQueryhandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.callbackqueryhandler.html) for `update.callback_query` and [`telegram.ext.InlineQueryHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.inlinequeryhandler.html) for `update.inline_query`
 4) A few more handlers for more advanced use cases
 
-The special thing about `MessageHandler` is that there is such a vast variety of message types (text, gif, image, document, sticker, …) that it's infeasible to provide a different `Handler` for each type. Instead `MessageHandler` is coupled with so called [filters](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html) that allow to make fine-grained distinctions: `MessageHandler(filters.ALL, callback)` will handle all updates that contain
+The special thing about `MessageHandler` is that there is such a vast variety of message types (text, gif, image, document, sticker, …) that it's infeasible to provide a different `Handler` for each type. Instead `MessageHandler` is coupled with so called [filters](https://python-telegram-bot.readthedocs.io/telegram.ext.filters.html) that allow to make fine-grained distinctions: `MessageHandler(filters.ALL, callback)` will handle all updates that contain
 
 * `update.message`
 * `update.edited_message`
@@ -61,7 +61,7 @@ Also, since this is an URL parameter, you have to pay attention on how to correc
 
 ## Pattern matching: `filters.Regex`
 
-For more complex inputs you can employ the [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.messagehandler.html) with [`telegram.ext.filters.Regex`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.filters.html#telegram.ext.filters.Regex), which internally uses the `re`-module to match textual user input with a supplied pattern.
+For more complex inputs you can employ the [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.messagehandler.html) with [`telegram.ext.filters.Regex`](https://python-telegram-bot.readthedocs.io/telegram.ext.filters.html#telegram.ext.filters.Regex), which internally uses the `re`-module to match textual user input with a supplied pattern.
 
 Keep in mind that for extracting URLs, #Hashtags, @Mentions, and other Telegram entities, there's no need to parse them with a regex filter because the Bot API already sends them to us with every update. Refer to [[this snippet|Code-snippets#message-entities]] to learn how to work with entities instead.
 
@@ -71,8 +71,8 @@ This tutorial only covers some of the available handlers (for now). Refer to the
 
 In some cases, it's useful to handle updates that are not from Telegram. E.g. you might want to handle notifications from a 3rd party service and forward them to your users. For such use cases, PTB provides
 
-* [`TypeHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.typehandler.html)
-* [`StringCommandHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.stringcommandhandler.html)
-* [`StringRegexHandler`](https://python-telegram-bot.readthedocs.io/en/stable/telegram.ext.stringregexhandler.html)
+* [`TypeHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.typehandler.html)
+* [`StringCommandHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.stringcommandhandler.html)
+* [`StringRegexHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.stringregexhandler.html)
 
 See also this [FAQ entry](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-Asked-Questions#i-want-to-handle-updates-from-an-external-service-in-addition-to-the-telegram-updates-how-do-i-do-that)
