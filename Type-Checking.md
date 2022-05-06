@@ -12,8 +12,7 @@ Of course, you are always welcome to report any type hinting errors through the 
 
 ## Generic classes in PTB
 
-> 🚧 This section is not complete
-> We're currently looking into improving the documentation for generic classes.
-> See also [#2633](https://github.com/python-telegram-bot/python-telegram-bot/issues/2633).
-
-Some of the classes in `telegram.ext` are generic classes, i.e. subclasses of [`typing.Generic`](https://docs.python.org/3/library/typing.html#typing.Generic).
+Some of the classes in `telegram.ext` that may be subclassed by users are generic classes, i.e. subclasses of [`typing.Generic`](https://docs.python.org/3/library/typing.html#typing.Generic).
+When subclassing them, the type variables should be specified.
+These classes currently are `telegram.ext.Handler`, `telegram.ext.BasePersistence` and `telegram.ext.CallbackContext`.
+Please have a look at the respective documentation page for more info on the type variables that these classes accept.
