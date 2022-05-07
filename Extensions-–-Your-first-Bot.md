@@ -1,3 +1,9 @@
+
+# ⚠️ This is the v20.x version of the wiki. For the v13.x version, please head [here](https://github.com/python-telegram-bot/v13.x-wiki/wiki).
+
+v20.x is currently in pre-release mode.
+To install the latest pre-release version of v20.x, use `pip install python-telegram-bot -U --pre`
+
 ## Introduction
 The `telegram.ext` submodule is built on top of the pure API implementation. It provides an easy-to-use interface and takes some work off the programmer, so you [don't have to repeat yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
@@ -13,11 +19,6 @@ To begin, you'll need an Access Token. If you have already read and followed [[I
 
 
 ## Your first Bot, step-by-step
-
-**Please ensure you have installed the prerelease for the bot.**
-```bash
-pip install python-telegram-bot --pre
-```
 
 Please create a new file if you want to follow this tutorial.
 We will add new content to the file several times during the tutorial.
