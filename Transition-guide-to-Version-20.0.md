@@ -36,7 +36,7 @@ If you notice that some non trivial change is missing in here, feel free to add 
       - [`asyncio`](#asyncio-1)
       - [Data must be copyable](#data-must-be-copyable)
       - [Persisting `telegram.Bot` instances.](#persisting-telegrambot-instances)
-      - [Return value of `get_{user, chat}_data`](return-value-of-get_user-chat_data)
+      - [Return value of `get_{user, chat}_data`](#return-value-of-get_user-chat_data)
       - [Abstract methods](#abstract-methods)
       - [`store_*_data`](#store__data)
     + [`CallbackContext`](#callbackcontext)
