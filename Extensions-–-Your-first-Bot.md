@@ -13,6 +13,9 @@ To begin, you'll need an Access Token. If you have already read and followed [[I
 
 
 ## Your first Bot, step-by-step
+
+> Please ensure you have installed the prerelease for the bot via `pip install python-telegram-bot --pre`
+
 Please create a new file if you want to follow this tutorial.
 We will add new content to the file several times during the tutorial.
 For the sake of brevity, we will not repeat everything every time we add something.
