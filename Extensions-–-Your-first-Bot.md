@@ -29,7 +29,7 @@ Paste the following into your file:
 ```python
 import logging
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CallbackContext
+from telegram.ext import ApplicationBuilder, CallbackContext, CommandHandler
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
