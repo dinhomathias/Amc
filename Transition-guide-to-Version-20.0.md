@@ -94,20 +94,20 @@ The main points of what `asyncio` changed in PTB are:
 * All API methods of `telegram.Bot` are now coroutine functions, i.e. you have to `await` them
 * All handler & job callbacks must be coroutine functions, i.e. you need to change `def callback(update, context)` to `async def callback(update, context)`.
 * the `run_async` parameter of the handlers was replaced by the `block` parameter, which has a similar functionality. More details on this can be found on [[this page|Concurrency]].
-* The method `Dipsatcher.run_async` doesn't exist anymore. Something that comes close to its functionality is `Application.create_task` (more on `Application` below). More details on this can be found on [[this page|Concurrency]].
-* All methods that make calls coroutines or preform any I/O bound tasks are now coroutine functions.
+* The method `Dispatcher.run_async` doesn't exist anymore. Something that comes close to its functionality is `Application.create_task` (more on `Application` below). More details on this can be found on [[this page|Concurrency]].
+* All methods that make calls coroutines or perform any I/O bound tasks are now coroutine functions.
 This includes all abstract methods of `BasePersistence`. Listing them all here would be too long. When in doubt, please consult the documentation at [ReadTheDocs](https://python-telegram-bot.readthedocs.io).
 
 ##  Refinement of the public API
 
-We've made an effort to make it more clear which parts of `python-telegram-bot` can be considered to be part of the public interface that users are allowed to use. To phrase it the other way around: Which parts are internals of `python-telegram-bot` are implementation details that might change without notice. Notably this means:
+We've made an effort to make it clearer which parts of `python-telegram-bot` can be considered to be part of the public interface that users are allowed to use. To phrase it the other way around: Which parts are internals of `python-telegram-bot` are implementation details that might change without notice. Notably this means:
 
 1. Only non-private modules are part of the public API and you should import classes & functions the way they are described in the docs. E.g. `from telegram.error import TelegramError` is fine, but `from telegram._message import Message` is strongly discouraged - use `from telegram import Message` instead.
 2. We have removed the module `telegram.utils`. The parts of this module that we consider to be part of the public API have been moved into the modules `telegram.{helpers, request, warnings}`.
 
 ## `__slots__`
 
-We introduced the usage of `__slots__` in v13.6, which can reduce memory usage and improve performance. In v20 we removed the ability to set custom attributes on all objects except for `ext.CallbackContext`. To store data, we recommend to use PTBs built-in mechanism for [storing data](Storing-bot,-user-and-chat-related-data) instead. If you want to add additional functionality to some class, we suggest to subclass it.
+We introduced the usage of `__slots__` in v13.6, which can reduce memory usage and improve performance. In v20 we removed the ability to set custom attributes on all objects except for `ext.CallbackContext`. To store data, we recommend to use PTB's built-in mechanism for [storing data](Storing-bot,-user-and-chat-related-data) instead. If you want to add additional functionality to some class, we suggest subclassing it.
 
 ## Overall architecture
 
@@ -121,7 +121,7 @@ The `Application` is the new entry point to a PTB program and binds all its comp
 
 </details>
 
-When initializing an `Application`, many settings can be configured for the inidividual components.
+When initializing an `Application`, many settings can be configured for the individual components.
 In an effort to make this instantiation both clear and clean, we adopted the so-called [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern).
 This means that instead of passing arguments directly to `Application`, one creates a builder via `Application.builder()` and then specifies all required arguments via that builder.
 Finally, the `Application` is created by calling `builder.build()`. A simple example is
@@ -269,11 +269,11 @@ Moreover, filters are no longer callable. To check if a filter accepts an update
 
 All scheduling methods (`JobQueue.run_*`) have two new arguments `{chat, user}_id`, which allows to easily associate a user/chat with a job. By specifying these arguments, the corresponding ID will be available in the job callback via `context.job.{chat, user}_id`.
 
-Moreover, `context.{char, user}_data` will be available. This has some subtile advantages over the previous workaround `job_queue.run_*(..., context=context.chat_data)` and we recommend using this new feature instead. 
+Moreover, `context.{char, user}_data` will be available. This has some subtle advantages over the previous workaround `job_queue.run_*(..., context=context.chat_data)` and we recommend using this new feature instead. 
 
 #### `JobQueue.run_monthly`
 
-Unfortunately, the `day_is_strict` argument was not working correctly (see [#2627](../issues/2627)) and was therefore removed. Instead, you cann now pass `day='last'` to make the job run on the last day of the month.
+Unfortunately, the `day_is_strict` argument was not working correctly (see [#2627](../issues/2627)) and was therefore removed. Instead, you can now pass `day='last'` to make the job run on the last day of the month.
 
 ### `Job`
 
