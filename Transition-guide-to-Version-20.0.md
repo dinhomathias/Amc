@@ -269,7 +269,7 @@ Moreover, filters are no longer callable. To check if a filter accepts an update
 
 All scheduling methods (`JobQueue.run_*`) have two new arguments `{chat, user}_id`, which allows to easily associate a user/chat with a job. By specifying these arguments, the corresponding ID will be available in the job callback via `context.job.{chat, user}_id`.
 
-Moreover, `context.{char, user}_data` will be available. This has some subtle advantages over the previous workaround `job_queue.run_*(..., context=context.chat_data)` and we recommend using this new feature instead. 
+Moreover, `context.{chat, user}_data` will be available. This has some subtle advantages over the previous workaround `job_queue.run_*(..., context=context.chat_data)` and we recommend using this new feature instead. 
 
 #### `JobQueue.run_monthly`
 
