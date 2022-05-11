@@ -5,7 +5,7 @@ You have met most of them in the [[tutorial|Extensions-–-Your-first-Bot]].
 Because all of that can be a bit overwhelming, the below diagram gives you an overview of how the different components interact with each other.
 
 [[/assets/ptb_architecture.png]]
-[`LaTeX` + `TikZ` source of this diagram](/assets/ptb_architecture.tex)
+[[LaTeX + TikZ source of this diagram|/assets/ptb_architecture.tex]]
 
 ---
 
