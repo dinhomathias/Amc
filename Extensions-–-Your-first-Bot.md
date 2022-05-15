@@ -72,7 +72,7 @@ For more details on how this works, see [[this page|Builder-Pattern]].
 
 **Related docs:** [`telegram.ext.ApplicationBuilder`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.applicationbuilder.html#telegram-ext-applicationbuilder), [`telegram.ext.Application`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.application.html#telegram.ext.Application)
 
-The application alone doesn't do anthing.
+The application alone doesn't do anything.
 To add functionality, we do two things.
 First, we define a function that should process a specific type of update:
 
