@@ -82,8 +82,10 @@ This means that instead of passing arguments directly to `Application`, one crea
 Finally, the `Application` is created by calling `builder.build()`. A simple example is
 
 ```python
-from telegram.ext import Application
+from telegram.ext import Application, CommandHandler
 application = Application.builder().token('TOKEN').build()
+application.add_handler(CommandHandler('start', start_callback))
+application.run_polling()
 ```
 
 We hope that this design makes it easier for you to understand what goes where and also simplifies setups of customized solutions, e.g. if you want to use a custom webhook.
