@@ -10,11 +10,11 @@ If you notice that some non trivial change is missing in here, feel free to add 
 
 - [Transition Script](#transition-script)
 - [Structural changes & Deprecations](#structural-changes---deprecations)
-  * [Removed features](#removed-features)
+  * [Overall architecture](#overall-architecture)
   * [`asyncio`](#asyncio)
   * [Refinement of the public API](#refinement-of-the-public-api)
   * [`__slots__`](##__slots__)
-  * [Overall architecture](#overall-architecture)
+  * [Removed features](#removed-features)
 - [Changes for specific modules, classes & functions](#changes-for-specific-modules--classes---functions)
   * [`telegram`](#telegram)
     + [Several classes](#several-classes)
@@ -64,9 +64,31 @@ Contributions that fine tune or extend the script are welcome!
 
 # Structural changes & Deprecations
 
-## Removed features
+## Overall architecture
 
-We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]], and the MessageQueue. 
+`ext.Updater` is no longer the entry point to a PTB program and we have replaced the `ext.Dispatcher` class with the new class `ext.Application`.
+
+The `Application` is the new entry point to a PTB program and binds all its components together. The following diagram gives you an overview.
+
+<details><summary>Click to show the diagram</summary>
+
+[[/assets/ptb_architecture.png]]
+
+</details>
+
+When initializing an `Application`, many settings can be configured for the individual components.
+In an effort to make this instantiation both clear and clean, we adopted the so-called [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern).
+This means that instead of passing arguments directly to `Application`, one creates a builder via `Application.builder()` and then specifies all required arguments via that builder.
+Finally, the `Application` is created by calling `builder.build()`. A simple example is
+
+```python
+from telegram.ext import Application
+application = Application.builder().token('TOKEN').build()
+```
+
+We hope that this design makes it easier for you to understand what goes where and also simplifies setups of customized solutions, e.g. if you want to use a custom webhook.
+
+There is also a [[standalone wiki page|Builder-Pattern]] just about this topic.
 
 ## `asyncio`
 
@@ -109,31 +131,9 @@ We've made an effort to make it clearer which parts of `python-telegram-bot` can
 
 We introduced the usage of `__slots__` in v13.6, which can reduce memory usage and improve performance. In v20 we removed the ability to set custom attributes on all objects except for `ext.CallbackContext`. To store data, we recommend to use PTB's built-in mechanism for [storing data](Storing-bot,-user-and-chat-related-data) instead. If you want to add additional functionality to some class, we suggest subclassing it.
 
-## Overall architecture
+## Removed features
 
-`ext.Updater` is no longer the entry point to a PTB program and we have replaced the `ext.Dispatcher` class with the new class `ext.Application`.
-
-The `Application` is the new entry point to a PTB program and binds all its components together. The following diagram gives you an overview.
-
-<details><summary>Click to show the diagram</summary>
-
-[[/assets/ptb_architecture.png]]
-
-</details>
-
-When initializing an `Application`, many settings can be configured for the individual components.
-In an effort to make this instantiation both clear and clean, we adopted the so-called [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern).
-This means that instead of passing arguments directly to `Application`, one creates a builder via `Application.builder()` and then specifies all required arguments via that builder.
-Finally, the `Application` is created by calling `builder.build()`. A simple example is
-
-```python
-from telegram.ext import Application
-application = Application.builder().token('TOKEN').build()
-```
-
-We hope that this design makes it easier for you to understand what goes where and also simplifies setups of customized solutions, e.g. if you want to use a custom webhook.
-
-There is also a [[standalone wiki page|Builder-Pattern]] just about this topic.
+We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]], and the MessageQueue. 
 
 # Changes for specific modules, classes & functions
 
