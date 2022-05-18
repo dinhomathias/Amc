@@ -46,6 +46,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [MusicToolBot](https://github.com/amirhoseinsalimi/music-tool-bot) - A bot to edit, convert, and cut music files and MP3s. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/MusicToolBot)
 * [MVC sample](https://github.com/mmdaz/mvc_model_bot_developing) -- This is a great sample for bot developing using python-telegram-bot and based on MVC model. I will be happy if I get comments and pull requests for improving it.
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
+* [Nebula](https://github.com/Squirrel-Network/nebula8) — Open source bot to administer a telegram group with different functionalities and blacklist
 * [Needs more JPEG Bot](https://github.com/zeroone2numeral2/nmjpeg-bot) — Lowers the quality of photos [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/nmjpegbot)
 * [OpenCryptoBot](https://github.com/Endogen/OpenCryptoBot) - The Swiss Army knife for crypto-currencies [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/opencryptobot)
 * [Picture of The Day Bot](https://github.com/SumitAgr/PictureofTheDay-Bot) - A simple bot that retrieves NASA's Picture of the Day with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://github.com/SumitAgr/PictureofTheDay-Bot)
@@ -92,7 +93,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
-* [Nebula](https://github.com/Squirrel-Network/nebula8) — Open source bot to administer a telegram group with different functionalities and blacklist
 
  
 # API
