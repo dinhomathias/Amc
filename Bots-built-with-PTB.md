@@ -92,6 +92,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [XiaomiVacuumCleanerTelegramBot](https://github.com/Matze693/XiaomiVacuumCleanerTelegramBot) - A useful telegram bot to control Xiaomi Vacuum Cleaner V2.
 * [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
+* [Nebula](https://github.com/Squirrel-Network/nebula8) — Open source bot to administer a telegram group with different functionalities and blacklist
 
  
 # API
