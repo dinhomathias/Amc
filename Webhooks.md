@@ -9,13 +9,13 @@ The general difference between polling and a webhook is:
 - Polling (via `get_updates`) periodically connects to Telegram's servers to check for new updates
 - A Webhook is a URL you transmit to Telegram once. Whenever a new update for your bot arrives, Telegram sends that update to the specified URL.
 
-Let's explain this with a metapher.
+Let's explain this with a metaphor.
 Imagine you want to check if you have mail.
 
 With (long) polling, you have a post office box and need to check yourself if you have new mail.
-So you rush to the post office and wait in front of your box all day to see if the post man puts something in there - you only go home for small pee breaks.
+So you rush to the post office and wait in front of your box all day to see if the postman puts something in there - you only go home for small pee breaks.
 
-With a webhook, you have a mailbox right at your home and the post man delivers the mail right to that mailbox. However, that only works if the post man knows your address (the URL).
+With a webhook, you have a mailbox right at your home and the postman delivers the mail right to that mailbox. However, that only works if the postman knows your address (the URL).
 
 ## Requirements
 ### A public IP address or domain
@@ -39,7 +39,7 @@ To create a self-signed SSL certificate using `openssl`, run the following comma
 openssl req -newkey rsa:2048 -sha256 -nodes -keyout private.key -x509 -days 3650 -out cert.pem
 ```
 
-The `openssl` utility will ask you a few details. **Make sure you enter the correct FQDN!** If your server has a domain, enter the full domain name here (eg. `sub.example.com`). If your server only has an IP address, enter that instead. If you enter an invalid FQDN (Fully Qualified Domain Name), you won't receive any updates from Telegram but also won't see any errors!
+The `openssl` utility will ask you for a few details. **Make sure you enter the correct FQDN!** If your server has a domain, enter the full domain name here (eg. `sub.example.com`). If your server only has an IP address, enter that instead. If you enter an invalid FQDN (Fully Qualified Domain Name), you won't receive any updates from Telegram but also won't see any errors!
 
 ## Choosing a server model
 There actually is a third requirement: a HTTP server to listen for webhook connections. At this point, there are several things to consider, depending on your needs. 
@@ -67,7 +67,7 @@ To overcome the port limitation, you can use a reverse proxy like *nginx* or *ha
 
 In this model, a single server application listening on the public IP, the *reverse proxy*, accepts all webhook requests and forwards them to the correct instance of locally running *integrated webhook servers.* It also performs the *SSL termination*, meaning it decrypts the HTTPS connection, so the webhook servers receive the already decrypted traffic. These servers can run on *any* port, not just the four ports allowed by Telegram, because Telegram only connects to the reverse proxy directly. 
 
-Depending on the reverse proxy application you (or your hosting provider) is using, the implementation will look a bit different. In the following, there are a few possible setups listed.
+Depending on the reverse proxy application you (or your hosting provider) are using, the implementation will look a bit different. In the following, there are a few possible setups listed.
 
 #### Heroku
 On Heroku using webhook can be beneficial on the free-plan because it will automatically manage the downtime required.
