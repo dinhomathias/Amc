@@ -45,7 +45,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Motivational Quotes Bot](https://github.com/SumitAgr/MotivationalQuotes-Bot) - A simple Telegram bot that generates a new motivational quote with a single command. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/MotivationalQuotes_Bot)
 * [Motivator bot](https://github.com/SabaunT/bot-motivator) - Telegram bot (with celery engine) that will motivate you to do something good or stop doing something bad. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/PersuaderBot)
 * [MusicToolBot](https://github.com/amirhoseinsalimi/music-tool-bot) - A bot to edit, convert, and cut music files and MP3s. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/MusicToolBot)
-* [Multi URL Shortener](t.me/UrlShorter4Bot) - A bot that will shorten your long URLs to a short one with multiple shortener service. [ᴄʜᴇᴄᴋ ɪᴛ ᴏᴜᴛ](t.me/UrlShorter4Bot)
+* [Multi URL Shortener](https://t.me/UrlShorter4bot) - A bot that will shorten your long URLs to a short one with multiple shortener service. [ᴄʜᴇᴄᴋ ɪᴛ ᴏᴜᴛ](https://t.me/UrlShorter4bot)
 * [MVC sample](https://github.com/mmdaz/mvc_model_bot_developing) -- This is a great sample for bot developing using python-telegram-bot and based on MVC model. I will be happy if I get comments and pull requests for improving it.
 * [Natalia](https://github.com/Whalepool/Natalia) — An administrative assistant bot. Lots of useful commands and functions for helping admins moderate multiple groups with large users
 * [Nebula](https://github.com/Squirrel-Network/nebula8) — Open source bot to administer a telegram group with different functionalities and blacklist
