@@ -160,9 +160,21 @@ To use `MessageEntity`, extract the entities and their respective text from a `M
 
 **Note:** This method should always be used instead of the ``entities`` attribute, since it calculates the correct substring from the message text based on UTF-16 codepoints - that is, it extracts the correct string even on when working with weird characters such as Emojis.
 
+Consider this example which checks for presence of URLs in a message and prints them on screen.
+
 ```python
+# A dictionary that maps entity to text
 entities = message.parse_entities()
+for ent in entities:
+    txt = entities[ent]
+    if ent.type == ent.TEXT_LINK:
+        # Text with embedded URL  
+        print(f"{txt} - {ent.url}")
+    elif ent.type == ent.URL:
+        # Plain URL
+        print(txt)
 ```
+For more narrowed use cases like extracting only Telegram message links, you might be better using [ptbcontrib/extract_urls](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/extract_urls).
 
 ---
 #### Telegram formatting to BBCode
