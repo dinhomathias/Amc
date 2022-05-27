@@ -61,7 +61,7 @@ If we've done that, we can fetch the update by replacing the `main` in our file 
 async def main():
     bot = telegram.Bot("TOKEN")
     async with bot:
-        print(await bot.get_updates()[0])
+        print((await bot.get_updates())[0])
 ```
 
 The output should now look something like this (we abbreviated the output a bit):
