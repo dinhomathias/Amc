@@ -23,7 +23,7 @@ application = Application.builder().token('TOKEN').build()
 you will automatically have
 
 * the `Updater` available as `application.updater`
-* the `Bot` available as `application.(updater.)bot`
+* the `Bot` available as `application.bot` or `application.updater.bot` (both are the same object)
 * a `BaseRequest` object initialized and ready to be used by the `application.bot`
 * several other components & sane default values set up. 
 
