@@ -102,6 +102,8 @@ while not application.update_queue.empty():
   asyncio.create_task(application.process_update(update))
 ```
 
+This setting is *independent* of the `block` parameter of `Handler` and within `application.process_update` concurrency still works as explained above.
+
 **Note:** The number of concurrently processed updates is limited (the limit defaults to 4096 updates at a time).
 This is a simple measure to avoid e.g. DDOS attacks
 
