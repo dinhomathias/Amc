@@ -35,7 +35,7 @@ Process
 
 * Bump version:
 
-  * `telegram/version.py`
+  * `telegram/_version.py`
   * `docs/source/conf.py`
   * if the release includes a Bot API update, update `README(_RAW).rst`
   * if the release drops a Python version, update `README(_RAW).rst` and `setup.py`
