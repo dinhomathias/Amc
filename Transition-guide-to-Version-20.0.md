@@ -62,6 +62,8 @@ You can find the script [[here|/assets/v20_code_transition.py]].
 
 Contributions that fine tune or extend the script are welcome!
 
+**Note:** This script is not yet updated to account for transitions 13.x -> 20.0a1 or 20.0a0 -> 20.0a1
+
 # Structural changes & Deprecations
 
 ## Overall architecture
@@ -133,6 +135,11 @@ We've made an effort to make it clearer which parts of `python-telegram-bot` can
 
 We introduced the usage of `__slots__` in v13.6, which can reduce memory usage and improve performance. In v20 we removed the ability to set custom attributes on all objects except for `ext.CallbackContext`. To store data, we recommend to use PTB's built-in mechanism for [storing data](Storing-bot,-user-and-chat-related-data) instead. If you want to add additional functionality to some class, we suggest subclassing it.
 
+## Keyword-Only arguments
+
+Since v20.0a1, all arguments of bot methods that were added by PTB are now keyword-only arguments.
+Most importantly, this covers the `*_timeout` and `api_kwargs` arguments.
+
 ## Removed features
 
 We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]], and the MessageQueue. 
@@ -195,6 +202,10 @@ The argument `force_reply` was removed, since it *always* must be `True` anyway.
 
 If both parameters `current_offset` and `auto_pagination` are supplied, the method now raises a `ValueError` rather than a `TypeError`.
 
+### `telegram.InputFile.is_image`
+
+This method was removed in v20.0a1.
+
 ### `telegram.ParseMode`
 
 This class was removed as it is not part of the official Bot API. Use `telegram.constants.ParseMode` instead.
@@ -249,7 +260,12 @@ Note that `callback_data` is now persisted by default.
 ### `CallbackContext`
 
 * `CallbackContext.from_error` has a new optional argument `job`. When an exception happens inside a `ext.Job` callback, this parameter will be passed.
-* Accordingly, the attribute `CallbackContext.job` will now also be present in error handlers if the error was caused by a `ext.Job`. 
+* Accordingly, the attribute `CallbackContext.job` will now also be present in error handlers if the error was caused by a `ext.Job`.
+* v20.0a1 removed the constant `CallbackContext.DEFAULT_TYPE`. That constant can now be found as `ContextTypes.DEFAULT_TYPE`.
+
+### `CommandHandler`
+
+The attribute `commands` was made immutable in v20.0a1.
 
 ### `ConversationHandler`
 
@@ -265,13 +281,31 @@ The `ext.filters` module was rewritten almost from scratch and uses a new namesp
 
 Moreover, filters are no longer callable. To check if a filter accepts an update, use the new syntax `my_filter.check_update(update)` instead.
 
+### `Handler`
+
+v20.0a1 renamed the class `Handler` to `BaseHandler` in an effort to emphasize that this class is an abstract base class.
+
+### `PrefixHandler`
+
+Since v20.0a1, this is no longer a subclass of `CommandHandler`.
+Moreover, the prefixes and commands are no longer mutable.
+
 ### `JobQueue`
 
 #### New arguments `{chat, user}_id`
 
 All scheduling methods (`JobQueue.run_*`) have two new arguments `{chat, user}_id`, which allows to easily associate a user/chat with a job. By specifying these arguments, the corresponding ID will be available in the job callback via `context.job.{chat, user}_id`.
 
-Moreover, `context.{chat, user}_data` will be available. This has some subtle advantages over the previous workaround `job_queue.run_*(..., context=context.chat_data)` and we recommend using this new feature instead. 
+Moreover, `context.{chat, user}_data` will be available. This has some subtle advantages over the previous workaround `job_queue.run_*(..., context=context.chat_data)` and we recommend using this new feature instead.
+
+#### `context` argument
+
+To address the frequent confusion about `context` vs `context.job.context`, v20.0a1 renamed the argument `context` of all `JobQueue.run_*` methods to `data`.
+This also covers the corresponding attribute of `Job`.
+
+#### `Job.run_daily`
+
+Since v20.0a1, the behavior of this method is aligned with `cron`, i.e. 0 is Sunday and 6 is Saturday.
 
 #### `JobQueue.run_monthly`
 
@@ -282,6 +316,10 @@ Unfortunately, the `day_is_strict` argument was not working correctly (see [#262
 #### Removed the attribute `job_queue`
 
 This was removed because if you have access to a job, then you also have access to either the `JobQueue` directly or at least a `CallbackContext` instance, which already contains the `job_queue`.
+
+#### Attribute `Job.context`
+
+To address the frequent confusion about `context` vs `context.job.context`, v20.0a1 renamed the argument `context` of all `JobQueue.run_*` methods to `data` and renamed `Job.context` to `Job.data`.
 
 ### `PicklePersistence`
 
