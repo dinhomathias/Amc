@@ -1,4 +1,4 @@
-A `Handler` is an instance derived from the base class [`telegram.ext.Handler`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.handler.html#telegram.ext.Handler) which is responsible for the routing of different kinds of updates (text, audio, inlinequery, button presses, ...) to their _corresponding callback function_ in your code.
+A `Handler` is an instance derived from the base class [`telegram.ext.BaseHandler`](https://docs.python-telegram-bot.org/en/v20.0a1/telegram.ext.basehandler.html#telegram.ext.BaseHandler) which is responsible for the routing of different kinds of updates (text, audio, inlinequery, button presses, ...) to their _corresponding callback function_ in your code.
 
 For example, if you want your bot to respond to the command `/start`, you can use a [`telegram.ext.CommandHandler`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.commandhandler.html) that maps this user input to a callback named `start_callback`:
 ```python
