@@ -30,14 +30,14 @@ Paste the following into your file:
 ```python
 import logging
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CallbackContext, CommandHandler
+from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
 
-async def start(update: Update, context: CallbackContext):
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 
 if __name__ == '__main__':
@@ -77,7 +77,7 @@ To add functionality, we do two things.
 First, we define a function that should process a specific type of update:
 
 ```python
-async def start(update: Update, context: CallbackContext):
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text="I'm a bot, please talk to me!"
@@ -108,11 +108,11 @@ Now define a new function and add a corresponding handler:
 
 ```python
 from telegram import Update
-from telegram.ext import filters, MessageHandler, ApplicationBuilder, CommandHandler, CallbackContext
+from telegram.ext import filters, MessageHandler, ApplicationBuilder, CommandHandler, ContextTypes
 
 ...
 
-async def echo(update: Update, context: CallbackContext):
+async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
     
@@ -134,7 +134,7 @@ From now on, your bot should echo all non-command messages it receives.
 Let's add some actual functionality to your bot. We want to implement a `/caps` command that will take some text as an argument and reply to it in CAPS. To make things easy, you can receive the arguments (as a `list`, split on spaces) that were passed to a command in the callback function:
 
 ```python
-async def caps(update: Update, context: CallbackContext):
+async def caps(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text_caps = ' '.join(context.args).upper()
     await context.bot.send_message(chat_id=update.effective_chat.id, text=text_caps)
     
@@ -161,7 +161,7 @@ from telegram.ext import InlineQueryHandler
 
 ...
 
-async def inline_caps(update: Update, context: CallbackContext):
+async def inline_caps(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.inline_query.query
     if not query:
         return
@@ -191,7 +191,7 @@ Some confused users might try to send commands to the bot that it doesn't unders
 ```python
 ...
 
-async def unknown(update: Update, context: CallbackContext):
+async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
 if __name__ == '__main__':
