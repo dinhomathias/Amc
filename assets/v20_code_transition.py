@@ -18,8 +18,10 @@ JOB_TRANSITION_PATTERN = re.compile(
 
 
 def callback_signature_transition(_: Path, contents: str) -> str:
-    contents = re.sub(CALLBACK_TRANSITION_PATTERN, r"async def \1(\2\3, \5\6)", contents)
-    return re.sub(JOB_TRANSITION_PATTERN, r"async def \1(\2\3)", contents)
+    contents = re.sub(CALLBACK_TRANSITION_PATTERN, r"async def \1(\2\3, \5: \7ContextTypes.DEFAULT_TYPE)", contents)
+    contents = re.sub(JOB_TRANSITION_PATTERN, r"async def \1(\2: \4ContextTypes.DEFAULT_TYPE)", contents)
+    # this line is for users transitioning from v20.0a0 to 20.0a1
+    return contents.replace("CallbackContext.DEFAULT_TYPE", "ContextTypes.DEFAULT_TYPE")
 
 
 AWAIT_BOT_METHODS_PATTERNS: Sequence[Tuple[Pattern, str]] = [
@@ -113,6 +115,11 @@ def job_pass_data_transition(_: Path, contents: str) -> str:
     return re.sub(r"context=context.(user|chat)_data", r"\1_id=update.effective_\1.id", contents)
 
 
+def job_context_to_data_rename_transition(_: Path, contents: str) -> str:
+    contents = re.sub(r"run_(\w+)\(([\w,].*)?(context=)(\w+)([\w,].*)\)", "run_\1\(\2data=\4\5\)", contents)
+    return contents.replace("context.job.context", "context.job.data")
+
+
 def video_chat_transiton(_: Path, contents: str) -> str:
     return (
         contents.replace("voice_chat", "video_chat")
@@ -140,6 +147,10 @@ def renamed_bot_methods_transition(_: Path, contents: str) -> str:
     )
 
 
+def rename_handler_to_base_handler(_: Path, contents: str) -> str:
+    return re.sub("(class \w+)\((telegram\.ext\.|)Handler\)", "\1\(\2BaseHandler)\)", contents)
+
+
 TRANSITIONS: Sequence[Callable[[Path, str], str]] = [
     callback_signature_transition,
     await_bot_methods_transition,
@@ -151,9 +162,11 @@ TRANSITIONS: Sequence[Callable[[Path, str], str]] = [
     run_async_decorator_transition,
     filters_transition,
     job_pass_data_transition,
+    job_context_to_data_rename_transition,  # place after job_pass_data_transition
     video_chat_transiton,
     updater_start_arguments_transition,
     renamed_bot_methods_transition,
+    rename_handler_to_base_handler,
 ]
 
 
