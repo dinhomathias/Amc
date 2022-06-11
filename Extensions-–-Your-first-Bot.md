@@ -77,7 +77,7 @@ To add functionality, we do two things.
 First, we define a function that should process a specific type of update:
 
 ```python
-async def start(update: Update, context: CallbackContext.DEFAULT_TYPE):
+async def start(update: Update, context: CallbackContext):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
         text="I'm a bot, please talk to me!"
@@ -112,7 +112,7 @@ from telegram.ext import filters, MessageHandler, ApplicationBuilder, CommandHan
 
 ...
 
-async def echo(update: Update, context: CallbackContext.DEFAULT_TYPE):
+async def echo(update: Update, context: CallbackContext):
     await context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
 
     
@@ -161,7 +161,7 @@ from telegram.ext import InlineQueryHandler
 
 ...
 
-async def inline_caps(update: Update, context: CallbackContext.DEFAULT_TYPE):
+async def inline_caps(update: Update, context: CallbackContext):
     query = update.inline_query.query
     if not query:
         return
@@ -191,7 +191,7 @@ Some confused users might try to send commands to the bot that it doesn't unders
 ```python
 ...
 
-async def unknown(update: Update, context: CallbackContext.DEFAULT_TYPE):
+async def unknown(update: Update, context: CallbackContext):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
 if __name__ == '__main__':
