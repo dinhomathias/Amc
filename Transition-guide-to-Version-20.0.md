@@ -68,9 +68,7 @@ It is no way a substitute for reading this transition guide and manually adjusti
 In addition to the script, we recommend using a language interpreter (e.g. `pylint`) and a static type checker (e.g. `mypy`) on your code base to minimize the trial-and-error time during transitioning at a minimum.
 You can find the script [[here|/assets/v20_code_transition.py]].
 
-Contributions that fine tune or extend the script are welcome!
-
-**Note:** This script is not yet updated to account for transitions 13.x -> 20.0a1 or 20.0a0 -> 20.0a1
+Contributions that fine tune or extend the script are welcome (you must clone the wiki repo to make changes)!
 
 # Structural changes & Deprecations
 
