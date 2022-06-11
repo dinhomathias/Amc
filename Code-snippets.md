@@ -502,7 +502,10 @@ slot_machine_value = {
 ```python
 import asyncio
 
-async def add_group(update: Update, context: CallbackContext):
+from telegram import Update
+from telegram.ext import ContextTypes
+
+async def add_group(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await asyncio.gather(
         update.message.reply_text(f"{member.full_name} just joined the group")
         for member in update.message.new_chat_members
