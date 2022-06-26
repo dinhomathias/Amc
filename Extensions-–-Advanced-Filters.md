@@ -47,7 +47,7 @@ The difference between `UpdateFilter` and `MessageFilter` is that the `filter` f
 Say we wanted to allow only those messages that contain the text "python-telegram-bot is awesome", we could write a custom filter as so:
 
 ```python
-from telegram.ext import MessageFilter
+from telegram.ext.filters import MessageFilter
 
 class FilterAwesome(MessageFilter):
     def filter(self, message):
