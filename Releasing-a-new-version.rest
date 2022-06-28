@@ -86,6 +86,8 @@ Process
 
 * Test in a clean virtualenv that ``pip install python-telegram-bot`` and ``pip install python-telegram-bot-raw`` work with the new version.
 
+* If the `doc-fixes`_ branch got merged, create a new one.
+
 
 Public Announcements
 --------------------
@@ -108,3 +110,4 @@ Channel posts should be a bit more verbose than the plain release notes. E.g. th
 .. _`Readthedocs dashboard`: https://readthedocs.org/projects/python-telegram-bot/
 .. _`Ubuntu shell`: https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/
 .. _`something`: https://github.com/Bibo-Joshi/ptb-changelog-helper
+.. _`doc-fixes`: https://github.com/python-telegram-bot/python-telegram-bot/tree/doc-fixes
