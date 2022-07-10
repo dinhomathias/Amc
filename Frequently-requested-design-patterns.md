@@ -55,10 +55,10 @@ Before working on the problems, we will provide you with a template of code that
 
 ```python
 from telegram import Update
-from telegram.ext import CallbackContext, ApplicationHandlerStop, TypeHandler, Application
+from telegram.ext import ContextTypes, ApplicationHandlerStop, TypeHandler, Application
 
 
-async def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handle the update"""
     await do_something_with_this_update(update, context)
     raise ApplicationHandlerStop # Only if you DON'T want other handlers to handle this update
@@ -78,7 +78,7 @@ In case you don't want to stop other handlers from processing the update, then y
 This is a generic use case often used for analytics purpose. For example, if you need to add every user who uses your bot to a database, you can use this method. Simply put, this sort of approach is used to keep track of every update.
 
 ```python
-async def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     add_message_to_my_analytics(update.effective_message)
     add_user_to_my_database(update.effective_user)
 ```
@@ -94,7 +94,7 @@ To restrict your bot to a set of users or if you don't want it to be available f
 ```python
 SPECIAL_USERS = [127376448, 172380183, 1827979793]  # Allows users
 
-async def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.effective_user.user_id in SPECIAL_USERS:
         pass
     else:
@@ -116,7 +116,7 @@ from time import time
 MAX_USAGE = 5
 
 
-async def callback(update: Update, context: CallbackContext):
+async def callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     count = context.user_data.get("usageCount", 0)
     restrict_since = context.user_data.get("restrictSince", 0)
 
