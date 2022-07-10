@@ -171,7 +171,7 @@ To send a message to all users, you of course need the IDs of all the users. You
 
 If you didn't keep track of your users from the beginning, you may have a chance to get the IDs anyway, if you're using persistence. Please have a look at [this issue](https://github.com/python-telegram-bot/python-telegram-bot/issues/1836) in that case.
 
-Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for [`telegram.error.Unauthorized`](https://python-telegram-bot.readthedocs.io/telegram.error.html#telegram.error.Unauthorized) errors.
+Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for [`telegram.error.Forbidden`](https://python-telegram-bot.readthedocs.io/telegram.error.html#telegram.error.Forbidden) errors.
 
 Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [`JobQueue`](Extensions-–-JobQueue).
 
