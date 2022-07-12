@@ -307,14 +307,15 @@ async def transaction(update, context):
   bank.write_account(target)  # 1
   
 
-  context.dispatcher.run_async(
-    log_and_notify,
-    FINISHED_TRANSACTION,
-    amount,
-    source_id,
-    target_id,
-    chat_id,
-    'Done!',
+  context.application.create_task(
+    log_and_notify(
+      FINISHED_TRANSACTION,
+      amount,
+      source_id,
+      target_id,
+      chat_id,
+      'Done!',
+    ),
     update=update
   )
 
