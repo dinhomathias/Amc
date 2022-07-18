@@ -41,7 +41,7 @@ aps_logger.setLevel(logging.WARNING)
 # Warnings
 
 In contrast to exceptions, warnings usually don't indicate that something already did go wrong, but rather that something *could* go wrong or at least could be improved.
-Warnings issued by `python-telegram-bot` are encapsulated in `PTBUserWarnang` or one of the subclasses, located in the [`telegram.warnings` module](https://python-telegram-bot.readthedocs.io/telegram.warnings.html).
+Warnings issued by `python-telegram-bot` are encapsulated in `PTBUserWarning` or one of the subclasses, located in the [`telegram.warnings` module](https://python-telegram-bot.readthedocs.io/telegram.warnings.html).
 This allows you to easily handle the warnings using Pythons [`warnings` library](https://docs.python.org/3/library/warnings.html).
 For example, if you don't want to miss any deprecation warning during development, you can tell Python to turn every such warning issued by PTB into an exception via
 
