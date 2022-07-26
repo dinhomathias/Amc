@@ -55,7 +55,7 @@ A user must either add them to a group or send them a message first.
 People can use ``telegram.me/<bot_username>`` links or username search to find your bot.
 
 Because of above note, we'll have to first send a message to the bot.
-If we've done that, we can fetch the update by replacing the `main` in our file with
+If we've done that, we can fetch the update by refactoring the `main` function in our file with
 
 ```python
 async def main():
