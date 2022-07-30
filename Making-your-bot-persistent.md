@@ -4,6 +4,7 @@ In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is
 - [Included persistence classes](#included-persistence-classes)
 - [3rd party persistence classes](#3rd-party-persistence-classes)
 - [What do I need to change?](#what-do-i-need-to-change-)
+- [Refreshing-at-runtime](#refreshing-at-runtime)
 - [Storing Bots](#storing-bots)
 
 ## What can become persistent?
@@ -41,7 +42,7 @@ These 3rd party packages contain persistence classes (the list is incomplete):
 
 To make your bot persistent you need to do the following.
 
-- Create a persistence object (e.g. `my_persistence = PicklePersistence(filename='my_file')`)
+- Create a persistence object (e.g. `my_persistence = PicklePersistence(filepath='my_file')`)
 - Construct `Application` with the persistence (`Application.builder().token('TOKEN').persistence(persistence=my_persistence).build()`).
 
 This is enough to make `user_data`, `bot_data`, `chat_data` and `ExtBot.callback_data_cache` persistent.
