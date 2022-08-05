@@ -97,7 +97,7 @@ async def callback_timer(update: Update, context: CallbackContext):
     name = update.effective_chat.full_name
     await context.bot.send_message(chat_id=chat_id, text='Setting a timer for 1 minute!')
     # Set the alarm:
-    await context.job_queue.run_once(callback_alarm, 60, context=name, chat_id=chat_id)
+    context.job_queue.run_once(callback_alarm, 60, context=name, chat_id=chat_id)
 
 application = Application.builder().token('TOKEN').build()
 timer_handler = CommandHandler('timer', callback_timer)
