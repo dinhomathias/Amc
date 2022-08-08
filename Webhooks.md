@@ -52,7 +52,7 @@ However, there is a limitation with this solution. Telegram currently only suppo
 If that's not a problem for you (yet), you can use the code below (or similar) to start your bot with a webhook. The `listen` address should either be `'0.0.0.0'` or, if you don't have permission for that, the public IP address of your server. The port can be one of `443`, `80`, `88` or `8443`. For the `url_path`, it is recommended to use your Bot's token, so no one can send fake updates to your bot. `key` and `cert` should contain the path to the files you generated [earlier](#creating-a-self-signed-certificate-using-openssl). The `webhook_url` should be the actual URL of your webhook. Include the `https://` protocol in the beginning, use the domain or IP address you set as the FQDN of your certificate and the correct port and URL path.
 
 ```python
-application.run_webhook(
+application.start_webhook(
     listen='0.0.0.0',
     port=8443,
     url_path='TOKEN',
@@ -79,7 +79,7 @@ import os
 TOKEN = "TOKEN"
 PORT = int(os.environ.get('PORT', '8443'))
 # add handlers
-application.run_webhook(
+application.start_webhook(
     listen="0.0.0.0",
     port=PORT,
     url_path=TOKEN,
