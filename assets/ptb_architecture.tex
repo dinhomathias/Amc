@@ -56,14 +56,23 @@
                     to the API
                 }
             ] -> {
-                BaseRequest[
+                BaseRateLimiter[
                     as={
-                        \class{request.BaseRequest}\\
-                        Inferface for handling the\\
-                        networking backend
+                        \class{ext.BaseRateLimiter}\\
+                        Interface for rate limiting\\
+                        API requests
                     },
                     >"dispatches requests\\to the API",
-                ],
+                ] -> {
+                    BaseRequest[
+                        as={
+                            \class{request.BaseRequest}\\
+                            Inferface for handling the\\
+                            networking backend
+                        },
+                        >"rate limits requests\\to the API",
+                    ]
+                },
                 Defaults[
                     as={
                         \class{ext.Defaults}\\
@@ -80,7 +89,7 @@
                     },
                 ]
             };
-            Bot ->[bend right] BaseRequest;
+            Bot ->[bend right] BaseRateLimiter;
             Bot[
                 <"stores arbitrary\\\texttt{callback\_data}"
             ] ->[bend left] CallbackDataCache;
