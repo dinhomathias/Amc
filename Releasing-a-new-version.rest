@@ -18,7 +18,7 @@ Requirements
 
 Packages::
 
-$ pip install -r requirements.txt -r requirements-dev.txt -r docs/requirements-docs.txt
+$ pip install -r requirements-all.txt
 $ pip install wheel twine
 
 
