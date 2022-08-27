@@ -81,5 +81,5 @@ Please consult the documentation of `AIORateLimiter` for details on how it appli
 ⚠️  We emphasize that `AIORateLimiter` is to be understood as minimal effort reference implementation.
 If you would like to handle rate limiting in a more sophisticated, fine-tuned way, we
 welcome you to implement your own subclass of `telegram.ext.BaseRateLimiter`.
-Feel free to check out the source code of `AIORateLimiter` class for inspiration.
+Feel free to check out the [source code of `AIORateLimiter`](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/telegram/ext/_aioratelimiter.py#L51) class for inspiration.
 
