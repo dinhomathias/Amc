@@ -50,8 +50,12 @@ To make a conversation handler persistent (save states between bot restarts) you
 For example `ConversationHandler(..., persistent=True, name='my_name')`. `persistent` is `False` by default.
 Adding these arguments and adding the conversation handler to a persistence-aware `Application` will make it persistent.
 
-When starting the `Application` with `Application.start()` or `Application.run_{polling, webhook}`, it will automatically update the persistence in regular intervals.
+When starting the `Application` with `Application.start()` or `Application.run_{polling, webhook}`, it will loads the data from the persistence on startup and automatically update the persistence in regular intervals.
 You can customize the interval via the [`update_interval`](https://python-telegram-bot.readthedocs.io/telegram.ext.basepersistence.html#telegram.ext.BasePersistence.params.update_interval) argument of `Base/Pickle/Dict/…Persistence`.
+
+### ⚠️ Note
+
+Since the persisted data is loaded on start-up, any data written to `Application.{bot, chat, user_data}` *before* startup will hence be overridden! To manually write data into these *after* the persisted data has been loaded, please use [`Application.post_init`](https://docs.python-telegram-bot.org/en/v20.0a4/telegram.ext.applicationbuilder.html?highlight=ApplicationBuilder#telegram.ext.ApplicationBuilder.post_init).
 
 ## Refreshing at runtime
 
