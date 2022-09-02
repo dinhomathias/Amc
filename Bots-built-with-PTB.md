@@ -54,7 +54,6 @@ Bots built using the `telegram.ext.Updater` class.
 * [Pokemon Go bot](https://github.com/eugenio412/PogomBOT) — Notifications for pogom scanner
 * [PriceBot](https://github.com/lytves/pricebot) - Bot for group chats to receive CoinmarketCap crypto prices  [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/iamcryptobot)
 * [privibot](https://github.com/pawamoy/privibot) - A Python library to add a privilege/permission system to your Telegram bot.
-* [PicsBlur](http://t.me/PicsBlur_bot) — Telegram bot puts blur effect on photos
 * [reactor](https://github.com/vanyakosmos/reactor) - like @like but with a dynamic number of buttons. Users can add their own reactions to messages, similarly to slack/discord reactions. [try it out](https://t.me/emojinator_bot)
 * [Reddit1Telegram](https://gitlab.com/tea-project/reddit1telegram) - A simple and effective solution to create Telegram channels out of subreddits. 
 * [RemindMeBot](https://github.com/dmakeienko/remind_me_bot) - create reminders, check it's statuses, update/delete them. [try it out](https://t.me/how_to_find_name_for_bot)
