@@ -21,11 +21,7 @@ PTB offers different resources that help you understand and use the features of 
     building on top of it.
 -   The [official Telegram Bot API documentation][] is of course always
     worth a read.
-
-  [package documentation]: https://python-telegram-bot.readthedocs.io/
-  [wiki]: https://github.com/python-telegram-bot/python-telegram-bot/wiki/
-  [examples directory]: https://github.com/python-telegram-bot/python-telegram-bot/blob/master/examples/README.md
-  [official Telegram Bot API documentation]: https://core.telegram.org/bots/api
+'telegram.org/bots/api
 
 
 ## Contributing to this Wiki
