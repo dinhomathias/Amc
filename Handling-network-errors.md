@@ -23,7 +23,7 @@ There is a suspicion that Telegram are closing connections on some conditions. W
 There is no one way to handle networking issues. Each bot has its own usage pattern and unique network behaviour.
 
 Some bots will require providing answer to user requests within a limited time, while others can take all the time they need.
-Some bots will be ok with "loosing" a sent message once in a while, while others must ensure that the message was sent within a limited time frame.
+Some bots will be ok with "losing" a sent message once in a while, while others must ensure that the message was sent within a limited time frame.
 Some bots send big files, while others only receive small files. Etc., etc.
 
 In addition, the network connection takes an important factor. Hosting your bot in a region with poor Internet (bandwidth / packet lost / disconnections) is the obvious example, but it is not the only problem.
