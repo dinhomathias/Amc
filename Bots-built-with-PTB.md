@@ -4,6 +4,9 @@ A non-exhaustive list of open-source bots built on `python-telegram-bot` in the 
 Bots built using the `telegram.ext.Updater` class.
 * [Akinator-Bot](https://github.com/adenosinetp10/Akinator-Bot) — Play guessing game Akinator on Telegram. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/aki_akinator_bot)
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
+
+* [PicsBlur](http://t.me/PicsBlur_bot) — bot add blur Image effect
+
 * [AmbroBot](https://github.com/Ambro17/AmbroBot) — This bot can search series or movies by name and lets you download them, it can also list latest yts movies, lets you set reminders, solve linear equations and a few other neat things [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CuervoBot)
 * [aws-lambda-telegram-bot](https://github.com/aprezcuba24/aws-lambda-telegram-bot) — This repository is a base project to create telegram bots. In the project, you can create a bot using **AWS Lambda** and the data will be stored in **dynamodb**.
 * [BibTeXBot](https://gitlab.com/-/snippets/2069000) — This bot can convert bibliography identifiers to BibTeX entries [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/BibTexBot)
