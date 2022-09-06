@@ -3,7 +3,7 @@ Look at [[Hosting your bot|Hosting-your-bot]] if you've decided to get a server.
 ### Cloud
 * [Amazon Web Services](https://aws.amazon.com/)
     * [Running a Python Telegram Bot on AWS Serverless (Lambda) for PTB v13.x](https://github.com/jojo786/Sample-Python-Telegram-Bot-AWS-Serverless)
-    * [Running a Python Telegram Bot on AWS Serverless (Lambda) for PTB v20.x](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Sample-for-Telegram-bot-with-PTB-v20.x-hosted-on-AWS-Lambda)
+    * [Running a Python Telegram Bot on AWS Serverless (Lambda) for PTB v20.x](https://github.com/havebeenfitz/om-random-coffee-bot/wiki/Hosting-the-bot-on-AWS-Lambda)
 * [Microsoft Azure](https://azure.microsoft.com/)
 * [Google App Engine](https://cloud.google.com/appengine) 
     * [[Notes about GAE - Google App Engine]]
