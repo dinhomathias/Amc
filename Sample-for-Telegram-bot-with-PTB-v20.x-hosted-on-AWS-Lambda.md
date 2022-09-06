@@ -29,14 +29,14 @@ async def main(event, context):
         )
     
         return {
-            statusCode: 200,
-            result: 'Success'
+            "statusCode": 200,
+            "result": "Success"
         }
 
     except Exception as exc:
         return {
-            statusCode: 500,
-            result: 'Failure'
+            "statusCode": 500,
+            "result": "Failure"
         }
 ```
 
