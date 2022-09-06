@@ -29,12 +29,6 @@ If performance is more important to you than programming in Python, you might wa
 
 ## Free Optimizations
 
-### JSON en/de-coding
-All communication with the Telegram servers is in JSON.
-Every message you send is JSON encoded, and every message you receive is JSON decoded.
-By installing PTB with the optional requirement `python-telegram-bot[json]`, PTB will use a 3rd party library for those tasks, which usually brings significant speed-up compared to the `json` module from the standard library.
-See the [README](https://github.com/python-telegram-bot/python-telegram-bot#table-of-contents) for details on which 3rd party library is used. 
-
 **Note:** The 3rd party library will *not* be pure Python, so availability may depend on your OS, Python implementation & architecture. 
 
 ### PyPy
