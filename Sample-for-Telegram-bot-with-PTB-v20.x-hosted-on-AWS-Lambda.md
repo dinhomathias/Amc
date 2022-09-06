@@ -14,12 +14,7 @@ application = Application.builder().token(TELEGRAM_API_KEY).build()
 
 
 def lambda_handler(event, context):
-    result = asyncio.get_event_loop().run_until_complete(main(event, context))
-
-    return {
-        'statusCode': 200,
-        'body': result
-    }
+    return asyncio.get_event_loop().run_until_complete(main(event, context))
 
 async def main(event, context):
     application.add_handler(...)
@@ -33,12 +28,16 @@ async def main(event, context):
             Update.de_json(json.loads(event["body"]), application.bot)
         )
     
-        return 'Success'
+        return {
+            statusCode: 200,
+            result: 'Success'
+        }
 
     except Exception as exc:
-        logging.info(f"failed process update with {exc}")
-
-        return 'Failure'
+        return {
+            statusCode: 500,
+            result: 'Failure'
+        }
 ```
 
 Lambda setting for **Code** / **Runtime Settings** / **Handler** should point to `{main_file}.lambda_handler`, e.g. `bot.lambda_handler`
