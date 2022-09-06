@@ -29,8 +29,6 @@ If performance is more important to you than programming in Python, you might wa
 
 ## Free Optimizations
 
-**Note:** The 3rd party library will *not* be pure Python, so availability may depend on your OS, Python implementation & architecture. 
-
 ### PyPy
 [PyPy](http://pypy.org/) is a different implementation of the Python programming language. Is your bot only using pure Python code? Using PyPy can then probably¹ optimize all your code -- free of charge.
 
