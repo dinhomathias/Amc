@@ -42,8 +42,16 @@ Please have a look at [[this wiki page|Adding-defaults-to-your-bot]] for more in
 ### Persisting data across restarts
 
 By default, data like `Application.{chat, bot, user}_data` is stored in-memory and is lost when the bot shuts down.
-PTB includes an optional functionality to persist data across restarts, which `BasePersistence` as interface class at it's core.
+PTB includes an optional functionality to persist data across restarts, which has `BasePersistence` as interface class at it's core.
 Head to [[this page|Making-your-bot-persistent]] for more info.
+
+
+### Rate limiting
+
+By default, all requests to the bot API, i.e. calling `Bot.send_message`, `Message.reply_text` or any other API method, are immediately forwarded to Telegram.
+Since Telegram imposes rate limits, this can lead to flood errors if you're making to many requests in a short time span.
+PTB includes an optional functionality to "throttle" the outgoing requests, which has `BaseRateLimiter` as interface class at it's core.
+Head to [[this page|Avoiding-flood-limits]] for more info.
 
 ## Customizing Components
 
