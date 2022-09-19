@@ -77,7 +77,7 @@
                     as={
                         \class{ext.Defaults}\\
                         Gathers default values for frequently\\
-                        used parameters of \class{(ext.Ext)Bot},\\ \class{ext.JobQueue} and \class{ext.Handler}
+                        used parameters of \class{(ext.Ext)Bot},\\ \class{ext.JobQueue} and \class{ext.BaseHandler}
                     },
                     >"gets default values\\for parameters",
                 ],
@@ -115,9 +115,9 @@
                     },
                     >"fetches updates from\\the \texttt{update\_queue}"
                 ],
-                Handler[
+                BaseHandler[
                     as={
-                        \class{ext.Handler}\\
+                        \class{ext.BaseHandler}\\
                         Specifies if and how\\it handles updates
                     },
                     >"provides arguments for\\handler callbacks,\\processes exceptions\\raised in handler callbacks",
