@@ -38,9 +38,9 @@ You can use the following methods to create jobs with different frequency and ti
 Add your first job to the queue by defining a callback function and adding it to the job queue. For this tutorial, you can replace `'@examplechannel'` with a channel where your bot is an admin, or by your user id (use [@userinfobot](https://telegram.me/userinfobot) to find out your user id):
 
 ```python
-from telegram.ext import CallbackContext, Application
+from telegram.ext import ContextTypes, Application
 
-async def callback_minute(context: CallbackContext):
+async def callback_minute(context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id='@examplechannel', text='One message every minute')
 
 application = Application.builder().token('TOKEN').build()
@@ -57,9 +57,9 @@ The return value of these functions are the `Job` objects being created. You don
 You can also add a job that will be executed only once, with a delay:
 
 ```python
-from telegram.ext import CallbackContext, Application
+from telegram.ext import ContextTypes, Application
 
-async def callback_30(context: CallbackContext):
+async def callback_30(context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id='@examplechannel', text='A single message with 30s delay')
 
 application = Application.builder().token('TOKEN').build()
@@ -85,14 +85,14 @@ You might want to add jobs in response to certain user input, and there is a con
 
 ```python
 from telegram import Update
-from telegram.ext import CommandHandler, Application, CallbackContext
+from telegram.ext import CommandHandler, Application, ContextTypes
  
-async def callback_alarm(context: CallbackContext):
+async def callback_alarm(context: ContextTypes.DEFAULT_TYPE):
     # Beep the person who called this alarm:
     await context.bot.send_message(chat_id=context.job.chat_id, text=f'BEEP {context.job.data}!')
  
  
-async def callback_timer(update: Update, context: CallbackContext):
+async def callback_timer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     name = update.effective_chat.full_name
     await context.bot.send_message(chat_id=chat_id, text='Setting a timer for 1 minute!')
