@@ -23,9 +23,9 @@ updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CallbackQueryHandler(button))
 updater.dispatcher.add_handler(CommandHandler('help', help_command))
 ```
-[Line 56 to 58](https://github.com/python-telegram-bot/python-telegram-bot/blob/92cb6f3ae8d5c3e49b9019a9348d4408135ffc95/examples/inlinekeyboard.py#L56-L58) registers our three handlers. The first handler is a [CommandHandler](https://python-telegram-bot.readthedocs.io/telegram.ext.commandhandler.html). Whenever an user sends a /start command to the bot, the function `start` is called. Same situation with the third handler: Whenever an user sends the /help command, `help_command` gets called.
+[Line 56 to 58](https://github.com/python-telegram-bot/python-telegram-bot/blob/92cb6f3ae8d5c3e49b9019a9348d4408135ffc95/examples/inlinekeyboard.py#L56-L58) registers our three handlers. The first handler is a [CommandHandler](https://python-telegram-bot.readthedocs.io/telegram.ext.commandhandler.html). Whenever a user sends a /start command to the bot, the function `start` is called. Same situation with the third handler: Whenever a user sends the /help command, `help_command` gets called.
 
-The second handler is a [CallbackQueryHandler](https://python-telegram-bot.readthedocs.io/telegram.ext.callbackqueryhandler.html). A [Callbackquery](https://python-telegram-bot.readthedocs.io/telegram.callbackquery.html) is what an user sends after he presses an [InlineButton](https://python-telegram-bot.readthedocs.io/telegram.inlinekeyboardbutton.html). Every press of a button gets send to the `button` handler.
+The second handler is a [CallbackQueryHandler](https://python-telegram-bot.readthedocs.io/telegram.ext.callbackqueryhandler.html). A [Callbackquery](https://python-telegram-bot.readthedocs.io/telegram.callbackquery.html) is what a user sends after he presses an [InlineButton](https://python-telegram-bot.readthedocs.io/telegram.inlinekeyboardbutton.html). Every press of a button gets sent to the `button` handler.
 
 ```python
 updater.start_polling()
@@ -38,7 +38,7 @@ updater.idle()
 [Line 65](https://github.com/python-telegram-bot/python-telegram-bot/blob/92cb6f3ae8d5c3e49b9019a9348d4408135ffc95/examples/inlinekeyboard.py#L65) actually runs the bot until a termination signal is send.
 
 
-Let's start our way through the handlers in the same way we would expect an user to go through it: With the start handler:
+Let's start our way through the handlers in the same way we would expect a user to go through it: With the start handler:
 ## start
 
 ```python
