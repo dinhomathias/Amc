@@ -273,6 +273,12 @@ Let's have a look at how sending a document can be done.
     ```python
     await bot.send_document(chat_id=chat_id, document=open('tests/test.png', 'rb'))
     ```
+    or even just 
+
+    ```python
+    await bot.send_document(chat_id=chat_id, document='tests/test.png')
+    ```
+    When you pass a file path, PTB will automatically check if your bot is running in [local mode](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Local-Bot-API-Server#how-to-use-a-local-bot-api-server-with-ptb). If it is, the file does not need to be uploaded. Otherwise, the file is read in binary mode, so just as when you pass `open('tests/test.png', 'rb')`.
 
 2. Sending an HTTP-link
 
@@ -311,6 +317,8 @@ media_1 = InputMediaDocument(media=file_id, ...)
 ```
 
 Please check out the documentation of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaaudio.html), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaphoto.html#telegram.InputMediaPhoto) and [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/telegram.inputmediavideo.html#telegram.InputMediaVideo) for the details on required and optional arguments.
+
+Also note that you *can not* pass a file path to the `InputMedia*` classes.
 
 ---
 #### Sending files via inline mode
