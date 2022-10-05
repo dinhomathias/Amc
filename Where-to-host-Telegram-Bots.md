@@ -1,5 +1,14 @@
 Look at [[Hosting your bot|Hosting-your-bot]] if you've decided to get a server.
 
+#### ⚠️ Note
+
+The linked articles/blog posts on how to use PTB with the different providers are
+
+* usually written for a specific (range of) versions of `python-telegram-bot` and may not be compatible with the version that you are using
+* not written or maintained by the PTB dev team.
+
+When in doubt, please check the official PTB resoruces.
+
 ### Cloud
 * [Amazon Web Services](https://aws.amazon.com/)
     * [Running a Python Telegram Bot on AWS Serverless (Lambda) for PTB v13.x](https://github.com/jojo786/Sample-Python-Telegram-Bot-AWS-Serverless)
@@ -22,7 +31,7 @@ Look at [[Hosting your bot|Hosting-your-bot]] if you've decided to get a server.
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
     * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
 * [Fly.io](https://fly.io/)
-    * **[How to deploy a Telegram bot to Fly.io](https://bakanim.xyz/posts/deploy-telegram-bot-to-fly-io/)**
+    * **[How to deploy a Telegram bot to Fly.io](https://bakanim.xyz/posts/deploy-telegram-bot-to-fly-io/)** (written for v20.0a2)
 * [Joyent Triton](https://www.joyent.com/triton)
 * [Vercel serverless functions](https://vercel.com/docs/serverless-functions/supported-languages#python)
 * [PythonAnywhere](https://www.pythonanywhere.com)
