@@ -21,6 +21,8 @@ Look at [[Hosting your bot|Hosting-your-bot]] if you've decided to get a server.
 * [OpenShift](https://www.openshift.com/)
     * **[How to run a Bot on Openshift v2](https://github.com/lufte/python-telegram-bot-openshift)**
     * **[How to run a Bot on Openshift v3](https://github.com/Gotham13121997/python-telegram-bot-openshift3)**
+* [Fly.io](https://fly.io/)
+    * **[How to deploy a Telegram bot to Fly.io](https://bakanim.xyz/posts/deploy-telegram-bot-to-fly-io/)**
 * [Joyent Triton](https://www.joyent.com/triton)
 * [Vercel serverless functions](https://vercel.com/docs/serverless-functions/supported-languages#python)
 * [PythonAnywhere](https://www.pythonanywhere.com)
