@@ -12,7 +12,7 @@ Any error, including `TelegramError`, that is raised in one of your handler or j
 
 ## Example
 
-For an example on how an error handler might look like, please head over to the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
+For an example on how an error handler might look like, please head over to the [examples directory](https://docs.python-telegram-bot.org/examples.html).
 
 # Logging
 
