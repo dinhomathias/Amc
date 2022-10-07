@@ -15,6 +15,7 @@ If you notice that some non trivial change is missing in here, feel free to add 
   * [Refinement of the public API](#refinement-of-the-public-api)
   * [`__slots__`](##__slots__)
   * [Keyword Only Arguments](#keyword-only-arguments)
+  * [Initialization of Telegram Classes](#initialization-of-telegram-classes)
   * [Removed features](#removed-features)
 - [Changes for specific modules, classes & functions](#changes-for-specific-modules--classes---functions)
   * [`telegram`](#telegram)
@@ -145,6 +146,11 @@ We introduced the usage of `__slots__` in v13.6, which can reduce memory usage a
 
 Since v20.0a1, all arguments of bot methods that were added by PTB are now keyword-only arguments.
 Most importantly, this covers the `*_timeout` and `api_kwargs` arguments.
+
+## Initialization of Telegram Classes
+
+Since v20.0a5, `TelegramObject` and it's subclasses no longer accept arbitrary keyword arguments (`**kwargs`). These were formerly used to ensure that PTB wouldn't break when Telegram added new fields to existing classes.
+Instead, `TelegramObject` and it's subclasses now have an argument `api_kwargs` that will be used to store fields that are passed by Telegram and that PTB did not yet incorporate. These fields will also be available via the `api_kwargs` *attribute*.
 
 ## Removed features
 
