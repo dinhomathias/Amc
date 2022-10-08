@@ -22,7 +22,7 @@ async def put(update, context):
 
 async def get(update, context):
     """Usage: /get uuid"""
-    # Seperate ID from command
+    # Separate ID from command
     key = context.args[0]
 
     # Load value and send it to the user
