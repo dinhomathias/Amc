@@ -60,7 +60,7 @@ There is no method for that. You'll need to keep track. See e.g. the [`chatmembe
 
 ### Does my bot get an update, when someone joins my channel?
 
-No. Those service messages are available only in groups.
+Yes. We receive ChatMemberUpdated update.
 
 ### My bot doesn't receive messages from groups. Why?
 
