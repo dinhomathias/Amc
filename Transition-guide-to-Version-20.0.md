@@ -12,6 +12,7 @@ If you notice that some non trivial change is missing in here, feel free to add 
 - [Structural changes & Deprecations](#structural-changes---deprecations)
   * [Overall architecture](#overall-architecture)
   * [`asyncio`](#asyncio)
+  * [Optional Dependencies](#optional-dependencies)
   * [Refinement of the public API](#refinement-of-the-public-api)
   * [`__slots__`](##__slots__)
   * [Keyword Only Arguments](#keyword-only-arguments)
@@ -131,7 +132,15 @@ The main points of what `asyncio` changed in PTB are:
 * All methods that make calls coroutines or perform any I/O bound tasks are now coroutine functions.
 This includes all abstract methods of `BasePersistence`. Listing them all here would be too long. When in doubt, please consult the documentation at [ReadTheDocs](https://python-telegram-bot.readthedocs.io).
 
-##  Refinement of the public API
+## Optional Dependencies
+
+Some of the functionality of the `telegram` and `telegram.ext` modules rely on 3rd party dependencies.
+Since these features are optional to use and we aim to keep the footprint of `python-telegram-bot` small, we have reduced the number of 3rd party dependencies that automatically get's installed along with `python-telegram-bot` to a minimum.
+As of v20.0a5, only the 3rd party library `httpx` is installed, which is used for the default networking backend `HTTPXRequest`.
+If you wish to use any of the optional features of the `telegram` and `telegram.ext` modules, you will have to specify that while installing `python-telegram-bot` from now on.
+Please have a look at [the readme](https://docs.python-telegram-bot.org/#optional-dependencies) for further details.
+
+## Refinement of the public API
 
 We've made an effort to make it clearer which parts of `python-telegram-bot` can be considered to be part of the public interface that users are allowed to use. To phrase it the other way around: Which parts are internals of `python-telegram-bot` are implementation details that might change without notice. Notably this means:
 
