@@ -212,8 +212,9 @@ In case your bot token is invalid, `telegram.error.InvalidToken` is raised.
 
 ### `telegram.File`
 
-* The `custom_path` parameter now also accepts `pathlib.Path` objects.
-* Instead of returning the file path as string, it's now returned as `pathlib.Path` object.
+The method `File.download` was split into the two methods `File.download_to_drive` and `File.download_to_memory`.
+For `download_to_drive`, the `custom_path` parameter now also accepts `pathlib.Path` objects.
+Moreover instead of returning the file path as string, it's now returned as `pathlib.Path` object.
 
 ### `telegram.ForceReply`
 
