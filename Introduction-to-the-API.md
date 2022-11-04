@@ -13,7 +13,7 @@ All the classes of the Bot API can also be found in the `telegram` module, e.g. 
 
 To generate an Access Token, you have to talk to [BotFather](https://t.me/botfather) and follow a few simple steps (described [here](https://core.telegram.org/bots/features#botfather)).
 
-For full details see the official Telegram documentation at [Bots: An introduction for developers](https://core.telegram.org/bots).
+For full details see the official Telegram documentation at [Bots: An introduction for developers](https://core.telegram.org/bots). You might also find [the official tutorial](https://core.telegram.org/bots/tutorial) useful for getting to know the principles of working with Telegram API (although Java is used in examples there, you will find a link to equivalent Python code).
 
 #### Hello, Telegram!
 
