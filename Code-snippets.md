@@ -360,8 +360,8 @@ When you receive files from a user, you sometimes want to download and save them
 
 ```python
 file_id = message.document.file_id
-newFile = await bot.get_file(file_id)
-await newFile.download()
+new_file = await bot.get_file(file_id)
+await new_file.download()
 ```
 
 For a received video/voice/... change `message.document` to `message.video/voice/...`. However, there is one exception: `message.photo` is a *list* of `PhotoSize` objects, which represent different sizes of the same photo. Use `message.photo[-1].file_id` to get the largest size.
@@ -369,8 +369,8 @@ For a received video/voice/... change `message.document` to `message.video/voice
 Moreover, the above snippet can be shortened by using PTBs built-in utility shortcuts:
 
 ```python
-newFile = await message.effective_attachment.get_file()
-await newFile.download('file_name')
+new_file = await message.effective_attachment.get_file()
+await new_file.download('file_name')
 ```
 
 `message.effective_attachment` automatically contains whichever media attachment the message has - in case of a photo, you'll again have to use e.g. `message.effective_attachment[-1].get_file()`

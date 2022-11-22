@@ -3,7 +3,7 @@ In V12.0b1 we added a persistence mechanism to `telegram.ext`. This wiki page is
 - [What can become persistent?](#what-can-become-persistent-)
 - [Included persistence classes](#included-persistence-classes)
 - [3rd party persistence classes](#3rd-party-persistence-classes)
-- [What do I need to change?](#what-do-i-need-to-change-)
+- [What do I need to change?](#what-do-i-need-to-change)
 - [Refreshing at runtime](#refreshing-at-runtime)
 - [Storing Bots](#storing-bots)
 

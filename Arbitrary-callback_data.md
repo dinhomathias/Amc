@@ -6,7 +6,7 @@ With PTB, you are able to pass *any* object as `callback_data`. This is achieved
 
 This means two things for you:
 
-1. If you don't use persistence, buttons won't work after restarting your bot, as the stored updates are lost. More precisely, the `callback_data` you will receive is an instance of  `telegram.ext.InvalidCallbackData`. If you don't need persistence otherwise, you can set `store_callback_data` to `True` and all the others to `False`.
+1. If you don't use [persistence](../Making-your-bot-persistent), buttons won't work after restarting your bot, as the stored updates are lost. More precisely, the `callback_data` you will receive is an instance of  `telegram.ext.InvalidCallbackData`. If you don't need persistence otherwise, you can set `store_callback_data` to `True` and all the others to `False`.
 2. If you have a number of keyboards that need to stay valid for a very long time, you might need to do some tweaking manually (see below)
 3. When using the `CallbackQueryHandler`, the `pattern` argument can now be either
 

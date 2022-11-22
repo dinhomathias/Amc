@@ -65,7 +65,7 @@ For more complex inputs you can employ the [`telegram.ext.MessageHandler`](https
 
 Keep in mind that for extracting URLs, #Hashtags, @Mentions, and other Telegram entities, there's no need to parse them with a regex filter because the Bot API already sends them to us with every update. Refer to [[this snippet|Code-snippets#message-entities]] to learn how to work with entities instead.
 
-This tutorial only covers some of the available handlers (for now). Refer to the documentation for all other types: https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.html#handlers
+This tutorial only covers some of the available handlers (for now). Refer to [the documentation](https://docs.python-telegram-bot.org/en/latest/telegram.ext.handlers-tree.html) for all other types.
 
 ## Custom updates
 

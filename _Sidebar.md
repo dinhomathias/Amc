@@ -67,3 +67,4 @@
 - [[Test Bots|Internal-test-bots]]
 - [[How To Release|Releasing-a-new-version]]
 - [[Bots, Groups & Channels|Project-Bots,-Groups-and-Channels]]
+- [[PTB tests knowledge base|PTB-test-writing-knowledge-base]]

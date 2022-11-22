@@ -60,7 +60,7 @@ There is no method for that. You'll need to keep track. See e.g. the [`chatmembe
 
 ### Does my bot get an update, when someone joins my channel?
 
-No. Those service messages are available only in groups.
+Yes. We receive ChatMemberUpdated update.
 
 ### My bot doesn't receive messages from groups. Why?
 
@@ -89,7 +89,7 @@ If your handlers callback returns `None` instead of the next state, you will sta
 
 Receiving updates from an external service, e.g. updates about your GitHub repo, is a common use case.
 Once you have such an update, you can put them in your bots update queue via `await application.update_queue.put(your_update)`. The `update_queue` is also available as `context.update_queue`.
-Note that `your_update` does *not* need to be an instance of `telegram.Update` - on the contrary! You can e.g. write your own custom class to represent an update from your external service.
+Note that `your_update` should *not* need to be an instance of `telegram.Update`, as it does not represent an update sent by Telegram. On the contrary, `your_update` can be any type of a Python object. You can e.g. write your own custom class to represent an update from your external service.
 To actually do something with the update, you can register a [`TypeHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.typehandler.html). [`StringCommandHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.stringcommandhandler.html) and [`StringRegexHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.stringregexhandler.html) might also be interesting for some use cases.
 
 But how to get the updates into your bot process?

@@ -78,4 +78,4 @@ PTB comes already ships two implementations (see [[this page|Making-your-bot-per
 
 The class `CallbackContext` is a central part of the handler/job callbacks in PTB and more advanced users may want to add custom behavior to this class.
 You can do so by passing an instance of the `ContextTypes` to `ApplicationBuilder.context_types`.
-Have a look at [this example](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#contexttypesbotpy) for example use cases.
+Have a look at [this example](https://docs.python-telegram-bot.org/examples.html#examples-contexttypesbot) for example use cases.

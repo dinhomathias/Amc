@@ -163,7 +163,7 @@ Instead, `TelegramObject` and it's subclasses now have an argument `api_kwargs` 
 
 ## Removed features
 
-We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]], and the MessageQueue. 
+We made a cut and dropped all deprecated functionality. Most importantly, this includes the old-style handler API, which was deprecated in [[Version 12|Transition-guide-to-Version-12.0#context-based-callbacks]], and the `MessageQueue`. As replacement for the `MessageQueue`, `telegram.ext.{Base, AIO}RateLimiter` where introduced in v20.0a3 (see also [this wiki page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Avoiding-flood-limits)).
 
 # Changes for specific modules, classes & functions
 

@@ -6,13 +6,15 @@ In `python-telegram-bot`, all Telegram-related errors are encapsulated in the `T
 
 Any error, including `TelegramError`, that is raised in one of your handler or job callbacks (or while calling `get_updates` in the `Updater`), is forwarded to all registered error handlers, so you can react to them. You can register an error handler by calling `Application.add_error_handler(callback)`, where `callback` is a coroutine function that takes the `update` and `context`. `update` will be the update that caused the error (or `None` if the error wasn't caused by an update, e.g. for [[Jobs|Extensions-–-JobQueue]]) and `context.error` the error that was raised.
 
+The good news is that exceptions that are handled by the error handlers don't stop your python process - your bot will just keep running!
+
 **Example:** You're trying to send a message, but the user blocked the bot. An `Forbidden` exception, a subclass of `TelegramError`, will be raised and delivered to your error handler, so you can delete it from your conversation list, if you keep one.
 
 **Note:** The error handler might be only your last resort - of course you can also handle exceptions as they occur. Only uncaught exceptions are forwarded to the error handler.
 
 ## Example
 
-For an example on how an error handler might look like, please head over to the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
+For an example on how an error handler might look like, please head over to the [examples directory](https://docs.python-telegram-bot.org/examples.html).
 
 # Logging
 
