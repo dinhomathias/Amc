@@ -12,7 +12,7 @@ application.add_handler(CommandHandler("start", start_callback))
 
 ## Different types of `Update`s
 
-For different kinds of user input, the received `telegram.Update` will have different attributes set. For example an incoming message will result in `update.message` containing the sent message. The pressing an inline button will result in `update.callback_query` being set. To differentiate between all those updates, `telegram.ext` provides
+For different kinds of user input, the received `telegram.Update` will have different attributes set. For example an incoming message will result in `update.message` containing the sent message. The pressing of an inline button will result in `update.callback_query` being set. To differentiate between all those updates, `telegram.ext` provides
 
 1) [`telegram.ext.MessageHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.messagehandler.html) for all message updates
 2) [`telegram.ext.CommandHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.commandhandler.html) for messages with bot commands
@@ -55,7 +55,7 @@ Clicking this link will open your Telegram Client and show a big START button. W
 
 Note that since telegram doesn't support spaces in deep linking parameters, you will have to manually split the single `Hello_World` argument, into `["Hello", "World!"]` (using `context.args[0].split('_')` for example)
 
-You also have to pay attention to the maximum length accepted by Telegram itself. As stated in the [documentation](https://core.telegram.org/bots#deep-linking) the maximum length for the start parameter is `64`.
+You also have to pay attention to the maximum length accepted by Telegram itself. As stated in [Telegram API documentation](https://core.telegram.org/bots/features#deep-linking) (and reflected in [PTB documentation](https://python-telegram-bot.readthedocs.io/en/latest/telegram.constants.html#telegram.constants.MessageLimit.DEEP_LINK_LENGTH)), the maximum length for the `start` parameter is `64`.
 
 Also, since this is an URL parameter, you have to pay attention on how to correctly pass the values in order to avoid passing URL reserved characters. Consider the usage of `base64.urlsafe_b64encode`.
 
