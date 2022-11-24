@@ -45,6 +45,7 @@ If you run the file you should get an output along the lines
 ```pycon
 >>> python main.py
 {"first_name": "Toledo's Palace Bot", "username": "ToledosPalaceBot"}
+User(first_name='Toledo's Palace Bot', is_bot=True, username='ToledosPalaceBot', ...)
 ```
 
 So far so good.
@@ -68,11 +69,11 @@ The output should now look something like this (we abbreviated the output a bit)
 
 ```pycon
 >>> python main.py
-{'update_id': 218946040, 'message': {'message_id': 23833, 'date': 1626017436, 'text': 'Hi!', 'chat': {'type': 'private', 'last_name': 'Doe', 'username': 'JohnDoe', 'id': 1234567890, 'first_name': 'John'}, 'from': {'last_name': 'Doe', 'username': 'JohnDoe', 'id': 1234567890, 'is_bot': False, 'language_code': 'de', 'first_name': 'John'}, ...}}
+Update(message=Message(chat=Chat(first_name='John', id=1234567890, last_name='Doe', ...), from_user=User(first_name='John', id=1234567890, last_name='Doe', ...), text='Hi!', ...), update_id=219017225)
 ```
 
 We copy the chat id, here `1234567890`.
-Note that you can access it also as `updates[0].message.from_user.id`, because `updates[0]` is an instance of the `Update` class.
+Note that you can access it also as `updates[0].message.from_user.id`, because `updates[0]` is an instance of the [`Update`](https://docs.python-telegram-bot.org/telegram.update.html) class.
 Now that we have the chat ID, we can send a message by again adjusting the `main()`:
 
 ```python
