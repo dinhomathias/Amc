@@ -44,7 +44,6 @@ If you run the file you should get an output along the lines
 
 ```pycon
 >>> python main.py
-{"first_name": "Toledo's Palace Bot", "username": "ToledosPalaceBot"}
 User(first_name='Toledo's Palace Bot', is_bot=True, username='ToledosPalaceBot', ...)
 ```
 
