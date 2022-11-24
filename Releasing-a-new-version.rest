@@ -33,9 +33,6 @@ Process
   
   $ pytest -v
 
-🚨🚨🚨🚨🚨🚨🚨🚨🚨 The code base may contain some references to ``20.0a5``/``(20, 0, "alpha", 5)``. Change that to ``20.0b0``/``(20, 0, "beta", 0)`` if this is the first beta release!
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 * Bump version:
 
   * `telegram/_version.py`
