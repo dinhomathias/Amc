@@ -36,6 +36,8 @@ When in doubt, please check the official PTB resoruces.
 * [Vercel serverless functions](https://vercel.com/docs/serverless-functions/supported-languages#python)
 * [PythonAnywhere](https://www.pythonanywhere.com)
 * [Oracle Cloud](https://www.oracle.com/cloud/free/) an AlwaysFree feature for a decent instance.
+* [Deta](https://www.deta.sh/)
+    * **[python-telegram-bot template on deta.sh](https://github.com/suriing/telegram-bot-template-on-deta)**
 
 ### VPS
 * [DigitalOcean](https://www.digitalocean.com/)
