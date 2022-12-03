@@ -17,6 +17,7 @@ If you notice that some non trivial change is missing in here, feel free to add 
   * [`__slots__`](##__slots__)
   * [Keyword Only Arguments](#keyword-only-arguments)
   * [Initialization of Telegram Classes](#initialization-of-telegram-classes)
+  * [Immutability](#immutability)
   * [Removed features](#removed-features)
 - [Changes for specific modules, classes & functions](#changes-for-specific-modules--classes---functions)
   * [`telegram`](#telegram)
@@ -160,6 +161,20 @@ Most importantly, this covers the `*_timeout` and `api_kwargs` arguments.
 
 Since v20.0a5, `TelegramObject` and it's subclasses no longer accept arbitrary keyword arguments (`**kwargs`). These were formerly used to ensure that PTB wouldn't break when Telegram added new fields to existing classes.
 Instead, `TelegramObject` and it's subclasses now have an argument `api_kwargs` that will be used to store fields that are passed by Telegram and that PTB did not yet incorporate. These fields will also be available via the `api_kwargs` *attribute*.
+
+## Immutability
+
+Any data objects received by Telegram represent a current state on the Telegram servers, that only be changed by making a request to Telegram (or even not at all).
+We hence decided to make `TelegramObject` and all of its subclasses immutable, meaning:
+
+* Attributes of these classes can neither be changed nor deleted. For example `update.message = new_message` or `del update.message` will both raise `AttributeErrors`
+* Any attributes that contain a list/an array of items are now of the immutable type `tuple`. For example, `Message.photo` is now a `tuple` instead of a `list`
+* All API methods of the `telegram.Bot` class that return a list/an array of items now return an immutable `tuple`. For example, the return value of `get_chat_administrators` is now a `tuple` instead of a `list`
+
+If these changes have an effect on your current code, we highly recommend to overthink your code design.
+Keep in mind that for storing data in memory, PTB provides a handy [built-in solution](../Storing-bot%2C-user-and-chat-related-data).
+
+These changes were introduced in v20.0b0.
 
 ## Removed features
 
