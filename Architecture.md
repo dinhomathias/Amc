@@ -11,7 +11,7 @@ Because all of that can be a bit overwhelming, the below diagram gives you an ov
 
 `python-telegram-bot` is designed such that you can adjust it to many use cases.
 In particular, many components/features are optional and some can even be fully customized.
-Moreover, the design allows the library to be used alongside other `asyncio` frameworks in the same Python script. We have a dedicated section on this in the [[over here|Frequently-requested-design-pattern#running-ptb-alongside-other-asyncio-frameworks]].
+Moreover, the design allows the library to be used alongside other `asyncio` frameworks in the same Python script. We have a dedicated section on this in the [over here](../Frequently-requested-design-patterns#running-ptb-alongside-other-asyncio-frameworks).
 
 ## Opt-in and Opt-out components
 
