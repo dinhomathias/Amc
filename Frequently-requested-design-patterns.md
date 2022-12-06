@@ -249,12 +249,12 @@ Several things to note here:
           # Stop the other asyncio frameworks here
           await application.stop()
   ```
-* Clean startup, execution and shutdown of `asyncio` processes is not a trivia topic, there are many approaches to this and probably just as many opinions on which is the best.
+* Clean startup, execution and shutdown of `asyncio` processes is not a trivial topic, there are many approaches to this and probably just as many opinions on which is the best.
   Covering this topic is out of scope for this wiki.
   The important point however is that there is not a single "right" way to do this - for PTB or in general.
   In particular the part where you have to keep the event loop running can take differnt form depending on your use case, your personal preferences and the frameworks you use.
-  If you are interested, we invite you to have a look at the source code of the `Application.run_{webhook, polling}` methods to see how PTB handles this.
+  If you are interested, we invite you to have a look at the [source code](https://github.com/python-telegram-bot/python-telegram-bot/blob/master/telegram/ext/_application.py) of the `Application.run_{webhook, polling}` methods to see how PTB handles this.
 * Shutdown logic of `asyncio` processes may involve any pending `asyncio.Tasks` by cancelling all tasks returned by `asyncio.all_tasks`. This should be done only *after* `Application.stop` was called, since `Application.start` starts `asyncio.Tasks` in the background that should be allowed to finish.
 * Calling `application.updater.start_{webhook, polling}` is not mandatory.
-  In fact, using PTBs `Updater` for fetching updates from Telegram is optional, and you can use a custom implementation instead, if you like (see [this page](../Architecture) for details).
+  In fact, using PTBs `Updater` for fetching updates from Telegram is optional, and you can use a custom implementation instead, if you like (see [this page](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Architecture) for details).
   The [`customwebhookbot`](https://docs.python-telegram-bot.org/examples.html#examples-customwebhookbot) example showcases this use case, which also involves manually starting and stopping the application. Keeping the event loop running is covered by the `uvicorn` framework in this example.
