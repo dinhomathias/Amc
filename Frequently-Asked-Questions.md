@@ -146,7 +146,7 @@ The `callback` method you pass to `JobQueue.run_*` takes exactly *one* argument,
 
 1. Access `context.bot_data`.
 2. Pass [`{user, chat}_id`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.jobqueue.html#telegram.ext.JobQueue.run_once.params.chat_id) to any of the `run_*(...)` methods so you can access them in your `callback` as `context.{user, chat}_data`
-3. Use `run_*(…, context=additional_data)`. It can then be accessed within the `callback` as `context.job.context`. 
+3. Use `run_*(…, data=additional_data)`. It can then be accessed within the `callback` as `context.job.data`. 
 
 Note that `context.{user, chat}_data` will be `None`, if you don't pass the arguments `{user, chat}_id` to any of the `run_*(...)` methods.
 
