@@ -228,6 +228,7 @@ async def main():
     # Start other asyncio frameworks here
     # Add some logic that keeps the event loop running until you want to shutdown
     # Stop the other asyncio frameworks here
+    await application.updater.stop()
     await application.stop()
     await application.shutdown()
 ```
@@ -247,6 +248,7 @@ Several things to note here:
           # Start other asyncio frameworks here
           # Add some logic that keeps the event loop running until you want to shutdown
           # Stop the other asyncio frameworks here
+          await application.updater.stop()
           await application.stop()
   ```
 * Clean startup, execution and shutdown of `asyncio` processes is not a trivial topic, there are many approaches to this and probably just as many opinions on which is the best.
