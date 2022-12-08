@@ -87,6 +87,7 @@ Bots built using the `telegram.ext.Updater` class.
 * [Twitter-lists-bot](https://github.com/lytves/twitter-lists-bot) - a bot to resend your twitter list notifications
 * [Twitter Status Bot](https://gitlab.com/HirschHeissIch/twitter-status-bot/) - A simple Telegram Bot that let’s you create stickers looking like Tweets on the fly. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/TwitterStatusBot)
 * [Url-Shortener-Bot](https://github.com/paradox70/url-shortener-goo.gl) — Shortens any URL and reports the total number of clicks on shortened link. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](http://t.me/shortenMyUrlBot)
+* [UseTGxBot](https://github.com/SpEcHiDe/MyTelegramOrgRoBot) - scraps telegram.org and get the api id associated with a phone number. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/UseTGxBot)
 * [Vocaloid Bot](https://github.com/bomjacob/VocaBot) — Uses data from VocaDB.net to find all your favourite Vocaloid songs, artists and albums.
 * [VorpalRobot](https://github.com/Tronikart/VorpalRobot) - an inline dice rolling bot [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/VorpalRobot)
 * [Watermaker-bot](https://github.com/alistvt/watermarker-bot) - A bot to watermark your files by your logo.
