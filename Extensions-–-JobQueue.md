@@ -13,6 +13,10 @@ The extension class `telegram.ext.JobQueue` allows you to perform tasks with a d
 In addition to the tutorial below, there is also the `timerbot.py` example at the [examples directory](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples).
 
 # Usage
+> :warning: Since 20.0a6, you must install PTB with the optional requirement `job-queue`, i.e. 
+>
+> `pip install python-telegram-bot[job-queue]`
+
 The `JobQueue` class is tightly integrated with other `telegram.ext` classes.
 
 To use the `JobQueue`, you don't have to do much. When you build the `Application`, it will create a `JobQueue` for you:
