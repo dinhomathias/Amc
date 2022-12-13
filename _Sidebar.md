@@ -13,8 +13,9 @@
 1. [[Architecture Overview|Architecture]]
 2. [Builder Pattern for `Application`](Builder-Pattern)
 3. [[Types of Handlers|Types-Of-Handlers]]
-4. [[Exceptions, Warnings and Logging|Exceptions, Warnings and Logging]]
-5. [[Concurrency in PTB|Concurrency]]
+4. [[Working with Files and Media]]
+5. [[Exceptions, Warnings and Logging|Exceptions, Warnings and Logging]]
+6. [[Concurrency in PTB|Concurrency]]
 
 ## Notable Features
 
