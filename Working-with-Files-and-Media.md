@@ -64,7 +64,6 @@ media_1 = InputMediaDocument(media='https://python-telegram-bot.org/static/testf
 media_1 = InputMediaDocument(media=file_id, ...)
 ```
 
----
 ### Sending files via inline mode
 
 You may want to allow users to send media via your bots inline mode. This works a little bit different than posting media via `send_*`. Most notably, you can't upload files for inline mode! You must provide either an HTTP URL or a `file_id`.
@@ -86,7 +85,6 @@ Let's stick to example of sending a document. You have to provide [`bot.answer_i
 In this example, we are using [`InlineQueryResultDocument`](https://python-telegram-bot.readthedocs.io/telegram.inlinequeryresultdocument.html#telegram-inlinequeryresultdocument) for option #1 and [`InlineQueryResultCachedDocument`](https://python-telegram-bot.readthedocs.io/telegram.inlinequeryresultcacheddocument.html#telegram-inlinequeryresultcacheddocument) for option #2. The scheme `InlineQueryResult<media_type>` vs `InlineQueryResultCached<media_type>` is similar for the other media types.
 Again, please check out the docs for details on required and optional arguments. 
 
----
 ## Editing a file
 
 When you have sent a file, you may want to edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example, we'll call [`bot.edit_message_media`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.edit_message_media) and pass an instance of [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html#telegram-inputmediadocument) as `media`:
@@ -97,7 +95,6 @@ await bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=Input
 
 Please check out the restrictions on editing media in the official docs of [`editMessageMedia`](https://core.telegram.org/bots/api#editmessagemedia).
 
----
 ## Downloading a file
 
 When you receive files from a user, you sometimes want to download and save them. If it's a document, that could look like this:
