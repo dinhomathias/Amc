@@ -3,12 +3,12 @@
 If you want to send a file (e.g. send a document or a photo) with the bot, you have three options:
 
 * Upload the file
-* Send an HTTP-link that leads to the file
+* Send an HTTP URL that leads to the file
 * Send a `file_id` of a file that has already been sent.
 
 Note that not every method is supported everywhere (e.g. for thumbnails you can't pass a `file_id`). Make sure to check out the documentation of the corresponding bot method for details.
 
-Please also check out the [official docs](https://core.telegram.org/bots/api#sending-files) on sending files.
+Please also check out the [official Telegram API docs](https://core.telegram.org/bots/api#sending-files) on sending files.
 
 Let's have a look at how sending a document can be done. In these examples, we'll be using `Bot`'s [`send_document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document) method.
 
@@ -24,7 +24,7 @@ Let's have a look at how sending a document can be done. In these examples, we'l
     ```
     When you pass a file path (note that both `str` and [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path) are accepted as [`document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document.params.document) parameter), PTB will automatically check if your bot is running in [local mode](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Local-Bot-API-Server#how-to-use-a-local-bot-api-server-with-ptb). If it is, the file does not need to be uploaded. Otherwise, the file is read in binary mode, so just as when you pass `open('tests/test.png', 'rb')`.
 
-2. Sending an HTTP-link
+2. Sending an HTTP URL
 
     ```python
     await bot.send_document(chat_id=chat_id, document='https://python-telegram-bot.org/static/testfiles/telegram.gif'))
@@ -56,7 +56,7 @@ A call to [`send_media_group`](https://python-telegram-bot.readthedocs.io/telegr
 await bot.send_media_group(chat_id=chat_id, media=[media_1, media_2, ...])
 ```
 
-The items in the `media` sequence (list or tuple) must be an instances of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaaudio.html#telegram-inputmediaaudio), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html#telegram-inputmediadocument), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/telegram.inputmediphoto.html#telegram-inputmediaphoto) or [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/telegram.inputmediavideo.html#telegram-inputmediavideo). The media comes into play like so:
+Each of the items in the `media` sequence (list or tuple) must be an instances of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaaudio.html#telegram-inputmediaaudio), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html#telegram-inputmediadocument), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/telegram.inputmediphoto.html#telegram-inputmediaphoto) or [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/telegram.inputmediavideo.html#telegram-inputmediavideo). The media comes into play like so:
 
 ```python
 media_1 = InputMediaDocument(media=open('tests/test.png', 'rb'), ...)
@@ -67,7 +67,7 @@ media_1 = InputMediaDocument(media=file_id, ...)
 ---
 ### Sending files via inline mode
 
-You may want to allow users to send media via your bots inline mode. This works a little bit different than posting media via `send_*`. Most notable, you can't upload files for inline mode! You must provide either an HTTP URL or a `file_id`.
+You may want to allow users to send media via your bots inline mode. This works a little bit different than posting media via `send_*`. Most notably, you can't upload files for inline mode! You must provide either an HTTP URL or a `file_id`.
 
 Let's stick to example of sending a document. You have to provide [`bot.answer_inline_query`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.answer_inline_query) with an [`InlineQueryResult`](https://python-telegram-bot.readthedocs.io/telegram.inlinequeryresult.html#telegram-inlinequeryresult) that represents that document. There are two ways of doing that:
 
@@ -89,13 +89,13 @@ Again, please check out the docs for details on required and optional arguments.
 ---
 ## Editing a file
 
-When you have sent a file, you may want edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example:
+When you have sent a file, you may want to edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example:
 
 ```python
 await bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=InputMediaDocument(media=open('tests/test.png'), ...))
 ```
 
-Please check out the restrictions on editing media in the docs of [`edit_message_media`](https://core.telegram.org/bots/api#editmessagemedia).
+Please check out the restrictions on editing media in the official docs of [`editMessageMedia`](https://core.telegram.org/bots/api#editmessagemedia).
 
 ---
 ## Downloading a file
