@@ -89,7 +89,7 @@ Again, please check out the docs for details on required and optional arguments.
 ---
 ## Editing a file
 
-When you have sent a file, you may want to edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example:
+When you have sent a file, you may want to edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example, we'll call [`bot.edit_message_media`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.edit_message_media):
 
 ```python
 await bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=InputMediaDocument(media=open('tests/test.png'), ...))
