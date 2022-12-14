@@ -1,3 +1,7 @@
+Bots interacting with users in plain text messages is often times not enough for a pleasant user experience.
+Providing the users with images, videos, fives and other media is therefore a common use case for bot programmers and the Bot API provides several ways to do this.
+On this wiki page, we explain how files and media are handled in the `python-telegram-bot` framework.
+
 ## Sending files
 
 If you want to send a file (e.g. send a document or a photo) with the bot, you have three options:
@@ -36,13 +40,13 @@ Let's have a look at how sending a document can be done. In these examples, we'l
 2. Sending an HTTP URL
 
     ```python
-    await bot.send_document(chat_id=chat_id, document='https://python-telegram-bot.org/static/testfiles/telegram.gif'))
+    await bot.send_document(chat_id=chat_id, document='https://python-telegram-bot.org/static/testfiles/telegram.gif')
     ```
 
 3. Sending by `file_id`:
 
     ```python
-    await bot.send_document(chat_id=chat_id, document=file_id))
+    await bot.send_document(chat_id=chat_id, document=file_id)
     ```
 
     Two further notes on this:
@@ -72,6 +76,8 @@ media_1 = InputMediaDocument(media=open('tests/test.png', 'rb'), ...)
 media_1 = InputMediaDocument(media='https://python-telegram-bot.org/static/testfiles/telegram.gif', ...)
 media_1 = InputMediaDocument(media=file_id, ...)
 ```
+
+> Note that for the `InputMedia*` classes, passing a file path only works if your bot is running in [local mode](docs.python-telegram-bot.org/telegram.bot.html#telegram.Bot.params.local_mode).
 
 ### Sending files via inline mode
 
