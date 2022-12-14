@@ -114,13 +114,22 @@ new_file = await bot.get_file(file_id)
 await new_file.download_to_drive()
 ```
 
-For a received video/voice/... change `message.document` to `message.video/voice/...`. However, there is one exception: `message.photo` is a *list* of `PhotoSize` objects, which represent different sizes of the same photo. Use `message.photo[-1].file_id` to get the largest size.
+For a received video/voice/... change [`message.document`](https://python-telegram-bot.readthedocs.io/telegram.message.html#telegram.Message.document) to `message.video/voice/...`. However, there is one exception: [`message.photo`](https://python-telegram-bot.readthedocs.io/telegram.message.html#telegram.Message.photo) is a *list* of [`PhotoSize`](https://python-telegram-bot.readthedocs.io/telegram.photosize.html) objects, which represent different sizes of the same photo. Use `message.photo[-1].file_id` to get the largest size.
 
-Moreover, the above snippet can be shortened by using PTBs built-in utility shortcuts:
+> **See also:** 
+>
+> Documentation for [`Bot.get_file()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.get_file)
+
+Moreover, the above snippet can be shortened by using PTB's built-in utility shortcuts:
 
 ```python
 new_file = await message.effective_attachment.get_file()
 await new_file.download_to_drive('file_name')
 ```
 
-`message.effective_attachment` automatically contains whichever media attachment the message has - in case of a photo, you'll again have to use e.g. `message.effective_attachment[-1].get_file()`
+[`message.effective_attachment`](https://python-telegram-bot.readthedocs.io/telegram.message.html#telegram.Message.effective_attachment) automatically contains whichever media attachment the message has. In case of a photo, you'll again have to use e.g. `message.effective_attachment[-1].get_file()`.
+
+> **See also:** 
+>
+> Documentation for [`File.download_to_drive()`](https://python-telegram-bot.readthedocs.io/telegram.file.html#telegram.File.download_to_drive) and [`File.download_to_memory()`](https://python-telegram-bot.readthedocs.io/telegram.file.html#telegram.File.download_to_memory)
+
