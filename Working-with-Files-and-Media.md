@@ -12,6 +12,15 @@ Please also check out the [official Telegram API docs](https://core.telegram.org
 
 Let's have a look at how sending a document can be done. In these examples, we'll be using `Bot`'s [`send_document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document) method.
 
+> **Note:**
+>
+> In discussion and examples below, we will be using methods of `Bot`, but most of them
+> (including [`send_document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document)) 
+> have shortcut methods in classes like `User`, `Chat` or `Message` that can be more 
+> convenient to use in your particular situation. Documentation for every method in `Bot`
+> contains links to shortcut methods in other classes.
+
+
 1. Uploading a file
 
     ```python
@@ -35,7 +44,7 @@ Let's have a look at how sending a document can be done. In these examples, we'l
     ```python
     await bot.send_document(chat_id=chat_id, document=file_id))
     ```
-    
+
     Two further notes on this:
     
     1. Each bot has its own `file_id`s, i.e. you can't use a `file_id` from a different bot to send a photo
