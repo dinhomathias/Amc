@@ -10,12 +10,12 @@ Note that not every method is supported everywhere (e.g. for thumbnails you can'
 
 Please also check out the [official Telegram API docs](https://core.telegram.org/bots/api#sending-files) on sending files.
 
-Let's have a look at how sending a document can be done. In these examples, we'll be using `Bot`'s [`send_document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document) method.
+Let's have a look at how sending a document can be done. In these examples, we'll be using `Bot`'s [`send_document()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document) method.
 
 > **Note:**
 >
 > In discussion and examples below, we will be using methods of `Bot`, but most of them
-> (including [`send_document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document)) 
+> (including [`send_document()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document)) 
 > have shortcut methods in classes like `User`, `Chat` or `Message` that can be more 
 > convenient to use in your particular situation. Documentation for every method in `Bot`
 > contains links to shortcut methods in other classes.
@@ -48,18 +48,18 @@ Let's have a look at how sending a document can be done. In these examples, we'l
     Two further notes on this:
     
     1. Each bot has its own `file_id`s, i.e. you can't use a `file_id` from a different bot to send a photo
-    2. How do you get a `file_id` of a photo you sent? Read it from the return value of [`bot.send_document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document) (or any other [`Message`](https://python-telegram-bot.readthedocs.io/telegram.message.html#telegram.Message) object you get your hands on):
+    2. How do you get a `file_id` of a photo you sent? Read it from the return value of [`bot.send_document()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document) (or any other [`Message`](https://python-telegram-bot.readthedocs.io/telegram.message.html#telegram.Message) object you get your hands on):
     
         ```python
         message = await bot.send_document(...)
         file_id = message.document.file_id
         ```
        
-This pretty much works the same way for all the other `send_<media_type>` methods like [`send_photo`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_photo), [`send_video`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_video) etc. There is one exception, though: [`send_media_group`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_media_group). 
+This pretty much works the same way for all the other `send_<media_type>()` methods like [`send_photo()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_photo), [`send_video()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_video) etc. There is one exception, though: [`send_media_group()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_media_group). 
 
 ### Sending a media group
 
-A call to [`send_media_group`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_media_group) looks like this:
+A call to [`send_media_group()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_media_group) looks like this:
 
 ```python
 await bot.send_media_group(chat_id=chat_id, media=[media_1, media_2, ...])
@@ -77,7 +77,7 @@ media_1 = InputMediaDocument(media=file_id, ...)
 
 You may want to allow users to send media via your bots inline mode. This works a little bit different than posting media via `send_*`. Most notably, you can't upload files for inline mode! You must provide either an HTTP URL or a `file_id`.
 
-Let's stick to example of sending a document. You have to provide [`bot.answer_inline_query`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.answer_inline_query) with an [`InlineQueryResult`](https://python-telegram-bot.readthedocs.io/telegram.inlinequeryresult.html#telegram-inlinequeryresult) that represents that document. There are two ways of doing that:
+Let's stick to example of sending a document. You have to provide [`bot.answer_inline_query()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.answer_inline_query) with an [`InlineQueryResult`](https://python-telegram-bot.readthedocs.io/telegram.inlinequeryresult.html#telegram-inlinequeryresult) that represents that document. There are two ways of doing that:
 
 1. HTTP URL:
 
@@ -96,7 +96,7 @@ Again, please check out the docs for details on required and optional arguments.
 
 ## Editing a file
 
-When you have sent a file, you may want to edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example, we'll call [`bot.edit_message_media`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.edit_message_media) and pass an instance of [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html#telegram-inputmediadocument) as `media`:
+When you have sent a file, you may want to edit it. This works similarly as `send_media_group`, i.e. the media must be wrapped into a `InputMedia<media_type>` object. Again, with `document` as example, we'll call [`bot.edit_message_media()`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.edit_message_media) and pass an instance of [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html#telegram-inputmediadocument) as `media`:
 
 ```python
 await bot.edit_message_media(chat_id=chat_id, message_id=message_id, media=InputMediaDocument(media=open('tests/test.png'), ...))
