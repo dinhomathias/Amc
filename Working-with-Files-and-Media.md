@@ -65,7 +65,7 @@ A call to [`send_media_group()`](https://python-telegram-bot.readthedocs.io/tele
 await bot.send_media_group(chat_id=chat_id, media=[media_1, media_2, ...])
 ```
 
-Each of the items in the `media` sequence (list or tuple) must be an instances of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaaudio.html#telegram-inputmediaaudio), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html#telegram-inputmediadocument), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/telegram.inputmediphoto.html#telegram-inputmediaphoto) or [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/telegram.inputmediavideo.html#telegram-inputmediavideo). The media comes into play like so:
+Each of the items in the `media` sequence (list or tuple) must be an instances of [`InputMediaAudio`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaaudio.html#telegram-inputmediaaudio), [`InputMediaDocument`](https://python-telegram-bot.readthedocs.io/telegram.inputmediadocument.html#telegram-inputmediadocument), [`InputMediaPhoto`](https://python-telegram-bot.readthedocs.io/telegram.inputmediaphoto.html#telegram-inputmediaphoto) or [`InputMediaVideo`](https://python-telegram-bot.readthedocs.io/telegram.inputmediavideo.html#telegram-inputmediavideo). The media comes into play like so:
 
 ```python
 media_1 = InputMediaDocument(media=open('tests/test.png', 'rb'), ...)
