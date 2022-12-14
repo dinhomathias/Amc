@@ -1,5 +1,5 @@
 Bots interacting with users in plain text messages is often times not enough for a pleasant user experience.
-Providing the users with images, videos, fives and other media is therefore a common use case for bot programmers and the Bot API provides several ways to do this.
+Providing the users with images, videos, files and other media is therefore a common use case for bot programmers and the Bot API provides several ways to do this.
 On this wiki page, we explain how files and media are handled in the `python-telegram-bot` framework.
 
 ## Sending files
