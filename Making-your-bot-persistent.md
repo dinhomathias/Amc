@@ -55,7 +55,7 @@ You can customize the interval via the [`update_interval`](https://python-telegr
 
 ### ⚠️ Note
 
-Since the persisted data is loaded on start-up, any data written to `Application.{bot, chat, user_data}` *before* startup will hence be overridden! To manually write data into these *after* the persisted data has been loaded, please use [`Application.post_init`](https://docs.python-telegram-bot.org/en/v20.0a4/telegram.ext.applicationbuilder.html?highlight=ApplicationBuilder#telegram.ext.ApplicationBuilder.post_init).
+Since the persisted data is loaded on start-up, any data written to `Application.{bot, chat, user_data}` *before* startup will hence be overridden! To manually write data into these *after* the persisted data has been loaded, please use [`Application.post_init`](https://docs.python-telegram-bot.org/telegram.ext.applicationbuilder.html?highlight=ApplicationBuilder#telegram.ext.ApplicationBuilder.post_init).
 
 ## Refreshing at runtime
 

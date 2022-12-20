@@ -185,7 +185,7 @@ Here, `start_fetching_updates` is a placeholder for whichever method you use to 
 The important part is that you enqueue the received updates into the `update_queue`.
 That is, call `await update_queue.put(update)`, where `update` is the decoded `Update` object (use `Update.de_json(json.loads(text), bot)` to decode the update from the received JSON data).
 
-We have an example using this approach available [here](https://docs.python-telegram-bot.org/en/v20.0a1/examples.html#examples-customwebhookbot).
+We have an example using this approach available [here](https://docs.python-telegram-bot.org/examples.html#examples-customwebhookbot).
 
 #### Alternative: No long running tasks
 If you don't want to use the long running tasks started by `application.start()`, you don't have to!

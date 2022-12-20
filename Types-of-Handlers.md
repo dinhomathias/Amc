@@ -1,4 +1,4 @@
-A `Handler` is an instance derived from the base class [`telegram.ext.BaseHandler`](https://docs.python-telegram-bot.org/en/v20.0a1/telegram.ext.basehandler.html#telegram.ext.BaseHandler) which is responsible for the routing of different kinds of updates (text, audio, inlinequery, button presses, ...) to their _corresponding callback function_ in your code.
+A `Handler` is an instance derived from the base class [`telegram.ext.BaseHandler`](https://docs.python-telegram-bot.org/telegram.ext.basehandler.html#telegram.ext.BaseHandler) which is responsible for the routing of different kinds of updates (text, audio, inlinequery, button presses, ...) to their _corresponding callback function_ in your code.
 
 For example, if you want your bot to respond to the command `/start`, you can use a [`telegram.ext.CommandHandler`](https://python-telegram-bot.readthedocs.io/en/latest/telegram.ext.commandhandler.html) that maps this user input to a callback named `start_callback`:
 ```python
@@ -65,7 +65,7 @@ For more complex inputs you can employ the [`telegram.ext.MessageHandler`](https
 
 Keep in mind that for extracting URLs, #Hashtags, @Mentions, and other Telegram entities, there's no need to parse them with a regex filter because the Bot API already sends them to us with every update. Refer to [[this snippet|Code-snippets#message-entities]] to learn how to work with entities instead.
 
-This tutorial only covers some of the available handlers (for now). Refer to [the documentation](https://docs.python-telegram-bot.org/en/latest/telegram.ext.handlers-tree.html) for all other types.
+This tutorial only covers some of the available handlers (for now). Refer to [the documentation](https://docs.python-telegram-bot.org/telegram.ext.handlers-tree.html) for all other types.
 
 ## Custom updates
 
