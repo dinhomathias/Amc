@@ -1,5 +1,5 @@
 # Introduction
-The extension class `telegram.ext.JobQueue` allows you to perform tasks with a delay or even periodically, at a set interval. Among many other things, you can use it to send regular updates to your subscribers.
+The extension class [`telegram.ext.JobQueue`](https://docs.python-telegram-bot.org/en/latest/telegram.ext.jobqueue.html#telegram.ext.JobQueue) allows you to perform tasks with a delay or even periodically, at a set interval. Among many other things, you can use it to send regular updates to your subscribers.
 
 ## When working with `JobQueue`, please keep in mind:
 
