@@ -32,7 +32,7 @@ Moreover, the corresponding public keys should be made available to the users:
 * Please add your public key to the ``public_keys`` directory with the appropriate name rename any existing keys ending on ``-current.gpg`` if appropriate.
   See also `the README <https://docs.python-telegram-bot.org/#verifying-releases>`_ for more information.
 * Please also add your public key to the `website <https://python-telegram-bot.org/>`_.
-  For this, please edit the ``verify-releases.html <https://github.com/python-telegram-bot/python-telegram-bot.github.io/blob/master/verify-releases.html>`_ file by adding a new ``<div> class="window">...</div>`` block with your key analogous to the existing ones.
+  For this, please edit the `verify-releases.html <https://github.com/python-telegram-bot/python-telegram-bot.github.io/blob/master/verify-releases.html>`_ file by adding a new ``<div> class="window">...</div>`` block with your key analogous to the existing ones.
 * Optionally, you can also add your public key to a keyservers, e.g. `keyserver.ubuntu.com <https://keyserver.ubuntu.com/>`_.
 
 Process
