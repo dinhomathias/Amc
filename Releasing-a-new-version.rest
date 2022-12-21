@@ -21,6 +21,16 @@ Packages::
 $ pip install -r requirements-all.txt
 $ pip install wheel twine
 
+GPG-Key:
+
+Every maintainer should have a GPG key to sign the release.
+If you don't have one yet, create a new one.
+You can e.g. follow `GitHubs guide <https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key>`_ to create a new GPG key, although you don't have to add the key to your account.
+
+Moreover, the corresponding public keys should be made available to the users.
+Please add your public key to the ``public_keys`` directory with the appropriate name rename any existing keys ending on ``-current.gpg`` if appropriate.
+See also `the README <https://docs.python-telegram-bot.org/#verifying-releases>`_ for more information.
+Optionally, you can also add your public key to a keyservers, e.g. `keyserver.ubuntu.com <https://keyserver.ubuntu.com/>`_.
 
 Process
 -------
@@ -56,7 +66,7 @@ Process
   
   This will also build PTB-Raw
 
-* Upload to PyPI (-s to sign the package with your GnuPG key)::
+* Upload to PyPI (-s to sign the package with your GnuPG key!)::
  
   $ twine upload -s dist/python*
  
