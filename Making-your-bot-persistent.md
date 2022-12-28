@@ -79,8 +79,9 @@ Hence, each implementation should take care that it does not try to serialize `t
 For example, it can check if the data equals the attribute `BasePersistence.bot` (which will be the bot object used by the `Application`) and instead store a placeholder.
 When loading the data, the `BasePersistence.bot` can be reinserted instead of the placeholder.
 Indeed, this is basically what the built-in `PicklePersistence` does.
-### ⚠️ Note
-Although `PicklePersistence` does the 'placeholder' process described above, all the data are deep copied with `copy.deepcopy` before being handed over to persistence. This means that you should store only copyable data on bot parts that will be persisted. This technical detail is described in a note [here](https://docs.python-telegram-bot.org/en/v20.0b0/telegram.ext.application.html#telegram.ext.Application.update_persistence)
 
 For more technical details, please refer to the documentation of [`BasePersistence`](https://python-telegram-bot.readthedocs.io/telegram.ext.basepersistence.html#telegram-ext-basepersistence), 
 [`PicklePersistence`](https://python-telegram-bot.readthedocs.io/telegram.ext.picklepersistence.html#telegram-ext-picklepersistence)
+
+### ⚠️ Note
+Although `PicklePersistence` does the 'placeholder' process described above, all the data are deep copied with `copy.deepcopy` before being handed over to persistence. This means that you should either store only copyable data (e.g. no `telegram.Bot` objects) and/or ensure that your stored data defines appropriate custom deepcopy behavior. This technical detail is described in a note [here](https://docs.python-telegram-bot.org/telegram.ext.application.html#telegram.ext.Application.update_persistence)
