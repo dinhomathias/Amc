@@ -87,7 +87,7 @@ await bot.send_message(chat_id=chat_id, text="I'm sorry Dave I'm afraid I can't 
 ---
 #### Reply to a message
 
-This is a shortcut to `bot.send_message` with same defaults. Read more about it [in the docs](http://python-telegram-bot.readthedocs.io/en/latest/telegram.html#telegram.Message.reply_text). 
+This is a shortcut to `bot.send_message` with same defaults. Read more about it [in the docs](https://docs.python-telegram-bot.org/en/latest/telegram.message.html#telegram.Message.reply_text). 
 
 ```python
 await update.message.reply_text("I'm sorry Dave I'm afraid I can't do that.")
@@ -123,7 +123,7 @@ To catch the incoming message with the location/contact, use `MessageHandler` wi
 ---
 ### Message Formatting (bold, italic, code, ...)
 
-Telegram supports some formatting options for text. All the details about what is supported can be found [here](https://core.telegram.org/bots/api#formatting-options). Please keep in mind that you will have to escape the special characters as detailed in the documentation. PTB also offers a [helper function](https://python-telegram-bot.readthedocs.io/telegram.utils.helpers.html#telegram.utils.helpers.escape_markdown) for escaping of Markdown text. For escaping of HTML text, you can use [`html.escape`](https://docs.python.org/3/library/html.html?#html.escape) from the standard library.
+Telegram supports some formatting options for text. All the details about what is supported can be found [here](https://core.telegram.org/bots/api#formatting-options). Please keep in mind that you will have to escape the special characters as detailed in the documentation. PTB also offers a [helper function](https://docs.python-telegram-bot.org/en/latest/telegram.helpers.html#telegram.helpers.escape_markdown) for escaping of Markdown text. For escaping of HTML text, you can use [`html.escape`](https://docs.python.org/3/library/html.html?#html.escape) from the standard library.
 
 You can format text with every API method/type that has a `parse_mode` parameter. In addition to editing your text as described in the link above, pass one of the parse modes available through [`telegram.constants.ParseMode`](https://python-telegram-bot.readthedocs.io/telegram.constants.html#telegram.constants.ParseMode) to the `parse_mode` parameter. Since the `5.0` update of the Bot API (version `13.1+` of PTB), you can alternatively pass a list of [`telegram.MessageEntities`](https://python-telegram-bot.readthedocs.io/telegram.messageentity.html) to the `entities` parameter.
 
