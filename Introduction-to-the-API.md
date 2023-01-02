@@ -1,8 +1,5 @@
 # ⚠️ This is the v20.x version of the wiki. For the v13.x version, please head [here](https://github.com/python-telegram-bot/v13.x-wiki/wiki).
 
-v20.x is currently in pre-release mode.
-To install the latest pre-release version of v20.x, use `pip install python-telegram-bot -U --pre`
-
 ## Pure Telegram Bot API
 
 The Bot API is exposed via the [`telegram.Bot`](https://python-telegram-bot.readthedocs.io/telegram.bot.html) class.
