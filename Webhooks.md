@@ -160,7 +160,7 @@ backend bot2
 ### Custom solution
 You don't necessarily have to use the integrated webserver *at all*. If you choose to go this way, **you should not use the `Updater` class.** The `telegram.ext` module was designed with this option in mind, so you can still use the `Application` class to profit from the message filtering/sorting it provides. You will have to do some work by hand, though.
 
-The general idea is outlined below.
+The general idea is outlined below and explained in more detail also in [this wiki section](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-requested-design-patterns#running-ptb-alongside-other-asyncio-frameworks).
 
 ```python
 from telegram import Bot
