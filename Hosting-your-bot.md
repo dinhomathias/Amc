@@ -11,6 +11,8 @@ You should also receive some information on the type of server you got, includin
 
 Once you received that information, you can connect to the server via SSH. 
 
+> Note that although the explanations below mention entering your password, it is strongly recommended to authenticate using a [SSH public key](https://www.ssh.com/academy/ssh/public-key-authentication) instead of the password. You can read [this explanation](https://www.ssh.com/academy/ssh/keygen) on how to generate keys and send the public key to the server, or check your VPS provider's documentation.
+
 #### Linux
 Run the following command in the terminal and replace `<user>` with your username and `<ip>` with your servers IP address:
 
