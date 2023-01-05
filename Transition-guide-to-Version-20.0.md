@@ -1,9 +1,7 @@
-## ⚠️ Note
+## Introduction
 
-This transition guide is subject to changes as long as v20.0 is in pre-release mode.
-Individual pre-releases for v20.0 will not get standalone transition guides.
-
-Moreover, it's important to note that this transition guide will not cover every last one of the many smaller changes that came along with the bigger structural changes.
+This transition guide aims to easy transitions from v13.x to v20.0 by listing relevant changes between these versions.
+It's important to note that this transition guide will not cover every last one of the many smaller changes that came along with the bigger structural changes.
 If you notice that some non trivial change is missing in here, feel free to add it.
 
 ## Table of contents
