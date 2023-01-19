@@ -80,18 +80,26 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text="I'm a bot, please talk to me!"
     )
 ```
+
+
+The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command. 
+
+As you can see, this function will receive two parameters: an `update`, which is an object that contains all the information and data that are coming from telegram itself (like the message, the user who issued the command, etc) and a `context`, which is another object that contains information and data about the status of the library itself (like the `Bot`, the `Application`, the `job_queue`, etc).
+
 **Related docs:** [`send_message`](https://docs.python-telegram-bot.org/telegram.bot.html#telegram.Bot.send_message), [`telegram.ext.CallbackContext` (the type of the context argument)](https://docs.python-telegram-bot.org/telegram.ext.callbackcontext.html), [`telegram.Update` (the type of update argument)](https://docs.python-telegram-bot.org/telegram.update.html)
 
-The goal is to have this function called every time the Bot receives a Telegram message that contains the `/start` command. To accomplish that, you can use a `CommandHandler` (one of the provided `Handler` subclasses) and register it in the application:
+To tell your bot to listen to `/start` commands, you can use a `CommandHandler` (one of the provided `Handler` subclasses) and register it in the application:
 
 ```python
 from telegram.ext import CommandHandler
 start_handler = CommandHandler('start', start)
 application.add_handler(start_handler)
 ```
+
 **Related docs:** [`telegram.ext.CommandHandler`](http://docs.python-telegram-bot.org/telegram.ext.commandhandler.html), [`telegram.ext.Application.add_handler`](http://docs.python-telegram-bot.org/telegram.ext.application.html#telegram.ext.Application.add_handler)
 
 And that's all you need.
+
 Finally, the line `application.run_polling()` runs the bot until you hit `CTRL+C`.
 
 **Related docs:** [`telegram.ext.Application.run_polling`](http://docs.python-telegram-bot.org/telegram.ext.application.html#telegram.ext.Application.run_polling)
