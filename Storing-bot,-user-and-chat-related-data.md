@@ -76,6 +76,11 @@ See also: [`migrate_chat_data`](https://python-telegram-bot.readthedocs.io/teleg
 
 To be entirely sure that the update will be processed by this handler, either add it first or put it in its own group.
 
+### ⚠️ Note: Migration update comes duplicated
+> TLDR: Just ignore the second update
+
+You may notice that your migration handler receives 2 updates consecutively when a group is migrated to a supergroup. The first update communicates the migration, and the second one _does the same thing_, but Telegram sends it with `from_user` set to an Anonymous user `GroupAnonymousBot`. They do this so older clients of Telegram - where every `Update` needs a `from_user` - don't crash. You can simply ignore the second update as it brings the same information but with different fields :)
+
 ### ChatMigrated Errors
 
 If you try e.g. sending a message to the old chat id, Telegram will respond by a `BadRequest` including the new chat id. You can access it using an error handler:
