@@ -18,6 +18,7 @@
 - [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
 - [How do I access info about the message my bot sent?](#how-do-I-access-info-about-the-message-my-bot-sent)
+- [Can an `InlineKeyboardButton` have both a URL and `callback-data`?](#can-an-inlinekeyboardbutton-have-both-a-url-and-callback-data)
 
 ### What messages can my Bot see?
 
@@ -165,3 +166,16 @@ message_id = message.message_id
 ```
 
 Please check the docs for details about the return value of each bot method.
+
+### Can an `InlineKeyboardButton` have both a URL and `callback-data`?
+
+No, exactly *one* of the optional arguments of `InlineKeyboardButton` must be set.
+The closest that you can get to having both a URL and `callback_data` in the button is:
+
+1. have a custom server (e.g. `my.tld`) where you can creaty redirec-links on the fly - something similar to bitly or all the other link shortening services
+2. each time you want to have both a URL and a `callback_data`, create a new link `my.tld/some_token`
+    1. Make `my.tld/some_token` redirect to the actual URL
+    2. Configure your server such that it sends a notification to your bot telling it that the `my.tld/some_token` was accessed
+3. Make your bot process that information similar to how you'd process a `CallbackQuery`. See also [thes FAQ entry](#i-want-to-handle-updates-from-an-external-service-in-addition-to-the-telegram-updates-how-do-i-do-that)
+
+
