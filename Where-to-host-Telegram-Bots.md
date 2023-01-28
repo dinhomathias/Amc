@@ -7,7 +7,7 @@ The linked articles/blog posts on how to use PTB with the different providers ar
 * usually written for a specific (range of) versions of `python-telegram-bot` and may not be compatible with the version that you are using
 * not written or maintained by the PTB dev team.
 
-When in doubt, please check the official PTB resoruces.
+When in doubt, please check the official PTB resources.
 
 ### Cloud
 * [Amazon Web Services](https://aws.amazon.com/)
