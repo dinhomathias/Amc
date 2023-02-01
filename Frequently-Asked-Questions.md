@@ -78,6 +78,7 @@ Anything *not* listed there can not be done with bots. Here is a short list of f
 * Clearing the chat history for a user
 * Getting a message by its `message_id` (For the interested reader: see [here](https://github.com/tdlib/telegram-bot-api/issues/62))
 * Getting the last sent message in a chat (you can keep track of that by using [`chat_data`](Storing-bot,-user-and-chat-related-data))
+* Getting a users `user_id` via their `@username` (only userbots can do that - you may be interested in [`ptbcontrib/username_to_chat_api`](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/username_to_chat_api))
 
 In some cases, using a userbot can help overcome restrictions of the Bot API. Please have a look at this [article](http://telegra.ph/How-a-Userbot-superacharges-your-Telegram-Bot-07-09) about userbots.
 Note that userbots are not what python-telegram-bot is for.
