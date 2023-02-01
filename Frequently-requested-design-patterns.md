@@ -178,7 +178,10 @@ If you didn't keep track of your users from the beginning, you may have a chance
 
 Even if you have all the IDs, you can't know if a user has blocked your bot in the meantime. Therefore, you should make sure to wrap your send request in a `try-except` clause checking for [`telegram.error.Forbidden`](https://python-telegram-bot.readthedocs.io/telegram.error.html#telegram.error.Forbidden) errors.
 
-Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. A simple way to achieve that is to leverage the [`JobQueue`](Extensions-–-JobQueue).
+Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. To achieve that you can use e.g.
+
+* the [`JobQueue`](../Extensions-–-JobQueue)
+* PTBs mechanism to [avoid flood limits](../Avoiding-flood-limits)
 
 ## How do I deal with a media group?
 
