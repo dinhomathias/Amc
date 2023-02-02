@@ -113,7 +113,10 @@ Bots using the raw API.
 * [TwitterForwarderBot](https://github.com/franciscod/telegram-twitter-forwarder-bot) — Forwards you tweets from people that you have subscribed to.
 * [YATAB](https://github.com/Nhoya/YATAB/) — Modular administration helper bot
 
+# Web Apps
+Bots using Telegram Web Apps
 
+* [TGDates](https://github.com/harshil21/TGDates) — A Telegram Web App which allows the user to pick a date or time easily and is configurable via an API.
 
 
 ---
