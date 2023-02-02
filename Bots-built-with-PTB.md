@@ -1,7 +1,7 @@
 A non-exhaustive list of open-source bots built on `python-telegram-bot` in the wild. You are welcome to add your bot in alphabetical order. Please include a link to the source code and optionally a link to a running instance of that bot.
 
-# Updater
-Bots built using the `telegram.ext.Updater` class.
+# `Application` / `Updater`
+Bots built using the `telegram.ext.Application` class (>=v20) / the `telegram.ext.Updater` class (<=v13).
 * [Akinator-Bot](https://github.com/adenosinetp10/Akinator-Bot) — Play guessing game Akinator on Telegram. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/aki_akinator_bot)
 * [AlarmBot](https://github.com/guysoft/AlarmBot) — This bot uses [crontab](https://en.wikipedia.org/wiki/Cron) to schedule audio alarms. The alarm command can be edited to schedule any kind of cron job for an IOT device. [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/alarmbot)
 * [AmbroBot](https://github.com/Ambro17/AmbroBot) — This bot can search series or movies by name and lets you download them, it can also list latest yts movies, lets you set reminders, solve linear equations and a few other neat things [ᴛʀʏ ɪᴛ ᴏᴜᴛ](https://t.me/CuervoBot)
@@ -97,6 +97,11 @@ Bots built using the `telegram.ext.Updater` class.
 * [YOURLS Bot](https://gitlab.com/HirschHeissIch/yourls-bot/) - A Telegram bot that acts as GUI front end for the [YOURLS](https://yourls.org/) link shortener. You can host it for your own YOURLS instance.
 * [Youtrack-Time-Tracking-Bot](https://github.com/MgCoders/tt-bot) — Allows easy time tracking on youtrack issues.
 
+# Web Apps
+Bots using Telegram Web Apps
+
+* [TGDates](https://github.com/harshil21/TGDates) — A Telegram Web App which allows the user to pick a date or time easily and is configurable via an API.
+
  
 # API
 Bots using the raw API.
@@ -112,11 +117,6 @@ Bots using the raw API.
 * [Tiktok To Telegram](https://github.com/fauzaanu/Tiktok_To_Telegram) — On receiving a Tiktok Link this bot will send you back a watermark removed video back to you active on [@TokInTgBot](https://t.me/TokInTgBot)
 * [TwitterForwarderBot](https://github.com/franciscod/telegram-twitter-forwarder-bot) — Forwards you tweets from people that you have subscribed to.
 * [YATAB](https://github.com/Nhoya/YATAB/) — Modular administration helper bot
-
-# Web Apps
-Bots using Telegram Web Apps
-
-* [TGDates](https://github.com/harshil21/TGDates) — A Telegram Web App which allows the user to pick a date or time easily and is configurable via an API.
 
 
 ---
