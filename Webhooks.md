@@ -36,7 +36,7 @@ If you don't already have a verified certificate, use a self-signed one. It's ea
 #### Creating a self-signed certificate using OpenSSL
 To create a self-signed SSL certificate using `openssl`, run the following command:
 ```
-openssl req -newkey rsa:2048 -sha256 -nodes -keyout private.key -x509 -days 3650 -out cert.pem
+openssl req -newkey rsa:2048 -sha256 -noenc -keyout private.key -x509 -days 3650 -out cert.pem
 ```
 
 The `openssl` utility will ask you for a few details. **Make sure you enter the correct FQDN!** If your server has a domain, enter the full domain name here (eg. `sub.example.com`). If your server only has an IP address, enter that instead. If you enter an invalid FQDN (Fully Qualified Domain Name), you won't receive any updates from Telegram but also won't see any errors!
