@@ -21,6 +21,7 @@ When in doubt, please check the official PTB resources.
     * **[Building a serverless Telegram bot](https://seminar.io/2018/09/03/building-serverless-telegram-bot/)** by [pabluk](https://github.com/pabluk)
 * [Google Cloud Run](https://cloud.google.com/run/) 
     * **[Hosting Telegram bots on Cloud Run for free](https://nullonerror.org/2021/01/08/hosting-telegram-bots-on-google-cloud-run/)** by [skhaz](https://github.com/skhaz/)
+* [Back4App](https://www.back4app.com)
 * [Heroku](https://www.heroku.com/)
     * **[Heroku getting started with Python](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)**
     * **[[Webhooks on Heroku|Webhooks#heroku]]**
