@@ -15,7 +15,7 @@ In addition to the tutorial below, there is also the `timerbot.py` example at th
 # Usage
 > :warning: Since v20, you must install PTB with the optional requirement `job-queue`, i.e. 
 >
-> `pip install python-telegram-bot[job-queue]`
+> `pip install 'python-telegram-bot[job-queue]'`
 
 The `JobQueue` class is tightly integrated with other `telegram.ext` classes.
 
