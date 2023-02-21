@@ -2,6 +2,12 @@ Bots interacting with users in plain text messages is often times not enough for
 Providing the users with images, videos, files and other media is therefore a common use case for bot programmers and the Bot API provides several ways to do this.
 On this wiki page, we explain how files and media are handled in the `python-telegram-bot` framework.
 
+- [Sending files](#sending-files)
+  - [Sending a media group](#sending-a-media-group)
+  - [Sending files via inline mode](#sending-files-via-inline-mode)
+- [Editing a file](#editing-a-file)
+- [Downloading a file](#downloading-a-file)
+
 ## Sending files
 
 If you want to send a file (e.g. send a document or a photo) with the bot, you have three options:
@@ -37,7 +43,7 @@ Let's have a look at how sending a document can be done. In these examples, we'l
     ```
     When you pass a file path (note that both `str` and [`pathlib.Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path) are accepted as [`document`](https://python-telegram-bot.readthedocs.io/telegram.bot.html#telegram.Bot.send_document.params.document) parameter), PTB will automatically check if your bot is running in [local mode](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Local-Bot-API-Server#how-to-use-a-local-bot-api-server-with-ptb). If it is, the file does not need to be uploaded. Otherwise, the file is read in binary mode, so just as when you pass `open('tests/test.png', 'rb')`.
 
-2. Sending an HTTP URL
+2. Sending an HTTP URLrefreshing-at-runtime
 
     ```python
     await bot.send_document(chat_id=chat_id, document='https://python-telegram-bot.org/static/testfiles/telegram.gif')
