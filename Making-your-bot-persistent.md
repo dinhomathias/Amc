@@ -37,6 +37,7 @@ If you've written a persistence class that could benefit others (e.g., a general
 
 These 3rd party packages contain persistence classes (the list is incomplete):
 * [python-telegram-bot-django-persistence](https://github.com/GamePad64/python-telegram-bot-django-persistence) - Uses Django ORM to store persistence data. It is most useful for projects, that use PTB and Django.
+* [MongoPersistence](https://github.com/LucaSforza/MongoPersistence) - Package to add persistence to your telegram bot and upload data to your mongo database.
 
 ## What do I need to change?
 
