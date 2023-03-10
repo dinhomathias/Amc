@@ -49,7 +49,7 @@ For example, if you don't want to miss any deprecation warning during developmen
 
 ```python
 import warnings
-from telegram.error import PTBUserWarning
+from telegram.warngings import PTBDeprecationWarning
 
 warnings.filterwarnings("error", category=PTBDeprecationWarning)
 ```
