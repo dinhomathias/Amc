@@ -11,6 +11,7 @@ Bots built using the `telegram.ext.Application` class (>=v20):
 | [Tiktok To Telegram](https://github.com/fauzaanu/Tiktok_To_Telegram) | On receiving a tiktok link this bot will send you back a watermark removed video back | 20.0a4 | 2022 | [Link](https://t.me/TokInTgBot) |
 | [Torrent Telegram Bot](https://github.com/fauzaanu/torrent_telegram_bot) | A bot that generates direct links from torrent magnet links, along with searching torrents from a search query | Unknown | 2022 | - |
 | [Twitter Status Bot](https://github.com/Bibo-Joshi/twitter-status-bot) | A simple Telegram Bot that let’s you create stickers looking like Tweets on the fly. | 20.1 | 2023 | [Link](https://t.me/TwitterStatusBot) |
+| [python-telegram-bot-template](https://github.com/Lur1an/python-telegram-bot-template) | A template for a python-telegram-bot application, inlcudes MongoDB persistence, barebone user module, application-state handling and some decorators and utility classes | 20.0a0 | 2023 | - |
 
 
 # Web Apps (v20+)
