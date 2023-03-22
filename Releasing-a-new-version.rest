@@ -102,6 +102,7 @@ Process
 
 * If the `doc-fixes`_ branch got merged, create a new one.
 
+* Merge the `dev-wiki <https://github.com/python-telegram-bot/dev-wiki/wiki>`_ into the `production wiki <https://github.com/python-telegram-bot/python-telegram-bot/wiki>`_
 
 Public Announcements
 --------------------
