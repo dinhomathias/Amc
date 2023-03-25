@@ -44,7 +44,7 @@ It is also a follow-up to the page [[Introduction to the API|Introduction-to-the
 #### Fetch updates
 To fetch messages sent to your Bot, you can use the [getUpdates](https://core.telegram.org/bots/api#getupdates) API method.
 
-**Note:** You don't have to use `get_updates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [[here|Extensions-–-Your-first-Bot]].
+**Note:** You don't have to use `get_updates` if you are writing your bot with the `telegram.ext` submodule, since `telegram.ext.Updater` takes care of fetching all updates for you. Read more about that [[here|Extensions---Your-first-Bot]].
 
 ```python
 updates = await bot.get_updates()

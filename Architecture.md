@@ -1,7 +1,7 @@
 # Architecture
 
 The `telegram` and `telegram.ext` packages contain several classes that make writing (chat)bots easy.
-You have met most of them in the [[tutorial|Extensions-–-Your-first-Bot]].
+You have met most of them in the [[tutorial|Extensions---Your-first-Bot]].
 Because all of that can be a bit overwhelming, the below diagram gives you an overview of how the different components interact with each other.
 
 [[/assets/ptb_architecture.png]]

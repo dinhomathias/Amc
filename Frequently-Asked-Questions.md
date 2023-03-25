@@ -95,7 +95,7 @@ Note that `your_update` should *not* need to be an instance of `telegram.Update`
 To actually do something with the update, you can register a [`TypeHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.typehandler.html). [`StringCommandHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.stringcommandhandler.html) and [`StringRegexHandler`](https://python-telegram-bot.readthedocs.io/telegram.ext.stringregexhandler.html) might also be interesting for some use cases.
 
 But how to get the updates into your bot process?
-For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](Extensions-–-JobQueue) for that.
+For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](Extensions---JobQueue) for that.
 If you can get the updates via a webhook, you can implement a custom webhook that handles both the Telegram and your custom updates. Please have a look at [this example](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#customwebhookbotpy) that showcases how that can be done.
 If your 3rd party service requires some other setup for fetching updates, that surely also be combined with PTB. Keep in mind that you basically only need access to the `(application/context).update_queue`.
 

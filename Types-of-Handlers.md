@@ -26,7 +26,7 @@ The special thing about `MessageHandler` is that there is such a vast variety of
 * `update.channel_post`
 * `update.edited_channel_post`
 
-You can use the different filters to narrow down which updates your `MessageHandler` will handle. See also [[this article|Extensions-–-Advanced-Filters]] for advanced usage of filters.
+You can use the different filters to narrow down which updates your `MessageHandler` will handle. See also [[this article|Extensions---Advanced-Filters]] for advanced usage of filters.
 
 Because bot commands are another special part of the user interface of bots, there is the dedicated `CommandHandler`, which allows you to easily handle messages like `/start` or `/help`. Of course those messages can also be handled with `MessageHandler`, if needed.
 
