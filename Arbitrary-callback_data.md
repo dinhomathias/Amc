@@ -11,7 +11,7 @@ This means two things for you:
 3. When using the `CallbackQueryHandler`, the `pattern` argument can now be either
 
     * a regex expression, which will be used, if the `callback_data` is in fact a string
-    * a callable accepting the `callback_data` as only argument. You can perform any kinds of tests on the `callback_data` and return `True` ore `False` accordingly
+    * a callable accepting the `callback_data` as only argument. You can perform any kinds of tests on the `callback_data` and return `True` or `False` accordingly
     * a type. In that case the `CallbackQuery` will be handled, if the `callback_data` is an instance of that type. Btw: This allows you to inform users, when a buttons' data has been dropped from cache. With `CallbackQueryHandler(callback, pattern=InvalidCallbackData)` you can e.g., call `await update.callback_query.answer(text='Button is no longer valid', show_alert=True)` to inform the user.
 
 ## Memory Usage
