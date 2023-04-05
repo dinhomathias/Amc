@@ -180,8 +180,8 @@ Even if you have all the IDs, you can't know if a user has blocked your bot in t
 
 Finally, note that Telegram imposes some limits that restrict you to send ~30 Messages per second. If you have a huge user base and try to notify them all at once, you will get flooding errors. To prevent that, try spreading the messages over a long time range. To achieve that you can use e.g.
 
-* the [`JobQueue`](../Extensions---JobQueue)
-* PTBs mechanism to [avoid flood limits](../Avoiding-flood-limits)
+* the [`JobQueue`](../wiki/Extensions---JobQueue)
+* PTBs mechanism to [avoid flood limits](../wiki/Avoiding-flood-limits)
 
 ## How do I deal with a media group?
 
