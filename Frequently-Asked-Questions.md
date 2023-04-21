@@ -114,7 +114,7 @@ The default setting (`per_user=True` and `per_chat=True`) means that in each cha
 If you set `per_user=False` and you start a conversation in a group chat, the `ConversationHandler` will also accept input from other users.
 Conversely, if `per_user=True`, but `per_chat=False`, its possible to start a conversation in one chat and continue with it in another.
 
-`per_message` is slightly more complicated: Image two different conversations, in each of which the user is presented with an inline keyboard with the buttons yes and no.
+`per_message` is slightly more complicated: Imagine two different conversations, in each of which the user is presented with an inline keyboard with the buttons yes and no.
 The user now starts *both* conversations and sees *two* such keyboards. Now, which conversation should handle the update?
 In order to clear this issue up, if you set `per_message=True`, the `ConversationHandler` will use the `message_id` of the message with the keyboard.
 Note that this approach can only work, if all the handlers in the conversation are `CallbackQueryHandler`s. This is useful for building interactive menus.
