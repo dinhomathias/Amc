@@ -18,7 +18,7 @@ This page is a collection of sorts, dedicated to showcase design patterns we get
 ## Requirements
 
 Knowing how to make bots with PTB is enough. That means you should be familiar with Python and with PTB.
-If you haven't worked on anything with PTB, then please check [Introduction to the API](../Introduction-to-the-API) as well as the [Tutorial Your first Bot](../Extensions---Your-first-Bot).
+If you haven't worked on anything with PTB, then please check [Introduction to the API](./Introduction-to-the-API) as well as the [Tutorial Your first Bot](./Extensions---Your-first-Bot).
 
 ## How to handle updates in several handlers
 
