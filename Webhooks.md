@@ -1,5 +1,5 @@
 ## Introduction
-Our [examples](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Frequently-requested-design-patterns#running-ptb-alongside-other-asyncio-frameworks) usually start the bot using `Application.run_polling`. This method uses the [getUpdates](https://core.telegram.org/bots/api#getupdates) API method to receive new updates for your bot. This is fine for smaller to medium-sized bots and for testing, but if your bot receives a lot of traffic, it might slow down the response times. There might be other reasons for you to switch to a webhook-based method for update retrieval.
+Our [examples](https://docs.python-telegram-bot.org/examples.html) usually start the bot using [`Application.run_polling`](https://docs.python-telegram-bot.org/telegram.ext.application.html#telegram.ext.Application.run_polling). This method uses the [getUpdates](https://core.telegram.org/bots/api#getupdates) API method to receive new updates for your bot. This is fine for smaller to medium-sized bots and for testing, but if your bot receives a lot of traffic, it might slow down the response times. There might be other reasons for you to switch to a webhook-based method for update retrieval.
 
 **First things first:** You should have a good reason to switch from polling to a webhook. Don't do it simply because it sounds cool.
 
