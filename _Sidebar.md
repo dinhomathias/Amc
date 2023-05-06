@@ -71,3 +71,4 @@
 - [[How To Release|Releasing-a-new-version]]
 - [[Bots, Groups & Channels|Project-Bots,-Groups-and-Channels]]
 - [[PTB tests knowledge base|PTB-test-writing-knowledge-base]]
+- [[Bot API Backward Compatibility|Bot-API-Backward-Compatibility]]
