@@ -14,7 +14,7 @@ Bots built using the `telegram.ext.Application` class (>=v20):
 | [Torrent Telegram Bot](https://github.com/fauzaanu/torrent_telegram_bot) | A bot that generates direct links from torrent magnet links, along with searching torrents from a search query | Unknown | 2022 | - |
 | [Twitter Status Bot](https://github.com/Bibo-Joshi/twitter-status-bot) | A simple Telegram Bot that let’s you create stickers looking like Tweets on the fly. | 20.1 | 2023 | [Link](https://t.me/TwitterStatusBot) |
 | [python-telegram-bot-template](https://github.com/Lur1an/python-telegram-bot-template) | A template for a python-telegram-bot application, inlcudes MongoDB persistence, barebone user module, application-state handling and some decorators and utility classes | 20.0a0 | 2023 | - |
-
+| [Instagram Assistant](https://github.com/rzashakeri/Instagram-Assistant) | Instagram Assistant on Telegram can download, uplaod, get Insights and Lotter from instagram💡 | 20.1 | 2023 | [Link](https://t.me/InstagramAssistantRobot) |
 
 # Web Apps (v20+)
 Bots using Telegram Web Apps (>=v20):
