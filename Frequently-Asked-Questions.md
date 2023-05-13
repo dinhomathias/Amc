@@ -171,7 +171,8 @@ Please check the docs for details about the return value of each bot method.
 
 ### How can I print a table in a telegram message? Is it a lost cause?
 
-Yes. Telegram formatting doesn't support tables and even if you try to get everything aligned with whitespaces and tabls, there WILL be a client that has a different max-widths for the text bubbles or a different font/font size and everything will be messed up. 
+Long story short: yes, it's a lost cause.
+Telegram formatting doesn't support tables and even if you try to get everything aligned with whitespaces and tabs, there WILL be a client that has a different max-widths for the text bubbles or a different font/font size and everything will be messed up. 
 If it's important to you to send a nicely formatted table, send a picture or a pdf.
 
 ### Can an `InlineKeyboardButton` have both a URL and `callback-data`?
