@@ -18,6 +18,7 @@
 - [Why am I getting an error `The following arguments have not been supplied`?](#why-am-i-getting-an-error-the-following-arguments-have-not-been-supplied)
 - [How can I check the version of PTB I am using?](#how-can-i-check-the-version-of-ptb-i-am-using)
 - [How do I access info about the message my bot sent?](#how-do-I-access-info-about-the-message-my-bot-sent)
+- [How can I print a table in a telegram message? Is it a lost cause?](#how-can-i-print-a-table-in-a-telegram-message-is-it-a-lost-cause)
 - [Can an `InlineKeyboardButton` have both a URL and `callback-data`?](#can-an-inlinekeyboardbutton-have-both-a-url-and-callback-data)
 
 ### What messages can my Bot see?
@@ -167,6 +168,11 @@ message_id = message.message_id
 ```
 
 Please check the docs for details about the return value of each bot method.
+
+### How can I print a table in a telegram message? Is it a lost cause?
+
+Yes. Telegram formatting doesn't support tables and even if you try to get everything aligned with whitespaces and tabls, there WILL be a client that has a different max-widths for the text bubbles or a different font/font size and everything will be messed up. 
+If it's important to you to send a nicely formatted table, send a picture or a pdf.
 
 ### Can an `InlineKeyboardButton` have both a URL and `callback-data`?
 
