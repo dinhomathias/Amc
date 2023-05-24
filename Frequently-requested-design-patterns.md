@@ -212,7 +212,7 @@ The idea behind this approach is to start a upload segment in your code. Either 
 ## Running PTB alongside other `asyncio` frameworks
 
 The [tutorial](../Extensions---Your-first-Bot) as well (almost) all the [examples](https://docs.python-telegram-bot.org/examples.html#examples-chatmemberbot) make use of [`Application.run_polling`](https://docs.python-telegram-bot.org/telegram.ext.application.html#telegram.ext.Application.run_polling).
-This method is a blocking, which means that no other `asyncio` related code can be started while it is running.
+This method is blocking, which means that no other `asyncio` related code can be started while it is running.
 This is okay as long your Python script runs only your bot.
 However, if you want to run multiple bots in the same Python script or other `asyncio` frameworks (e.g. a webserver) alongside your bot, this becomes an issue.
 
