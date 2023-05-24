@@ -22,7 +22,7 @@ If you haven't worked on anything with PTB, then please check [Introduction to t
 
 ## How to handle updates in several handlers
 
-At some point developing ones bots, most of us face the following question
+At some point developing one's bots, most of us face the following question
 
 > How do I handle an update _before_ other handlers?
 
