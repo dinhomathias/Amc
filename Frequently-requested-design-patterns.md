@@ -14,11 +14,12 @@ This page is a collection of sorts, dedicated to showcase design patterns we get
   - [Timer based approach](#timer-based-approach)
   - [Manual approach](#manual-approach)
 - [Running PTB alongside other `asyncio` frameworks](#running-ptb-alongside-other-asyncio-frameworks)
+- [How to deal with multiple CBQ from one button](#how-to-deal-with-multiple-CBQ-from-one-button)
 
 ## Requirements
 
 Knowing how to make bots with PTB is enough. That means you should be familiar with Python and with PTB.
-If you haven't worked on anything with PTB, then please check [Introduction to the API](./Introduction-to-the-API) as well as the [Tutorial Your first Bot](./Extensions---Your-first-Bot).
+If you haven't worked on anything with PTB, then please check [Introduction to the API](../Introduction-to-the-API) as well as the [Tutorial: Your first Bot](../Extensions---Your-first-Bot).
 
 ## How to handle updates in several handlers
 
@@ -263,3 +264,70 @@ Several things to note here:
 * Calling `application.updater.start_{webhook, polling}` is not mandatory.
   In fact, using PTBs `Updater` for fetching updates from Telegram is optional, and you can use a custom implementation instead, if you like (see [[this wiki page|Architecture]] for details).
   The [`customwebhookbot`](https://docs.python-telegram-bot.org/examples.html#examples-customwebhookbot) example showcases this use case, which also involves manually starting and stopping the application. Keeping the event loop running is covered by the `uvicorn` framework in this example.
+
+## How to deal with multiple CBQ from one button
+A common design is to have an inline keyboard and on pressing the button, edit the message to have this button vanish. Short example:
+
+```python
+import asyncio
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
+
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Sends a message with an inline buttons attached."""
+    keyboard = [[InlineKeyboardButton("Button To Vanish", callback_data="1")]]
+    await update.message.reply_text(
+        "Spam it", reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Parses the CallbackQuery and updates the message text."""
+    query = update.callback_query
+    await query.answer()
+    # long wait for something
+    await asyncio.sleep(5)
+    await query.edit_message_text(text=f"You did it")
+
+
+def main() -> None:
+    """Run the bot."""
+    application = Application.builder().token("TOKEN").build()
+    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CallbackQueryHandler(button))
+    application.run_polling()
+
+
+if __name__ == "__main__":
+    main()
+
+```
+As you can see, the button has to wait for 5 seconds, which allows impatient users to spam the button. This results in multiple callback query updates from this button, even though (without the sleep call) you might expect just one CBQ update from it. All "duplicate" updates from the button will result in a _BadRequest_, because the message content is the same one as the previous (it was already edit to "You did it" and the code tries to edit it to the same text again).
+
+The solution to this problem is to keep track independently if the message was already edited. Thanks to user data, this is achieved quite easily:
+```python
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Parses the CallbackQuery and updates the message text."""
+    query = update.callback_query
+    unique_data = query.data + (
+        query.inline_message_id
+        if query.inline_message_id
+        else str(query.message.message_id)
+    )
+    if "last_cbq" not in context.user_data:
+        context.user_data["last_cbq"] = unique_data
+    else:
+        if context.user_data["last_cbq"] == unique_data:
+            return
+    await query.answer()
+    # long wait for something
+    await asyncio.sleep(5)
+    await query.edit_message_text(text=f"You did it")
+```
+This setup has two downsides:
+1. You have to write this in the beginning of each CBQ handler. You can either use a [decorators](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Code-snippets#restrict-access-to-a-handler-decorator) or a [separate handler](#how-to-handle-updates-in-several-handlers) to avoid this.
+1. You can not edit in a button with the same callback data as the previous one in the same message.
+
+If you remember the last point, you will not face any issues with this solution however.
