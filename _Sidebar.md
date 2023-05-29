@@ -19,11 +19,11 @@
 
 ## Notable Features
 
-1. [[Advanced Filters|Extensions---Advanced-Filters]]
+1. [[Advanced Filters|Advanced-Filters]]
 2. [[Storing data|Storing-bot,-user-and-chat-related-data]]
 3. [[Making your bot persistent|Making-your-bot-persistent]]
 4. [[Adding Defaults|Adding-defaults-to-your-bot]]
-5. [[Job Queue|Extensions---JobQueue]]
+5. [[Job Queue|JobQueue]]
 6. [Arbitrary `callback_data`](Arbitrary-callback_data)
 7. [[Avoiding flood limits|Avoiding-flood-limits]]
 8. [[Webhooks|Webhooks]]
