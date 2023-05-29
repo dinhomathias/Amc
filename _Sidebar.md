@@ -3,7 +3,7 @@
 ## Must read
 
 1. [[Introduction to the API|Introduction-to-the-API]]
-2. [[Tutorial: Your first bot|Your-first-Bot]]
+2. [[Tutorial: Your first bot|Extensions---Your-first-Bot]]
 3. [[FAQ|Frequently-Asked-Questions]]
 4. [[How to ask good questions|Ask-Right]]
 5. [[How to write an MWE|MWE]]
@@ -19,11 +19,11 @@
 
 ## Notable Features
 
-1. [[Advanced Filters|Advanced-Filters]]
+1. [[Advanced Filters|Extensions---Advanced-Filters]]
 2. [[Storing data|Storing-bot,-user-and-chat-related-data]]
 3. [[Making your bot persistent|Making-your-bot-persistent]]
 4. [[Adding Defaults|Adding-defaults-to-your-bot]]
-5. [[Job Queue|JobQueue]]
+5. [[Job Queue|Extensions---JobQueue]]
 6. [Arbitrary `callback_data`](Arbitrary-callback_data)
 7. [[Avoiding flood limits|Avoiding-flood-limits]]
 8. [[Webhooks|Webhooks]]
