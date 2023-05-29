@@ -3,7 +3,7 @@
 ## Must read
 
 1. [[Introduction to the API|Introduction-to-the-API]]
-2. [[Tutorial: Your first bot|Extensions---Your-first-Bot]]
+2. [[Tutorial: Your first bot|Your-first-Bot]]
 3. [[FAQ|Frequently-Asked-Questions]]
 4. [[How to ask good questions|Ask-Right]]
 5. [[How to write an MWE|MWE]]
