@@ -19,7 +19,7 @@ For an example on how an error handler might look like, please head over to the 
 # Logging
 
 In case you don't have an error handler registered, PTB will *log* any unhandled exception.
-For logging, PTB uses Pythons [`logging` module](https://docs.python.org/3/library/logging.html).
+For logging, PTB uses Python's [`logging` module](https://docs.python.org/3/library/logging.html).
 To set up logging to standard output, you can write something like
 ```python
 import logging
@@ -31,13 +31,24 @@ logging.basicConfig(
 at the beginning of your script. If you want debug logs instead, use `level=logging.DEBUG`.
 `python-telegram-bot` makes some more verbose log entries on the `logging.DEBUG` level that might be helpful when you're trying to debug your bot.
 
-Note that also some 3rd party libraries that `python-telegram-bot` uses, make log entries in the same manner. For example, if you don't want to see the logs of the `APScheduler` library about your `JobQueue` jobs being scheduled, you can specify the logging level of `APScheduler` as follows:
+Note that also some third-party libraries that `python-telegram-bot` uses, make log entries in the same manner. If you are using the `basicConfig` from the example above, you will see that your log is cluttered with entries by `httpx`: starting with [v.0.24.1](https://github.com/encode/httpx/releases/tag/0.24.1), `httpx` logs all requests at `INFO` level, which makes sense for `httpx` but could annoy you as a PTB user. 
+
+In this case, you can set logging level specifically for `httpx`:
+
+```py
+import logging
+
+logging.getLogger('httpx').setLevel(logging.WARNING)
+```
+
+> If you set logging level to `DEBUG` for your application, you might want to set it to `INFO` for `httpx` (so you can see the requests that are made).
+
+Another example: if you don't want to see the logs of the `APScheduler` library about your `JobQueue` jobs being scheduled, you can specify the logging level of `APScheduler` as follows:
 
 ```python
 import logging
 
-aps_logger = logging.getLogger('apscheduler')
-aps_logger.setLevel(logging.WARNING)
+logging.getLogger('apscheduler').setLevel(logging.WARNING)
 ```
 
 # Warnings
