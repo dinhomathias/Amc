@@ -20,6 +20,7 @@
 - [How do I access info about the message my bot sent?](#how-do-I-access-info-about-the-message-my-bot-sent)
 - [How can I print a table in a Telegram message? Is it a lost cause?](#how-can-i-print-a-table-in-a-telegram-message-is-it-a-lost-cause)
 - [Can an `InlineKeyboardButton` have both a URL and `callback-data`?](#can-an-inlinekeyboardbutton-have-both-a-url-and-callback-data)
+- [Why am I suddenly getting so many log entries from `httpx`?](#why-am-i-suddenly-getting-so-many-log-entries-from-httpx)
 
 ### What messages can my Bot see?
 
@@ -186,4 +187,13 @@ The closest that you can get to having both a URL and `callback_data` in the but
     2. Configure your server such that it sends a notification to your bot telling it that the `my.tld/some_token` was accessed
 3. Make your bot process that information similar to how you'd process a `CallbackQuery`. See also [thes FAQ entry](#i-want-to-handle-updates-from-an-external-service-in-addition-to-the-telegram-updates-how-do-i-do-that)
 
+### Why am I suddenly getting so many log entries from `httpx`?
 
+Starting with [v.0.24.1](https://github.com/encode/httpx/releases/tag/0.24.1), `httpx` logs all ordinary requests at `INFO` level, which may be annoying for you as a PTB user.
+
+You can explicitly set logging level for `httpx` to `WARNING` to get rid of these messages:
+```py
+import logging
+
+logging.getLogger("httpx").setLevel(logging.WARNING)
+```
