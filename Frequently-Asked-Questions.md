@@ -189,7 +189,7 @@ The closest that you can get to having both a URL and `callback_data` in the but
 
 ### Why am I suddenly getting so many log entries from `httpx`?
 
-Starting with [v.0.24.1](https://github.com/encode/httpx/releases/tag/0.24.1), `httpx` logs all ordinary requests at `INFO` level, which may be annoying for you as a PTB user.
+Starting with [v.0.24.1](https://github.com/encode/httpx/releases/tag/0.24.1), `httpx` logs all async requests at `INFO` level, which may be annoying for you as a PTB user.
 
 You can explicitly set logging level for `httpx` to `WARNING` to get rid of these messages:
 ```py
