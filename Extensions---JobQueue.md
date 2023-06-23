@@ -118,4 +118,4 @@ All good things must come to an end, so when you stop the Application, the relat
 
 PTBs [[Persistence Setup|Making-your-bot-persistent]] currently does not support serialization of jobs.
 However, the current backend of the `JobQueue`, namely the `APScheduler` library has a mechanism for that, which you can leverage.
-Check out e.g. [ptbcontrib/ptb_sqlalchemy_jobstore](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/ptb_sqlalchemy_jobstore) for an example implementation.
+Check out e.g. [ptbcontrib/ptb_jobstores](https://github.com/python-telegram-bot/ptbcontrib/tree/main/ptbcontrib/ptb_jobstores) for an example implementation.
