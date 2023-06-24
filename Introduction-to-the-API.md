@@ -28,7 +28,8 @@ import telegram
 async def main():
     bot = telegram.Bot("TOKEN")
     async with bot:
-        print(await bot.get_me())
+        infos = await bot.get_me()
+        print(infos)
 
 
 if __name__ == '__main__':
