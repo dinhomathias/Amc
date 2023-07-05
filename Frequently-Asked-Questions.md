@@ -59,7 +59,7 @@ Yes, but only within the first 48 hours.
 
 ### How can I get a list of all chats/users/channels my bot is interacting with?
 
-There is no method for that. You'll need to keep track. See e.g. the [`chatmemberbot.py`](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy) example.
+There is no method for that. You'll need to keep track. See e.g. the [`chatmemberbot.py`](https://docs.python-telegram-bot.org/en/stable/examples.html#examples-chatmemberbot) example.
 
 ### Does my bot get an update, when someone joins my channel?
 
@@ -75,7 +75,7 @@ Please note that python-telegram-bot is only a *wrapper* for the Telegram Bot AP
 You can find a full list of all available methods in the [official docs](https://core.telegram.org/bots/api#available-methods).
 Anything *not* listed there can not be done with bots. Here is a short list of frequently requested tasks, that can *not* be done with the Bot API:
 
-* Getting a list of all members of a group. You'll need to keep track, e.g. using approaches displayed in [chatmemberbot.py](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#chatmemberbotpy)
+* Getting a list of all members of a group. You'll need to keep track, e.g. using approaches displayed in [chatmemberbot.py](https://docs.python-telegram-bot.org/en/stable/examples.html#examples-chatmemberbot)
 * Adding members to a group/channel (note that you can just send an invite link, which is also less likely to be seen as spam)
 * Clearing the chat history for a user
 * Getting a message by its `message_id` (For the interested reader: see [here](https://github.com/tdlib/telegram-bot-api/issues/62))
@@ -98,8 +98,8 @@ To actually do something with the update, you can register a [`TypeHandler`](htt
 
 But how to get the updates into your bot process?
 For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](Extensions---JobQueue) for that.
-If you can get the updates via a webhook, you can implement a custom webhook that handles both the Telegram and your custom updates. Please have a look at [this example](https://github.com/python-telegram-bot/python-telegram-bot/tree/master/examples#customwebhookbotpy) that showcases how that can be done.
-If your 3rd party service requires some other setup for fetching updates, that surely also be combined with PTB. Keep in mind that you basically only need access to the `(application/context).update_queue`.
+If you can get the updates via a webhook, you can implement a custom webhook that handles both the Telegram and your custom updates. Please have a look at [customwebhookbot.py](https://docs.python-telegram-bot.org/en/stable/examples.html#examples-customwebhookbot) example that showcases how that can be done.
+If your third-party service requires some other setup for fetching updates, that surely also be combined with PTB. Keep in mind that you basically only need access to the `(application/context).update_queue`.
 
 ### Why am I getting `ImportError: cannot import name 'XY' from 'telegram'`?
 
