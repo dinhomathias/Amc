@@ -98,7 +98,7 @@ To actually do something with the update, you can register a [`TypeHandler`](htt
 
 But how to get the updates into your bot process?
 For many cases a simple approach is to check for updates every x seconds. You can use the [`JobQueue`](Extensions---JobQueue) for that.
-If you can get the updates via a webhook, you can implement a custom webhook that handles both the Telegram and your custom updates. Please have a look at [customwebhookbot.py](https://docs.python-telegram-bot.org/en/stable/examples.html#examples-customwebhookbot) example that showcases how that can be done.
+If you can get the updates via a webhook, you can implement a custom webhook that handles both the Telegram and your custom updates. Please have a look at [`customwebhookbot.py`](https://docs.python-telegram-bot.org/en/stable/examples.html#examples-customwebhookbot) example that showcases how that can be done.
 If your third-party service requires some other setup for fetching updates, that surely also be combined with PTB. Keep in mind that you basically only need access to the `(application/context).update_queue`.
 
 ### Why am I getting `ImportError: cannot import name 'XY' from 'telegram'`?
